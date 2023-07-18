@@ -1,0 +1,54 @@
+
+<h2 mat-dialog-title>{{data.animalInfo.species}} {{data.animalInfo.name}} - {{data.animalInfo.shelterAnimalID}}</h2>
+
+<mat-dialog-content style="text-align: center">
+  <img src="{{data.animalInfo.imageURL}}" style="height: 273px" />
+  <br />
+  <table style="width: 100%; text-align: left">
+    <tr>
+      <td><b>Gender:</b> </td>
+      <td>{{data.animalInfo.gender}}</td>
+    </tr>
+    <tr>
+      <td><b>Breed:</b> </td>
+      <td>{{data.animalInfo.breed}}</td>
+    </tr>
+    <tr>
+      <td><b>Age:</b> </td>
+      <td>{{data.animalInfo.age}}</td>
+    </tr>
+    <tr>
+      <td><b>Weight:</b> </td>
+      <td>{{data.animalInfo.weight}}</td>
+    </tr>
+
+
+    <tr>
+      <td><b>Heartworm/FIV:</b> </td>
+      <td>{{data.animalInfo.hwfiv}}</td>
+    </tr>
+    <tr>
+      <td><b>Intake Date:</b> </td>
+      <td>{{data.animalInfo.intakeDate}}</td>
+    </tr>
+    <tr>
+      <td><b>Shelter Notes:</b> </td>
+      <td>{{data.animalInfo.shelterNotes}}</td>
+    </tr>
+    <tr>
+      <td><b>Volunteer Notes:</b> </td>
+      <td>{{data.animalInfo.volunteerNotes}}</td>
+    </tr>
+    <tr>
+      <td><b>Volunteer Favorite:</b> </td>
+      <td>{{data.animalInfo.volunteerFavorite}}</td>
+    </tr>
+  </table>
+  <br />
+
+</mat-dialog-content>
+
+<mat-dialog-actions>
+  <button mat-raised-button (click)="closeDialog()">Close</button>
+</mat-dialog-actions>
+
