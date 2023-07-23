@@ -12,6 +12,8 @@ export class ConfirmationDialogComponent {
   
   closeDialog() { this.dialogRef.close('close'); }
 
+
+    
   submitDialog() { this.dialogRef.close('accept'); }
 
 }

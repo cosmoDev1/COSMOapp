@@ -24,63 +24,16 @@
 
   <table>
     <tr>
-      <td>
-        <mat-form-field>
-          <mat-label>State</mat-label>
-          <mat-select>
-            <mat-option [value]="0">AL-Alabama</mat-option>
-            <mat-option [value]="0">AK-Alaska</mat-option>
-            <mat-option [value]="0">AZ-Arizona</mat-option>
-            <mat-option [value]="0">AR-Arkansas</mat-option>
-            <mat-option [value]="0">CA-California</mat-option>
-            <mat-option [value]="0">CO-Colorado</mat-option>
-            <mat-option [value]="0">CT-Connecticut</mat-option>
-            <mat-option [value]="0">DE-Delaware</mat-option>
-            <mat-option [value]="0">FL-Florida</mat-option>
-            <mat-option [value]="0">GA-Georgia</mat-option>
-            <mat-option [value]="0">HI-Hawaii</mat-option>
-            <mat-option [value]="0">ID-Idaho</mat-option>
-            <mat-option [value]="0">IL-Illinois</mat-option>
-            <mat-option [value]="0">IN-Indiana</mat-option>
-            <mat-option [value]="0">IA-Iowa</mat-option>
-            <mat-option [value]="0">KS-Kansas</mat-option>
-            <mat-option [value]="0">KY-Kentucky</mat-option>
-            <mat-option [value]="0">LA-Louisiana</mat-option>
-            <mat-option [value]="0">ME-Maine</mat-option>
-            <mat-option [value]="0">MD-Maryland</mat-option>
-            <mat-option [value]="0">MA-Massachusetts</mat-option>
-            <mat-option [value]="0">MI-Michigan</mat-option>
-            <mat-option [value]="0">MN-Minnesota</mat-option>
-            <mat-option [value]="0">MS-Mississippi</mat-option>
-            <mat-option [value]="0">MO-Missouri</mat-option>
-            <mat-option [value]="0">MT-Montana</mat-option>
-            <mat-option [value]="0">NE-Nebraska</mat-option>
-            <mat-option [value]="0">NV-Nevada</mat-option>
-            <mat-option [value]="0">NH-New Hampshire</mat-option>
-            <mat-option [value]="0">NJ-New Jersey</mat-option>
-            <mat-option [value]="0">NM-New Mexico</mat-option>
-            <mat-option [value]="0">NY-New York</mat-option>
-            <mat-option [value]="0">NC-North Carolina</mat-option>
-            <mat-option [value]="0">ND-North Dakota</mat-option>
-            <mat-option [value]="0">OH-Ohio</mat-option>
-            <mat-option [value]="0">OK-Oklahoma</mat-option>
-            <mat-option [value]="0">OR-Oregon</mat-option>
-            <mat-option [value]="0">PA-Pennsylvania</mat-option>
-            <mat-option [value]="0">RI-Rhode Island</mat-option>
-            <mat-option [value]="0">SC-South Carolina</mat-option>
-            <mat-option [value]="0">SD-South Dakota</mat-option>
-            <mat-option [value]="0">TN-Tennessee</mat-option>
-            <mat-option [value]="0">TX-Texas</mat-option>
-            <mat-option [value]="0">UT-Utah</mat-option>
-            <mat-option [value]="0">VT-Vermont</mat-option>
-            <mat-option [value]="0">VA-Virginia</mat-option>
-            <mat-option [value]="0">WA-Washington</mat-option>
-            <mat-option [value]="0">WV-West Virginia</mat-option>
-            <mat-option [value]="0">WY-Wyoming</mat-option>
-          </mat-select>
-        </mat-form-field>
-
-      </td>
+        <td>
+            <mat-form-field>
+                <mat-label> State </mat-label>
+                <mat-select id="stat" name="stat">
+                     <mat-option *ngFor="let state of global.states" [value]="state.abbreviation">
+                         {{ state.name }} - {{ state.abbreviation }}
+                     </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </td>
       <td>
         <mat-form-field>
           <input matInput type="number" max="99999" placeholder="Zip" required>

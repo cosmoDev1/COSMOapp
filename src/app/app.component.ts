@@ -11,6 +11,9 @@ import { NewFosterDialogComponent } from './new-foster-dialog/new-foster-dialog.
 import { ConfirmationDialogComponent } from './confirmation-dialog/confirmation-dialog.component';
 import { AnimalDetailDialogComponent } from './animal-detail-dialog/animal-detail-dialog.component';
 import { Globals, Animal } from './globals';
+import { NewShelterDialogComponent } from './new-shelter-dialog/new-shelter-dialog.component';
+import { MyDogsDialogComponent } from './my-dogs-dialog/my-dogs-dialog.component';
+import { ShowOnDirtyErrorStateMatcher } from '@angular/material/core';
 
 @Component({
   selector: 'app-root',
@@ -18,14 +21,14 @@ import { Globals, Animal } from './globals';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements AfterViewInit, OnInit {
-  title = 'COSMO';
+  title = 'COSMO app';
   public cities: any = [{ name: 'Houston', value: '0' }, { name: 'San Antonio', value: '1' }, { name: 'Dallas', value: '2' }];
   public shelters: any = [{ name: 'BARC', value: '0' }, { name: 'HCAS', value: '1' }];
   selectedCity = '0';
   selectedShelter = '0';
   
-  animals: Array<Animal> = [];
-  dataSource = new MatTableDataSource<Animal>(this.animals);
+  //animals: Array<Animal> = [];
+  dataSource = new MatTableDataSource<Animal>(this.global.animals);
   displayedColumns: string[] = ['action', 'imageURL', 'status', 'shelterAnimalID', 'name', 'gender', 'breed', 'weight', 'age'];
 
   @ViewChild(MatSort, { static: false }) sort!: MatSort;
@@ -42,28 +45,28 @@ export class AppComponent implements AfterViewInit, OnInit {
     var head = new HttpHeaders({ 'Content-Type': 'application/json' });
     const options = { headers: head };
 
-    this.http.get("https://v1.nocodeapi.com/casper/airtable/hOIlnPJwPYcZIyyL?tableName=BARC", options).subscribe((res: any) => {
-      console.log(res);
+      this.http.get("https://v1.nocodeapi.com/casper/airtable/hOIlnPJwPYcZIyyL?tableName=BARC", options).subscribe((res: any) => {
+          console.log(res);
 
-      res.records.forEach((el: any) => {
-        var tmpAnimal: Animal = { animalID: el.id.trim(), shelterAnimalID: el.fields.ID.trim(), shelterID: 'BARC', name: this.global.capitalize(el.fields.Name.trim()), species: this.global.capitalize(el.fields.Type.trim()), age: this.global.capitalize(el.fields.Age.trim()), breed: this.global.capitalize(el.fields.Breed.trim()), weight: this.global.capitalize(el.fields.Weight.trim().replace('lbs', '').replace('pounds', '')), hwfiv: el.fields['FELV/ FIV or HW Status'], intakeDate: el.fields['Date of intake'], shelterNotes: el.fields.Story.trim(), volunteerNotes: '', volunteerFavorite: false, gender: this.global.capitalize(el.fields.Gender.trim()), imageURL: el.fields['Image URL'][0].url.trim(), imageFile: el.fields['Image URL'][0].filename.trim(), status: 0 };
-        this.animals.push(tmpAnimal);
-      });
+          res.records.forEach((el: any) => {
+              var tmpAnimal: Animal = { animalID: el.id.trim(), shelterAnimalID: el.fields.ID.trim(), shelterID: 'BARC', name: this.global.capitalize(el.fields.Name.trim()), species: this.global.capitalize(el.fields.Type.trim()), age: this.global.capitalize(el.fields.Age.trim()), breed: this.global.capitalize(el.fields.Breed.trim()), weight: this.global.capitalize(el.fields.Weight.trim().replace('lbs', '').replace('pounds', '')), hwfiv: el.fields['FELV/ FIV or HW Status'], intakeDate: el.fields['Date of intake'], shelterNotes: el.fields.Story.trim(), volunteerNotes: '', volunteerFavorite: false, gender: this.global.capitalize(el.fields.Gender.trim()), imageURL: el.fields['Image URL'][0].url.trim(), imageFile: el.fields['Image URL'][0].filename.trim(), status: 0 };
+              this.global.animals.push(tmpAnimal);
+          });
 
-      if (this.animals.length > 0) {
-        this.dataSource = new MatTableDataSource(this.animals);
-        //this.dataSource = this.animals;
-        this.dataSource.sort = this.sort;
-        this.dataSource.paginator = this.paginator;
-      }
+          if (this.global.animals.length > 0) {
+              this.dataSource = new MatTableDataSource(this.global.animals);
+              //this.dataSource = this.animals;
+              this.dataSource.sort = this.sort;
+              this.dataSource.paginator = this.paginator;
+          }
 
-      console.log(this.animals);
-    });
+          console.log(this.global.animals);
+      }, (err: any) => { console.log(err); });
   }
 
   refresh() {
-    this.animals = [];
-    this.dataSource = new MatTableDataSource(this.animals);
+    this.global.animals = [];
+    this.dataSource = new MatTableDataSource(this.global.animals);
     //this.dataSource = this.animals;
     this.dataSource.sort = this.sort;
     this.dataSource.paginator = this.paginator;
@@ -73,7 +76,7 @@ export class AppComponent implements AfterViewInit, OnInit {
     this.getData();
 
   }
-
+   
   newRescueDialog() {
     const dialogConfig = new MatDialogConfig();
 
@@ -104,7 +107,35 @@ export class AppComponent implements AfterViewInit, OnInit {
     });
   }
 
-  newShelterDialog() { }
+    newShelterDialog() {
+        const dialogConfig = new MatDialogConfig();
+
+        dialogConfig.disableClose = true;
+        dialogConfig.autoFocus = true;
+        dialogConfig.data = { role: 'Shelter Account', rescueName: true, contactName: true };
+
+        const dialogRef = this.dialog.open(NewShelterDialogComponent, dialogConfig);
+
+        dialogRef.afterClosed().subscribe((result) => {
+            console.log(`Dialog result: ${result}`);
+        });
+    }
+
+    myDogsDialog() {
+        const dialogConfig = new MatDialogConfig();
+
+        dialogConfig.disableClose = true;
+        dialogConfig.autoFocus = true;
+        dialogConfig.data = { role: 'My Dogs', rescueName: true, contactName: true  };
+
+        const dialogRef = this.dialog.open(MyDogsDialogComponent, dialogConfig);
+
+        dialogRef.afterOpened().subscribe(() => {
+            this.getData();
+        });
+        
+    
+    }
 
   tagAnimal(ID: any, name: any) {
     const dialogConfig = new MatDialogConfig();
@@ -117,15 +148,19 @@ export class AppComponent implements AfterViewInit, OnInit {
 
     dialogRef.afterClosed().subscribe((result) => {
       if (result == 'accept') {
-        this.animals.forEach((el: any) => {
+        this.global.animals.forEach((el: any) => {
           if (el.shelterAnimalID == ID) {
-            el.status = 1;
-          }
+              el.status = 1;
+              
+            }
+           
         });
+          
+        
 
-        this.dataSource.data = this.animals;
+        this.dataSource.data = this.global.animals;
       }
-      //console.log(`Dialog result: ${result}`);
+      console.log(`Dialog result: ${result}`);
     });
   }
 
@@ -140,13 +175,13 @@ export class AppComponent implements AfterViewInit, OnInit {
 
     dialogRef.afterClosed().subscribe((result) => {
       if (result == 'accept') {
-        this.animals.forEach((el: any) => {
+        this.global.animals.forEach((el: any) => {
           if (el.shelterAnimalID == ID) {
             el.status = 2;
           }
         });
 
-        this.dataSource.data = this.animals;
+        this.dataSource.data = this.global.animals;
       }
     });
   }

@@ -8,6 +8,7 @@
     <button (click)="newShelterDialog()" mat-menu-item>Create Shelter Account</button>
     <button (click)="newRescueDialog()" mat-menu-item>Create Rescue Group Account</button>
     <button (click)="newFosterDialog()" mat-menu-item>Create Foster Account</button>
+    <button (click)="myDogsDialog()" mat-menu-item>My Dog's</button>
   </mat-menu>
   <span>Welcome, {{global.rescueName}}</span>
   <span class="example-spacer"></span>
@@ -50,12 +51,12 @@
       </mat-select>
     </mat-form-field>
 
-    <div style="width: 100%; text-align: center; margin-top: 30px" *ngIf="this.animals.length == 0">
+    <div style="width: 100%; text-align: center; margin-top: 30px" *ngIf="global.animals.length == 0">
       <mat-progress-spinner class="example-margin" color="primary" mode="indeterminate" style="margin-left: auto; margin-right: auto"> </mat-progress-spinner>
       <p>Loading data, please wait...</p>
     </div>
 
-    <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8" [style.display]="animals.length > 0 ? 'table' : 'none'">
+    <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8" [style.display]="global.animals.length > 0 ? 'table' : 'none'">
 
       <ng-container matColumnDef="action">
         <th mat-header-cell *matHeaderCellDef> Quick Action </th>
@@ -119,7 +120,7 @@
       <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
     </table>
 
-    <mat-paginator #paginator [pageSize]="25" [pageSizeOptions]="[5, 10, 25, 50, 100, 200]" showFirstLastButtons aria-label="Select page" [style.display]="animals.length > 0 ? 'block' : 'none'"> </mat-paginator>
+    <mat-paginator #paginator [pageSize]="25" [pageSizeOptions]="[5, 10, 25, 50, 100, 200]" showFirstLastButtons aria-label="Select page" [style.display]="global.animals.length > 0 ? 'block' : 'none'"> </mat-paginator>
 
   </mat-tab>
   <mat-tab label="Houston - Harris County">

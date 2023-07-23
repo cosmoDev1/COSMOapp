@@ -13,12 +13,14 @@ import { NewRescueDialogComponent } from './new-rescue-dialog/new-rescue-dialog.
 import { NewFosterDialogComponent } from './new-foster-dialog/new-foster-dialog.component';
 import { ConfirmationDialogComponent } from './confirmation-dialog/confirmation-dialog.component';
 import { AnimalDetailDialogComponent } from './animal-detail-dialog/animal-detail-dialog.component';
+import { NewShelterDialogComponent } from './new-shelter-dialog/new-shelter-dialog.component';
+import { MyDogsDialogComponent } from './my-dogs-dialog/my-dogs-dialog.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    NewRescueDialogComponent, NewFosterDialogComponent, ConfirmationDialogComponent, AnimalDetailDialogComponent
+    NewRescueDialogComponent, NewFosterDialogComponent, ConfirmationDialogComponent, AnimalDetailDialogComponent, NewShelterDialogComponent, MyDogsDialogComponent
   ],
   imports: [
     BrowserModule, AppRoutingModule, BrowserAnimationsModule, MaterialModule, HttpClientModule, FormsModule
