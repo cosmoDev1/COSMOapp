@@ -45,7 +45,8 @@ export class AppComponent implements AfterViewInit, OnInit {
     var head = new HttpHeaders({ 'Content-Type': 'application/json' });
     const options = { headers: head };
 
-      this.http.get("https://v1.nocodeapi.com/casper/airtable/hOIlnPJwPYcZIyyL?tableName=BARC", options).subscribe((res: any) => {
+      //this.http.get("https://v1.nocodeapi.com/casper/airtable/hOIlnPJwPYcZIyyL?tableName=BARC", options).subscribe((res: any) => {
+      this.http.get("https://cosmoapp.org/webservices/api/values", options).subscribe((res: any) => {
           console.log(res);
 
           res.records.forEach((el: any) => {
