@@ -46,10 +46,10 @@ export class AppComponent implements AfterViewInit, OnInit {
     const options = { headers: head };
 
       //this.http.get("https://v1.nocodeapi.com/casper/airtable/hOIlnPJwPYcZIyyL?tableName=BARC", options).subscribe((res: any) => {
-      this.http.get("https://cosmoapp.org/webservices/api/value", options).subscribe((res: any) => {
+      this.http.get("https://cosmoapp.org/webservices/api/values", options).subscribe((res: any) => {
           console.log(res);
-          var cats = res.cats;
-          var dogs = res.dogs;
+          var cats = res[0].cats;
+          var dogs = res[0].dogs;
 
           cats.forEach((el: any) => {
               var tmpAnimal: Animal = {
@@ -64,7 +64,7 @@ export class AppComponent implements AfterViewInit, OnInit {
                   daysShelter: el.daysShelter,
                   decription: el.decription,
                   gender: this.global.capitalize(el.gender),
-                  age: this.global.capitalize(el.ag),
+                  age: this.global.capitalize(el.age),
                   spayNeuter: el.spayNeuter,
                   breed: this.global.capitalize(el.breed),
                   color: el.color,
@@ -94,7 +94,7 @@ export class AppComponent implements AfterViewInit, OnInit {
                   daysShelter: el.daysShelter,
                   decription: el.decription,
                   gender: this.global.capitalize(el.gender),
-                  age: this.global.capitalize(el.ag),
+                  age: this.global.capitalize(el.age),
                   spayNeuter: el.spayNeuter,
                   breed: this.global.capitalize(el.breed),
                   color: el.color,

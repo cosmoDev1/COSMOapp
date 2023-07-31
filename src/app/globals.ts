@@ -27,7 +27,7 @@ export interface Animal {
     shelterID: string;
     name: string;
     dueOutDate: string;
-    kennel: strig;
+    kennel: string;
     weight: string;
     condition: string;
     daysShelter: string;

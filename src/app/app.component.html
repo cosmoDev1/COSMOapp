@@ -71,7 +71,7 @@
       <ng-container matColumnDef="imageURL">
         <th mat-header-cell *matHeaderCellDef> Photo </th>
         <td mat-cell *matCellDef="let element">
-          <img src="{{element.imageURL}}" style="height: 60px" matTooltip="{{element.shelterNotes}}" matTooltipPosition="right" (click)="animalDetail(element)"/>
+          <img src="{{element.imageFile}}" style="height: 60px" matTooltip="{{element.shelterNotes}}" matTooltipPosition="right" (click)="animalDetail(element)"/>
 
         </td>
       </ng-container>
