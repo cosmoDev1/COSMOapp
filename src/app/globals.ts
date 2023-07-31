@@ -1,23 +1,52 @@
 import { Injectable } from '@angular/core';
 
+//export interface Animal {
+//  animalID: string;
+//  shelterAnimalID: string;
+//  shelterID: string;
+//  name: string;
+//  species: string;
+//  age: string;
+//  breed: string;
+//  weight: string;
+//  hwfiv: string;
+//  intakeDate: string;
+//  shelterNotes: string;
+//  volunteerNotes: string;
+//  volunteerFavorite: boolean;
+//  gender: string;
+//  imageURL: string;
+//  imageFile: string;
+//  status: number;
+//}
+
+
 export interface Animal {
-  animalID: string;
-  shelterAnimalID: string;
-  shelterID: string;
-  name: string;
-  species: string;
-  age: string;
-  breed: string;
-  weight: string;
-  hwfiv: string;
-  intakeDate: string;
-  shelterNotes: string;
-  volunteerNotes: string;
-  volunteerFavorite: boolean;
-  gender: string;
-  imageURL: string;
-  imageFile: string;
-  status: number;
+    animalID: string;
+    shelterAnimalID: string;
+    shelterID: string;
+    name: string;
+    dueOutDate: string;
+    kennel: string;
+    weight: string;
+    condition: string;
+    daysShelter: string;
+    decription: string;
+    gender: string;
+    age: string;
+    spayNeuter: string;
+    breed: string;
+    color: string;
+    hwFIVstatus: string;
+    outcomeRequest: string;
+    reason: string;
+    evalNotes: string;
+    species: string;
+
+    volunteerNotes: string;
+    volunteerFavorite: boolean;
+    imageFile: string;
+    status: number;
 }
 
 
