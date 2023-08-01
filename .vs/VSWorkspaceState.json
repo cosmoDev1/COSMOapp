@@ -3,8 +3,9 @@
     "",
     "\\src",
     "\\src\\app",
-    "\\src\\app\\animal-detail-dialog"
+    "\\src\\app\\new-foster-dialog",
+    "\\src\\app\\new-rescue-dialog"
   ],
-  "SelectedNode": "\\src\\app\\globals.ts",
+  "SelectedNode": "\\src\\app\\app.component.ts",
   "PreviewInSolutionExplorer": false
 }
