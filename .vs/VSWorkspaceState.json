@@ -1,6 +1,10 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\src",
+    "\\src\\app",
+    "\\src\\app\\animal-detail-dialog"
   ],
+  "SelectedNode": "\\src\\app\\globals.ts",
   "PreviewInSolutionExplorer": false
 }
