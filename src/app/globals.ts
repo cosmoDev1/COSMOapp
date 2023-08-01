@@ -117,6 +117,7 @@ export class Globals {
     ];
 
     public animals: Array<Animal> = [];
+    public myAnimals: Array<Animal> = [];
 
   capitalize(s: any) {
     return s && s[0].toUpperCase() + s.slice(1).toLowerCase();

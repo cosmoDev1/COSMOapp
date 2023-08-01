@@ -3,8 +3,7 @@
     "",
     "\\src",
     "\\src\\app",
-    "\\src\\app\\new-foster-dialog",
-    "\\src\\app\\new-rescue-dialog"
+    "\\src\\app\\animal-detail-dialog"
   ],
   "SelectedNode": "\\src\\app\\app.component.ts",
   "PreviewInSolutionExplorer": false
