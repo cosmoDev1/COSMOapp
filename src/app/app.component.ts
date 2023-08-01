@@ -75,7 +75,7 @@ export class AppComponent implements AfterViewInit, OnInit {
                   species: this.global.capitalize('cat'),
                   volunteerNotes: '',
                   volunteerFavorite: false,
-                  imageFile: 'https://cosmoapp.org/webservices/PDFdata/'+el.id+'.tiff',
+                  imageFile: 'https://cosmoapp.org/webservices/PDFdata/'+el.id+'.jpg',
                   status: 0
               };
               this.global.animals.push(tmpAnimal);
@@ -105,7 +105,7 @@ export class AppComponent implements AfterViewInit, OnInit {
                   species: this.global.capitalize('dog'),
                   volunteerNotes: '',
                   volunteerFavorite: false,
-                  imageFile: 'https://cosmoapp.org/webservices/PDFdata/' + el.id + '.tiff',
+                  imageFile: 'https://cosmoapp.org/webservices/PDFdata/' + el.id + '.jpg',
                   status: 0
               };
               this.global.animals.push(tmpAnimal);
