@@ -193,9 +193,7 @@ export class AppComponent implements AfterViewInit, OnInit {
 
         const dialogRef = this.dialog.open(MyDogsDialogComponent, dialogConfig);
 
-        dialogRef.afterOpened().subscribe(() => {
-            this.getData();
-        });
+     
         
     
     }

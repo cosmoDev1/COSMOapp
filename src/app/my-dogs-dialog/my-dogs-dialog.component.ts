@@ -13,11 +13,14 @@ import { Animal, Globals } from '../globals';
 })
 export class MyDogsDialogComponent {
 
-    dataSource = new MatTableDataSource<Animal>(this.global.animals);
-    displayedColumns: string[] = [ 'shelterAnimalID', 'name', 'gender', 'breed', 'weight', 'age'];
+    myAnimals = new MatTableDataSource<Animal>(this.global.animals);
+    displayedColumns: string[] = [ 'action', 'shelterAnimalID', 'name', 'gender', 'breed', 'weight', 'age'];
 
 
-    constructor(@Inject(MAT_DIALOG_DATA) public data: any, dialogRef: MatDialogRef<MyDogsDialogComponent>, public global: Globals) { }
+    constructor(@Inject(MAT_DIALOG_DATA) public data: any, dialogRef: MatDialogRef<MyDogsDialogComponent>, public global: Globals) {
+        this.global.myAnimals = this.global.animals.filter((el) => el.status == 2);
+        this.myAnimals.data = this.global.myAnimals;
+    }
     
    
 }
