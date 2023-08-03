@@ -2,7 +2,7 @@
 <h2 mat-dialog-title>{{data.animalInfo.species}} {{data.animalInfo.name}} - {{data.animalInfo.shelterAnimalID}}</h2>
 
 <mat-dialog-content style="text-align: center">
-  <img src="{{data.animalInfo.imageURL}}" style="height: 273px" />
+  <img src="{{data.animalInfo.imageFile}}" style="height: 273px" />
   <br />
   <table style="width: 100%; text-align: left">
     <tr>
@@ -25,15 +25,15 @@
 
     <tr>
       <td><b>Heartworm/FIV:</b> </td>
-      <td>{{data.animalInfo.hwfiv}}</td>
+      <td>{{data.animalInfo.hwFIVstatus}}</td>
     </tr>
     <tr>
-      <td><b>Intake Date:</b> </td>
-      <td>{{data.animalInfo.intakeDate}}</td>
+      <td><b>Due Out Date:</b> </td>
+      <td>{{data.animalInfo.dueOutDate}}</td>
     </tr>
     <tr>
       <td><b>Shelter Notes:</b> </td>
-      <td>{{data.animalInfo.shelterNotes}}</td>
+      <td>{{data.animalInfo.evalNotes}}</td>
     </tr>
     <tr>
       <td><b>Volunteer Notes:</b> </td>
