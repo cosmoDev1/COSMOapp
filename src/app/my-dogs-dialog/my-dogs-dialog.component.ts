@@ -14,7 +14,7 @@ import { Animal, Globals } from '../globals';
 export class MyDogsDialogComponent {
 
     myAnimals = new MatTableDataSource<Animal>(this.global.animals);
-    displayedColumns: string[] = [ 'shelterAnimalID', 'name', 'gender', 'breed', 'weight', 'age'];
+    displayedColumns: string[] = [ 'action', 'shelterAnimalID', 'name', 'gender', 'breed', 'weight', 'age'];
 
 
     constructor(@Inject(MAT_DIALOG_DATA) public data: any, dialogRef: MatDialogRef<MyDogsDialogComponent>, public global: Globals) {

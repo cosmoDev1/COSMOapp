@@ -3,8 +3,9 @@
     "",
     "\\src",
     "\\src\\app",
-    "\\src\\app\\animal-detail-dialog"
+    "\\src\\app\\animal-detail-dialog",
+    "\\src\\app\\my-dogs-dialog"
   ],
-  "SelectedNode": "\\src\\app\\app.component.ts",
+  "SelectedNode": "\\src\\app\\my-dogs-dialog\\my-dogs-dialog.component.html",
   "PreviewInSolutionExplorer": false
 }
