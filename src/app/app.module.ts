@@ -15,15 +15,27 @@ import { ConfirmationDialogComponent } from './confirmation-dialog/confirmation-
 import { AnimalDetailDialogComponent } from './animal-detail-dialog/animal-detail-dialog.component';
 import { NewShelterDialogComponent } from './new-shelter-dialog/new-shelter-dialog.component';
 import { MyDogsDialogComponent } from './my-dogs-dialog/my-dogs-dialog.component';
+import { PleaDialogComponent } from './plea-dialog/plea-dialog.component';
 
 
 @NgModule({
   declarations: [
-    AppComponent,
-    NewRescueDialogComponent, NewFosterDialogComponent, ConfirmationDialogComponent, AnimalDetailDialogComponent, NewShelterDialogComponent, MyDogsDialogComponent
+        AppComponent,
+        NewRescueDialogComponent,
+        NewFosterDialogComponent,
+        ConfirmationDialogComponent,
+        AnimalDetailDialogComponent,
+        NewShelterDialogComponent,
+        MyDogsDialogComponent,
+        PleaDialogComponent,
   ],
   imports: [
-    BrowserModule, AppRoutingModule, BrowserAnimationsModule, MaterialModule, HttpClientModule, FormsModule
+      BrowserModule,
+      AppRoutingModule,
+      BrowserAnimationsModule,
+      MaterialModule,
+      HttpClientModule,
+      FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

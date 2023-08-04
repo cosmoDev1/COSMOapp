@@ -14,6 +14,7 @@ import { Globals, Animal } from './globals';
 import { NewShelterDialogComponent } from './new-shelter-dialog/new-shelter-dialog.component';
 import { MyDogsDialogComponent } from './my-dogs-dialog/my-dogs-dialog.component';
 import { ShowOnDirtyErrorStateMatcher } from '@angular/material/core';
+import { PleaDialogComponent } from './plea-dialog/plea-dialog.component';
 
 @Component({
     selector: 'app-root',
@@ -267,7 +268,13 @@ export class AppComponent implements AfterViewInit, OnInit {
 
 
     fosterPlea() {
+        const dialogConfig = new MatDialogConfig();
 
+        dialogConfig.disableClose = true;
+        dialogConfig.autoFocus = true;
+        dialogConfig.data = { role: 'My Dogs', rescueName: true, contactName: true };
+
+        const dialogRef = this.dialog.open(PleaDialogComponent, dialogConfig);
     }
 
 }
