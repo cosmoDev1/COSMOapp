@@ -3,9 +3,10 @@
     "",
     "\\src",
     "\\src\\app",
-    "\\src\\app\\animal-detail-dialog",
-    "\\src\\app\\my-dogs-dialog"
+    "\\src\\app\\my-dogs-dialog",
+    "\\src\\app\\new-foster-dialog",
+    "\\src\\app\\new-rescue-dialog"
   ],
-  "SelectedNode": "\\src\\app\\my-dogs-dialog\\my-dogs-dialog.component.html",
+  "SelectedNode": "\\src\\app\\app.component.html",
   "PreviewInSolutionExplorer": false
 }
