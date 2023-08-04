@@ -3,8 +3,9 @@
     "",
     "\\src",
     "\\src\\app",
-    "\\src\\app\\animal-detail-dialog",
-    "\\src\\app\\my-dogs-dialog"
+    "\\src\\app\\my-dogs-dialog",
+    "\\src\\app\\new-foster-dialog",
+    "\\src\\app\\new-rescue-dialog"
   ],
   "SelectedNode": "\\src\\app\\animal-detail-dialog\\animal-detail-dialog.component.html",
   "PreviewInSolutionExplorer": false
