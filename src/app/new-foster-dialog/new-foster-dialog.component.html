@@ -202,7 +202,7 @@
         <mat-radio-button value="2">No</mat-radio-button>
     </mat-radio-group>
 
-    <mat-form-field style="width: 60%" *ngIf="data.contactName==true">
+    <mat-form-field style="width: 100%" *ngIf="data.contactName==true">
         <input matInput placeholder="Type/Breed" required>
         <mat-label>Type/Breed</mat-label>
     </mat-form-field>
@@ -210,7 +210,7 @@
 
     <a>What experience do you have with animals?</a>
     <br />
-    <mat-form-field style="width: 60%">
+    <mat-form-field style="width: 100%">
         <mat-label>Provide details</mat-label>
         <textarea matInput></textarea>
     </mat-form-field>
@@ -225,7 +225,7 @@
 
 
     <br />
-    <mat-form-field style="width: 60%">
+    <mat-form-field style="width: 100%">
         <mat-label>Please provide your foster care experience</mat-label>
         <textarea matInput></textarea>
     </mat-form-field>
@@ -235,23 +235,23 @@
             <td>Do you currently own any pets?</td>
         </tr>
 
-        
+
         <tr>
             <td>
                 <mat-form-field>
                     <input matInput placeholder="Name" required>
-                    <mat-label>Name</mat-label>
+                    <mat-label>Pet Name</mat-label>
                 </mat-form-field>
             </td>
             <td>
                 <mat-form-field>
-                    <input matInput type="number" max="50" placeholder="Years Owned" required>
+                    <input matInput type="number" max="50" placeholder="Years" required>
                     <mat-label>Years Owned</mat-label>
                 </mat-form-field>
             </td>
             <td>
                 <mat-radio-group aria-label="gender" aria-labelledby="genderLabel">
-                    <mat-radio-button value="1">Male</mat-radio-button>
+                    <mat-radio-button value="1" [checked]="true">Male</mat-radio-button>
                     <mat-radio-button value="2">Female</mat-radio-button>
                 </mat-radio-group>
             </td>
@@ -265,18 +265,18 @@
             <td>
                 <mat-form-field>
                     <input matInput placeholder="Name" required>
-                    <mat-label>Name</mat-label>
+                    <mat-label>Pet Name</mat-label>
                 </mat-form-field>
             </td>
             <td>
                 <mat-form-field>
-                    <input matInput type="number" max="50" placeholder="Years Owned" required>
+                    <input matInput type="number" max="50" placeholder="Years" required>
                     <mat-label>Years Owned</mat-label>
                 </mat-form-field>
             </td>
             <td>
                 <mat-radio-group aria-label="gender" aria-labelledby="genderLabel">
-                    <mat-radio-button value="1">Male</mat-radio-button>
+                    <mat-radio-button value="1" [checked]="true">Male</mat-radio-button>
                     <mat-radio-button value="2">Female</mat-radio-button>
                 </mat-radio-group>
             </td>
@@ -290,18 +290,18 @@
             <td>
                 <mat-form-field>
                     <input matInput placeholder="Name" required>
-                    <mat-label>Name</mat-label>
+                    <mat-label>Pet Name</mat-label>
                 </mat-form-field>
             </td>
             <td>
                 <mat-form-field>
-                    <input matInput type="number" max="50" placeholder="Years Owned" required>
+                    <input matInput type="number" max="50" placeholder="Years" required>
                     <mat-label>Years Owned</mat-label>
                 </mat-form-field>
             </td>
             <td>
                 <mat-radio-group aria-label="gender" aria-labelledby="genderLabel">
-                    <mat-radio-button value="1">Male</mat-radio-button>
+                    <mat-radio-button value="1" [checked]="true">Male</mat-radio-button>
                     <mat-radio-button value="2">Female</mat-radio-button>
                 </mat-radio-group>
             </td>
@@ -313,33 +313,33 @@
         </tr>
 
     </table>
+    <br />
 
+    <table>
+        <tr>
+            <td>
+                <mat-form-field style="width: 60%">
+                    <input matInput placeholder="Name" required>
+                    <mat-label>Veterinary name</mat-label>
+                </mat-form-field>
+            </td>
+            <td>
+                <mat-form-field>
+                    <mat-label>Phone</mat-label>
+                    <span matPrefix>+1 &nbsp;</span>
+                    <input type="tel" matInput placeholder="555-555-1234" required>
+                </mat-form-field>
+            </td>
+        </tr>
+    </table>
 
-
-    <ng-container>
-        <td><a>What veterinary do you use?</a></td>
-
-        <td>
-            <mat-form-field>
-                <input matInput placeholder="Name" required>
-                <mat-label>Name</mat-label>
-            </mat-form-field>
-        </td>
-        <td>
-            <mat-form-field>
-                <mat-label>Phone</mat-label>
-                <span matPrefix>+1 &nbsp;</span>
-                <input type="tel" matInput placeholder="555-555-1234" required>
-            </mat-form-field>
-        </td>
-    </ng-container>
     <br />
 
     <ng-container>
         <td><a>How many hours per day will the animal be left alone?</a></td>
         <td>
             <mat-form-field>
-                <input matInput type="number" max="50" placeholder="Hours Alone" required>
+                <input matInput type="number" max="50" placeholder="Hours" required>
                 <mat-label>Hours Alone</mat-label>
             </mat-form-field>
         </td>
