@@ -53,7 +53,7 @@ export interface Animal {
 
 @Injectable({ providedIn: 'root' })
 export class Globals {
-    public webserviceUrl: string = "https://cosmoapp.org/webservices/api/values?testSource=true";
+    public webserviceUrl: string = "https://cosmoapp.org/webservices/api/values?testSource=false";
     //public webserviceUrl: string = "https://localhost:44307/api/values?testSource=true";
     public rescueName: string = "Bernie Test Rescue";
     public states: any = [
