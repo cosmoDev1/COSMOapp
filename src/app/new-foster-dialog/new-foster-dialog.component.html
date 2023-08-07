@@ -17,6 +17,8 @@
         <mat-label>City</mat-label>
     </mat-form-field>
 
+
+
     <table>
         <tr>
             <td>
@@ -191,8 +193,180 @@
 
 
     <mat-divider style="margin-top: 10px"></mat-divider>
-    <mat-label>Your Pets and Foster Experience</mat-label>
+    <mat-label style="font-style: italic">Your Pets and Foster Experience</mat-label>
+    <br />
 
+    <mat-label id="ownedBeforeLabel">Have you ever owned a pet before?</mat-label>
+    <mat-radio-group aria-label="Owned" aria-labelledby="ownedBeforeLabel">
+        <mat-radio-button value="1" [checked]="true">Yes</mat-radio-button>
+        <mat-radio-button value="2">No</mat-radio-button>
+    </mat-radio-group>
+
+    <mat-form-field style="width: 60%" *ngIf="data.contactName==true">
+        <input matInput placeholder="Type/Breed" required>
+        <mat-label>Type/Breed</mat-label>
+    </mat-form-field>
+    <br />
+
+    <a>What experience do you have with animals?</a>
+    <br />
+    <mat-form-field style="width: 60%">
+        <mat-label>Provide details</mat-label>
+        <textarea matInput></textarea>
+    </mat-form-field>
+    <br />
+
+    <mat-label id="fosteredBeforeLabel">Have you ever fostered a pet before?</mat-label>
+    <mat-radio-group aria-label="Fostered" aria-labelledby="fosteredBeforeLabel">
+        <mat-radio-button value="1" [checked]="true">Yes</mat-radio-button>
+        <mat-radio-button value="2">No</mat-radio-button>
+    </mat-radio-group>
+    <br />
+
+
+    <br />
+    <mat-form-field style="width: 60%">
+        <mat-label>Please provide your foster care experience</mat-label>
+        <textarea matInput></textarea>
+    </mat-form-field>
+
+    <table>
+        <tr>
+            <td>Do you currently own any pets?</td>
+        </tr>
+
+        
+        <tr>
+            <td>
+                <mat-form-field>
+                    <input matInput placeholder="Name" required>
+                    <mat-label>Name</mat-label>
+                </mat-form-field>
+            </td>
+            <td>
+                <mat-form-field>
+                    <input matInput type="number" max="50" placeholder="Years Owned" required>
+                    <mat-label>Years Owned</mat-label>
+                </mat-form-field>
+            </td>
+            <td>
+                <mat-radio-group aria-label="gender" aria-labelledby="genderLabel">
+                    <mat-radio-button value="1">Male</mat-radio-button>
+                    <mat-radio-button value="2">Female</mat-radio-button>
+                </mat-radio-group>
+            </td>
+            <td>
+                <section class="example-section">
+                    <mat-checkbox class="example-margin">Spayed/Neutered</mat-checkbox>
+                </section>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <mat-form-field>
+                    <input matInput placeholder="Name" required>
+                    <mat-label>Name</mat-label>
+                </mat-form-field>
+            </td>
+            <td>
+                <mat-form-field>
+                    <input matInput type="number" max="50" placeholder="Years Owned" required>
+                    <mat-label>Years Owned</mat-label>
+                </mat-form-field>
+            </td>
+            <td>
+                <mat-radio-group aria-label="gender" aria-labelledby="genderLabel">
+                    <mat-radio-button value="1">Male</mat-radio-button>
+                    <mat-radio-button value="2">Female</mat-radio-button>
+                </mat-radio-group>
+            </td>
+            <td>
+                <section class="example-section">
+                    <mat-checkbox class="example-margin">Spayed/Neutered</mat-checkbox>
+                </section>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <mat-form-field>
+                    <input matInput placeholder="Name" required>
+                    <mat-label>Name</mat-label>
+                </mat-form-field>
+            </td>
+            <td>
+                <mat-form-field>
+                    <input matInput type="number" max="50" placeholder="Years Owned" required>
+                    <mat-label>Years Owned</mat-label>
+                </mat-form-field>
+            </td>
+            <td>
+                <mat-radio-group aria-label="gender" aria-labelledby="genderLabel">
+                    <mat-radio-button value="1">Male</mat-radio-button>
+                    <mat-radio-button value="2">Female</mat-radio-button>
+                </mat-radio-group>
+            </td>
+            <td>
+                <section class="example-section">
+                    <mat-checkbox class="example-margin">Spayed/Neutered</mat-checkbox>
+                </section>
+            </td>
+        </tr>
+
+    </table>
+
+
+
+    <ng-container>
+        <td><a>What veterinary do you use?</a></td>
+
+        <td>
+            <mat-form-field>
+                <input matInput placeholder="Name" required>
+                <mat-label>Name</mat-label>
+            </mat-form-field>
+        </td>
+        <td>
+            <mat-form-field>
+                <mat-label>Phone</mat-label>
+                <span matPrefix>+1 &nbsp;</span>
+                <input type="tel" matInput placeholder="555-555-1234" required>
+            </mat-form-field>
+        </td>
+    </ng-container>
+    <br />
+
+    <ng-container>
+        <td><a>How many hours per day will the animal be left alone?</a></td>
+        <td>
+            <mat-form-field>
+                <input matInput type="number" max="50" placeholder="Hours Alone" required>
+                <mat-label>Hours Alone</mat-label>
+            </mat-form-field>
+        </td>
+    </ng-container>
+    <br />
+
+    <ng-container>
+        <td><a>Where will the animals stay during the day?</a></td>
+        <td>
+            <mat-form-field>
+                <input matInput placeholder="Brief Explanation" required>
+                <mat-label>Brief Explanation</mat-label>
+            </mat-form-field>
+        </td>
+    </ng-container>
+    <br />
+
+    <ng-container>
+        <td><a>Where will the animals stay during the night?</a></td>
+        <td>
+            <mat-form-field>
+                <input matInput placeholder="Brief Explanation" required>
+                <mat-label>Brief Explanation</mat-label>
+            </mat-form-field>
+        </td>
+    </ng-container>
+    <br />
 
 
 </mat-dialog-content>
