@@ -195,6 +195,13 @@
     <mat-divider style="margin-top: 10px"></mat-divider>
     <mat-label style="font-style: italic">Your Pets and Foster Experience</mat-label>
     <br />
+    <br />
+
+    <mat-form-field style="width: 100%">
+        <mat-label>What experience do you have with animals?</mat-label>
+        <textarea placeholder="Provide details" matInput></textarea>
+    </mat-form-field>
+    <br />
 
     <mat-label id="ownedBeforeLabel">Have you ever owned a pet before?</mat-label>
     <mat-radio-group aria-label="Owned" aria-labelledby="ownedBeforeLabel">
@@ -208,21 +215,11 @@
     </mat-form-field>
     <br />
 
-    <a>What experience do you have with animals?</a>
-    <br />
-    <mat-form-field style="width: 100%">
-        <mat-label>Provide details</mat-label>
-        <textarea matInput></textarea>
-    </mat-form-field>
-    <br />
-
     <mat-label id="fosteredBeforeLabel">Have you ever fostered a pet before?</mat-label>
     <mat-radio-group aria-label="Fostered" aria-labelledby="fosteredBeforeLabel">
         <mat-radio-button value="1" [checked]="true">Yes</mat-radio-button>
         <mat-radio-button value="2">No</mat-radio-button>
     </mat-radio-group>
-    <br />
-
 
     <br />
     <mat-form-field style="width: 100%">
@@ -313,12 +310,11 @@
         </tr>
 
     </table>
-    <br />
 
-    <table>
+    <table style="width: 100%">
         <tr>
             <td>
-                <mat-form-field style="width: 60%">
+                <mat-form-field style="width: 100%">
                     <input matInput placeholder="Name" required>
                     <mat-label>Veterinary name</mat-label>
                 </mat-form-field>
@@ -333,39 +329,24 @@
         </tr>
     </table>
 
+    <mat-form-field style="width: 40%">
+        <input matInput type="number" min="0" max="24" placeholder="Hours" required>
+        <mat-label>Hours per day animal be left alone</mat-label>
+    </mat-form-field>
     <br />
 
-    <ng-container>
-        <td><a>How many hours per day will the animal be left alone?</a></td>
-        <td>
-            <mat-form-field>
-                <input matInput type="number" max="50" placeholder="Hours" required>
-                <mat-label>Hours Alone</mat-label>
-            </mat-form-field>
-        </td>
-    </ng-container>
+    <mat-form-field style="width: 100%">
+        <input matInput placeholder="Brief Explanation" required>
+        <mat-label>Where will the animals stay during the day?</mat-label>
+    </mat-form-field>
+
     <br />
 
-    <ng-container>
-        <td><a>Where will the animals stay during the day?</a></td>
-        <td>
-            <mat-form-field>
-                <input matInput placeholder="Brief Explanation" required>
-                <mat-label>Brief Explanation</mat-label>
-            </mat-form-field>
-        </td>
-    </ng-container>
-    <br />
+    <mat-form-field style="width: 100%">
+        <input matInput placeholder="Brief Explanation" required>
+        <mat-label>Where will the animals stay during the night?</mat-label>
+    </mat-form-field>
 
-    <ng-container>
-        <td><a>Where will the animals stay during the night?</a></td>
-        <td>
-            <mat-form-field>
-                <input matInput placeholder="Brief Explanation" required>
-                <mat-label>Brief Explanation</mat-label>
-            </mat-form-field>
-        </td>
-    </ng-container>
     <br />
 
 
