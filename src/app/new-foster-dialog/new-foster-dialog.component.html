@@ -3,7 +3,7 @@
 
 <mat-dialog-content>
     <mat-form-field style="width: 100%" *ngIf="data.contactName==true">
-        <input matInput placeholder="Name" required>
+        <input matInput placeholder="First and lastname" required>
         <mat-label>Contact Name</mat-label>
     </mat-form-field>
 
@@ -153,7 +153,7 @@
 
 
     <mat-divider style="margin-top: 10px"></mat-divider>
-    <mat-label style="font-style: italic">Fostering Preferences</mat-label>
+    <mat-label style="font-style: italic; font-weight: bold">Fostering Preferences</mat-label>
 
     <table>
         <tr>
@@ -193,7 +193,7 @@
 
 
     <mat-divider style="margin-top: 10px"></mat-divider>
-    <mat-label style="font-style: italic">Your Pets and Foster Experience</mat-label>
+    <mat-label style="font-style: italic; font-weight: bold">Your Pets and Foster Experience</mat-label>
     <br />
     <br />
 
@@ -224,7 +224,7 @@
     <br />
     <mat-form-field style="width: 100%">
         <mat-label>Please provide your foster care experience</mat-label>
-        <textarea matInput></textarea>
+        <textarea placeholder="Provide details" matInput></textarea>
     </mat-form-field>
 
     <table>
