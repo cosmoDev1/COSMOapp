@@ -3,7 +3,7 @@
 
 <mat-dialog-content>
     <mat-form-field style="width: 100%" *ngIf="data.contactName==true">
-        <input matInput placeholder="First and lastname" required>
+        <input matInput placeholder="First & Last name" required>
         <mat-label>Contact Name</mat-label>
     </mat-form-field>
 
@@ -141,8 +141,17 @@
                 </mat-radio-group>
             </td>
         </tr>
-
     </table>
+
+    <mat-form-field style="width: 100%">
+        <input matInput placeholder="Brief Explanation" required>
+        <mat-label>Do you have a fenced yard? If yes, please describe.</mat-label>
+    </mat-form-field>
+
+    <mat-form-field style="width: 100%">
+        <input matInput placeholder="Brief Explanation" required>
+        <mat-label>If you do not have a fenced yard, how will the animal get exercise?</mat-label>
+    </mat-form-field>
 
     <mat-form-field style="width: 30%">
         <input matInput type="number" min="0" max="99" placeholder="Years" required>
@@ -349,6 +358,183 @@
 
     <br />
 
+    <mat-label id="crateTrainedLabel">Have you ever crate trained an animal?</mat-label>
+    <mat-radio-group aria-label="Crate" aria-labelledby="crateTrainedLabel">
+        <mat-radio-button value="1" [checked]="true">Yes</mat-radio-button>
+        <mat-radio-button value="2">No</mat-radio-button>
+    </mat-radio-group>
+
+    <table>
+        <tr>
+            <td>How many adults are living in the house?</td>
+        </tr>
+
+        <tr>
+            <td>
+                <mat-form-field>
+                    <input matInput placeholder="Name" required>
+                    <mat-label>Adult #1</mat-label>
+                </mat-form-field>
+            </td>
+            <td>
+                <mat-form-field>
+                    <input matInput type="number" min="0" max="50" placeholder="Enter  Age" required>
+                    <mat-label>Age</mat-label>
+                </mat-form-field>
+            </td>
+            <td>
+                <mat-form-field>
+                    <input matInput placeholder="Relation" required>
+                    <mat-label>Relationship</mat-label>
+                </mat-form-field>
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                <mat-form-field>
+                    <input matInput placeholder="Name" required>
+                    <mat-label>Adult #2</mat-label>
+                </mat-form-field>
+            </td>
+            <td>
+                <mat-form-field>
+                    <input matInput type="number" min="0" max="50" placeholder="Enter  Age" required>
+                    <mat-label>Age</mat-label>
+                </mat-form-field>
+            </td>
+            <td>
+                <mat-form-field>
+                    <input matInput placeholder="Relation" required>
+                    <mat-label>Relationship</mat-label>
+                </mat-form-field>
+            </td>
+        </tr>
+
+        <tr>
+            <td>How many children are living in the house?</td>
+        </tr>
+
+        <tr>
+            <td>
+                <mat-form-field>
+                    <input matInput placeholder="Name" required>
+                    <mat-label>Child #1</mat-label>
+                </mat-form-field>
+            </td>
+            <td>
+                <mat-form-field>
+                    <input matInput type="number" min="0" max="50" placeholder="Enter  Age" required>
+                    <mat-label>Age</mat-label>
+                </mat-form-field>
+            </td>
+            <td>
+                <mat-form-field>
+                    <input matInput placeholder="Relation" required>
+                    <mat-label>Relationship</mat-label>
+                </mat-form-field>
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                <mat-form-field>
+                    <input matInput placeholder="Name" required>
+                    <mat-label>Child #2</mat-label>
+                </mat-form-field>
+            </td>
+            <td>
+                <mat-form-field>
+                    <input matInput type="number" min="0" max="50" placeholder="Enter  Age" required>
+                    <mat-label>Age</mat-label>
+                </mat-form-field>
+            </td>
+            <td>
+                <mat-form-field>
+                    <input matInput placeholder="Relation" required>
+                    <mat-label>Relationship</mat-label>
+                </mat-form-field>
+            </td>
+        </tr>
+
+    </table>
+
+    <mat-label id="allergiesLabel">Does anyone in the household have any allergies?</mat-label>
+    <mat-radio-group aria-label="Allergies" aria-labelledby="allergiesLabel">
+        <mat-radio-button value="1" [checked]="true">Yes</mat-radio-button>
+        <mat-radio-button value="2">No</mat-radio-button>
+    </mat-radio-group>
+
+    <br />
+
+    <mat-label id="childrenLabel">If no children are living in the house will children be visiting??</mat-label>
+    <mat-radio-group aria-label="Children" aria-labelledby="childrenLabel">
+        <mat-radio-button value="1" [checked]="true">Yes</mat-radio-button>
+        <mat-radio-button value="2">No</mat-radio-button>
+    </mat-radio-group>
+
+    <br />
+
+    <mat-form-field style="width: 100%">
+        <input matInput placeholder="Brief Explanation" required>
+        <mat-label>What accommodations will be made for the animal if traveling?</mat-label>
+    </mat-form-field>
+
+    <br />
+
+    <table>
+        <tr>
+            <td>Please list three references:</td>
+        </tr>
+
+        <tr>
+            <td>
+                <mat-form-field>
+                    <input matInput placeholder="Name" required>
+                    <mat-label>Reference #1</mat-label>
+                </mat-form-field>
+            </td>
+            <td>
+                <mat-form-field>
+                    <mat-label>Phone</mat-label>
+                    <span matPrefix>+1 &nbsp;</span>
+                    <input type="tel" matInput placeholder="555-555-1234" required>
+                </mat-form-field>
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                <mat-form-field>
+                    <input matInput placeholder="Name" required>
+                    <mat-label>Reference #2</mat-label>
+                </mat-form-field>
+            </td>
+            <td>
+                <mat-form-field>
+                    <mat-label>Phone</mat-label>
+                    <span matPrefix>+1 &nbsp;</span>
+                    <input type="tel" matInput placeholder="555-555-1234" required>
+                </mat-form-field>
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                <mat-form-field>
+                    <input matInput placeholder="Name" required>
+                    <mat-label>Reference #3</mat-label>
+                </mat-form-field>
+            </td>
+            <td>
+                <mat-form-field>
+                    <mat-label>Phone</mat-label>
+                    <span matPrefix>+1 &nbsp;</span>
+                    <input type="tel" matInput placeholder="555-555-1234" required>
+                </mat-form-field>
+            </td>
+        </tr>
+    </table>
 
 </mat-dialog-content>
 
