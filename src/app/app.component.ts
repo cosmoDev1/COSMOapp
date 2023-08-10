@@ -193,7 +193,7 @@ export class AppComponent implements AfterViewInit, OnInit {
 
             dialogConfig.disableClose = true;
             dialogConfig.autoFocus = true;
-            dialogConfig.data = { title: 'Notice', message: 'There is no animals tagged yet.', notification: true };
+            dialogConfig.data = { title: 'Notice', message: 'There are no animals tagged yet.', notification: true };
 
             const dialogRef = this.dialog.open(ConfirmationDialogComponent, dialogConfig);
 
@@ -206,6 +206,19 @@ export class AppComponent implements AfterViewInit, OnInit {
         dialogConfig.data = { role: 'My Dogs', rescueName: true, contactName: true };
 
         const dialogRef = this.dialog.open(MyDogsDialogComponent, dialogConfig);
+    }
+
+    myFosterDialog() {
+
+        const dialogConfig = new MatDialogConfig();
+
+        dialogConfig.disableClose = true;
+        dialogConfig.autoFocus = true;
+        dialogConfig.data = { title: 'Notice', message: 'There are no fosters selected yet.', notification: true };
+
+        const dialogRef = this.dialog.open(ConfirmationDialogComponent, dialogConfig);
+
+        return;
     }
 
     tagAnimal(ID: any, name: any) {
