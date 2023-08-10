@@ -7,6 +7,6 @@
 
 <mat-dialog-actions>
   <button mat-raised-button (click)="submitDialog()">Accept</button>
-  <button mat-raised-button (click)="closeDialog()">Cancel</button>
+  <button mat-raised-button *ngIf="data.notification==false" (click)="closeDialog()">Cancel</button>
 </mat-dialog-actions>
 

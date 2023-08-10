@@ -186,7 +186,19 @@ export class AppComponent implements AfterViewInit, OnInit {
         });
     }
 
-    myDogsDialog() {
+    myAnimalsDialog() {
+        var tempAnimals = this.global.animals.filter((el) => el.status == 2);
+        if (tempAnimals.length < 1) {
+            const dialogConfig = new MatDialogConfig();
+
+            dialogConfig.disableClose = true;
+            dialogConfig.autoFocus = true;
+            dialogConfig.data = { title: 'Notice', message: 'There is no animals tagged yet.', notification: true };
+
+            const dialogRef = this.dialog.open(ConfirmationDialogComponent, dialogConfig);
+
+            return;
+        }
         const dialogConfig = new MatDialogConfig();
 
         dialogConfig.disableClose = true;
@@ -194,10 +206,6 @@ export class AppComponent implements AfterViewInit, OnInit {
         dialogConfig.data = { role: 'My Dogs', rescueName: true, contactName: true };
 
         const dialogRef = this.dialog.open(MyDogsDialogComponent, dialogConfig);
-
-
-
-
     }
 
     tagAnimal(ID: any, name: any) {
@@ -205,21 +213,15 @@ export class AppComponent implements AfterViewInit, OnInit {
 
         dialogConfig.disableClose = true;
         dialogConfig.autoFocus = true;
-        dialogConfig.data = { title: 'Please confirm', message: 'Are you sure you want to request the tag for the animal ' + name + ' (' + ID + ')?' };
+        dialogConfig.data = { title: 'Please confirm', message: 'Are you sure you want to request the tag for the animal ' + name + ' (' + ID + ')?', notification: false };
 
         const dialogRef = this.dialog.open(ConfirmationDialogComponent, dialogConfig);
 
         dialogRef.afterClosed().subscribe((result) => {
             if (result == 'accept') {
                 this.global.animals.forEach((el: any) => {
-                    if (el.shelterAnimalID == ID) {
-                        el.status = 1;
-
-                    }
-
+                    if (el.shelterAnimalID == ID) { el.status = 1; }
                 });
-
-
 
                 this.dataSource.data = this.global.animals;
             }
@@ -232,7 +234,7 @@ export class AppComponent implements AfterViewInit, OnInit {
 
         dialogConfig.disableClose = true;
         dialogConfig.autoFocus = true;
-        dialogConfig.data = { title: 'Please confirm', message: 'The tag for the animal ' + name + ' (' + ID + ') was confirmed?' };
+        dialogConfig.data = { title: 'Please confirm', message: 'The tag for the animal ' + name + ' (' + ID + ') was confirmed?', notification: false };
 
         const dialogRef = this.dialog.open(ConfirmationDialogComponent, dialogConfig);
 
