@@ -2,125 +2,140 @@
 <h2 mat-dialog-title>New {{data.role}}</h2>
 
 <mat-dialog-content>
-  <mat-form-field style="width: 100%" *ngIf="data.rescueName==true">
-    <input matInput placeholder="Name" required>
-    <mat-label>Rescue Name</mat-label>
-    <mat-error>Please enter the rescue name</mat-error>
-  </mat-form-field>
-  <mat-form-field style="width: 100%" *ngIf="data.contactName==true">
-    <input matInput placeholder="Name" required>
-    <mat-label>Contact Name</mat-label>
-  </mat-form-field>
-
-  <mat-form-field style="width: 100%">
-    <input matInput placeholder="Address" required>
-    <mat-label>Address</mat-label>
-  </mat-form-field>
-
-  <mat-form-field style="width: 100%">
-    <input matInput placeholder="City" required>
-    <mat-label>City</mat-label>
-  </mat-form-field>
-
-  <table>
-    <tr>
-        <td>
-            <mat-form-field>
-                <mat-label> State </mat-label>
-                <mat-select id="stat" name="stat">
-                     <mat-option *ngFor="let state of global.states" [value]="state.abbreviation">
-                         {{ state.name }} - {{ state.abbreviation }}
-                     </mat-option>
-                </mat-select>
-            </mat-form-field>
-        </td>
-      <td>
-        <mat-form-field>
-          <input matInput type="number" max="99999" placeholder="Zip" required>
-          <mat-label>Zip</mat-label>
-        </mat-form-field>
-      </td>
-      <td>
-        <mat-form-field>
-          <mat-label>Phone</mat-label>
-          <span matPrefix>+1 &nbsp;</span>
-          <input type="tel" matInput placeholder="555-555-1234" required>
-        </mat-form-field>
-      </td>
-    </tr>
-  </table>
-
-  <mat-form-field style="width: 100%">
-    <input matInput placeholder="Email" required>
-    <mat-label>Email</mat-label>
-  </mat-form-field>
+    <mat-form-field style="width: 100%" *ngIf="data.rescueName==true">
+        <input matInput placeholder="Name" maxlength="128" required>
+        <mat-label>Rescue Name</mat-label>
+        <mat-error>Please enter the rescue name</mat-error>
+    </mat-form-field>
 
 
-  <mat-divider></mat-divider>
-  <mat-label style="font-style:italic; font-weight: bold">Rescue Preferences</mat-label>
+    <mat-form-field style="width: 100%">
+        <input matInput placeholder="Address" maxlength="128" required>
+        <mat-label>Address</mat-label>
+    </mat-form-field>
 
-  <table>
-    <tr>
-      <td> <mat-label id="speciesLabel">Species</mat-label> </td>
-      <td>
-        <mat-radio-group aria-label="Species" aria-labelledby="speciesLabel">
-          <mat-radio-button value="1" [checked]="true">Dog</mat-radio-button>
-          <mat-radio-button value="2">Cat</mat-radio-button>
-          <mat-radio-button value="3">Both</mat-radio-button>
-        </mat-radio-group>
-      </td>
-    </tr>
-    <tr>
-      <td> <mat-label id="genderLabel">Gender</mat-label> </td>
-      <td>
-        <mat-radio-group aria-label="Gender" aria-labelledby="genderLabel">
-          <mat-radio-button value="1" [checked]="true">Both</mat-radio-button>
-          <mat-radio-button value="2">Male</mat-radio-button>
-          <mat-radio-button value="3">Female</mat-radio-button>
-        </mat-radio-group>
-      </td>
-    </tr>
-    <tr>
-      <td> <mat-label id="sizeLabel">Size</mat-label> </td>
-      <td>
-        <mat-radio-group aria-label="Size" aria-labelledby="sizeLabel">
-          <mat-radio-button value="1" [checked]="true">Any</mat-radio-button>
-          <mat-radio-button value="2">Extra Large</mat-radio-button>
-          <mat-radio-button value="3">Large</mat-radio-button>
-          <mat-radio-button value="4">Medium</mat-radio-button>
-          <mat-radio-button value="5">Small</mat-radio-button>
-        </mat-radio-group>
-      </td>
-    </tr>
+    <mat-form-field style="width: 100%">
+        <input matInput placeholder="City" maxlength="64" required>
+        <mat-label>City</mat-label>
+    </mat-form-field>
 
-    <tr>
-      <td> <mat-label id="ageLabel">Age</mat-label> </td>
-      <td>
-        <mat-radio-group aria-label="Age" aria-labelledby="ageLabel">
-          <mat-radio-button value="1" [checked]="true">Any</mat-radio-button>
-          <mat-radio-button value="2">Baby/Puppy</mat-radio-button>
-          <mat-radio-button value="3">Young</mat-radio-button>
-          <mat-radio-button value="4">Adult</mat-radio-button>
-          <mat-radio-button value="5">Senior</mat-radio-button>
-        </mat-radio-group>
-      </td>
-    </tr>
-  </table>
+    <table>
+        <tr>
+            <td>
+                <mat-form-field>
+                    <mat-label> State </mat-label>
+                    <mat-select id="stat" name="stat">
+                        <mat-option *ngFor="let state of global.states" [value]="state.abbreviation">
+                            {{ state.name }} - {{ state.abbreviation }}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </td>
+            <td>
+                <mat-form-field>
+                    <input matInput type="number" max="99999" placeholder="Zip" maxlength="6" required>
+                    <mat-label>Zip</mat-label>
+                </mat-form-field>
+            </td>
+            <td>
+                <mat-form-field>
+                    <mat-label>Rescue Phone</mat-label>
+                    <span matPrefix>+1 &nbsp;</span>
+                    <input type="tel" matInput placeholder="555-555-1234" maxlength="18" required>
+                </mat-form-field>
+            </td>
+        </tr>
+    </table>
 
-  <mat-divider style="margin-top: 10px"></mat-divider>
-  <mat-label style="font-style:italic; font-weight: bold">Foster Application Preferences</mat-label>
-  <table>
-    <tr>
-      <td> <mat-label id="fosterApplication">Foster Application</mat-label> </td>
-      <td>
-        <mat-radio-group aria-label="Foster Application" aria-labelledby="fosterApplicationLabel">
-          <mat-radio-button value="1" [checked]="true">Simple</mat-radio-button>
-          <mat-radio-button value="2">Detailed</mat-radio-button>
-        </mat-radio-group>
-      </td>
-    </tr>
+    <mat-form-field style="width: 100%">
+        <input matInput placeholder="Email" maxlength="128" required>
+        <mat-label>Rescue Email</mat-label>
+    </mat-form-field>
 
-  </table>
+    <mat-form-field style="width: 100%" *ngIf="data.contactName==true">
+        <input matInput placeholder="Name" maxlength="128" required>
+        <mat-label>Contact Name</mat-label>
+    </mat-form-field>
+
+    <mat-form-field style="width: 100%">
+        <input matInput placeholder="Email" maxlength="128" required>
+        <mat-label>Contact Email</mat-label>
+    </mat-form-field>
+    <br/>
+
+    <mat-form-field>
+        <mat-label>Contact Phone</mat-label>
+        <span matPrefix>+1 &nbsp;</span>
+        <input type="tel" matInput placeholder="555-555-1234" maxlength="18" required>
+    </mat-form-field>
+
+    
+
+    <mat-divider></mat-divider>
+    <mat-label style="font-style:italic; font-weight: bold">Rescue Preferences</mat-label>
+
+    <table>
+        <tr>
+            <td> <mat-label id="speciesLabel">Species</mat-label> </td>
+            <td>
+                <mat-radio-group aria-label="Species" aria-labelledby="speciesLabel">
+                    <mat-radio-button value="1" [checked]="true">Dog</mat-radio-button>
+                    <mat-radio-button value="2">Cat</mat-radio-button>
+                    <mat-radio-button value="3">Both</mat-radio-button>
+                </mat-radio-group>
+            </td>
+        </tr>
+        <tr>
+            <td> <mat-label id="genderLabel">Gender</mat-label> </td>
+            <td>
+                <mat-radio-group aria-label="Gender" aria-labelledby="genderLabel">
+                    <mat-radio-button value="1" [checked]="true">Both</mat-radio-button>
+                    <mat-radio-button value="2">Male</mat-radio-button>
+                    <mat-radio-button value="3">Female</mat-radio-button>
+                </mat-radio-group>
+            </td>
+        </tr>
+        <tr>
+            <td> <mat-label id="sizeLabel">Size</mat-label> </td>
+            <td>
+                <mat-radio-group aria-label="Size" aria-labelledby="sizeLabel">
+                    <mat-radio-button value="1" [checked]="true">Any</mat-radio-button>
+                    <mat-radio-button value="2">Extra Large</mat-radio-button>
+                    <mat-radio-button value="3">Large</mat-radio-button>
+                    <mat-radio-button value="4">Medium</mat-radio-button>
+                    <mat-radio-button value="5">Small</mat-radio-button>
+                </mat-radio-group>
+            </td>
+        </tr>
+
+        <tr>
+            <td> <mat-label id="ageLabel">Age</mat-label> </td>
+            <td>
+                <mat-radio-group aria-label="Age" aria-labelledby="ageLabel">
+                    <mat-radio-button value="1" [checked]="true">Any</mat-radio-button>
+                    <mat-radio-button value="2">Baby/Puppy</mat-radio-button>
+                    <mat-radio-button value="3">Young</mat-radio-button>
+                    <mat-radio-button value="4">Adult</mat-radio-button>
+                    <mat-radio-button value="5">Senior</mat-radio-button>
+                </mat-radio-group>
+            </td>
+        </tr>
+    </table>
+
+    <mat-divider style="margin-top: 10px"></mat-divider>
+    <mat-label style="font-style:italic; font-weight: bold">Foster Application Preferences</mat-label>
+    <table>
+        <tr>
+            <td> <mat-label id="fosterApplication">Foster Application</mat-label> </td>
+            <td>
+                <mat-radio-group aria-label="Foster Application" aria-labelledby="fosterApplicationLabel">
+                    <mat-radio-button value="1" [checked]="true">Simple</mat-radio-button>
+                    <mat-radio-button value="2">Detailed</mat-radio-button>
+                </mat-radio-group>
+            </td>
+        </tr>
+
+    </table>
 
 
 
