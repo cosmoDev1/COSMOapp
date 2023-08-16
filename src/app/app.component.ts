@@ -30,7 +30,7 @@ export class AppComponent implements AfterViewInit, OnInit {
 
     //animals: Array<Animal> = [];
     dataSource = new MatTableDataSource<Animal>(this.global.animals);
-    displayedColumns: string[] = ['action', 'imageURL', 'status', 'shelterAnimalID', 'name', 'gender', 'breed', 'weight', 'age'];
+    displayedColumns: string[] = ['action', 'imageURL', 'status', 'shelterAnimalID', 'name', 'gender', 'breed', 'weight', 'age', 'reason', 'outcomeRequest'];
 
     @ViewChild(MatSort, { static: false }) sort!: MatSort;
     @ViewChild('paginator', { static: true }) paginator!: MatPaginator;
