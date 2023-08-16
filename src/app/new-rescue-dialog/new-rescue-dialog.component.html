@@ -3,19 +3,19 @@
 
 <mat-dialog-content>
     <mat-form-field style="width: 100%" *ngIf="data.rescueName==true">
-        <input matInput placeholder="Name" maxlength="128" required>
+        <input matInput placeholder="Name" maxlength="128" required [(ngModel)]="rescueName">
         <mat-label>Rescue Name</mat-label>
         <mat-error>Please enter the rescue name</mat-error>
     </mat-form-field>
 
 
     <mat-form-field style="width: 100%">
-        <input matInput placeholder="Address" maxlength="128" required>
+        <input matInput placeholder="Address" maxlength="128" required [(ngModel)]="rescueAddress">
         <mat-label>Address</mat-label>
     </mat-form-field>
 
     <mat-form-field style="width: 100%">
-        <input matInput placeholder="City" maxlength="64" required>
+        <input matInput placeholder="City" maxlength="64" required [(ngModel)]="rescueCity">
         <mat-label>City</mat-label>
     </mat-form-field>
 
@@ -24,7 +24,7 @@
             <td>
                 <mat-form-field>
                     <mat-label> State </mat-label>
-                    <mat-select id="stat" name="stat">
+                    <mat-select id="stat" name="stat" [(ngModel)]="rescueState">
                         <mat-option *ngFor="let state of global.states" [value]="state.abbreviation">
                             {{ state.name }} - {{ state.abbreviation }}
                         </mat-option>
@@ -33,7 +33,7 @@
             </td>
             <td>
                 <mat-form-field>
-                    <input matInput type="number" max="99999" placeholder="Zip" maxlength="6" required>
+                    <input matInput type="number" max="99999" placeholder="Zip" maxlength="6" required [(ngModel)]="rescueZip">
                     <mat-label>Zip</mat-label>
                 </mat-form-field>
             </td>
@@ -41,35 +41,38 @@
                 <mat-form-field>
                     <mat-label>Rescue Phone</mat-label>
                     <span matPrefix>+1 &nbsp;</span>
-                    <input type="tel" matInput placeholder="555-555-1234" maxlength="18" required>
+                    <input type="tel" matInput placeholder="555-555-1234" maxlength="18" required [(ngModel)]="rescuePhone">
                 </mat-form-field>
             </td>
         </tr>
     </table>
 
     <mat-form-field style="width: 100%">
-        <input matInput placeholder="Email" maxlength="128" required>
+        <input matInput placeholder="Email" maxlength="128" required [(ngModel)]="rescueEmail">
         <mat-label>Rescue Email</mat-label>
     </mat-form-field>
 
     <mat-form-field style="width: 100%" *ngIf="data.contactName==true">
-        <input matInput placeholder="Name" maxlength="128" required>
+        <input matInput placeholder="Name" maxlength="128" required [(ngModel)]="rescueContact">
         <mat-label>Contact Name</mat-label>
     </mat-form-field>
-
-    <mat-form-field style="width: 100%">
-        <input matInput placeholder="Email" maxlength="128" required>
-        <mat-label>Contact Email</mat-label>
-    </mat-form-field>
-    <br/>
 
     <mat-form-field>
         <mat-label>Contact Phone</mat-label>
         <span matPrefix>+1 &nbsp;</span>
-        <input type="tel" matInput placeholder="555-555-1234" maxlength="18" required>
+        <input type="tel" matInput placeholder="555-555-1234" maxlength="18" required [(ngModel)]="contactPhone">
     </mat-form-field>
+    <br />
 
-    
+    <mat-form-field style="width: 100%">
+        <input matInput placeholder="Email" maxlength="128" required [(ngModel)]="contactEmail">
+        <mat-label>Contact Email</mat-label>
+    </mat-form-field>
+    <br />
+
+
+
+
 
     <mat-divider></mat-divider>
     <mat-label style="font-style:italic; font-weight: bold">Rescue Preferences</mat-label>
