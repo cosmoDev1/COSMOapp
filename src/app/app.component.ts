@@ -44,8 +44,7 @@ export class AppComponent implements AfterViewInit, OnInit {
 
     getData() {
         var head = new HttpHeaders({ 'Content-Type': 'application/json' });
-        const options = {
-            headers: head, body: { testSource:"ehhhh" } };
+        const options = { headers: head };
 
         //this.http.get("https://v1.nocodeapi.com/casper/airtable/hOIlnPJwPYcZIyyL?tableName=BARC", options).subscribe((res: any) => {
         this.http.get(this.global.webserviceUrl, options).subscribe((res: any) => {
@@ -209,12 +208,11 @@ export class AppComponent implements AfterViewInit, OnInit {
     }
 
     myFosterDialog() {
-
         const dialogConfig = new MatDialogConfig();
 
         dialogConfig.disableClose = true;
         dialogConfig.autoFocus = true;
-        dialogConfig.data = { title: 'Notice', message: 'There are no fosters selected yet.', notification: true };
+        dialogConfig.data = { title: 'Notice', message: 'There are no fosters created yet.', notification: true };
 
         const dialogRef = this.dialog.open(ConfirmationDialogComponent, dialogConfig);
 
