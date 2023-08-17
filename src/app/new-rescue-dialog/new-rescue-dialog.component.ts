@@ -19,6 +19,10 @@ export class NewRescueDialogComponent {
     contactName = "";
     contactEmail = "";
     contactPhone = "";
+    speciesChosen = "";
+    species: string[] = ['Dog', 'Cat', 'Both']
+    
+
 
     constructor(@Inject(MAT_DIALOG_DATA) public data: any, public dialogRef: MatDialogRef<NewRescueDialogComponent>, public global: Globals) { }
 
@@ -39,6 +43,8 @@ export class NewRescueDialogComponent {
         console.log(this.rescueContact);
         console.log(this.contactName);
         console.log(this.contactEmail);
+        console.log(this.speciesChosen);
+        
         //muestras el contenido del objecto  ie console.log(xxx)
     }
 

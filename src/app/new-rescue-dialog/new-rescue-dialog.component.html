@@ -81,10 +81,8 @@
         <tr>
             <td> <mat-label id="speciesLabel">Species</mat-label> </td>
             <td>
-                <mat-radio-group aria-label="Species" aria-labelledby="speciesLabel">
-                    <mat-radio-button value="1" [checked]="true">Dog</mat-radio-button>
-                    <mat-radio-button value="2">Cat</mat-radio-button>
-                    <mat-radio-button value="3">Both</mat-radio-button>
+                <mat-radio-group aria-label="Species" aria-labelledby="speciesLabel" [(ngModel)]="speciesChosen">
+                    <mat-radio-button *ngFor="let specie of species" [value]="specie" [checked]="true">{{specie}}</mat-radio-button>
                 </mat-radio-group>
             </td>
         </tr>
