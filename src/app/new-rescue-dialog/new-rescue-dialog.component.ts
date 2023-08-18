@@ -21,9 +21,13 @@ export class NewRescueDialogComponent {
         this.dialogRef.close();
     }
 
-    submitDialog() {
+    submitDialog(rescueForm: any) {
+        if (rescueForm.invalid) {
+            console.log('there are errors on the form')
+            return;
+        }
 
-
+        console.log(rescueForm);
         console.log(this.formdata);
 
         //call via http the webservice        
