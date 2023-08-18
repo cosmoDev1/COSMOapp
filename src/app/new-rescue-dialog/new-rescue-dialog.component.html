@@ -3,19 +3,19 @@
 
 <mat-dialog-content>
     <mat-form-field style="width: 100%" *ngIf="data.rescueName==true">
-        <input matInput placeholder="Name" maxlength="128" required [(ngModel)]="rescueName">
+        <input matInput placeholder="Name" maxlength="128" required [(ngModel)]="formdata.rescueName">
         <mat-label>Rescue Name</mat-label>
         <mat-error>Please enter the rescue name</mat-error>
     </mat-form-field>
 
 
     <mat-form-field style="width: 100%">
-        <input matInput placeholder="Address" maxlength="128" required [(ngModel)]="rescueAddress">
+        <input matInput placeholder="Address" maxlength="128" required [(ngModel)]="formdata.rescueAddress">
         <mat-label>Address</mat-label>
     </mat-form-field>
 
     <mat-form-field style="width: 100%">
-        <input matInput placeholder="City" maxlength="64" required [(ngModel)]="rescueCity">
+        <input matInput placeholder="City" maxlength="64" required [(ngModel)]="formdata.rescueCity">
         <mat-label>City</mat-label>
     </mat-form-field>
 
@@ -24,7 +24,7 @@
             <td>
                 <mat-form-field>
                     <mat-label> State </mat-label>
-                    <mat-select id="stat" name="stat" [(ngModel)]="rescueState">
+                    <mat-select id="stat" name="stat" [(ngModel)]="formdata.rescueState">
                         <mat-option *ngFor="let state of global.states" [value]="state.abbreviation">
                             {{ state.name }} - {{ state.abbreviation }}
                         </mat-option>
@@ -33,7 +33,7 @@
             </td>
             <td>
                 <mat-form-field>
-                    <input matInput type="number" max="99999" placeholder="Zip" maxlength="6" required [(ngModel)]="rescueZip">
+                    <input matInput type="number" max="99999" placeholder="Zip" maxlength="6" required [(ngModel)]="formdata.rescueZip">
                     <mat-label>Zip</mat-label>
                 </mat-form-field>
             </td>
@@ -41,31 +41,31 @@
                 <mat-form-field>
                     <mat-label>Rescue Phone</mat-label>
                     <span matPrefix>+1 &nbsp;</span>
-                    <input type="tel" matInput placeholder="555-555-1234" maxlength="18" required [(ngModel)]="rescuePhone">
+                    <input type="tel" matInput placeholder="555-555-1234" maxlength="18" required [(ngModel)]="formdata.rescuePhone">
                 </mat-form-field>
             </td>
         </tr>
     </table>
 
     <mat-form-field style="width: 100%">
-        <input matInput placeholder="Email" maxlength="128" required [(ngModel)]="rescueEmail">
+        <input matInput placeholder="Email" maxlength="128" required [(ngModel)]="formdata.rescueEmail">
         <mat-label>Rescue Email</mat-label>
     </mat-form-field>
 
-    <mat-form-field style="width: 100%" *ngIf="data.contactName==true">
-        <input matInput placeholder="Name" maxlength="128" required [(ngModel)]="rescueContact">
+    <mat-form-field style="width: 100%">
+        <input matInput placeholder="Name" maxlength="128" required [(ngModel)]="formdata.contactName">
         <mat-label>Contact Name</mat-label>
     </mat-form-field>
 
     <mat-form-field>
         <mat-label>Contact Phone</mat-label>
         <span matPrefix>+1 &nbsp;</span>
-        <input type="tel" matInput placeholder="555-555-1234" maxlength="18" required [(ngModel)]="contactPhone">
+        <input type="tel" matInput placeholder="555-555-1234" maxlength="18" required [(ngModel)]="formdata.contactPhone">
     </mat-form-field>
     <br />
 
     <mat-form-field style="width: 100%">
-        <input matInput placeholder="Email" maxlength="128" required [(ngModel)]="contactEmail">
+        <input matInput placeholder="Email" maxlength="128" required [(ngModel)]="formdata.contactEmail">
         <mat-label>Contact Email</mat-label>
     </mat-form-field>
     <br />
@@ -81,15 +81,17 @@
         <tr>
             <td> <mat-label id="speciesLabel">Species</mat-label> </td>
             <td>
-                <mat-radio-group aria-label="Species" aria-labelledby="speciesLabel" [(ngModel)]="speciesChosen">
-                    <mat-radio-button *ngFor="let specie of species" [value]="specie" [checked]="true">{{specie}}</mat-radio-button>
+                <mat-radio-group aria-label="Species" aria-labelledby="speciesLabel" [(ngModel)]="formdata.species">
+                    <mat-radio-button value="1" [checked]="true">Dog</mat-radio-button>
+                    <mat-radio-button value="2">Cat</mat-radio-button>
+                    <mat-radio-button value="3">Both</mat-radio-button>
                 </mat-radio-group>
             </td>
         </tr>
         <tr>
             <td> <mat-label id="genderLabel">Gender</mat-label> </td>
             <td>
-                <mat-radio-group aria-label="Gender" aria-labelledby="genderLabel">
+                <mat-radio-group aria-label="Gender" aria-labelledby="genderLabel" [(ngModel)]="formdata.gender">
                     <mat-radio-button value="1" [checked]="true">Both</mat-radio-button>
                     <mat-radio-button value="2">Male</mat-radio-button>
                     <mat-radio-button value="3">Female</mat-radio-button>
@@ -99,7 +101,7 @@
         <tr>
             <td> <mat-label id="sizeLabel">Size</mat-label> </td>
             <td>
-                <mat-radio-group aria-label="Size" aria-labelledby="sizeLabel">
+                <mat-radio-group aria-label="Size" aria-labelledby="sizeLabel" [(ngModel)]="formdata.size">
                     <mat-radio-button value="1" [checked]="true">Any</mat-radio-button>
                     <mat-radio-button value="2">Extra Large</mat-radio-button>
                     <mat-radio-button value="3">Large</mat-radio-button>
@@ -112,7 +114,7 @@
         <tr>
             <td> <mat-label id="ageLabel">Age</mat-label> </td>
             <td>
-                <mat-radio-group aria-label="Age" aria-labelledby="ageLabel">
+                <mat-radio-group aria-label="Age" aria-labelledby="ageLabel" [(ngModel)]="formdata.age">
                     <mat-radio-button value="1" [checked]="true">Any</mat-radio-button>
                     <mat-radio-button value="2">Baby/Puppy</mat-radio-button>
                     <mat-radio-button value="3">Young</mat-radio-button>
@@ -129,7 +131,7 @@
         <tr>
             <td> <mat-label id="fosterApplication">Foster Application</mat-label> </td>
             <td>
-                <mat-radio-group aria-label="Foster Application" aria-labelledby="fosterApplicationLabel">
+                <mat-radio-group aria-label="Foster Application" aria-labelledby="fosterApplicationLabel" [(ngModel)]="formdata.applicationType">
                     <mat-radio-button value="1" [checked]="true">Simple</mat-radio-button>
                     <mat-radio-button value="2">Detailed</mat-radio-button>
                 </mat-radio-group>

@@ -8,21 +8,11 @@ import { Globals } from "../globals";
     styleUrls: ['./new-rescue-dialog.component.css']
 })
 export class NewRescueDialogComponent {
-    rescueName = "";
-    rescueAddress = "";
-    rescueCity = "";
-    rescueState = "";
-    rescueZip = "";
-    rescuePhone = "";
-    rescueEmail = "";
-    rescueContact = "";
-    contactName = "";
-    contactEmail = "";
-    contactPhone = "";
-    speciesChosen = "";
-    species: string[] = ['Dog', 'Cat', 'Both']
+    formdata = {
+        rescueName: "", rescueAddress: "", rescueCity: "", rescueState: "", rescueZip: "", rescuePhone: "", rescueEmail: "", contactName: "", contactEmail: "", contactPhone: "",
+        species: "1", gender: "1", size: "1", age: "1", applicationType: "1"
+    };
     
-
 
     constructor(@Inject(MAT_DIALOG_DATA) public data: any, public dialogRef: MatDialogRef<NewRescueDialogComponent>, public global: Globals) { }
 
@@ -33,19 +23,11 @@ export class NewRescueDialogComponent {
 
     submitDialog() {
 
-        console.log(this.rescueName);
-        console.log(this.rescueAddress);
-        console.log(this.rescueCity);
-        console.log(this.rescueState);
-        console.log(this.rescueZip);
-        console.log(this.rescuePhone);
-        console.log(this.rescueEmail);
-        console.log(this.rescueContact);
-        console.log(this.contactName);
-        console.log(this.contactEmail);
-        console.log(this.speciesChosen);
-        
-        //muestras el contenido del objecto  ie console.log(xxx)
+
+        console.log(this.formdata);
+
+        //call via http the webservice        
+
     }
 
 }
