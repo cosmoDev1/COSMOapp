@@ -1,531 +1,534 @@
-
-<h2 mat-dialog-title>New {{data.role}}</h2>
-
-<mat-dialog-content>
-    <mat-form-field style="width: 100%" *ngIf="data.contactName==true">
-        <input matInput placeholder="First & Last name" required>
-        <mat-label>Contact Name</mat-label>
-    </mat-form-field>
-
-    <mat-form-field style="width: 100%">
-        <input matInput placeholder="Address" required>
-        <mat-label>Address</mat-label>
-    </mat-form-field>
-
-    <mat-form-field style="width: 100%">
-        <input matInput placeholder="City" required>
-        <mat-label>City</mat-label>
-    </mat-form-field>
-
-    <table>
-        <tr>
-            <td>
-                <mat-form-field>
-                    <mat-label>State</mat-label>
-                    <mat-select>
-                        <mat-option [value]="0">AL-Alabama</mat-option>
-                        <mat-option [value]="0">AK-Alaska</mat-option>
-                        <mat-option [value]="0">AZ-Arizona</mat-option>
-                        <mat-option [value]="0">AR-Arkansas</mat-option>
-                        <mat-option [value]="0">CA-California</mat-option>
-                        <mat-option [value]="0">CO-Colorado</mat-option>
-                        <mat-option [value]="0">CT-Connecticut</mat-option>
-                        <mat-option [value]="0">DE-Delaware</mat-option>
-                        <mat-option [value]="0">FL-Florida</mat-option>
-                        <mat-option [value]="0">GA-Georgia</mat-option>
-                        <mat-option [value]="0">HI-Hawaii</mat-option>
-                        <mat-option [value]="0">ID-Idaho</mat-option>
-                        <mat-option [value]="0">IL-Illinois</mat-option>
-                        <mat-option [value]="0">IN-Indiana</mat-option>
-                        <mat-option [value]="0">IA-Iowa</mat-option>
-                        <mat-option [value]="0">KS-Kansas</mat-option>
-                        <mat-option [value]="0">KY-Kentucky</mat-option>
-                        <mat-option [value]="0">LA-Louisiana</mat-option>
-                        <mat-option [value]="0">ME-Maine</mat-option>
-                        <mat-option [value]="0">MD-Maryland</mat-option>
-                        <mat-option [value]="0">MA-Massachusetts</mat-option>
-                        <mat-option [value]="0">MI-Michigan</mat-option>
-                        <mat-option [value]="0">MN-Minnesota</mat-option>
-                        <mat-option [value]="0">MS-Mississippi</mat-option>
-                        <mat-option [value]="0">MO-Missouri</mat-option>
-                        <mat-option [value]="0">MT-Montana</mat-option>
-                        <mat-option [value]="0">NE-Nebraska</mat-option>
-                        <mat-option [value]="0">NV-Nevada</mat-option>
-                        <mat-option [value]="0">NH-New Hampshire</mat-option>
-                        <mat-option [value]="0">NJ-New Jersey</mat-option>
-                        <mat-option [value]="0">NM-New Mexico</mat-option>
-                        <mat-option [value]="0">NY-New York</mat-option>
-                        <mat-option [value]="0">NC-North Carolina</mat-option>
-                        <mat-option [value]="0">ND-North Dakota</mat-option>
-                        <mat-option [value]="0">OH-Ohio</mat-option>
-                        <mat-option [value]="0">OK-Oklahoma</mat-option>
-                        <mat-option [value]="0">OR-Oregon</mat-option>
-                        <mat-option [value]="0">PA-Pennsylvania</mat-option>
-                        <mat-option [value]="0">RI-Rhode Island</mat-option>
-                        <mat-option [value]="0">SC-South Carolina</mat-option>
-                        <mat-option [value]="0">SD-South Dakota</mat-option>
-                        <mat-option [value]="0">TN-Tennessee</mat-option>
-                        <mat-option [value]="0">TX-Texas</mat-option>
-                        <mat-option [value]="0">UT-Utah</mat-option>
-                        <mat-option [value]="0">VT-Vermont</mat-option>
-                        <mat-option [value]="0">VA-Virginia</mat-option>
-                        <mat-option [value]="0">WA-Washington</mat-option>
-                        <mat-option [value]="0">WV-West Virginia</mat-option>
-                        <mat-option [value]="0">WY-Wyoming</mat-option>
-                    </mat-select>
-                </mat-form-field>
-
-            </td>
-            <td>
-                <mat-form-field>
-                    <input matInput type="number" max="99999" placeholder="Zip" required>
-                    <mat-label>Zip</mat-label>
-                </mat-form-field>
-            </td>
-            <td>
-                <mat-form-field>
-                    <mat-label>Phone</mat-label>
-                    <span matPrefix>+1 &nbsp;</span>
-                    <input type="tel" matInput placeholder="555-555-1234" required>
-                </mat-form-field>
-            </td>
-        </tr>
-    </table>
-
-    <mat-form-field style="width: 100%">
-        <input matInput placeholder="Email" required>
-        <mat-label>Email</mat-label>
-    </mat-form-field>
-
-    <mat-form-field style="width: 50%">
-        <input matInput placeholder="License number and State" required>
-        <mat-label>Driver License</mat-label>
-    </mat-form-field>
-
-    <table>
-        <tr>
-            <td> <mat-label id="housingLabel">Type Housing</mat-label> </td>
-            <td colspan="3">
-                <mat-radio-group aria-label="Housing" aria-labelledby="housingLabel">
-                    <mat-radio-button value="1" [checked]="true">Apartment</mat-radio-button>
-                    <mat-radio-button value="2">Condo</mat-radio-button>
-                    <mat-radio-button value="3">Townhouse</mat-radio-button>
-                    <mat-radio-button value="4">Single Family</mat-radio-button>
-                </mat-radio-group>
-            </td>
-        </tr>
-        <tr>
-            <td> <mat-label id="ownershipLabel">Ownership</mat-label> </td>
-            <td>
-                <mat-radio-group aria-label="Ownership" aria-labelledby="ownershipLabel">
-                    <mat-radio-button value="1" [checked]="true">Rent</mat-radio-button>
-                    <mat-radio-button value="2">Own</mat-radio-button>
-                </mat-radio-group>
-            </td>
-            <td> <mat-label id="landordLabel" style="margin-left: 30px">Lanlord allows Pets</mat-label> </td>
-            <td>
-                <mat-radio-group aria-label="Landord" aria-labelledby="landordLabel">
-                    <mat-radio-button value="1" [checked]="true">No</mat-radio-button>
-                    <mat-radio-button value="2">Yes</mat-radio-button>
-                </mat-radio-group>
-            </td>
-        </tr>
-        <tr>
-            <td> <mat-label id="fenceLabel">Fenced Yard</mat-label> </td>
-            <td colspan="3">
-                <mat-radio-group aria-label="Fence" aria-labelledby="fenceLabel">
-                    <mat-radio-button value="1" [checked]="true">Yes</mat-radio-button>
-                    <mat-radio-button value="2">No</mat-radio-button>
-                </mat-radio-group>
-            </td>
-        </tr>
-    </table>
-
-    <mat-form-field style="width: 100%">
-        <input matInput placeholder="Brief Description" required>
-        <mat-label>Please describe your fence</mat-label>
-    </mat-form-field>
-
-    <mat-form-field style="width: 100%">
-        <input matInput placeholder="Brief Explanation" required>
-        <mat-label>Since you do not have a fenced yard, how will the animal get exercise?</mat-label>
-    </mat-form-field>
-
-    <mat-form-field style="width: 30%">
-        <input matInput type="number" min="0" max="99" placeholder="Years" required>
-        <mat-label>Years at this Address</mat-label>
-    </mat-form-field>
+<form #fosterForm="ngForm" (ngSubmit)="submitDialog(fosterForm)">
 
 
+    <h2 mat-dialog-title>New {{data.role}}</h2>
 
-    <mat-divider style="margin-top: 10px"></mat-divider>
-    <mat-label style="font-style: italic; font-weight: bold">Fostering Preferences</mat-label>
+    <mat-dialog-content>
+        <mat-form-field style="width: 100%" *ngIf="data.contactName==true">
+            <input matInput placeholder="First & Last Name" required name="fosterName" [(ngModel)]="formdata.fosterName">
+            <mat-label>Contact Name</mat-label>
+        </mat-form-field>
 
-    <table>
-        <tr>
-            <td> <mat-label id="speciesLabel">Species</mat-label> </td>
-            <td>
-                <mat-radio-group aria-label="Species" aria-labelledby="speciesLabel">
-                    <mat-radio-button value="1" [checked]="true">Dog</mat-radio-button>
-                    <mat-radio-button value="2">Cat</mat-radio-button>
-                    <mat-radio-button value="3">Both</mat-radio-button>
-                </mat-radio-group>
-            </td>
-        </tr>
-        <tr>
-            <td> <mat-label id="genderLabel">Gender</mat-label> </td>
-            <td>
-                <mat-radio-group aria-label="Gender" aria-labelledby="genderLabel">
-                    <mat-radio-button value="1" [checked]="true">Both</mat-radio-button>
-                    <mat-radio-button value="2">Male</mat-radio-button>
-                    <mat-radio-button value="3">Female</mat-radio-button>
-                </mat-radio-group>
-            </td>
-        </tr>
-        <tr>
-            <td> <mat-label id="sizeLabel">Size</mat-label> </td>
-            <td>
-                <mat-radio-group aria-label="Size" aria-labelledby="sizeLabel">
-                    <mat-radio-button value="1" [checked]="true">Any</mat-radio-button>
-                    <mat-radio-button value="2">Extra Large</mat-radio-button>
-                    <mat-radio-button value="3">Large</mat-radio-button>
-                    <mat-radio-button value="4">Medium</mat-radio-button>
-                    <mat-radio-button value="5">Small</mat-radio-button>
-                </mat-radio-group>
-            </td>
-        </tr>
+        <mat-form-field style="width: 100%">
+            <input matInput placeholder="Address" required name="fosterAddress" [(ngModel)]="formdata.fosterAddress">
+            <mat-label>Address</mat-label>
+        </mat-form-field>
 
-    </table>
+        <mat-form-field style="width: 100%">
+            <input matInput placeholder="City" required name="fosterCity" [(ngModel)]="formdata.fosterCity">
+            <mat-label>City</mat-label>
+        </mat-form-field>
+
+        <table>
+            <tr>
+                <td>
+                    <mat-form-field>
+                        <mat-label>State</mat-label>
+                        <mat-select name="fosterState" [(ngModel)]="formdata.fosterState">
+                            <mat-option [value]="0">AL-Alabama</mat-option>
+                            <mat-option [value]="0">AK-Alaska</mat-option>
+                            <mat-option [value]="0">AZ-Arizona</mat-option>
+                            <mat-option [value]="0">AR-Arkansas</mat-option>
+                            <mat-option [value]="0">CA-California</mat-option>
+                            <mat-option [value]="0">CO-Colorado</mat-option>
+                            <mat-option [value]="0">CT-Connecticut</mat-option>
+                            <mat-option [value]="0">DE-Delaware</mat-option>
+                            <mat-option [value]="0">FL-Florida</mat-option>
+                            <mat-option [value]="0">GA-Georgia</mat-option>
+                            <mat-option [value]="0">HI-Hawaii</mat-option>
+                            <mat-option [value]="0">ID-Idaho</mat-option>
+                            <mat-option [value]="0">IL-Illinois</mat-option>
+                            <mat-option [value]="0">IN-Indiana</mat-option>
+                            <mat-option [value]="0">IA-Iowa</mat-option>
+                            <mat-option [value]="0">KS-Kansas</mat-option>
+                            <mat-option [value]="0">KY-Kentucky</mat-option>
+                            <mat-option [value]="0">LA-Louisiana</mat-option>
+                            <mat-option [value]="0">ME-Maine</mat-option>
+                            <mat-option [value]="0">MD-Maryland</mat-option>
+                            <mat-option [value]="0">MA-Massachusetts</mat-option>
+                            <mat-option [value]="0">MI-Michigan</mat-option>
+                            <mat-option [value]="0">MN-Minnesota</mat-option>
+                            <mat-option [value]="0">MS-Mississippi</mat-option>
+                            <mat-option [value]="0">MO-Missouri</mat-option>
+                            <mat-option [value]="0">MT-Montana</mat-option>
+                            <mat-option [value]="0">NE-Nebraska</mat-option>
+                            <mat-option [value]="0">NV-Nevada</mat-option>
+                            <mat-option [value]="0">NH-New Hampshire</mat-option>
+                            <mat-option [value]="0">NJ-New Jersey</mat-option>
+                            <mat-option [value]="0">NM-New Mexico</mat-option>
+                            <mat-option [value]="0">NY-New York</mat-option>
+                            <mat-option [value]="0">NC-North Carolina</mat-option>
+                            <mat-option [value]="0">ND-North Dakota</mat-option>
+                            <mat-option [value]="0">OH-Ohio</mat-option>
+                            <mat-option [value]="0">OK-Oklahoma</mat-option>
+                            <mat-option [value]="0">OR-Oregon</mat-option>
+                            <mat-option [value]="0">PA-Pennsylvania</mat-option>
+                            <mat-option [value]="0">RI-Rhode Island</mat-option>
+                            <mat-option [value]="0">SC-South Carolina</mat-option>
+                            <mat-option [value]="0">SD-South Dakota</mat-option>
+                            <mat-option [value]="0">TN-Tennessee</mat-option>
+                            <mat-option [value]="0">TX-Texas</mat-option>
+                            <mat-option [value]="0">UT-Utah</mat-option>
+                            <mat-option [value]="0">VT-Vermont</mat-option>
+                            <mat-option [value]="0">VA-Virginia</mat-option>
+                            <mat-option [value]="0">WA-Washington</mat-option>
+                            <mat-option [value]="0">WV-West Virginia</mat-option>
+                            <mat-option [value]="0">WY-Wyoming</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+
+                </td>
+                <td>
+                    <mat-form-field>
+                        <input matInput type="number" max="99999" placeholder="Zip" required name="fosterZip" [(ngModel)]="formdata.fosterZip">
+                        <mat-label>Zip</mat-label>
+                    </mat-form-field>
+                </td>
+                <td>
+                    <mat-form-field>
+                        <mat-label>Phone</mat-label>
+                        <span matPrefix>+1 &nbsp;</span>
+                        <input type="tel" matInput placeholder="555-555-1234" required name="fosterPhone" [(ngModel)]="formdata.fosterPhone">
+                    </mat-form-field>
+                </td>
+            </tr>
+        </table>
+
+        <mat-form-field style="width: 100%">
+            <input matInput placeholder="Email" required name="fosterEmail" [(ngModel)]="formdata.fosterEmail">
+            <mat-label>Email</mat-label>
+        </mat-form-field>
+
+        <mat-form-field style="width: 50%">
+            <input matInput placeholder="License number and State" required name="fosterDL" [(ngModel)]="formdata.fosterDL">
+            <mat-label>Driver License</mat-label>
+        </mat-form-field>
+
+        <table>
+            <tr>
+                <td> <mat-label id="housingLabel">Type Housing</mat-label> </td>
+                <td colspan="3">
+                    <mat-radio-group aria-label="Housing" aria-labelledby="housingLabel" name="fosterHome" [(ngModel)]="formdata.fosterHome">
+                        <mat-radio-button value="1" [checked]="true">Apartment</mat-radio-button>
+                        <mat-radio-button value="2">Condo</mat-radio-button>
+                        <mat-radio-button value="3">Townhouse</mat-radio-button>
+                        <mat-radio-button value="4">Single Family</mat-radio-button>
+                    </mat-radio-group>
+                </td>
+            </tr>
+            <tr>
+                <td> <mat-label id="ownershipLabel">Ownership</mat-label> </td>
+                <td>
+                    <mat-radio-group aria-label="Ownership" aria-labelledby="ownershipLabel" name="fosterOwnership" [(ngModel)]="formdata.fosterOwnership">
+                        <mat-radio-button value="1" [checked]="true">Rent</mat-radio-button>
+                        <mat-radio-button value="2">Own</mat-radio-button>
+                    </mat-radio-group>
+                </td>
+                <td> <mat-label id="landordLabel" style="margin-left: 30px">Lanlord allows Pets</mat-label> </td>
+                <td>
+                    <mat-radio-group aria-label="Landord" aria-labelledby="landordLabel" name="fosterLandlord" [(ngModel)]="formdata.fosterLandlord">
+                        <mat-radio-button value="1" [checked]="true">No</mat-radio-button>
+                        <mat-radio-button value="2">Yes</mat-radio-button>
+                    </mat-radio-group>
+                </td>
+            </tr>
+            <tr>
+                <td> <mat-label id="fenceLabel">Fenced Yard</mat-label> </td>
+                <td colspan="3">
+                    <mat-radio-group aria-label="Fence" aria-labelledby="fenceLabel" name="fosterYard" [(ngModel)]="formdata.fosterYard">
+                        <mat-radio-button value="1" [checked]="true">Yes</mat-radio-button>
+                        <mat-radio-button value="2">No</mat-radio-button>
+                    </mat-radio-group>
+                </td>
+            </tr>
+        </table>
+
+        <mat-form-field style="width: 100%">
+            <input matInput placeholder="Brief Description" required name="fosterFence" [(ngModel)]="formdata.fosterFence">
+            <mat-label>Please describe your fence</mat-label>
+        </mat-form-field>
+
+        <mat-form-field style="width: 100%">
+            <input matInput placeholder="Brief Explanation" required name="exerciseMethod" [(ngModel)]="formdata.exerciseMethod">
+            <mat-label>Since you do not have a fenced yard, how will the animal get exercise?</mat-label>
+        </mat-form-field>
+
+        <mat-form-field style="width: 30%">
+            <input matInput type="number" min="0" max="99" placeholder="Years" required name="addressDuration" [(ngModel)]="formdata.addressDuration">
+            <mat-label>Years at this Address</mat-label>
+        </mat-form-field>
 
 
-    <mat-divider style="margin-top: 10px"></mat-divider>
-    <mat-label style="font-style: italic; font-weight: bold">Your Pets and Foster Experience</mat-label>
-    <br />
-    <br />
 
-    <mat-form-field style="width: 100%">
-        <mat-label>What experience do you have with animals?</mat-label>
-        <textarea placeholder="Provide details" matInput></textarea>
-    </mat-form-field>
-    <br />
+        <mat-divider style="margin-top: 10px"></mat-divider>
+        <mat-label style="font-style: italic; font-weight: bold">Fostering Preferences</mat-label>
 
-    <mat-label id="ownedBeforeLabel">Have you ever owned a pet before?</mat-label>
-    <mat-radio-group aria-label="Owned" aria-labelledby="ownedBeforeLabel">
-        <mat-radio-button value="1" [checked]="true">Yes</mat-radio-button>
-        <mat-radio-button value="2">No</mat-radio-button>
-    </mat-radio-group>
+        <table>
+            <tr>
+                <td> <mat-label id="speciesLabel">Species</mat-label> </td>
+                <td>
+                    <mat-radio-group aria-label="Species" aria-labelledby="speciesLabel" name="fosterSpecies" [(ngModel)]="formdata.fosterSpecies">
+                        <mat-radio-button value="1" [checked]="true">Dog</mat-radio-button>
+                        <mat-radio-button value="2">Cat</mat-radio-button>
+                        <mat-radio-button value="3">Both</mat-radio-button>
+                    </mat-radio-group>
+                </td>
+            </tr>
+            <tr>
+                <td> <mat-label id="genderLabel">Gender</mat-label> </td>
+                <td>
+                    <mat-radio-group aria-label="Gender" aria-labelledby="genderLabel" name="fosterPetGender" [(ngModel)]="formdata.fosterPetGender">
+                        <mat-radio-button value="1" [checked]="true">Both</mat-radio-button>
+                        <mat-radio-button value="2">Male</mat-radio-button>
+                        <mat-radio-button value="3">Female</mat-radio-button>
+                    </mat-radio-group>
+                </td>
+            </tr>
+            <tr>
+                <td> <mat-label id="sizeLabel">Size</mat-label> </td>
+                <td>
+                    <mat-radio-group aria-label="Size" aria-labelledby="sizeLabel" name="fosterPetSize" [(ngModel)]="formdata.fosterPetSize">
+                        <mat-radio-button value="1" [checked]="true">Any</mat-radio-button>
+                        <mat-radio-button value="2">Extra Large</mat-radio-button>
+                        <mat-radio-button value="3">Large</mat-radio-button>
+                        <mat-radio-button value="4">Medium</mat-radio-button>
+                        <mat-radio-button value="5">Small</mat-radio-button>
+                    </mat-radio-group>
+                </td>
+            </tr>
 
-    <mat-form-field style="width: 100%" *ngIf="data.contactName==true">
-        <input matInput placeholder="Type/Breed" required>
-        <mat-label>Type/Breed</mat-label>
-    </mat-form-field>
-    <br />
+        </table>
 
-    <mat-label id="fosteredBeforeLabel">Have you ever fostered a pet before?</mat-label>
-    <mat-radio-group aria-label="Fostered" aria-labelledby="fosteredBeforeLabel">
-        <mat-radio-button value="1" [checked]="true">Yes</mat-radio-button>
-        <mat-radio-button value="2">No</mat-radio-button>
-    </mat-radio-group>
 
-    <br />
-    <mat-form-field style="width: 100%">
-        <mat-label>Please provide your foster care experience</mat-label>
-        <textarea placeholder="Provide details" matInput></textarea>
-    </mat-form-field>
+        <mat-divider style="margin-top: 10px"></mat-divider>
+        <mat-label style="font-style: italic; font-weight: bold">Your Pets and Foster Experience</mat-label>
+        <br />
+        <br />
 
-    <table>
-        <tr>
-            <td>Do you currently own any pets?</td>
-        </tr>
-        <tr>
-            <td>
-                <mat-form-field>
-                    <input matInput placeholder="Name" required>
-                    <mat-label>Pet Name</mat-label>
-                </mat-form-field>
-            </td>
-            <td>
-                <mat-form-field>
-                    <input matInput type="number" max="50" placeholder="Years" required>
-                    <mat-label>Years Owned</mat-label>
-                </mat-form-field>
-            </td>
-            <td>
-                <mat-radio-group aria-label="gender" aria-labelledby="genderLabel">
-                    <mat-radio-button value="1" [checked]="true">Male</mat-radio-button>
-                    <mat-radio-button value="2">Female</mat-radio-button>
-                </mat-radio-group>
-            </td>
-            <td>
-                <section class="example-section">
-                    <mat-checkbox class="example-margin">Spayed/Neutered</mat-checkbox>
-                </section>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <mat-form-field>
-                    <input matInput placeholder="Name" required>
-                    <mat-label>Pet Name</mat-label>
-                </mat-form-field>
-            </td>
-            <td>
-                <mat-form-field>
-                    <input matInput type="number" max="50" placeholder="Years" required>
-                    <mat-label>Years Owned</mat-label>
-                </mat-form-field>
-            </td>
-            <td>
-                <mat-radio-group aria-label="gender" aria-labelledby="genderLabel">
-                    <mat-radio-button value="1" [checked]="true">Male</mat-radio-button>
-                    <mat-radio-button value="2">Female</mat-radio-button>
-                </mat-radio-group>
-            </td>
-            <td>
-                <section class="example-section">
-                    <mat-checkbox class="example-margin">Spayed/Neutered</mat-checkbox>
-                </section>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <mat-form-field>
-                    <input matInput placeholder="Name" required>
-                    <mat-label>Pet Name</mat-label>
-                </mat-form-field>
-            </td>
-            <td>
-                <mat-form-field>
-                    <input matInput type="number" max="50" placeholder="Years" required>
-                    <mat-label>Years Owned</mat-label>
-                </mat-form-field>
-            </td>
-            <td>
-                <mat-radio-group aria-label="gender" aria-labelledby="genderLabel">
-                    <mat-radio-button value="1" [checked]="true">Male</mat-radio-button>
-                    <mat-radio-button value="2">Female</mat-radio-button>
-                </mat-radio-group>
-            </td>
-            <td>
-                <section class="example-section">
-                    <mat-checkbox class="example-margin">Spayed/Neutered</mat-checkbox>
-                </section>
-            </td>
-        </tr>
-    </table>
+        <mat-form-field style="width: 100%">
+            <mat-label>What experience do you have with animals?</mat-label>
+            <textarea placeholder="Provide details" matInput name="petExperience" [(ngModel)]="formdata.petExperience"></textarea>
+        </mat-form-field>
+        <br />
 
-    <table style="width: 100%">
-        <tr>
-            <td>
-                <mat-form-field style="width: 100%">
-                    <input matInput placeholder="Name" required>
-                    <mat-label>Veterinary name</mat-label>
-                </mat-form-field>
-            </td>
-            <td>
-                <mat-form-field>
-                    <mat-label>Phone</mat-label>
-                    <span matPrefix>+1 &nbsp;</span>
-                    <input type="tel" matInput placeholder="555-555-1234" required>
-                </mat-form-field>
-            </td>
-        </tr>
-    </table>
+        <mat-label id="ownedBeforeLabel">Have you ever owned a pet before?</mat-label>
+        <mat-radio-group aria-label="Owned" aria-labelledby="ownedBeforeLabel" name="ownedBefore" [(ngModel)]="formdata.ownedBefore">
+            <mat-radio-button value="1" [checked]="true">Yes</mat-radio-button>
+            <mat-radio-button value="2">No</mat-radio-button>
+        </mat-radio-group>
 
-    <mat-form-field style="width: 40%">
-        <input matInput type="number" min="0" max="24" placeholder="Hours" required>
-        <mat-label>Hours per day animal be left alone</mat-label>
-    </mat-form-field>
-    <br />
+        <mat-form-field style="width: 100%">
+            <input matInput placeholder="Type/Breed" required name="breedType" [(ngModel)]="formdata.breedType">
+            <mat-label>Type/Breed</mat-label>
+        </mat-form-field>
+        <br />
 
-    <mat-form-field style="width: 100%">
-        <input matInput placeholder="Brief Explanation" required>
-        <mat-label>Where will the animals stay during the day?</mat-label>
-    </mat-form-field>
+        <mat-label id="fosteredBeforeLabel">Have you ever fostered a pet before?</mat-label>
+        <mat-radio-group aria-label="Fostered" aria-labelledby="fosteredBeforeLabel" name="fosteredBefore" [(ngModel)]="formdata.fosteredBefore">
+            <mat-radio-button value="1" [checked]="true">Yes</mat-radio-button>
+            <mat-radio-button value="2">No</mat-radio-button>
+        </mat-radio-group>
 
-    <br />
+        <br />
+        <mat-form-field style="width: 100%">
+            <mat-label>Please provide your foster care experience</mat-label>
+            <textarea placeholder="Provide details" matInput name="fosterExperience" [(ngModel)]="formdata.fosterExperience"></textarea>
+        </mat-form-field>
 
-    <mat-form-field style="width: 100%">
-        <input matInput placeholder="Brief Explanation" required>
-        <mat-label>Where will the animals stay during the night?</mat-label>
-    </mat-form-field>
+        <table>
+            <tr>
+                <td>Do you currently own any pets?</td>
+            </tr>
+            <tr>
+                <td>
+                    <mat-form-field>
+                        <input matInput placeholder="Name" required name="firstPet" [(ngModel)]="formdata.firstPet">
+                        <mat-label>Pet Name</mat-label>
+                    </mat-form-field>
+                </td>
+                <td>
+                    <mat-form-field>
+                        <input matInput type="number" max="50" placeholder="Years" required name="firstYears" [(ngModel)]="formdata.firstYears">
+                        <mat-label>Years Owned</mat-label>
+                    </mat-form-field>
+                </td>
+                <td>
+                    <mat-radio-group aria-label="gender" aria-labelledby="genderLabel" name="firstGender" [(ngModel)]="formdata.firstGender">
+                        <mat-radio-button value="1" [checked]="true">Male</mat-radio-button>
+                        <mat-radio-button value="2">Female</mat-radio-button>
+                    </mat-radio-group>
+                </td>
+                <td>
+                    <section class="example-section" >
+                        <mat-checkbox class="example-margin" name="spayedNeutered1" [(ngModel)]="formdata.spayedNeutered1">Spayed/Neutered</mat-checkbox>
+                    </section>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <mat-form-field>
+                        <input matInput placeholder="Name" required name="secondPet" [(ngModel)]="formdata.secondPet">
+                        <mat-label>Pet Name</mat-label>
+                    </mat-form-field>
+                </td>
+                <td>
+                    <mat-form-field>
+                        <input matInput type="number" max="50" placeholder="Years" required name="secondYears" [(ngModel)]="formdata.secondYears">
+                        <mat-label>Years Owned</mat-label>
+                    </mat-form-field>
+                </td>
+                <td>
+                    <mat-radio-group aria-label="gender" aria-labelledby="genderLabel" name="twoGender" [(ngModel)]="formdata.twoGender">
+                        <mat-radio-button value="1" [checked]="true">Male</mat-radio-button>
+                        <mat-radio-button value="2">Female</mat-radio-button>
+                    </mat-radio-group>
+                </td>
+                <td>
+                    <section class="example-section">
+                        <mat-checkbox class="example-margin" name="spayedNeutered2" [(ngModel)]="formdata.spayedNeutered2">Spayed/Neutered</mat-checkbox>
+                    </section>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <mat-form-field>
+                        <input matInput placeholder="Name" required name="thirdPet" [(ngModel)]="formdata.thirdPet">
+                        <mat-label>Pet Name</mat-label>
+                    </mat-form-field>
+                </td>
+                <td>
+                    <mat-form-field>
+                        <input matInput type="number" max="50" placeholder="Years" required name="thirdYears" [(ngModel)]="formdata.thirdYears">
+                        <mat-label>Years Owned</mat-label>
+                    </mat-form-field>
+                </td>
+                <td>
+                    <mat-radio-group aria-label="gender" aria-labelledby="genderLabel" name="thirdGender" [(ngModel)]="formdata.thirdGender">
+                        <mat-radio-button value="1" [checked]="true">Male</mat-radio-button>
+                        <mat-radio-button value="2">Female</mat-radio-button>
+                    </mat-radio-group>
+                </td>
+                <td>
+                    <section class="example-section">
+                        <mat-checkbox class="example-margin" name="spayedNeutered3" [(ngModel)]="formdata.spayedNeutered3">Spayed/Neutered</mat-checkbox>
+                    </section>
+                </td>
+            </tr>
+        </table>
 
-    <br />
+        <table style="width: 100%">
+            <tr>
+                <td>
+                    <mat-form-field style="width: 100%">
+                        <input matInput placeholder="Name" required name="vetName" [(ngModel)]="formdata.vetName">
+                        <mat-label>Veterinary name</mat-label>
+                    </mat-form-field>
+                </td>
+                <td>
+                    <mat-form-field>
+                        <mat-label>Phone</mat-label>
+                        <span matPrefix>+1 &nbsp;</span>
+                        <input type="tel" matInput placeholder="555-555-1234" required name="vetPhone" [(ngModel)]="formdata.vetPhone">
+                    </mat-form-field>
+                </td>
+            </tr>
+        </table>
 
-    <mat-label id="crateTrainedLabel">Have you ever crate trained an animal?</mat-label>
-    <mat-radio-group aria-label="Crate" aria-labelledby="crateTrainedLabel">
-        <mat-radio-button value="1" [checked]="true">Yes</mat-radio-button>
-        <mat-radio-button value="2">No</mat-radio-button>
-    </mat-radio-group>
+        <mat-form-field style="width: 40%">
+            <input matInput type="number" min="0" max="24" placeholder="Hours" required name="hoursAlone" [(ngModel)]="formdata.hoursAlone">
+            <mat-label>Hours per day animal be left alone</mat-label>
+        </mat-form-field>
+        <br />
 
-    <table>
-        <tr>
-            <td>How many adults are living in the house?</td>
-        </tr>
-        <tr>
-            <td>
-                <mat-form-field style="width: 100%">
-                    <input matInput placeholder="Name" required>
-                    <mat-label>Adult #1</mat-label>
-                </mat-form-field>
-            </td>
-            <td>
-                <mat-form-field>
-                    <input matInput type="number" min="0" max="99" placeholder="Enter  Age" required>
-                    <mat-label>Age</mat-label>
-                </mat-form-field>
-            </td>
-            <td>
-                <mat-form-field>
-                    <input matInput placeholder="Relation" required>
-                    <mat-label>Relationship</mat-label>
-                </mat-form-field>
-            </td>
-        </tr>
+        <mat-form-field style="width: 100%">
+            <input matInput placeholder="Brief Explanation" required name="dailyOccupancy" [(ngModel)]="formdata.dailyOccupancy">
+            <mat-label>Where will the animals stay during the day?</mat-label>
+        </mat-form-field>
 
-        <tr>
-            <td>
-                <mat-form-field style="width: 100%">
-                    <input matInput placeholder="Name" required>
-                    <mat-label>Adult #2</mat-label>
-                </mat-form-field>
-            </td>
-            <td>
-                <mat-form-field>
-                    <input matInput type="number" min="0" max="99" placeholder="Enter  Age" required>
-                    <mat-label>Age</mat-label>
-                </mat-form-field>
-            </td>
-            <td>
-                <mat-form-field>
-                    <input matInput placeholder="Relation" required>
-                    <mat-label>Relationship</mat-label>
-                </mat-form-field>
-            </td>
-        </tr>
+        <br />
 
-        <tr>
-            <td>How many children are living in the house?</td>
-        </tr>
+        <mat-form-field style="width: 100%">
+            <input matInput placeholder="Brief Explanation" required name="nightlyOccupancy" [(ngModel)]="formdata.nightlyOccupancy">
+            <mat-label>Where will the animals stay during the night?</mat-label>
+        </mat-form-field>
 
-        <tr>
-            <td>
-                <mat-form-field style="width: 100%">
-                    <input matInput placeholder="Name" required>
-                    <mat-label>Child #1</mat-label>
-                </mat-form-field>
-            </td>
-            <td>
-                <mat-form-field>
-                    <input matInput type="number" min="0" max="50" placeholder="Enter  Age" required>
-                    <mat-label>Age</mat-label>
-                </mat-form-field>
-            </td>
-            <td>
-                <mat-form-field>
-                    <input matInput placeholder="Relation" required>
-                    <mat-label>Relationship</mat-label>
-                </mat-form-field>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <mat-form-field style="width: 100%">
-                    <input matInput placeholder="Name" required>
-                    <mat-label>Child #2</mat-label>
-                </mat-form-field>
-            </td>
-            <td>
-                <mat-form-field>
-                    <input matInput type="number" min="0" max="50" placeholder="Enter  Age" required>
-                    <mat-label>Age</mat-label>
-                </mat-form-field>
-            </td>
-            <td>
-                <mat-form-field>
-                    <input matInput placeholder="Relation" required>
-                    <mat-label>Relationship</mat-label>
-                </mat-form-field>
-            </td>
-        </tr>
-    </table>
+        <br />
 
-    <mat-label id="allergiesLabel">Does anyone in the household have any allergies?</mat-label>
-    <mat-radio-group aria-label="Allergies" aria-labelledby="allergiesLabel">
-        <mat-radio-button value="1" [checked]="true">Yes</mat-radio-button>
-        <mat-radio-button value="2">No</mat-radio-button>
-    </mat-radio-group>
-    <br />
+        <mat-label id="crateTrainedLabel">Have you ever crate trained an animal?</mat-label>
+        <mat-radio-group aria-label="Crate" aria-labelledby="crateTrainedLabel" name="crateTrained" [(ngModel)]="formdata.crateTrained">
+            <mat-radio-button value="1" [checked]="true">Yes</mat-radio-button>
+            <mat-radio-button value="2">No</mat-radio-button>
+        </mat-radio-group>
 
-    <mat-label id="childrenLabel">If no children are living in the house will children be visiting?</mat-label>
-    <mat-radio-group aria-label="Children" aria-labelledby="childrenLabel">
-        <mat-radio-button value="1" [checked]="true">Yes</mat-radio-button>
-        <mat-radio-button value="2">No</mat-radio-button>
-    </mat-radio-group>
-    <br />
+        <table>
+            <tr>
+                <td>How many adults are living in the house?</td>
+            </tr>
+            <tr>
+                <td>
+                    <mat-form-field style="width: 100%">
+                        <input matInput placeholder="Name" required name="adultOne" [(ngModel)]="formdata.adultOne">
+                        <mat-label>Adult #1</mat-label>
+                    </mat-form-field>
+                </td>
+                <td>
+                    <mat-form-field>
+                        <input matInput type="number" min="0" max="99" placeholder="Enter  Age" required name="adultOneAge" [(ngModel)]="formdata.adultOneAge">
+                        <mat-label>Age</mat-label>
+                    </mat-form-field>
+                </td>
+                <td>
+                    <mat-form-field>
+                        <input matInput placeholder="Relation" required name="adultOneRelation" [(ngModel)]="formdata.adultOneRelation">
+                        <mat-label>Relationship</mat-label>
+                    </mat-form-field>
+                </td>
+            </tr>
 
-    <mat-form-field style="width: 100%">
-        <input matInput placeholder="Brief Explanation" required>
-        <mat-label>What accommodations will be made for the animal if traveling?</mat-label>
-    </mat-form-field>
+            <tr>
+                <td>
+                    <mat-form-field style="width: 100%">
+                        <input matInput placeholder="Name" required name="adultTwo" [(ngModel)]="formdata.adultTwo">
+                        <mat-label>Adult #2</mat-label>
+                    </mat-form-field>
+                </td>
+                <td>
+                    <mat-form-field>
+                        <input matInput type="number" min="0" max="99" placeholder="Enter  Age" required name="adultTwoAge" [(ngModel)]="formdata.adultTwoAge">
+                        <mat-label>Age</mat-label>
+                    </mat-form-field>
+                </td>
+                <td>
+                    <mat-form-field>
+                        <input matInput placeholder="Relation" required name="adultTwoRelation" [(ngModel)]="formdata.adultTwoRelation">
+                        <mat-label>Relationship</mat-label>
+                    </mat-form-field>
+                </td>
+            </tr>
 
-    <br />
+            <tr>
+                <td>How many children are living in the house?</td>
+            </tr>
 
-    <table style="width: 100%">
-        <tr>
-            <td>Please list three references:</td>
-        </tr>
-        <tr>
-            <td>
-                <mat-form-field style="width: 100%">
-                    <input matInput placeholder="Name" required>
-                    <mat-label>Reference #1</mat-label>
-                </mat-form-field>
-            </td>
-            <td>
-                <mat-form-field>
-                    <mat-label>Phone</mat-label>
-                    <span matPrefix>+1 &nbsp;</span>
-                    <input type="tel" matInput placeholder="555-555-1234" required>
-                </mat-form-field>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <mat-form-field style="width: 100%">
-                    <input matInput placeholder="Name" required>
-                    <mat-label>Reference #2</mat-label>
-                </mat-form-field>
-            </td>
-            <td>
-                <mat-form-field>
-                    <mat-label>Phone</mat-label>
-                    <span matPrefix>+1 &nbsp;</span>
-                    <input type="tel" matInput placeholder="555-555-1234" required>
-                </mat-form-field>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <mat-form-field style="width: 100%">
-                    <input matInput placeholder="Name" required>
-                    <mat-label>Reference #3</mat-label>
-                </mat-form-field>
-            </td>
-            <td>
-                <mat-form-field>
-                    <mat-label>Phone</mat-label>
-                    <span matPrefix>+1 &nbsp;</span>
-                    <input type="tel" matInput placeholder="555-555-1234" required>
-                </mat-form-field>
-            </td>
-        </tr>
-    </table>
+            <tr>
+                <td>
+                    <mat-form-field style="width: 100%">
+                        <input matInput placeholder="Name" required name="childOne" [(ngModel)]="formdata.childOne">
+                        <mat-label>Child #1</mat-label>
+                    </mat-form-field>
+                </td>
+                <td>
+                    <mat-form-field>
+                        <input matInput type="number" min="0" max="50" placeholder="Enter  Age" required name="childOneAge" [(ngModel)]="formdata.childOneAge">
+                        <mat-label>Age</mat-label>
+                    </mat-form-field>
+                </td>
+                <td>
+                    <mat-form-field>
+                        <input matInput placeholder="Relation" required name="childOneRelation" [(ngModel)]="formdata.childOneRelation">
+                        <mat-label>Relationship</mat-label>
+                    </mat-form-field>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <mat-form-field style="width: 100%">
+                        <input matInput placeholder="Name" required name="childTwo" [(ngModel)]="formdata.childTwo">
+                        <mat-label>Child #2</mat-label>
+                    </mat-form-field>
+                </td>
+                <td>
+                    <mat-form-field>
+                        <input matInput type="number" min="0" max="50" placeholder="Enter  Age" required name="childTwoAge" [(ngModel)]="formdata.childTwoAge">
+                        <mat-label>Age</mat-label>
+                    </mat-form-field>
+                </td>
+                <td>
+                    <mat-form-field>
+                        <input matInput placeholder="Relation" required name="childTwoRelation" [(ngModel)]="formdata.childTwoRelation">
+                        <mat-label>Relationship</mat-label>
+                    </mat-form-field>
+                </td>
+            </tr>
+        </table>
 
-</mat-dialog-content>
+        <mat-label id="allergiesLabel">Does anyone in the household have any allergies?</mat-label>
+        <mat-radio-group aria-label="Allergies" aria-labelledby="allergiesLabel" name="anyoneAllergic" [(ngModel)]="formdata.anyoneAllergic">
+            <mat-radio-button value="1" [checked]="true">Yes</mat-radio-button>
+            <mat-radio-button value="2">No</mat-radio-button>
+        </mat-radio-group>
+        <br />
 
-<mat-dialog-actions>
-    <button mat-button (click)="closeDialog()">Cancel</button>
-    <button mat-button (click)="submitDialog()">Submit</button>
-</mat-dialog-actions>
+        <mat-label id="childrenLabel">If no children are living in the house will children be visiting?</mat-label>
+        <mat-radio-group aria-label="Children" aria-labelledby="childrenLabel" name="childrenHome" [(ngModel)]="formdata.childrenHome">
+            <mat-radio-button value="1" [checked]="true">Yes</mat-radio-button>
+            <mat-radio-button value="2">No</mat-radio-button>
+        </mat-radio-group>
+        <br />
 
+        <mat-form-field style="width: 100%">
+            <input matInput placeholder="Brief Explanation" required name="accomodations" [(ngModel)]="formdata.accommodations">
+            <mat-label>What accommodations will be made for the animal if traveling?</mat-label>
+        </mat-form-field>
+
+        <br />
+
+        <table style="width: 100%">
+            <tr>
+                <td>Please list three references:</td>
+            </tr>
+            <tr>
+                <td>
+                    <mat-form-field style="width: 100%">
+                        <input matInput placeholder="Name" required name="ReferenceOne" [(ngModel)]="formdata.ReferenceOne">
+                        <mat-label>Reference #1</mat-label>
+                    </mat-form-field>
+                </td>
+                <td>
+                    <mat-form-field>
+                        <mat-label>Phone</mat-label>
+                        <span matPrefix>+1 &nbsp;</span>
+                        <input type="tel" matInput placeholder="555-555-1234" required name="firstPhone" [(ngModel)]="formdata.firstPhone">
+                    </mat-form-field>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <mat-form-field style="width: 100%">
+                        <input matInput placeholder="Name" required name="ReferenceTwo" [(ngModel)]="formdata.ReferenceTwo">
+                        <mat-label>Reference #2</mat-label>
+                    </mat-form-field>
+                </td>
+                <td>
+                    <mat-form-field>
+                        <mat-label>Phone</mat-label>
+                        <span matPrefix>+1 &nbsp;</span>
+                        <input type="tel" matInput placeholder="555-555-1234" required name="secondPhone" [(ngModel)]="formdata.secondPhone">
+                    </mat-form-field>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <mat-form-field style="width: 100%">
+                        <input matInput placeholder="Name" required name="ReferenceThree" [(ngModel)]="formdata.ReferenceThree">
+                        <mat-label>Reference #3</mat-label>
+                    </mat-form-field>
+                </td>
+                <td>
+                    <mat-form-field>
+                        <mat-label>Phone</mat-label>
+                        <span matPrefix>+1 &nbsp;</span>
+                        <input type="tel" matInput placeholder="555-555-1234" required name="thirdPhone" [(ngModel)]="formdata.thirdPhone">
+                    </mat-form-field>
+                </td>
+            </tr>
+        </table>
+
+    </mat-dialog-content>
+
+    <mat-dialog-actions>
+        <button mat-button (click)="closeDialog()">Cancel</button>
+        <button mat-button type="submit">Submit</button>
+    </mat-dialog-actions>
+
+</form>

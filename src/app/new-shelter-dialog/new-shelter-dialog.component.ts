@@ -9,5 +9,38 @@ import { Globals } from "../globals";
 })
 export class NewShelterDialogComponent {
 
-    constructor(@Inject(MAT_DIALOG_DATA) public data: any, public dialogRef: MatDialogRef<NewShelterDialogComponent>, public global:Globals ) { }
+    formdata = {
+        shelterName: "",
+        shelterAddress: "",
+        shelterCity: "",
+        shelterState: "",
+        shelterZip: "",
+        shelterPhone: "",
+        adminName: "",
+        adminEmail: "",
+        coordinatorName: "",
+        coordinatorEmail: "",
+
+    };
+
+  
+
+    constructor(@Inject(MAT_DIALOG_DATA) public data: any, public dialogRef: MatDialogRef<NewShelterDialogComponent>, public global: Globals) { }
+
+    closeDialog() {
+        console.log('closing dialog')
+        this.dialogRef.close();
+    }
+
+    submitDialog(shelterForm: any) {
+        if (shelterForm.invalid) {
+            console.log('There are errors on the form')
+            return;
+        }
+
+
+        console.log(shelterForm);
+        console.log(this.formdata);
+    }
+
 }

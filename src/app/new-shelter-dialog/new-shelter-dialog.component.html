@@ -1,71 +1,75 @@
-<h2 mat-dialog-title>New {{data.role}}</h2>
-<mat-dialog-content>
-    <mat-form-field style="width: 100%" *ngIf="data.rescueName==true">
-        <input matInput placeholder="Name" required>
-        <mat-label>Shelter Name</mat-label>
-        <mat-error>Please enter the rescue name</mat-error>
-    </mat-form-field>
+<form #shelterForm="ngForm" (ngSubmit)="submitDialog(shelterForm)">
+
+    <h2 mat-dialog-title>New {{data.role}}</h2>
+    <mat-dialog-content>
+        <mat-form-field style="width: 100%">
+            <input matInput placeholder="Name" required name="shelterName" [(ngModel)]="formdata.shelterName">
+            <mat-label>Shelter Name</mat-label>
+            <mat-error>Please enter the rescue name</mat-error>
+        </mat-form-field>
 
 
-    <mat-form-field style="width: 100%">
-        <input matInput placeholder="Address" required>
-        <mat-label>Address</mat-label>
-    </mat-form-field>
+        <mat-form-field style="width: 100%">
+            <input matInput placeholder="Address" required name="shelterAddress" [(ngModel)]="formdata.shelterAddress">
+            <mat-label>Address</mat-label>
+        </mat-form-field>
 
-    <mat-form-field style="width: 100%">
-        <input matInput placeholder="City" required>
-        <mat-label>City</mat-label>
-    </mat-form-field>
+        <mat-form-field style="width: 100%">
+            <input matInput placeholder="City" required name="shelterCity" [(ngModel)]="formdata.shelterCity">
+            <mat-label>City</mat-label>
+        </mat-form-field>
 
-    <table>
-        <tr>
-            <td>
-                <mat-form-field>
-                    <mat-label> State </mat-label>
-                    <mat-select id="stat" name="stat">
-                        <mat-option *ngFor="let state of global.states" [value]="state.abbreviation">
-                            {{ state.name }} - {{ state.abbreviation }}
-                        </mat-option>
-                    </mat-select>
-                </mat-form-field>
-            </td>
-            <td>
-                <mat-form-field>
-                    <input matInput type="number" max="99999" placeholder="Zip" required>
-                    <mat-label>Zip</mat-label>
-                </mat-form-field>
-            </td>
-            <td>
-                <mat-form-field>
-                    <mat-label>Phone</mat-label>
-                    <span matPrefix>+1 &nbsp;</span>
-                    <input type="tel" matInput placeholder="555-555-1234" required>
-                </mat-form-field>
-            </td>
-        </tr>
-    </table>
-    <mat-form-field style="width: 100%" *ngIf="data.contactName==true">
-        <input matInput placeholder="Name" required>
-        <mat-label>Administrator Name</mat-label>
-    </mat-form-field>
+        <table>
+            <tr>
+                <td>
+                    <mat-form-field>
+                        <mat-label> State </mat-label>
+                        <mat-select id="stat" name="shelterState" [(ngModel)]="formdata.shelterState">
+                            <mat-option *ngFor="let state of global.states" [value]="state.abbreviation">
+                                {{ state.name }} - {{ state.abbreviation }}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </td>
+                <td>
+                    <mat-form-field>
+                        <input matInput type="number" max="99999" placeholder="Zip" required name="shelterZip" [(ngModel)]="formdata.shelterZip">
+                        <mat-label>Zip</mat-label>
+                    </mat-form-field>
+                </td>
+                <td>
+                    <mat-form-field>
+                        <mat-label>Phone</mat-label>
+                        <span matPrefix>+1 &nbsp;</span>
+                        <input type="tel" matInput placeholder="555-555-1234" required name="shelterPhone" [(ngModel)]="formdata.shelterPhone">
+                    </mat-form-field>
+                </td>
+            </tr>
+        </table>
+        <mat-form-field style="width: 100%">
+            <input matInput placeholder="Name" required name="adminName" [(ngModel)]="formdata.adminName">
+            <mat-label>Administrator Name</mat-label>
+        </mat-form-field>
 
-    <mat-form-field style="width: 100%">
-        <input matInput placeholder="Email" required>
-        <mat-label> Administrator Email</mat-label>
-    </mat-form-field>
+        <mat-form-field style="width: 100%">
+            <input matInput placeholder="Email" required name="adminEmail" [(ngModel)]="formdata.adminEmail">
+            <mat-label> Administrator Email</mat-label>
+        </mat-form-field>
 
-    <mat-form-field style="width: 100%" *ngIf="data.contactName==true">
-        <input matInput placeholder="Name" required>
-        <mat-label>Coordinator Name</mat-label>
-    </mat-form-field>
+        <mat-form-field style="width: 100%">
+            <input matInput placeholder="Name" required name="coordinatorName" [(ngModel)]="formdata.coordinatorName">
+            <mat-label>Coordinator Name</mat-label>
+        </mat-form-field>
 
-    <mat-form-field style="width: 100%">
-        <input matInput placeholder="Email" required>
-        <mat-label> Coordinator Email</mat-label>
-    </mat-form-field>
+        <mat-form-field style="width: 100%">
+            <input matInput placeholder="Email" required name="coordinatorEmail" [(ngModel)]="formdata.coordinatorEmail">
+            <mat-label> Coordinator Email</mat-label>
+        </mat-form-field>
 
-    <div mat-dialog-actions>
-        <button mat-button mat-dialog-close>Close</button>
-        <button mat-button>Submit</button>
-    </div>
-</mat-dialog-content>
+        <div mat-dialog-actions>
+            <button mat-button (click)="closeDialog()">Close</button>
+            <button mat-button type="submit">Submit</button>
+        </div>
+    </mat-dialog-content>
+
+</form>
