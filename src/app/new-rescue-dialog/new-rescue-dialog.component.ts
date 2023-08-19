@@ -1,5 +1,7 @@
 import { Component, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from "@angular/material/dialog";
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+
 import { Globals } from "../globals";
 
 @Component({
@@ -8,13 +10,11 @@ import { Globals } from "../globals";
     styleUrls: ['./new-rescue-dialog.component.css']
 })
 export class NewRescueDialogComponent {
-    formdata = {
-        rescueName: "", rescueAddress: "", rescueCity: "", rescueState: "", rescueZip: "", rescuePhone: "", rescueEmail: "", contactName: "", contactEmail: "", contactPhone: "",
-        species: "1", gender: "1", size: "1", age: "1", applicationType: "1"
-    };
+    formdata = { rescueName: "", rescueAddress: "", rescueCity: "", rescueState: "", rescueZip: "", rescuePhone: "", rescueEmail: "", contactName: "", contactEmail: "", contactPhone: "",
+        species: "1", gender: "1", size: "1", age: "1", applicationType: "1" };
     
 
-    constructor(@Inject(MAT_DIALOG_DATA) public data: any, public dialogRef: MatDialogRef<NewRescueDialogComponent>, public global: Globals) { }
+    constructor(@Inject(MAT_DIALOG_DATA) public data: any, public dialogRef: MatDialogRef<NewRescueDialogComponent>, public global: Globals, private http: HttpClient) { }
 
     closeDialog() {
         console.log('closing dialog')
@@ -31,7 +31,6 @@ export class NewRescueDialogComponent {
         console.log(this.formdata);
 
         //call via http the webservice        
-
     }
 
 }

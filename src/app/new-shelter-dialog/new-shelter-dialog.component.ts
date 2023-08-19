@@ -1,5 +1,7 @@
 import { Component, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+
 import { Globals } from "../globals";
 
 @Component({
@@ -9,22 +11,11 @@ import { Globals } from "../globals";
 })
 export class NewShelterDialogComponent {
 
-    formdata = {
-        shelterName: "",
-        shelterAddress: "",
-        shelterCity: "",
-        shelterState: "TX",
-        shelterZip: "",
-        shelterPhone: "",
-        adminName: "",
-        adminEmail: "",
-        coordinatorName: "",
-        coordinatorEmail: "",
-    };
+    formdata = { shelterName: "", shelterAddress: "", shelterCity: "", shelterState: "TX", shelterZip: "", shelterPhone: "", adminName: "", adminEmail: "", coordinatorName: "",
+        coordinatorEmail: "" };
+ 
 
-  
-
-    constructor(@Inject(MAT_DIALOG_DATA) public data: any, public dialogRef: MatDialogRef<NewShelterDialogComponent>, public global: Globals) { }
+    constructor(@Inject(MAT_DIALOG_DATA) public data: any, public dialogRef: MatDialogRef<NewShelterDialogComponent>, public global: Globals, private http: HttpClient) { }
 
     closeDialog() {
         console.log('closing dialog')
