@@ -13,14 +13,13 @@ export class NewShelterDialogComponent {
         shelterName: "",
         shelterAddress: "",
         shelterCity: "",
-        shelterState: "",
+        shelterState: "TX",
         shelterZip: "",
         shelterPhone: "",
         adminName: "",
         adminEmail: "",
         coordinatorName: "",
         coordinatorEmail: "",
-
     };
 
   

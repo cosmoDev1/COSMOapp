@@ -33,7 +33,7 @@
                 </td>
                 <td>
                     <mat-form-field>
-                        <input matInput type="number" max="99999" placeholder="Zip" required name="shelterZip" [(ngModel)]="formdata.shelterZip">
+                        <input matInput type="number" max="99999" placeholder="Zip" required name="shelterZip" [(ngModel)]="formdata.shelterZip" onKeyPress="if(this.value.length==5) return false;">
                         <mat-label>Zip</mat-label>
                     </mat-form-field>
                 </td>
@@ -41,7 +41,7 @@
                     <mat-form-field>
                         <mat-label>Phone</mat-label>
                         <span matPrefix>+1 &nbsp;</span>
-                        <input type="tel" matInput placeholder="555-555-1234" required name="shelterPhone" [(ngModel)]="formdata.shelterPhone">
+                        <input type="tel" matInput placeholder="555-555-1234" maxlength="10" required name="shelterPhone" [(ngModel)]="formdata.shelterPhone">
                     </mat-form-field>
                 </td>
             </tr>
