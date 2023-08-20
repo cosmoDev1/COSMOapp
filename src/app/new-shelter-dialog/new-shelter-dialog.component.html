@@ -5,18 +5,20 @@
         <mat-form-field style="width: 100%">
             <input matInput placeholder="Name" required name="shelterName" [(ngModel)]="formdata.shelterName">
             <mat-label>Shelter Name</mat-label>
-            <mat-error>Please enter the rescue name</mat-error>
+            <mat-error>Please enter shelter name</mat-error>
         </mat-form-field>
 
 
         <mat-form-field style="width: 100%">
             <input matInput placeholder="Address" required name="shelterAddress" [(ngModel)]="formdata.shelterAddress">
             <mat-label>Address</mat-label>
+            <mat-error>Please enter shelter address</mat-error>
         </mat-form-field>
 
         <mat-form-field style="width: 100%">
             <input matInput placeholder="City" required name="shelterCity" [(ngModel)]="formdata.shelterCity">
             <mat-label>City</mat-label>
+            <mat-error>Please enter shelter city</mat-error>
         </mat-form-field>
 
         <table>
@@ -35,6 +37,7 @@
                     <mat-form-field>
                         <input matInput type="number" max="99999" placeholder="Zip" required name="shelterZip" [(ngModel)]="formdata.shelterZip" onKeyPress="if(this.value.length==5) return false;">
                         <mat-label>Zip</mat-label>
+                        <mat-error>Please enter shelter zip</mat-error>
                     </mat-form-field>
                 </td>
                 <td>
@@ -42,29 +45,57 @@
                         <mat-label>Phone</mat-label>
                         <span matPrefix>+1 &nbsp;</span>
                         <input type="tel" matInput placeholder="555-555-1234" maxlength="10" required name="shelterPhone" [(ngModel)]="formdata.shelterPhone">
+                        <mat-error>Please enter shelter phone</mat-error>
                     </mat-form-field>
                 </td>
             </tr>
         </table>
+
+
+
         <mat-form-field style="width: 100%">
             <input matInput placeholder="Name" required name="adminName" [(ngModel)]="formdata.adminName">
             <mat-label>Administrator Name</mat-label>
+            <mat-error>Please enter administrator name</mat-error>
         </mat-form-field>
+        <br />
 
         <mat-form-field style="width: 100%">
             <input matInput placeholder="Email" required name="adminEmail" [(ngModel)]="formdata.adminEmail">
             <mat-label> Administrator Email</mat-label>
+            <mat-error>Please enter shelter email</mat-error>
         </mat-form-field>
+        <br />
+
+        <mat-form-field>
+            <mat-label>Phone</mat-label>
+            <span matPrefix>+1 &nbsp;</span>
+            <input type="tel" matInput placeholder="555-555-1234" maxlength="10" required name="adminPhone" [(ngModel)]="formdata.adminPhone">
+            <mat-error>Please enter administrator phone</mat-error>
+        </mat-form-field>
+        <br />
 
         <mat-form-field style="width: 100%">
             <input matInput placeholder="Name" required name="coordinatorName" [(ngModel)]="formdata.coordinatorName">
             <mat-label>Coordinator Name</mat-label>
+            <mat-error>Please enter coordinator name</mat-error>
         </mat-form-field>
+        <br />
+
 
         <mat-form-field style="width: 100%">
             <input matInput placeholder="Email" required name="coordinatorEmail" [(ngModel)]="formdata.coordinatorEmail">
             <mat-label> Coordinator Email</mat-label>
+            <mat-error>Please enter coordinator email</mat-error>
         </mat-form-field>
+
+        <mat-form-field>
+            <mat-label>Phone</mat-label>
+            <span matPrefix>+1 &nbsp;</span>
+            <input type="tel" matInput placeholder="555-555-1234" maxlength="10" required name="coordinatorPhone" [(ngModel)]="formdata.coordinatorPhone">
+            <mat-error>Please enter coordinator phone</mat-error>
+        </mat-form-field>
+        <br />
 
         <div mat-dialog-actions>
             <button mat-button (click)="closeDialog()">Close</button>

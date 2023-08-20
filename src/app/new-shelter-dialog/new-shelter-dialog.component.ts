@@ -11,7 +11,7 @@ import { Globals } from "../globals";
 })
 export class NewShelterDialogComponent {
 
-    formdata = { shelterName: "", shelterAddress: "", shelterCity: "", shelterState: "TX", shelterZip: "", shelterPhone: "", adminName: "", adminEmail: "", coordinatorName: "",
+    formdata = { shelterName: "", shelterAddress: "", shelterCity: "", shelterState: "TX", shelterZip: "", shelterPhone: "", adminName: "", adminPhone:"", adminEmail: "", coordinatorName: "", coordinatorPhone:"",
         coordinatorEmail: "" };
  
 

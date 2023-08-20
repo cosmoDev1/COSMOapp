@@ -5,20 +5,20 @@
         <mat-form-field style="width: 100%" *ngIf="data.rescueName==true">
             <input matInput name="rescueName" placeholder="Name" maxlength="128" required [(ngModel)]="formdata.rescueName">
             <mat-label>Rescue Name</mat-label>
-            <mat-error>Please enter the rescue name</mat-error>
+            <mat-error>Please enter rescue name</mat-error>
         </mat-form-field>
 
 
         <mat-form-field style="width: 100%">
             <input matInput name="rescueAddress" placeholder="Address" maxlength="128" required [(ngModel)]="formdata.rescueAddress">
             <mat-label>Address</mat-label>
-            <mat-error>Please enter the rescue address</mat-error>
+            <mat-error>Please enter rescue address</mat-error>
         </mat-form-field>
 
         <mat-form-field style="width: 100%">
             <input matInput name="rescueCity" placeholder="City" maxlength="64" required [(ngModel)]="formdata.rescueCity">
             <mat-label>City</mat-label>
-            <mat-error>Please enter the rescue city</mat-error>
+            <mat-error>Please enter rescue city</mat-error>
         </mat-form-field>
 
         <table>
@@ -37,7 +37,7 @@
                     <mat-form-field>
                         <input matInput name="rescueZip" type="number" max="99999" placeholder="Zip" required [(ngModel)]="formdata.rescueZip" onKeyPress="if(this.value.length==5) return false;">
                         <mat-label>Zip</mat-label>
-                        <mat-error>Please enter the rescue zip</mat-error>
+                        <mat-error>Please enter rescue zip</mat-error>
                     </mat-form-field>
                 </td>
                 <td>
@@ -45,7 +45,7 @@
                         <mat-label>Rescue Phone</mat-label>
                         <span matPrefix>+1 &nbsp;</span>
                         <input type="tel" matInput name="rescuePhone" placeholder="555-555-1234" maxlength="10" required [(ngModel)]="formdata.rescuePhone">
-                        <mat-error>Please enter the rescue phone</mat-error>
+                        <mat-error>Please enter rescue phone</mat-error>
                     </mat-form-field>
                 </td>
             </tr>
@@ -54,27 +54,27 @@
         <mat-form-field style="width: 100%">
             <input matInput name="rescueEmail" placeholder="Email" maxlength="128" required [(ngModel)]="formdata.rescueEmail">
             <mat-label>Rescue Email</mat-label>
-            <mat-error>Please enter the rescue email</mat-error>
+            <mat-error>Please enter rescue email</mat-error>
         </mat-form-field>
 
         <mat-form-field style="width: 100%">
             <input matInput name="contactName" placeholder="Name" maxlength="128" required [(ngModel)]="formdata.contactName">
             <mat-label>Contact Name</mat-label>
-            <mat-error>Please enter the contact name</mat-error>
+            <mat-error>Please enter contact name</mat-error>
         </mat-form-field>
 
         <mat-form-field>
             <mat-label>Contact Phone</mat-label>
             <span matPrefix>+1 &nbsp;</span>
             <input type="tel" matInput name="contactPhone" placeholder="555-555-1234" maxlength="10" required [(ngModel)]="formdata.contactPhone">
-            <mat-error>Please enter the contact phone</mat-error>
+            <mat-error>Please enter contact phone</mat-error>
         </mat-form-field>
         <br />
 
         <mat-form-field style="width: 100%">
             <input matInput name="contactEmail" placeholder="Email" maxlength="128" required [(ngModel)]="formdata.contactEmail">
             <mat-label>Contact Email</mat-label>
-            <mat-error>Please enter the contact email</mat-error>
+            <mat-error>Please enter contact email</mat-error>
         </mat-form-field>
         <br />
 
