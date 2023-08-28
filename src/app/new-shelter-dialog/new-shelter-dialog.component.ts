@@ -28,6 +28,12 @@ export class NewShelterDialogComponent {
             return;
         }
 
+        var head = new HttpHeaders({ 'Content-Type': 'application/json' });
+        const options = { headers: head };
+
+        this.http.post(this.global.webserviceBaseUrl + 'shelters', this.formdata, options).subscribe((res: any) => {
+            console.log(res);
+        });
 
         console.log(shelterForm);
         console.log(this.formdata);

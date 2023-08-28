@@ -47,7 +47,7 @@ export class AppComponent implements AfterViewInit, OnInit {
         const options = { headers: head };
 
         //this.http.get("https://v1.nocodeapi.com/casper/airtable/hOIlnPJwPYcZIyyL?tableName=BARC", options).subscribe((res: any) => {
-        this.http.get(this.global.webserviceUrl, options).subscribe((res: any) => {
+        this.http.get(this.global.webserviceBaseUrl+'values'+this.global.testSource, options).subscribe((res: any) => {
             console.log(res);
             var cats = res[0].cats;
             var dogs = res[0].dogs;
