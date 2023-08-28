@@ -27,6 +27,13 @@ export class NewRescueDialogComponent {
             return;
         }
 
+        var head = new HttpHeaders({ 'Content-Type': 'application/json' });
+        const options = { headers: head };
+
+        this.http.post(this.global.webserviceBaseUrl + 'rescues', this.formdata, options).subscribe((res: any) => {
+            console.log(res);
+        });
+
         console.log(rescueForm);
         console.log(this.formdata);
 
