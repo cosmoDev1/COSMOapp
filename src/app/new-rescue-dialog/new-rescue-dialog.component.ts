@@ -1,8 +1,10 @@
 import { Component, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from "@angular/material/dialog";
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 
 import { Globals } from "../globals";
+import { ConfirmationDialogComponent } from '../confirmation-dialog/confirmation-dialog.component';
 
 @Component({
     selector: 'new-rescue-dialog',
@@ -14,7 +16,7 @@ export class NewRescueDialogComponent {
         species: "1", gender: "1", size: "1", age: "1", applicationType: "1" };
     
 
-    constructor(@Inject(MAT_DIALOG_DATA) public data: any, public dialogRef: MatDialogRef<NewRescueDialogComponent>, public global: Globals, private http: HttpClient) { }
+      constructor(@Inject(MAT_DIALOG_DATA) public data: any, public dialogRef: MatDialogRef<NewRescueDialogComponent>, public global: Globals, private http: HttpClient, private dialog: MatDialog) { }
 
     closeDialog() {
         console.log('closing dialog')
@@ -31,13 +33,16 @@ export class NewRescueDialogComponent {
         const options = { headers: head };
 
         this.http.post(this.global.webserviceBaseUrl + 'rescues', this.formdata, options).subscribe((res: any) => {
-            console.log(res);
+              console.log(res);
+              const dialogConfig = new MatDialogConfig();
+
+              dialogConfig.disableClose = true;
+              dialogConfig.autoFocus = true;
+              dialogConfig.data = { title: 'Notice', message: 'Your submission was successfully received. You will receive an email with further instructions.', notification: true };
+
+              const dialogRef = this.dialog.open(ConfirmationDialogComponent, dialogConfig);
+              dialogRef.afterClosed().subscribe(result => { this.closeDialog(); });
         });
-
-        console.log(rescueForm);
-        console.log(this.formdata);
-
-        //call via http the webservice        
     }
 
 }
