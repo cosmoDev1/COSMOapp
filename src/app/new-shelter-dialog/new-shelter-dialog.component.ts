@@ -1,8 +1,9 @@
 import { Component, Inject } from '@angular/core';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatDialogRef, MAT_DIALOG_DATA, MatDialog, MatDialogConfig } from "@angular/material/dialog";
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 import { Globals } from "../globals";
+import { ConfirmationDialogComponent } from '../confirmation-dialog/confirmation-dialog.component';
 
 @Component({
   selector: 'app-new-shelter-dialog',
@@ -15,7 +16,7 @@ export class NewShelterDialogComponent {
         coordinatorEmail: "" };
  
 
-    constructor(@Inject(MAT_DIALOG_DATA) public data: any, public dialogRef: MatDialogRef<NewShelterDialogComponent>, public global: Globals, private http: HttpClient) { }
+    constructor(@Inject(MAT_DIALOG_DATA) public data: any, public dialogRef: MatDialogRef<NewShelterDialogComponent>, public global: Globals, private http: HttpClient, private dialog: MatDialog) { }
 
     closeDialog() {
         console.log('closing dialog')
@@ -33,6 +34,23 @@ export class NewShelterDialogComponent {
 
         this.http.post(this.global.webserviceBaseUrl + 'shelters', this.formdata, options).subscribe((res: any) => {
             console.log(res);
+
+            const dialogConfig = new MatDialogConfig();
+
+            dialogConfig.disableClose = true;
+            dialogConfig.autoFocus = true;
+            var tmpText = "";
+            if (res == "inserted") {
+                tmpText = 'Your submission was successfully received. You will receive an email with further instructions.'
+            }
+            if (res == "notinserted") {
+                tmpText = 'Your submission returned an error. Please contact the app add admin.'
+            }
+
+            dialogConfig.data = { title: 'Notice', message: tmpText, notification: true };
+
+            const dialogRef = this.dialog.open(ConfirmationDialogComponent, dialogConfig);
+            dialogRef.afterClosed().subscribe(result => { this.closeDialog(); });
         });
 
         console.log(shelterForm);
