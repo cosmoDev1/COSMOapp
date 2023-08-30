@@ -5,19 +5,19 @@
 
     <mat-dialog-content>
         <mat-form-field style="width: 100%" *ngIf="data.contactName==true">
-            <input matInput placeholder="First & Last Name" required name="fosterName" [(ngModel)]="formdata.fosterName">
+            <input matInput placeholder="First & Last Name" maxlength="128" required name="fosterName" [(ngModel)]="formdata.fosterName">
             <mat-label>Contact Name</mat-label>
             <mat-error>Please enter foster name</mat-error>
         </mat-form-field>
 
         <mat-form-field style="width: 100%">
-            <input matInput placeholder="Address" required name="fosterAddress" [(ngModel)]="formdata.fosterAddress">
+            <input matInput placeholder="Address" maxlength="128" required name="fosterAddress" [(ngModel)]="formdata.fosterAddress">
             <mat-label>Address</mat-label>
             <mat-error>Please enter foster address</mat-error>
         </mat-form-field>
 
         <mat-form-field style="width: 100%">
-            <input matInput placeholder="City" required name="fosterCity" [(ngModel)]="formdata.fosterCity">
+            <input matInput placeholder="City" maxlength="64" required name="fosterCity"  [(ngModel)]="formdata.fosterCity">
             <mat-label>City</mat-label>
             <mat-error>Please enter foster city</mat-error>
         </mat-form-field>
@@ -54,13 +54,13 @@
         </table>
 
         <mat-form-field style="width: 100%">
-            <input matInput placeholder="Email" required name="fosterEmail" [(ngModel)]="formdata.fosterEmail">
+            <input matInput placeholder="Email" maxlength="128" required name="fosterEmail"  [(ngModel)]="formdata.fosterEmail">
             <mat-label>Email</mat-label>
             <mat-error>Please enter foster email</mat-error>
         </mat-form-field>
 
         <mat-form-field style="width: 50%">
-            <input matInput placeholder="License number and State" required name="fosterDL" [(ngModel)]="formdata.fosterDL">
+            <input matInput placeholder="License number and State" maxlength="18" required name="fosterDL" [(ngModel)]="formdata.fosterDL">
             <mat-label>Driver License</mat-label>
             <mat-error>Please enter drivers license</mat-error>
         </mat-form-field>
@@ -105,13 +105,13 @@
         </table>
 
         <mat-form-field style="width: 100%">
-            <input matInput placeholder="Brief Description" required name="fosterFence" [(ngModel)]="formdata.fosterFence">
+            <input matInput placeholder="Brief Description" maxlength="216" required name="fosterFence" [(ngModel)]="formdata.fosterFence">
             <mat-label>Please describe your fence</mat-label>
             <mat-error>Please enter description</mat-error>
         </mat-form-field>
 
         <mat-form-field style="width: 100%">
-            <input matInput placeholder="Brief Explanation" required name="exerciseMethod" [(ngModel)]="formdata.exerciseMethod">
+            <input matInput placeholder="Brief Explanation" maxlength="216" required name="exerciseMethod" [(ngModel)]="formdata.exerciseMethod">
             <mat-label>Since you do not have a fenced yard, how will the animal get exercise?</mat-label>
             <mat-error>Please enter description</mat-error>
         </mat-form-field>
@@ -182,7 +182,7 @@
         </mat-radio-group>
 
         <mat-form-field style="width: 100%">
-            <input matInput placeholder="Type/Breed" required name="breedType" [(ngModel)]="formdata.breedType">
+            <input matInput placeholder="Type/Breed" required maxlength="18" name="breedType" [(ngModel)]="formdata.breedType">
             <mat-label>Type/Breed</mat-label>
             <mat-error>Please enter description</mat-error>
         </mat-form-field>
@@ -207,7 +207,7 @@
             <tr>
                 <td>
                     <mat-form-field>
-                        <input matInput placeholder="Name" required name="firstPet" [(ngModel)]="formdata.firstPet">
+                        <input matInput placeholder="Name" maxlength="128" required  name="firstPet" [(ngModel)]="formdata.firstPet">
                         <mat-label>Pet Name</mat-label>
                         <mat-error>Please enter pet name</mat-error>
                     </mat-form-field>
@@ -234,7 +234,7 @@
             <tr>
                 <td>
                     <mat-form-field>
-                        <input matInput placeholder="Name" required name="secondPet" [(ngModel)]="formdata.secondPet">
+                        <input matInput placeholder="Name" maxlength="128" required  name="secondPet" [(ngModel)]="formdata.secondPet">
                         <mat-label>Pet Name</mat-label>
                         <mat-error>Please enter pet name</mat-error>
                     </mat-form-field>
@@ -261,7 +261,7 @@
             <tr>
                 <td>
                     <mat-form-field>
-                        <input matInput placeholder="Name" required name="thirdPet" [(ngModel)]="formdata.thirdPet">
+                        <input matInput placeholder="Name" maxlength="128" required name="thirdPet" [(ngModel)]="formdata.thirdPet">
                         <mat-label>Pet Name</mat-label>
                         <mat-error>Please enter pet name</mat-error>
                     </mat-form-field>
@@ -291,7 +291,7 @@
             <tr>
                 <td>
                     <mat-form-field style="width: 100%">
-                        <input matInput placeholder="Name" required name="vetName" [(ngModel)]="formdata.vetName">
+                        <input matInput placeholder="Name" maxlength="128" required name="vetName" [(ngModel)]="formdata.vetName">
                         <mat-label>Veterinary name</mat-label>
                         <mat-error>Please enter veterinary name</mat-error>
                     </mat-form-field>
@@ -301,7 +301,7 @@
                         <mat-label>Phone</mat-label>
                         <mat-error>Please enter veterinary phone</mat-error>
                         <span matPrefix>+1 &nbsp;</span>
-                        <input type="tel" matInput placeholder="555-555-1234" required name="vetPhone" [(ngModel)]="formdata.vetPhone">
+                        <input type="tel" matInput placeholder="555-555-1234" maxlength="18" required name="vetPhone" [(ngModel)]="formdata.vetPhone">
                     </mat-form-field>
                 </td>
             </tr>
@@ -315,7 +315,7 @@
         <br />
 
         <mat-form-field style="width: 100%">
-            <input matInput placeholder="Brief Explanation" required name="dailyOccupancy" [(ngModel)]="formdata.dailyOccupancy">
+            <input matInput placeholder="Brief Explanation" maxlength="180" required name="dailyOccupancy" [(ngModel)]="formdata.dailyOccupancy">
             <mat-label>Where will the animals stay during the day?</mat-label>
             <mat-error>Please enter description</mat-error>
         </mat-form-field>
@@ -323,7 +323,7 @@
         <br />
 
         <mat-form-field style="width: 100%">
-            <input matInput placeholder="Brief Explanation" required name="nightlyOccupancy" [(ngModel)]="formdata.nightlyOccupancy">
+            <input matInput placeholder="Brief Explanation" maxlength="180" required name="nightlyOccupancy" [(ngModel)]="formdata.nightlyOccupancy">
             <mat-label>Where will the animals stay during the night?</mat-label>
             <mat-error>Please enter description</mat-error>
         </mat-form-field>
@@ -343,7 +343,7 @@
             <tr>
                 <td>
                     <mat-form-field style="width: 100%">
-                        <input matInput placeholder="Name" required name="adultOne" [(ngModel)]="formdata.adultOne">
+                        <input matInput placeholder="Name" maxlength="128" required name="adultOne" [(ngModel)]="formdata.adultOne">
                         <mat-label>Adult #1</mat-label>
                         <mat-error>Please enter name</mat-error>
                     </mat-form-field>
@@ -357,7 +357,7 @@
                 </td>
                 <td>
                     <mat-form-field>
-                        <input matInput placeholder="Relation" required name="adultOneRelation" [(ngModel)]="formdata.adultOneRelation">
+                        <input matInput placeholder="Relation" maxlength="128" required name="adultOneRelation" [(ngModel)]="formdata.adultOneRelation">
                         <mat-label>Relationship</mat-label>
                         <mat-error>Please enter relationship</mat-error>
                     </mat-form-field>
@@ -367,7 +367,7 @@
             <tr>
                 <td>
                     <mat-form-field style="width: 100%">
-                        <input matInput placeholder="Name" required name="adultTwo" [(ngModel)]="formdata.adultTwo">
+                        <input matInput placeholder="Name" maxlength="128" required name="adultTwo" [(ngModel)]="formdata.adultTwo">
                         <mat-label>Adult #2</mat-label>
                         <mat-error>Please enter name</mat-error>
                     </mat-form-field>
@@ -381,7 +381,7 @@
                 </td>
                 <td>
                     <mat-form-field>
-                        <input matInput placeholder="Relation" required name="adultTwoRelation" [(ngModel)]="formdata.adultTwoRelation">
+                        <input matInput placeholder="Relation" maxlength="128" required name="adultTwoRelation" [(ngModel)]="formdata.adultTwoRelation">
                         <mat-label>Relationship</mat-label>
                         <mat-error>Please enter relationship</mat-error>
                     </mat-form-field>
@@ -395,7 +395,7 @@
             <tr>
                 <td>
                     <mat-form-field style="width: 100%">
-                        <input matInput placeholder="Name" required name="childOne" [(ngModel)]="formdata.childOne">
+                        <input matInput placeholder="Name" maxlength="128" required name="childOne" [(ngModel)]="formdata.childOne">
                         <mat-label>Child #1</mat-label>
                         <mat-error>Please enter name</mat-error>
                     </mat-form-field>
@@ -409,7 +409,7 @@
                 </td>
                 <td>
                     <mat-form-field>
-                        <input matInput placeholder="Relation" required name="childOneRelation" [(ngModel)]="formdata.childOneRelation">
+                        <input matInput placeholder="Relation" maxlength="128" required name="childOneRelation" [(ngModel)]="formdata.childOneRelation">
                         <mat-label>Relationship</mat-label>
                         <mat-error>Please enter relationship</mat-error>
                     </mat-form-field>
@@ -418,7 +418,7 @@
             <tr>
                 <td>
                     <mat-form-field style="width: 100%">
-                        <input matInput placeholder="Name" required name="childTwo" [(ngModel)]="formdata.childTwo">
+                        <input matInput placeholder="Name" maxlength="128" required name="childTwo" [(ngModel)]="formdata.childTwo">
                         <mat-label>Child #2</mat-label>
                         <mat-error>Please enter name</mat-error>
                     </mat-form-field>
@@ -432,7 +432,7 @@
                 </td>
                 <td>
                     <mat-form-field>
-                        <input matInput placeholder="Relation" required name="childTwoRelation" [(ngModel)]="formdata.childTwoRelation">
+                        <input matInput placeholder="Relation" maxlength="128" required name="childTwoRelation" [(ngModel)]="formdata.childTwoRelation">
                         <mat-label>Relationship</mat-label>
                         <mat-error>Please enter relationship</mat-error>
                     </mat-form-field>
@@ -455,7 +455,7 @@
         <br />
 
         <mat-form-field style="width: 100%">
-            <input matInput placeholder="Brief Explanation" required name="accomodations" [(ngModel)]="formdata.accommodations">
+            <input matInput placeholder="Brief Explanation" maxlength="180" required name="accomodations" [(ngModel)]="formdata.accommodations">
             <mat-label>What accommodations will be made for the animal if traveling?</mat-label>
         </mat-form-field>
 
@@ -468,7 +468,7 @@
             <tr>
                 <td>
                     <mat-form-field style="width: 100%">
-                        <input matInput placeholder="Name" required name="referenceOne" [(ngModel)]="formdata.referenceOne">
+                        <input matInput placeholder="Name" maxlength="128" required name="referenceOne" [(ngModel)]="formdata.referenceOne">
                         <mat-label>Reference #1</mat-label>
                         <mat-error>Please enter reference</mat-error>
                     </mat-form-field>
@@ -478,14 +478,14 @@
                         <mat-label>Phone</mat-label>
                         <mat-error>Please enter reference phone</mat-error>
                         <span matPrefix>+1 &nbsp;</span>
-                        <input type="tel" matInput placeholder="555-555-1234" required name="firstPhone" [(ngModel)]="formdata.firstPhone">
+                        <input type="tel" matInput placeholder="555-555-1234" maxlength="18" required name="firstPhone" [(ngModel)]="formdata.firstPhone">
                     </mat-form-field>
                 </td>
             </tr>
             <tr>
                 <td>
                     <mat-form-field style="width: 100%">
-                        <input matInput placeholder="Name" required name="referenceTwo" [(ngModel)]="formdata.referenceTwo">
+                        <input matInput placeholder="Name" maxlength="128" required name="referenceTwo" [(ngModel)]="formdata.referenceTwo">
                         <mat-label>Reference #2</mat-label>
                         <mat-error>Please enter reference</mat-error>
                     </mat-form-field>
@@ -495,14 +495,14 @@
                         <mat-label>Phone</mat-label>
                         <mat-error>Please enter reference phone</mat-error>
                         <span matPrefix>+1 &nbsp;</span>
-                        <input type="tel" matInput placeholder="555-555-1234" required name="secondPhone" [(ngModel)]="formdata.secondPhone">
+                        <input type="tel" matInput placeholder="555-555-1234" maxlength="18" required name="secondPhone" [(ngModel)]="formdata.secondPhone">
                     </mat-form-field>
                 </td>
             </tr>
             <tr>
                 <td>
                     <mat-form-field style="width: 100%">
-                        <input matInput placeholder="Name" required name="referenceThree" [(ngModel)]="formdata.referenceThree">
+                        <input matInput placeholder="Name" maxlength="128" required name="referenceThree" [(ngModel)]="formdata.referenceThree">
                         <mat-label>Reference #3</mat-label>
                         <mat-error>Please enter reference</mat-error>
                     </mat-form-field>
@@ -512,7 +512,7 @@
                         <mat-label>Phone</mat-label>
                         <mat-error>Please enter reference phone</mat-error>
                         <span matPrefix>+1 &nbsp;</span>
-                        <input type="tel" matInput placeholder="555-555-1234" required name="thirdPhone" [(ngModel)]="formdata.thirdPhone">
+                        <input type="tel" matInput placeholder="555-555-1234" maxlength="18" required name="thirdPhone" [(ngModel)]="formdata.thirdPhone">
                     </mat-form-field>
                 </td>
             </tr>

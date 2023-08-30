@@ -1,8 +1,9 @@
 import { Component, Inject } from '@angular/core';
-import { MatDialogRef, MAT_DIALOG_DATA } from "@angular/material/dialog";
+import { MatDialogRef, MAT_DIALOG_DATA, MatDialogConfig, MatDialog } from "@angular/material/dialog";
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 import { Globals } from "../globals";
+import { ConfirmationDialogComponent } from '../confirmation-dialog/confirmation-dialog.component';
 
 @Component({
   selector: 'new-foster-dialog',
@@ -21,7 +22,7 @@ export class NewFosterDialogComponent {
         referenceOne: "", firstPhone: "", referenceTwo:"", secondPhone: "", referenceThree:"", thirdPhone:""
     }
 
-    constructor(@Inject(MAT_DIALOG_DATA) public data: any, public dialogRef: MatDialogRef<NewFosterDialogComponent>, public global: Globals, private http: HttpClient) {  }
+    constructor(@Inject(MAT_DIALOG_DATA) public data: any, public dialogRef: MatDialogRef<NewFosterDialogComponent>, public global: Globals, private http: HttpClient, private dialog: MatDialog) {  }
 
 
  
@@ -36,6 +37,29 @@ export class NewFosterDialogComponent {
             return;
         }
 
+        var head = new HttpHeaders({ 'Content-Type': 'application/json' });
+        const options = { headers: head };
+
+        this.http.post(this.global.webserviceBaseUrl + 'fosters', this.formdata, options).subscribe((res: any) => {
+            console.log(res);
+
+            const dialogConfig = new MatDialogConfig();
+
+            dialogConfig.disableClose = true;
+            dialogConfig.autoFocus = true;
+            var tmpText = "";
+            if (res == "inserted") {
+                tmpText = 'Your submission was successfully received. You will receive an email with further instructions.'
+            }
+            if (res == "notinserted") {
+                tmpText = 'Your submission returned an error. Please contact the app add admin.'
+            }
+
+            dialogConfig.data = { title: 'Notice', message: tmpText, notification: true };
+
+            const dialogRef = this.dialog.open(ConfirmationDialogComponent, dialogConfig);
+            dialogRef.afterClosed().subscribe((result: any) => { this.closeDialog(); });
+        });
 
         console.log(fosterForm);
         console.log(this.formdata);
