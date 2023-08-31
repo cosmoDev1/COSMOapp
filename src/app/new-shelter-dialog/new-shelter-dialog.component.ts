@@ -34,18 +34,23 @@ export class NewShelterDialogComponent {
 
         this.http.post(this.global.webserviceBaseUrl + 'shelters', this.formdata, options).subscribe((res: any) => {
             console.log(res);
+            res = JSON.parse(res);
 
             const dialogConfig = new MatDialogConfig();
 
             dialogConfig.disableClose = true;
             dialogConfig.autoFocus = true;
             var tmpText = "";
-            if (res == "inserted") {
+            if (res.message == "inserted") {
                 tmpText = 'Your submission was successfully received. You will receive an email with further instructions.'
             }
-            if (res == "notinserted") {
+            if (res.message == "notinserted") {
                 tmpText = 'Your submission returned an error. Please contact the app add admin.'
             }
+            if (res.message == "error") {
+                tmpText = 'An internal error ocurred. Please contact the app add admin.'
+            }
+
 
             dialogConfig.data = { title: 'Notice', message: tmpText, notification: true };
 
