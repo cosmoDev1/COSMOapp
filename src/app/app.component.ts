@@ -12,7 +12,7 @@ import { ConfirmationDialogComponent } from './confirmation-dialog/confirmation-
 import { AnimalDetailDialogComponent } from './animal-detail-dialog/animal-detail-dialog.component';
 import { Globals, Animal } from './globals';
 import { NewShelterDialogComponent } from './new-shelter-dialog/new-shelter-dialog.component';
-import { MyDogsDialogComponent } from './my-dogs-dialog/my-dogs-dialog.component';
+import { MyAnimalsDialogComponent } from './my-animals-dialog/my-animals-dialog.component';
 import { ShowOnDirtyErrorStateMatcher } from '@angular/material/core';
 import { PleaDialogComponent } from './plea-dialog/plea-dialog.component';
 
@@ -203,7 +203,7 @@ export class AppComponent implements AfterViewInit, OnInit {
         dialogConfig.autoFocus = true;
         dialogConfig.data = { role: 'My Dogs', rescueName: true, contactName: true };
 
-        const dialogRef = this.dialog.open(MyDogsDialogComponent, dialogConfig);
+        const dialogRef = this.dialog.open(MyAnimalsDialogComponent, dialogConfig);
     }
 
     myFosterDialog() {

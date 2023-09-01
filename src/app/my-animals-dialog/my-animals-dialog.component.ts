@@ -7,17 +7,17 @@ import { Animal, Globals } from '../globals';
 
 
 @Component({
-  selector: 'app-my-dogs-dialog',
-  templateUrl: './my-dogs-dialog.component.html',
-  styleUrls: ['./my-dogs-dialog.component.css']
+  selector: 'app-my-animals-dialog',
+  templateUrl: './my-animals-dialog.component.html',
+  styleUrls: ['./my-animals-dialog.component.css']
 })
-export class MyDogsDialogComponent {
+export class MyAnimalsDialogComponent {
 
     myAnimals = new MatTableDataSource<Animal>(this.global.animals);
     displayedColumns: string[] = [ 'action', 'shelterAnimalID', 'name', 'gender', 'breed', 'weight', 'age'];
 
 
-    constructor(@Inject(MAT_DIALOG_DATA) public data: any, dialogRef: MatDialogRef<MyDogsDialogComponent>, public global: Globals) {
+    constructor(@Inject(MAT_DIALOG_DATA) public data: any, dialogRef: MatDialogRef<MyAnimalsDialogComponent>, public global: Globals) {
         this.global.myAnimals = this.global.animals.filter((el) => el.status == 2);
         this.myAnimals.data = this.global.myAnimals;
     }

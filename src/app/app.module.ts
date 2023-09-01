@@ -14,7 +14,7 @@ import { NewFosterDialogComponent } from './new-foster-dialog/new-foster-dialog.
 import { ConfirmationDialogComponent } from './confirmation-dialog/confirmation-dialog.component';
 import { AnimalDetailDialogComponent } from './animal-detail-dialog/animal-detail-dialog.component';
 import { NewShelterDialogComponent } from './new-shelter-dialog/new-shelter-dialog.component';
-import { MyDogsDialogComponent } from './my-dogs-dialog/my-dogs-dialog.component';
+import { MyAnimalsDialogComponent } from './my-animals-dialog/my-animals-dialog.component';
 import { PleaDialogComponent } from './plea-dialog/plea-dialog.component';
 
 
@@ -26,7 +26,7 @@ import { PleaDialogComponent } from './plea-dialog/plea-dialog.component';
         ConfirmationDialogComponent,
         AnimalDetailDialogComponent,
         NewShelterDialogComponent,
-        MyDogsDialogComponent,
+        MyAnimalsDialogComponent,
         PleaDialogComponent,
   ],
   imports: [
