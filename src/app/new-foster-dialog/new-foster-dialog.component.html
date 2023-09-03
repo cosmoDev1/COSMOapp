@@ -5,19 +5,19 @@
 
     <mat-dialog-content>
         <mat-form-field style="width: 100%" *ngIf="data.contactName==true">
-            <input matInput placeholder="First & Last Name" maxlength="128" required name="fosterName" [(ngModel)]="formdata.fosterName">
+            <input matInput placeholder="First & Last Name" maxlength="128" required name="fosterName" [(ngModel)]="formdata.fosterName" [disabled]="entireFormEnabled">
             <mat-label>Contact Name</mat-label>
             <mat-error>Please enter foster name</mat-error>
         </mat-form-field>
 
         <mat-form-field style="width: 100%">
-            <input matInput placeholder="Address" maxlength="128" required name="fosterAddress" [(ngModel)]="formdata.fosterAddress">
+            <input matInput placeholder="Address" maxlength="128" required name="fosterAddress" [(ngModel)]="formdata.fosterAddress" [disabled]="entireFormEnabled">
             <mat-label>Address</mat-label>
             <mat-error>Please enter foster address</mat-error>
         </mat-form-field>
 
         <mat-form-field style="width: 100%">
-            <input matInput placeholder="City" maxlength="64" required name="fosterCity"  [(ngModel)]="formdata.fosterCity">
+            <input matInput placeholder="City" maxlength="64" required name="fosterCity"  [(ngModel)]="formdata.fosterCity" [disabled]="entireFormEnabled">
             <mat-label>City</mat-label>
             <mat-error>Please enter foster city</mat-error>
         </mat-form-field>
@@ -27,7 +27,7 @@
                 <td>
                     <mat-form-field>
                         <mat-label> State </mat-label>
-                        <mat-select id="stat" name="state" [(ngModel)]="formdata.fosterState">
+                        <mat-select id="stat" name="state" [(ngModel)]="formdata.fosterState" [disabled]="entireFormEnabled">
                             <mat-option *ngFor="let state of global.states" [value]="state.abbreviation">
                                 {{ state.name }} - {{ state.abbreviation }}
                             </mat-option>
@@ -37,7 +37,7 @@
                 </td>
                 <td>
                     <mat-form-field>
-                        <input matInput type="number" max="99999" placeholder="Zip" required name="fosterZip" [(ngModel)]="formdata.fosterZip" onKeyPress="if(this.value.length==5) return false;">
+                        <input matInput type="number" max="99999" placeholder="Zip" required name="fosterZip" [(ngModel)]="formdata.fosterZip" onKeyPress="if(this.value.length==5) return false;" [disabled]="entireFormEnabled">
                         <mat-label>Zip</mat-label>
                         <mat-error>Please enter foster zip</mat-error>
                     </mat-form-field>
@@ -46,7 +46,7 @@
                     <mat-form-field>
                         <mat-label>Phone</mat-label>
                         <span matPrefix>+1 &nbsp;</span>
-                        <input type="tel" matInput placeholder="555-555-1234" maxlength="10" required name="fosterPhone" [(ngModel)]="formdata.fosterPhone">
+                        <input type="tel" matInput placeholder="555-555-1234" maxlength="10" required name="fosterPhone" [(ngModel)]="formdata.fosterPhone" [disabled]="entireFormEnabled">
                         <mat-error>Please enter foster phone</mat-error>
                     </mat-form-field>
                 </td>
@@ -54,13 +54,13 @@
         </table>
 
         <mat-form-field style="width: 100%">
-            <input matInput placeholder="Email" maxlength="128" required name="fosterEmail"  [(ngModel)]="formdata.fosterEmail">
+            <input matInput placeholder="Email" maxlength="128" required name="fosterEmail" type="email"  [(ngModel)]="formdata.fosterEmail" [disabled]="entireFormEnabled">
             <mat-label>Email</mat-label>
             <mat-error>Please enter foster email</mat-error>
         </mat-form-field>
 
         <mat-form-field style="width: 50%">
-            <input matInput placeholder="License number and State" maxlength="18" required name="fosterDL" [(ngModel)]="formdata.fosterDL">
+            <input matInput placeholder="License number and State" maxlength="18" required name="fosterDL" [(ngModel)]="formdata.fosterDL" [disabled]="entireFormEnabled">
             <mat-label>Driver License</mat-label>
             <mat-error>Please enter drivers license</mat-error>
         </mat-form-field>
@@ -69,7 +69,7 @@
             <tr>
                 <td> <mat-label id="housingLabel">Type Housing</mat-label> </td>
                 <td colspan="3">
-                    <mat-radio-group aria-label="Housing" aria-labelledby="housingLabel" name="fosterHome" [(ngModel)]="formdata.fosterHome">
+                    <mat-radio-group aria-label="Housing" aria-labelledby="housingLabel" name="fosterHome" [(ngModel)]="formdata.fosterHome" [disabled]="entireFormEnabled">
                         <mat-radio-button value="1" [checked]="true">Apartment</mat-radio-button>
                         <mat-radio-button value="2">Condo</mat-radio-button>
                         <mat-radio-button value="3">Townhouse</mat-radio-button>
@@ -80,14 +80,14 @@
             <tr>
                 <td> <mat-label id="ownershipLabel">Ownership</mat-label> </td>
                 <td>
-                    <mat-radio-group aria-label="Ownership" aria-labelledby="ownershipLabel" name="fosterOwnership" [(ngModel)]="formdata.fosterOwnership">
+                    <mat-radio-group aria-label="Ownership" aria-labelledby="ownershipLabel" name="fosterOwnership" [(ngModel)]="formdata.fosterOwnership" [disabled]="entireFormEnabled">
                         <mat-radio-button value="1" [checked]="true">Rent</mat-radio-button>
                         <mat-radio-button value="2">Own</mat-radio-button>
                     </mat-radio-group>
                 </td>
                 <td> <mat-label id="landordLabel" style="margin-left: 30px">Lanlord allows Pets</mat-label> </td>
                 <td>
-                    <mat-radio-group aria-label="Landord" aria-labelledby="landordLabel" name="fosterLandlord" [(ngModel)]="formdata.fosterLandlord">
+                    <mat-radio-group aria-label="Landord" aria-labelledby="landordLabel" name="fosterLandlord" [(ngModel)]="formdata.fosterLandlord" [disabled]="entireFormEnabled">
                         <mat-radio-button value="1" [checked]="true">No</mat-radio-button>
                         <mat-radio-button value="2">Yes</mat-radio-button>
                     </mat-radio-group>
@@ -96,7 +96,7 @@
             <tr>
                 <td> <mat-label id="fenceLabel">Fenced Yard</mat-label> </td>
                 <td colspan="3">
-                    <mat-radio-group aria-label="Fence" aria-labelledby="fenceLabel" name="fosterYard" [(ngModel)]="formdata.fosterYard">
+                    <mat-radio-group aria-label="Fence" aria-labelledby="fenceLabel" name="fosterYard" [(ngModel)]="formdata.fosterYard" [disabled]="entireFormEnabled">
                         <mat-radio-button value="1" [checked]="true">Yes</mat-radio-button>
                         <mat-radio-button value="2">No</mat-radio-button>
                     </mat-radio-group>
@@ -105,19 +105,19 @@
         </table>
 
         <mat-form-field style="width: 100%">
-            <input matInput placeholder="Brief Description" maxlength="216" required name="fosterFence" [(ngModel)]="formdata.fosterFence">
+            <input matInput placeholder="Brief Description" maxlength="216" required name="fosterFence" [(ngModel)]="formdata.fosterFence" [disabled]="entireFormEnabled">
             <mat-label>Please describe your fence</mat-label>
             <mat-error>Please enter description</mat-error>
         </mat-form-field>
 
         <mat-form-field style="width: 100%">
-            <input matInput placeholder="Brief Explanation" maxlength="216" required name="exerciseMethod" [(ngModel)]="formdata.exerciseMethod">
+            <input matInput placeholder="Brief Explanation" maxlength="216" required name="exerciseMethod" [(ngModel)]="formdata.exerciseMethod" [disabled]="entireFormEnabled">
             <mat-label>Since you do not have a fenced yard, how will the animal get exercise?</mat-label>
             <mat-error>Please enter description</mat-error>
         </mat-form-field>
 
         <mat-form-field style="width: 30%">
-            <input matInput type="number" min="0" max="99" placeholder="Years" required name="addressDuration" [(ngModel)]="formdata.addressDuration">
+            <input matInput type="number" min="0" max="99" placeholder="Years" required name="addressDuration" [(ngModel)]="formdata.addressDuration" [disabled]="entireFormEnabled">
             <mat-label>Years at this Address</mat-label>
             <mat-error>Please enter address duration</mat-error>
         </mat-form-field>
@@ -131,7 +131,7 @@
             <tr>
                 <td> <mat-label id="speciesLabel">Species</mat-label> </td>
                 <td>
-                    <mat-radio-group aria-label="Species" aria-labelledby="speciesLabel" name="fosterSpecies" [(ngModel)]="formdata.fosterSpecies">
+                    <mat-radio-group aria-label="Species" aria-labelledby="speciesLabel" name="fosterSpecies" [(ngModel)]="formdata.fosterSpecies" [disabled]="entireFormEnabled">
                         <mat-radio-button value="1" [checked]="true">Dog</mat-radio-button>
                         <mat-radio-button value="2">Cat</mat-radio-button>
                         <mat-radio-button value="3">Both</mat-radio-button>
@@ -141,7 +141,7 @@
             <tr>
                 <td> <mat-label id="genderLabel">Gender</mat-label> </td>
                 <td>
-                    <mat-radio-group aria-label="Gender" aria-labelledby="genderLabel" name="fosterPetGender" [(ngModel)]="formdata.fosterPetGender">
+                    <mat-radio-group aria-label="Gender" aria-labelledby="genderLabel" name="fosterPetGender" [(ngModel)]="formdata.fosterPetGender" [disabled]="entireFormEnabled">
                         <mat-radio-button value="1" [checked]="true">Both</mat-radio-button>
                         <mat-radio-button value="2">Male</mat-radio-button>
                         <mat-radio-button value="3">Female</mat-radio-button>
@@ -151,7 +151,7 @@
             <tr>
                 <td> <mat-label id="sizeLabel">Size</mat-label> </td>
                 <td>
-                    <mat-radio-group aria-label="Size" aria-labelledby="sizeLabel" name="fosterPetSize" [(ngModel)]="formdata.fosterPetSize">
+                    <mat-radio-group aria-label="Size" aria-labelledby="sizeLabel" name="fosterPetSize" [(ngModel)]="formdata.fosterPetSize" [disabled]="entireFormEnabled">
                         <mat-radio-button value="1" [checked]="true">Any</mat-radio-button>
                         <mat-radio-button value="2">Extra Large</mat-radio-button>
                         <mat-radio-button value="3">Large</mat-radio-button>
@@ -171,25 +171,25 @@
 
         <mat-form-field style="width: 100%">
             <mat-label>What experience do you have with animals?</mat-label>
-            <textarea placeholder="Provide details" matInput name="petExperience" [(ngModel)]="formdata.petExperience"></textarea>
+            <textarea placeholder="Provide details" matInput name="petExperience" [(ngModel)]="formdata.petExperience" [disabled]="entireFormEnabled"></textarea>
         </mat-form-field>
         <br />
 
         <mat-label id="ownedBeforeLabel">Have you ever owned a pet before?</mat-label>
-        <mat-radio-group aria-label="Owned" aria-labelledby="ownedBeforeLabel" name="ownedBefore" [(ngModel)]="formdata.ownedBefore">
+        <mat-radio-group aria-label="Owned" aria-labelledby="ownedBeforeLabel" name="ownedBefore" [(ngModel)]="formdata.ownedBefore" [disabled]="entireFormEnabled">
             <mat-radio-button value="1" [checked]="true">Yes</mat-radio-button>
             <mat-radio-button value="2">No</mat-radio-button>
         </mat-radio-group>
 
         <mat-form-field style="width: 100%">
-            <input matInput placeholder="Type/Breed" required maxlength="18" name="breedType" [(ngModel)]="formdata.breedType">
+            <input matInput placeholder="Type/Breed" required maxlength="18" name="breedType" [(ngModel)]="formdata.breedType" [disabled]="entireFormEnabled">
             <mat-label>Type/Breed</mat-label>
             <mat-error>Please enter description</mat-error>
         </mat-form-field>
         <br />
 
         <mat-label id="fosteredBeforeLabel">Have you ever fostered a pet before?</mat-label>
-        <mat-radio-group aria-label="Fostered" aria-labelledby="fosteredBeforeLabel" name="fosteredBefore" [(ngModel)]="formdata.fosteredBefore">
+        <mat-radio-group aria-label="Fostered" aria-labelledby="fosteredBeforeLabel" name="fosteredBefore" [(ngModel)]="formdata.fosteredBefore" [disabled]="entireFormEnabled">
             <mat-radio-button value="1" [checked]="true">Yes</mat-radio-button>
             <mat-radio-button value="2">No</mat-radio-button>
         </mat-radio-group>
@@ -197,7 +197,7 @@
         <br />
         <mat-form-field style="width: 100%">
             <mat-label>Please provide your foster care experience</mat-label>
-            <textarea placeholder="Provide details" matInput name="fosterExperience" [(ngModel)]="formdata.fosterExperience"></textarea>
+            <textarea placeholder="Provide details" matInput name="fosterExperience" [(ngModel)]="formdata.fosterExperience" [disabled]="entireFormEnabled"></textarea>
         </mat-form-field>
 
         <table>
@@ -207,81 +207,81 @@
             <tr>
                 <td>
                     <mat-form-field>
-                        <input matInput placeholder="Name" maxlength="128" required  name="firstPet" [(ngModel)]="formdata.firstPet">
+                        <input matInput placeholder="Name" maxlength="128" required  name="firstPet" [(ngModel)]="formdata.firstPet" [disabled]="entireFormEnabled">
                         <mat-label>Pet Name</mat-label>
                         <mat-error>Please enter pet name</mat-error>
                     </mat-form-field>
                 </td>
                 <td>
                     <mat-form-field>
-                        <input matInput type="number" max="50" placeholder="Years" required name="firstYears" [(ngModel)]="formdata.firstYears">
+                        <input matInput type="number" max="50" placeholder="Years" required name="firstYears" [(ngModel)]="formdata.firstYears" [disabled]="entireFormEnabled">
                         <mat-label>Years Owned</mat-label>
                         <mat-error>Please enter years owned</mat-error>
                     </mat-form-field>
                 </td>
                 <td>
-                    <mat-radio-group aria-label="gender" aria-labelledby="genderLabel" name="firstGender" [(ngModel)]="formdata.firstGender">
+                    <mat-radio-group aria-label="gender" aria-labelledby="genderLabel" name="firstGender" [(ngModel)]="formdata.firstGender" [disabled]="entireFormEnabled">
                         <mat-radio-button value="1" [checked]="true">Male</mat-radio-button>
                         <mat-radio-button value="2">Female</mat-radio-button>
                     </mat-radio-group>
                 </td>
                 <td>
                     <section class="example-section">
-                        <mat-checkbox class="example-margin" name="spayedNeutered1" [(ngModel)]="formdata.spayedNeutered1">Spayed/Neutered</mat-checkbox>
+                        <mat-checkbox class="example-margin" name="spayedNeutered1" [(ngModel)]="formdata.spayedNeutered1" [disabled]="entireFormEnabled">Spayed/Neutered</mat-checkbox>
                     </section>
                 </td>
             </tr>
             <tr>
                 <td>
                     <mat-form-field>
-                        <input matInput placeholder="Name" maxlength="128" required  name="secondPet" [(ngModel)]="formdata.secondPet">
+                        <input matInput placeholder="Name" maxlength="128" required  name="secondPet" [(ngModel)]="formdata.secondPet" [disabled]="entireFormEnabled">
                         <mat-label>Pet Name</mat-label>
                         <mat-error>Please enter pet name</mat-error>
                     </mat-form-field>
                 </td>
                 <td>
                     <mat-form-field>
-                        <input matInput type="number" max="50" placeholder="Years" required name="secondYears" [(ngModel)]="formdata.secondYears">
+                        <input matInput type="number" max="50" placeholder="Years" required name="secondYears" [(ngModel)]="formdata.secondYears" [disabled]="entireFormEnabled">
                         <mat-label>Years Owned</mat-label>
                         <mat-error>Please enter years owned</mat-error>
                     </mat-form-field>
                 </td>
                 <td>
-                    <mat-radio-group aria-label="gender" aria-labelledby="genderLabel" name="twoGender" [(ngModel)]="formdata.twoGender">
+                    <mat-radio-group aria-label="gender" aria-labelledby="genderLabel" name="twoGender" [(ngModel)]="formdata.twoGender" [disabled]="entireFormEnabled">
                         <mat-radio-button value="1" [checked]="true">Male</mat-radio-button>
                         <mat-radio-button value="2">Female</mat-radio-button>
                     </mat-radio-group>
                 </td>
                 <td>
                     <section class="example-section">
-                        <mat-checkbox class="example-margin" name="spayedNeutered2" [(ngModel)]="formdata.spayedNeutered2">Spayed/Neutered</mat-checkbox>
+                        <mat-checkbox class="example-margin" name="spayedNeutered2" [(ngModel)]="formdata.spayedNeutered2" [disabled]="entireFormEnabled">Spayed/Neutered</mat-checkbox>
                     </section>
                 </td>
             </tr>
             <tr>
                 <td>
                     <mat-form-field>
-                        <input matInput placeholder="Name" maxlength="128" required name="thirdPet" [(ngModel)]="formdata.thirdPet">
+                        <input matInput placeholder="Name" maxlength="128" required name="thirdPet" [(ngModel)]="formdata.thirdPet" [disabled]="entireFormEnabled">
                         <mat-label>Pet Name</mat-label>
                         <mat-error>Please enter pet name</mat-error>
                     </mat-form-field>
                 </td>
                 <td>
                     <mat-form-field>
-                        <input matInput type="number" max="50" placeholder="Years" required name="thirdYears" [(ngModel)]="formdata.thirdYears">
+                        <input matInput type="number" max="50" placeholder="Years" required name="thirdYears" [(ngModel)]="formdata.thirdYears" [disabled]="entireFormEnabled">
                         <mat-label>Years Owned</mat-label>
                         <mat-error>Please enter years owned</mat-error>
                     </mat-form-field>
                 </td>
                 <td>
-                    <mat-radio-group aria-label="gender" aria-labelledby="genderLabel" name="thirdGender" [(ngModel)]="formdata.thirdGender">
+                    <mat-radio-group aria-label="gender" aria-labelledby="genderLabel" name="thirdGender" [(ngModel)]="formdata.thirdGender" [disabled]="entireFormEnabled">
                         <mat-radio-button value="1" [checked]="true">Male</mat-radio-button>
                         <mat-radio-button value="2">Female</mat-radio-button>
                     </mat-radio-group>
                 </td>
                 <td>
                     <section class="example-section">
-                        <mat-checkbox class="example-margin" name="spayedNeutered3" [(ngModel)]="formdata.spayedNeutered3">Spayed/Neutered</mat-checkbox>
+                        <mat-checkbox class="example-margin" name="spayedNeutered3" [(ngModel)]="formdata.spayedNeutered3" [disabled]="entireFormEnabled">Spayed/Neutered</mat-checkbox>
                     </section>
                 </td>
             </tr>
@@ -291,7 +291,7 @@
             <tr>
                 <td>
                     <mat-form-field style="width: 100%">
-                        <input matInput placeholder="Name" maxlength="128" required name="vetName" [(ngModel)]="formdata.vetName">
+                        <input matInput placeholder="Name" maxlength="128" required name="vetName" [(ngModel)]="formdata.vetName" [disabled]="entireFormEnabled">
                         <mat-label>Veterinary name</mat-label>
                         <mat-error>Please enter veterinary name</mat-error>
                     </mat-form-field>
@@ -301,21 +301,21 @@
                         <mat-label>Phone</mat-label>
                         <mat-error>Please enter veterinary phone</mat-error>
                         <span matPrefix>+1 &nbsp;</span>
-                        <input type="tel" matInput placeholder="555-555-1234" maxlength="18" required name="vetPhone" [(ngModel)]="formdata.vetPhone">
+                        <input type="tel" matInput placeholder="555-555-1234" maxlength="18" required name="vetPhone" [(ngModel)]="formdata.vetPhone" [disabled]="entireFormEnabled">
                     </mat-form-field>
                 </td>
             </tr>
         </table>
 
         <mat-form-field style="width: 40%">
-            <input matInput type="number" min="0" max="24" placeholder="Hours" required name="hoursAlone" [(ngModel)]="formdata.hoursAlone">
+            <input matInput type="number" min="0" max="24" placeholder="Hours" required name="hoursAlone" [(ngModel)]="formdata.hoursAlone" [disabled]="entireFormEnabled">
             <mat-label>Hours per day animal be left alone</mat-label>
             <mat-error>Please enter description</mat-error>
         </mat-form-field>
         <br />
 
         <mat-form-field style="width: 100%">
-            <input matInput placeholder="Brief Explanation" maxlength="180" required name="dailyOccupancy" [(ngModel)]="formdata.dailyOccupancy">
+            <input matInput placeholder="Brief Explanation" maxlength="180" required name="dailyOccupancy" [(ngModel)]="formdata.dailyOccupancy" [disabled]="entireFormEnabled">
             <mat-label>Where will the animals stay during the day?</mat-label>
             <mat-error>Please enter description</mat-error>
         </mat-form-field>
@@ -323,7 +323,7 @@
         <br />
 
         <mat-form-field style="width: 100%">
-            <input matInput placeholder="Brief Explanation" maxlength="180" required name="nightlyOccupancy" [(ngModel)]="formdata.nightlyOccupancy">
+            <input matInput placeholder="Brief Explanation" maxlength="180" required name="nightlyOccupancy" [(ngModel)]="formdata.nightlyOccupancy" [disabled]="entireFormEnabled">
             <mat-label>Where will the animals stay during the night?</mat-label>
             <mat-error>Please enter description</mat-error>
         </mat-form-field>
@@ -331,7 +331,7 @@
         <br />
 
         <mat-label id="crateTrainedLabel">Have you ever crate trained an animal?</mat-label>
-        <mat-radio-group aria-label="Crate" aria-labelledby="crateTrainedLabel" name="crateTrained" [(ngModel)]="formdata.crateTrained">
+        <mat-radio-group aria-label="Crate" aria-labelledby="crateTrainedLabel" name="crateTrained" [(ngModel)]="formdata.crateTrained" [disabled]="entireFormEnabled">
             <mat-radio-button value="1" [checked]="true">Yes</mat-radio-button>
             <mat-radio-button value="2">No</mat-radio-button>
         </mat-radio-group>
@@ -343,21 +343,21 @@
             <tr>
                 <td>
                     <mat-form-field style="width: 100%">
-                        <input matInput placeholder="Name" maxlength="128" required name="adultOne" [(ngModel)]="formdata.adultOne">
+                        <input matInput placeholder="Name" maxlength="128" required name="adultOne" [(ngModel)]="formdata.adultOne" [disabled]="entireFormEnabled">
                         <mat-label>Adult #1</mat-label>
                         <mat-error>Please enter name</mat-error>
                     </mat-form-field>
                 </td>
                 <td>
                     <mat-form-field>
-                        <input matInput type="number" min="0" max="99" placeholder="Enter  Age" required name="adultOneAge" [(ngModel)]="formdata.adultOneAge">
+                        <input matInput type="number" min="0" max="99" placeholder="Enter  Age" required name="adultOneAge" [(ngModel)]="formdata.adultOneAge" [disabled]="entireFormEnabled">
                         <mat-label>Age</mat-label>
                         <mat-error>Please enter age</mat-error>
                     </mat-form-field>
                 </td>
                 <td>
                     <mat-form-field>
-                        <input matInput placeholder="Relation" maxlength="128" required name="adultOneRelation" [(ngModel)]="formdata.adultOneRelation">
+                        <input matInput placeholder="Relation" maxlength="128" required name="adultOneRelation" [(ngModel)]="formdata.adultOneRelation" [disabled]="entireFormEnabled">
                         <mat-label>Relationship</mat-label>
                         <mat-error>Please enter relationship</mat-error>
                     </mat-form-field>
@@ -367,21 +367,21 @@
             <tr>
                 <td>
                     <mat-form-field style="width: 100%">
-                        <input matInput placeholder="Name" maxlength="128" required name="adultTwo" [(ngModel)]="formdata.adultTwo">
+                        <input matInput placeholder="Name" maxlength="128" required name="adultTwo" [(ngModel)]="formdata.adultTwo" [disabled]="entireFormEnabled">
                         <mat-label>Adult #2</mat-label>
                         <mat-error>Please enter name</mat-error>
                     </mat-form-field>
                 </td>
                 <td>
                     <mat-form-field>
-                        <input matInput type="number" min="0" max="99" placeholder="Enter  Age" required name="adultTwoAge" [(ngModel)]="formdata.adultTwoAge">
+                        <input matInput type="number" min="0" max="99" placeholder="Enter  Age" required name="adultTwoAge" [(ngModel)]="formdata.adultTwoAge" [disabled]="entireFormEnabled">
                         <mat-label>Age</mat-label>
                         <mat-error>Please enter age</mat-error>
                     </mat-form-field>
                 </td>
                 <td>
                     <mat-form-field>
-                        <input matInput placeholder="Relation" maxlength="128" required name="adultTwoRelation" [(ngModel)]="formdata.adultTwoRelation">
+                        <input matInput placeholder="Relation" maxlength="128" required name="adultTwoRelation" [(ngModel)]="formdata.adultTwoRelation" [disabled]="entireFormEnabled">
                         <mat-label>Relationship</mat-label>
                         <mat-error>Please enter relationship</mat-error>
                     </mat-form-field>
@@ -395,21 +395,21 @@
             <tr>
                 <td>
                     <mat-form-field style="width: 100%">
-                        <input matInput placeholder="Name" maxlength="128" required name="childOne" [(ngModel)]="formdata.childOne">
+                        <input matInput placeholder="Name" maxlength="128" required name="childOne" [(ngModel)]="formdata.childOne" [disabled]="entireFormEnabled">
                         <mat-label>Child #1</mat-label>
                         <mat-error>Please enter name</mat-error>
                     </mat-form-field>
                 </td>
                 <td>
                     <mat-form-field>
-                        <input matInput type="number" min="0" max="50" placeholder="Enter  Age" required name="childOneAge" [(ngModel)]="formdata.childOneAge">
+                        <input matInput type="number" min="0" max="50" placeholder="Enter  Age" required name="childOneAge" [(ngModel)]="formdata.childOneAge" [disabled]="entireFormEnabled">
                         <mat-label>Age</mat-label>
                         <mat-error>Please enter age</mat-error>
                     </mat-form-field>
                 </td>
                 <td>
                     <mat-form-field>
-                        <input matInput placeholder="Relation" maxlength="128" required name="childOneRelation" [(ngModel)]="formdata.childOneRelation">
+                        <input matInput placeholder="Relation" maxlength="128" required name="childOneRelation" [(ngModel)]="formdata.childOneRelation" [disabled]="entireFormEnabled">
                         <mat-label>Relationship</mat-label>
                         <mat-error>Please enter relationship</mat-error>
                     </mat-form-field>
@@ -418,21 +418,21 @@
             <tr>
                 <td>
                     <mat-form-field style="width: 100%">
-                        <input matInput placeholder="Name" maxlength="128" required name="childTwo" [(ngModel)]="formdata.childTwo">
+                        <input matInput placeholder="Name" maxlength="128" required name="childTwo" [(ngModel)]="formdata.childTwo" [disabled]="entireFormEnabled">
                         <mat-label>Child #2</mat-label>
                         <mat-error>Please enter name</mat-error>
                     </mat-form-field>
                 </td>
                 <td>
                     <mat-form-field>
-                        <input matInput type="number" min="0" max="50" placeholder="Enter  Age" required name="childTwoAge" [(ngModel)]="formdata.childTwoAge">
+                        <input matInput type="number" min="0" max="50" placeholder="Enter  Age" required name="childTwoAge" [(ngModel)]="formdata.childTwoAge" [disabled]="entireFormEnabled">
                         <mat-label>Age</mat-label>
                         <mat-error>Please enter age</mat-error>
                     </mat-form-field>
                 </td>
                 <td>
                     <mat-form-field>
-                        <input matInput placeholder="Relation" maxlength="128" required name="childTwoRelation" [(ngModel)]="formdata.childTwoRelation">
+                        <input matInput placeholder="Relation" maxlength="128" required name="childTwoRelation" [(ngModel)]="formdata.childTwoRelation" [disabled]="entireFormEnabled">
                         <mat-label>Relationship</mat-label>
                         <mat-error>Please enter relationship</mat-error>
                     </mat-form-field>
@@ -441,21 +441,21 @@
         </table>
 
         <mat-label id="allergiesLabel">Does anyone in the household have any allergies?</mat-label>
-        <mat-radio-group aria-label="Allergies" aria-labelledby="allergiesLabel" name="anyoneAllergic" [(ngModel)]="formdata.anyoneAllergic">
+        <mat-radio-group aria-label="Allergies" aria-labelledby="allergiesLabel" name="anyoneAllergic" [(ngModel)]="formdata.anyoneAllergic" [disabled]="entireFormEnabled">
             <mat-radio-button value="1" [checked]="true">Yes</mat-radio-button>
             <mat-radio-button value="2">No</mat-radio-button>
         </mat-radio-group>
         <br />
 
         <mat-label id="childrenLabel">If no children are living in the house will children be visiting?</mat-label>
-        <mat-radio-group aria-label="Children" aria-labelledby="childrenLabel" name="childrenHome" [(ngModel)]="formdata.childrenHome">
+        <mat-radio-group aria-label="Children" aria-labelledby="childrenLabel" name="childrenHome" [(ngModel)]="formdata.childrenHome" [disabled]="entireFormEnabled">
             <mat-radio-button value="1" [checked]="true">Yes</mat-radio-button>
             <mat-radio-button value="2">No</mat-radio-button>
         </mat-radio-group>
         <br />
 
         <mat-form-field style="width: 100%">
-            <input matInput placeholder="Brief Explanation" maxlength="180" required name="accomodations" [(ngModel)]="formdata.accommodations">
+            <input matInput placeholder="Brief Explanation" maxlength="180" required name="accomodations" [(ngModel)]="formdata.accommodations" [disabled]="entireFormEnabled">
             <mat-label>What accommodations will be made for the animal if traveling?</mat-label>
         </mat-form-field>
 
@@ -468,7 +468,7 @@
             <tr>
                 <td>
                     <mat-form-field style="width: 100%">
-                        <input matInput placeholder="Name" maxlength="128" required name="referenceOne" [(ngModel)]="formdata.referenceOne">
+                        <input matInput placeholder="Name" maxlength="128" required name="referenceOne" [(ngModel)]="formdata.referenceOne" [disabled]="entireFormEnabled">
                         <mat-label>Reference #1</mat-label>
                         <mat-error>Please enter reference</mat-error>
                     </mat-form-field>
@@ -478,14 +478,14 @@
                         <mat-label>Phone</mat-label>
                         <mat-error>Please enter reference phone</mat-error>
                         <span matPrefix>+1 &nbsp;</span>
-                        <input type="tel" matInput placeholder="555-555-1234" maxlength="18" required name="firstPhone" [(ngModel)]="formdata.firstPhone">
+                        <input type="tel" matInput placeholder="555-555-1234" maxlength="18" required name="firstPhone" [(ngModel)]="formdata.firstPhone" [disabled]="entireFormEnabled">
                     </mat-form-field>
                 </td>
             </tr>
             <tr>
                 <td>
                     <mat-form-field style="width: 100%">
-                        <input matInput placeholder="Name" maxlength="128" required name="referenceTwo" [(ngModel)]="formdata.referenceTwo">
+                        <input matInput placeholder="Name" maxlength="128" required name="referenceTwo" [(ngModel)]="formdata.referenceTwo" [disabled]="entireFormEnabled">
                         <mat-label>Reference #2</mat-label>
                         <mat-error>Please enter reference</mat-error>
                     </mat-form-field>
@@ -495,14 +495,14 @@
                         <mat-label>Phone</mat-label>
                         <mat-error>Please enter reference phone</mat-error>
                         <span matPrefix>+1 &nbsp;</span>
-                        <input type="tel" matInput placeholder="555-555-1234" maxlength="18" required name="secondPhone" [(ngModel)]="formdata.secondPhone">
+                        <input type="tel" matInput placeholder="555-555-1234" maxlength="18" required name="secondPhone" [(ngModel)]="formdata.secondPhone" [disabled]="entireFormEnabled">
                     </mat-form-field>
                 </td>
             </tr>
             <tr>
                 <td>
                     <mat-form-field style="width: 100%">
-                        <input matInput placeholder="Name" maxlength="128" required name="referenceThree" [(ngModel)]="formdata.referenceThree">
+                        <input matInput placeholder="Name" maxlength="128" required name="referenceThree" [(ngModel)]="formdata.referenceThree" [disabled]="entireFormEnabled">
                         <mat-label>Reference #3</mat-label>
                         <mat-error>Please enter reference</mat-error>
                     </mat-form-field>
@@ -512,7 +512,7 @@
                         <mat-label>Phone</mat-label>
                         <mat-error>Please enter reference phone</mat-error>
                         <span matPrefix>+1 &nbsp;</span>
-                        <input type="tel" matInput placeholder="555-555-1234" maxlength="18" required name="thirdPhone" [(ngModel)]="formdata.thirdPhone">
+                        <input type="tel" matInput placeholder="555-555-1234" maxlength="18" required name="thirdPhone" [(ngModel)]="formdata.thirdPhone" [disabled]="entireFormEnabled">
                     </mat-form-field>
                 </td>
             </tr>
@@ -521,8 +521,8 @@
     </mat-dialog-content>
 
     <mat-dialog-actions>
-        <button mat-button (click)="closeDialog()">Cancel</button>
-        <button mat-button type="submit">Submit</button>
+        <button mat-button type="button" (click)="closeDialog()" [disabled]="entireFormEnabled">Cancel</button>
+        <button mat-button type="submit" [disabled]="entireFormEnabled">Submit</button>
     </mat-dialog-actions>
 
 </form>

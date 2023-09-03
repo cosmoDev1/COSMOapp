@@ -3,20 +3,20 @@
     <h2 mat-dialog-title>New {{data.role}}</h2>
     <mat-dialog-content>
         <mat-form-field style="width: 100%">
-            <input matInput placeholder="Name" required name="shelterName" maxlength="128" [(ngModel)]="formdata.shelterName">
+            <input matInput placeholder="Name" required name="shelterName" maxlength="128" [(ngModel)]="formdata.shelterName" [disabled]="entireFormEnabled">
             <mat-label>Shelter Name</mat-label>
             <mat-error>Please enter shelter name</mat-error>
         </mat-form-field>
 
 
         <mat-form-field style="width: 100%">
-            <input matInput placeholder="Address" required name="shelterAddress" maxlength="128" [(ngModel)]="formdata.shelterAddress">
+            <input matInput placeholder="Address" required name="shelterAddress" maxlength="128" [(ngModel)]="formdata.shelterAddress" [disabled]="entireFormEnabled">
             <mat-label>Address</mat-label>
             <mat-error>Please enter shelter address</mat-error>
         </mat-form-field>
 
         <mat-form-field style="width: 100%">
-            <input matInput placeholder="City" required name="shelterCity" maxlength="64" [(ngModel)]="formdata.shelterCity">
+            <input matInput placeholder="City" required name="shelterCity" maxlength="64" [(ngModel)]="formdata.shelterCity" [disabled]="entireFormEnabled">
             <mat-label>City</mat-label>
             <mat-error>Please enter shelter city</mat-error>
         </mat-form-field>
@@ -26,7 +26,7 @@
                 <td>
                     <mat-form-field>
                         <mat-label> State </mat-label>
-                        <mat-select id="stat" name="shelterState" [(ngModel)]="formdata.shelterState">
+                        <mat-select id="stat" name="shelterState" [(ngModel)]="formdata.shelterState" [disabled]="entireFormEnabled">
                             <mat-option *ngFor="let state of global.states" [value]="state.abbreviation">
                                 {{ state.name }} - {{ state.abbreviation }}
                             </mat-option>
@@ -35,7 +35,7 @@
                 </td>
                 <td>
                     <mat-form-field>
-                        <input matInput type="number" max="99999" placeholder="Zip" required name="shelterZip" [(ngModel)]="formdata.shelterZip" onKeyPress="if(this.value.length==5) return false;">
+                        <input matInput type="number" max="99999" placeholder="Zip" required name="shelterZip" [(ngModel)]="formdata.shelterZip" onKeyPress="if(this.value.length==5) return false;" [disabled]="entireFormEnabled">
                         <mat-label>Zip</mat-label>
                         <mat-error>Please enter shelter zip</mat-error>
                     </mat-form-field>
@@ -44,7 +44,7 @@
                     <mat-form-field>
                         <mat-label>Phone</mat-label>
                         <span matPrefix>+1 &nbsp;</span>
-                        <input type="tel" matInput placeholder="555-555-1234" maxlength="10" (keydown)="numberOnlyEvent($event)" required name="shelterPhone" [(ngModel)]="formdata.shelterPhone">
+                        <input type="tel" matInput placeholder="555-555-1234" maxlength="10" (keydown)="numberOnlyEvent($event)" required name="shelterPhone" [(ngModel)]="formdata.shelterPhone" [disabled]="entireFormEnabled">
                         <mat-error>Please enter shelter phone</mat-error>
                     </mat-form-field>
                 </td>
@@ -54,14 +54,14 @@
 
 
         <mat-form-field style="width: 100%">
-            <input matInput placeholder="Name" required name="adminName" [(ngModel)]="formdata.adminName">
+            <input matInput placeholder="Name" required name="adminName" [(ngModel)]="formdata.adminName" [disabled]="entireFormEnabled">
             <mat-label>Administrator Name</mat-label>
             <mat-error>Please enter administrator name</mat-error>
         </mat-form-field>
         <br />
 
         <mat-form-field style="width: 100%">
-            <input matInput placeholder="Email" required name="adminEmail" [(ngModel)]="formdata.adminEmail">
+            <input matInput placeholder="Email" required name="adminEmail" type="email" [(ngModel)]="formdata.adminEmail" [disabled]="entireFormEnabled">
             <mat-label> Administrator Email</mat-label>
             <mat-error>Please enter shelter email</mat-error>
         </mat-form-field>
@@ -70,13 +70,13 @@
         <mat-form-field>
             <mat-label>Phone</mat-label>
             <span matPrefix>+1 &nbsp;</span>
-            <input type="tel" matInput placeholder="555-555-1234" maxlength="10" required name="adminPhone" [(ngModel)]="formdata.adminPhone">
+            <input type="tel" matInput placeholder="555-555-1234" maxlength="10" required name="adminPhone" [(ngModel)]="formdata.adminPhone" [disabled]="entireFormEnabled">
             <mat-error>Please enter administrator phone</mat-error>
         </mat-form-field>
         <br />
 
         <mat-form-field style="width: 100%">
-            <input matInput placeholder="Name" required name="coordinatorName" [(ngModel)]="formdata.coordinatorName">
+            <input matInput placeholder="Name" required name="coordinatorName" [(ngModel)]="formdata.coordinatorName" [disabled]="entireFormEnabled">
             <mat-label>Coordinator Name</mat-label>
             <mat-error>Please enter coordinator name</mat-error>
         </mat-form-field>
@@ -84,7 +84,7 @@
 
 
         <mat-form-field style="width: 100%">
-            <input matInput placeholder="Email" required name="coordinatorEmail" [(ngModel)]="formdata.coordinatorEmail">
+            <input matInput placeholder="Email" required name="coordinatorEmail" [(ngModel)]="formdata.coordinatorEmail" [disabled]="entireFormEnabled">
             <mat-label> Coordinator Email</mat-label>
             <mat-error>Please enter coordinator email</mat-error>
         </mat-form-field>
@@ -92,14 +92,14 @@
         <mat-form-field>
             <mat-label>Phone</mat-label>
             <span matPrefix>+1 &nbsp;</span>
-            <input type="tel" matInput placeholder="555-555-1234" maxlength="10" required name="coordinatorPhone" [(ngModel)]="formdata.coordinatorPhone">
+            <input type="tel" matInput placeholder="555-555-1234" maxlength="10" required name="coordinatorPhone" [(ngModel)]="formdata.coordinatorPhone" [disabled]="entireFormEnabled">
             <mat-error>Please enter coordinator phone</mat-error>
         </mat-form-field>
         <br />
 
         <div mat-dialog-actions>
-            <button mat-button (click)="closeDialog()">Close</button>
-            <button mat-button type="submit">Submit</button>
+            <button mat-button type="button" (click)="closeDialog()" [disabled]="entireFormEnabled">Close</button>
+            <button mat-button type="submit" [disabled]="entireFormEnabled">Submit</button>
         </div>
     </mat-dialog-content>
 

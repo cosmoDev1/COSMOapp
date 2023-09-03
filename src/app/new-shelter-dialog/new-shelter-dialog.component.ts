@@ -43,7 +43,7 @@ export class NewShelterDialogComponent {
             dialogConfig.autoFocus = true;
             dialogConfig.data = { title: 'Warning', message: "One or more errors were found. Please correct them and try again.", notification: true };
 
-            const dialogRef = this.dialog.open(ConfirmationDialogComponent, dialogConfig);
+            const dialogRef2 = this.dialog.open(ConfirmationDialogComponent, dialogConfig);
 
             return;
         }
@@ -52,8 +52,8 @@ export class NewShelterDialogComponent {
         dialogConfig.autoFocus = true;
         dialogConfig.data = { title: 'Warning', message: "One or more errors were found. Please correct them and try again.", notification: true };
 
-        const dialogRef = this.dialog.open(ConfirmationDialogComponent, dialogConfig);
-        dialogRef.afterClosed().subscribe(result => {
+        const dialogRef3 = this.dialog.open(ConfirmationDialogComponent, dialogConfig);
+        dialogRef3.afterClosed().subscribe(result => {
             console.log(result);
             if (result == 'accept') {
                 this.entireFormEnabled = true;
@@ -80,8 +80,8 @@ export class NewShelterDialogComponent {
 
                     dialogConfig.data = { title: 'Notice', message: tmpText, notification: true };
 
-                    const dialogRef = this.dialog.open(ConfirmationDialogComponent, dialogConfig);
-                    dialogRef.afterClosed().subscribe(result => { this.closeDialog(); });
+                    const dialogRef4 = this.dialog.open(ConfirmationDialogComponent, dialogConfig);
+                    dialogRef4.afterClosed().subscribe(result => { this.closeDialog(); });
                 });
 
 
