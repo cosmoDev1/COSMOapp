@@ -6,15 +6,18 @@ import { Globals } from "../globals";
 import { ConfirmationDialogComponent } from '../confirmation-dialog/confirmation-dialog.component';
 
 @Component({
-  selector: 'app-new-shelter-dialog',
-  templateUrl: './new-shelter-dialog.component.html',
-  styleUrls: ['./new-shelter-dialog.component.css']
+    selector: 'app-new-shelter-dialog',
+    templateUrl: './new-shelter-dialog.component.html',
+    styleUrls: ['./new-shelter-dialog.component.css']
 })
 export class NewShelterDialogComponent {
 
-    formdata = { shelterName: "", shelterAddress: "", shelterCity: "", shelterState: "TX", shelterZip: "", shelterPhone: "", adminName: "", adminPhone:"", adminEmail: "", coordinatorName: "", coordinatorPhone:"",
-        coordinatorEmail: "" };
- 
+    formdata = {
+        shelterName: "", shelterAddress: "", shelterCity: "", shelterState: "TX", shelterZip: "", shelterPhone: "", adminName: "", adminPhone: "", adminEmail: "", coordinatorName: "", coordinatorPhone: "",
+        coordinatorEmail: ""
+    };
+
+    entireFormEnabled: boolean = false;
 
     numberOnlyEvent(event: any): void {
         const charCode = (event.which) ? event.which : event.keyCode;
@@ -33,42 +36,56 @@ export class NewShelterDialogComponent {
     }
 
     submitDialog(shelterForm: any) {
+        const dialogConfig = new MatDialogConfig();
+
         if (shelterForm.invalid) {
-            console.log('There are errors on the form')
+            dialogConfig.disableClose = true;
+            dialogConfig.autoFocus = true;
+            dialogConfig.data = { title: 'Warning', message: "One or more errors were found. Please correct them and try again.", notification: true };
+
+            const dialogRef = this.dialog.open(ConfirmationDialogComponent, dialogConfig);
+
             return;
         }
 
-        var head = new HttpHeaders({ 'Content-Type': 'application/json' });
-        const options = { headers: head };
+        dialogConfig.disableClose = true;
+        dialogConfig.autoFocus = true;
+        dialogConfig.data = { title: 'Warning', message: "One or more errors were found. Please correct them and try again.", notification: true };
 
-        this.http.post(this.global.webserviceBaseUrl + 'shelters', this.formdata, options).subscribe((res: any) => {
-            console.log(res);
-            res = JSON.parse(res);
+        const dialogRef = this.dialog.open(ConfirmationDialogComponent, dialogConfig);
+        dialogRef.afterClosed().subscribe(result => {
+            console.log(result);
+            if (result == 'accept') {
+                this.entireFormEnabled = true;
 
-            const dialogConfig = new MatDialogConfig();
+                var head = new HttpHeaders({ 'Content-Type': 'application/json' });
+                const options = { headers: head };
 
-            dialogConfig.disableClose = true;
-            dialogConfig.autoFocus = true;
-            var tmpText = "";
-            if (res.message == "inserted") {
-                tmpText = 'Your submission was successfully received. You will receive an email with further instructions.'
+                this.http.post(this.global.webserviceBaseUrl + 'shelters', this.formdata, options).subscribe((res: any) => {
+                    console.log(res);
+                    res = JSON.parse(res);
+
+                    dialogConfig.disableClose = true;
+                    dialogConfig.autoFocus = true;
+                    var tmpText = "";
+                    if (res.message == "inserted") {
+                        tmpText = 'Your submission was successfully received. You will receive an email with further instructions.'
+                    }
+                    if (res.message == "notinserted") {
+                        tmpText = 'Your submission returned an error. Please contact the app add admin.'
+                    }
+                    if (res.message == "error") {
+                        tmpText = 'An internal error ocurred. Please contact the app add admin.'
+                    }
+
+                    dialogConfig.data = { title: 'Notice', message: tmpText, notification: true };
+
+                    const dialogRef = this.dialog.open(ConfirmationDialogComponent, dialogConfig);
+                    dialogRef.afterClosed().subscribe(result => { this.closeDialog(); });
+                });
+
+
             }
-            if (res.message == "notinserted") {
-                tmpText = 'Your submission returned an error. Please contact the app add admin.'
-            }
-            if (res.message == "error") {
-                tmpText = 'An internal error ocurred. Please contact the app add admin.'
-            }
-
-
-            dialogConfig.data = { title: 'Notice', message: tmpText, notification: true };
-
-            const dialogRef = this.dialog.open(ConfirmationDialogComponent, dialogConfig);
-            dialogRef.afterClosed().subscribe(result => { this.closeDialog(); });
         });
-
-        console.log(shelterForm);
-        console.log(this.formdata);
     }
-
 }

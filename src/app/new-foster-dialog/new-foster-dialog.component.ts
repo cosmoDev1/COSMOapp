@@ -22,6 +22,8 @@ export class NewFosterDialogComponent {
         referenceOne: "", firstPhone: "", referenceTwo:"", secondPhone: "", referenceThree:"", thirdPhone:""
     }
 
+    entireFormEnabled: boolean = false;
+
     constructor(@Inject(MAT_DIALOG_DATA) public data: any, public dialogRef: MatDialogRef<NewFosterDialogComponent>, public global: Globals, private http: HttpClient, private dialog: MatDialog) {  }
 
 
@@ -32,41 +34,55 @@ export class NewFosterDialogComponent {
     }
 
     submitDialog(fosterForm: any) {
+        const dialogConfig = new MatDialogConfig();
+
         if (fosterForm.invalid) {
-            console.log('There are errors on the form')
+            dialogConfig.disableClose = true;
+            dialogConfig.autoFocus = true;
+            dialogConfig.data = { title: 'Warning', message: "One or more errors were found. Please correct them and try again.", notification: true };
+
+            const dialogRef2 = this.dialog.open(ConfirmationDialogComponent, dialogConfig);
+
             return;
         }
 
-        var head = new HttpHeaders({ 'Content-Type': 'application/json' });
-        const options = { headers: head };
+        dialogConfig.disableClose = true;
+        dialogConfig.autoFocus = true;
+        dialogConfig.data = { title: 'Warning', message: "One or more errors were found. Please correct them and try again.", notification: true };
 
-        this.http.post(this.global.webserviceBaseUrl + 'fosters', this.formdata, options).subscribe((res: any) => {
-            console.log(res);
-            res = JSON.parse(res);
+        const dialogRef3 = this.dialog.open(ConfirmationDialogComponent, dialogConfig);
+        dialogRef3.afterClosed().subscribe(result => {
+            console.log(result);
+            if (result == 'accept') {
+                this.entireFormEnabled = true;
 
-            const dialogConfig = new MatDialogConfig();
+                var head = new HttpHeaders({ 'Content-Type': 'application/json' });
+                const options = { headers: head };
 
-            dialogConfig.disableClose = true;
-            dialogConfig.autoFocus = true;
-            var tmpText = "";
-            if (res.message == "inserted") {
-                tmpText = 'Your submission was successfully received. You will receive an email with further instructions.'
+                this.http.post(this.global.webserviceBaseUrl + 'fosters', this.formdata, options).subscribe((res: any) => {
+                    console.log(res);
+                    res = JSON.parse(res);
+
+                    dialogConfig.disableClose = true;
+                    dialogConfig.autoFocus = true;
+                    var tmpText = "";
+                    if (res.message == "inserted") {
+                        tmpText = 'Your submission was successfully received. You will receive an email with further instructions.'
+                    }
+                    if (res.message == "notinserted") {
+                        tmpText = 'Your submission returned an error. Please contact the app add admin.'
+                    }
+                    if (res.message == "error") {
+                        tmpText = 'An internal error ocurred. Please contact the app add admin.'
+                    }
+
+                    dialogConfig.data = { title: 'Notice', message: tmpText, notification: true };
+
+                    const dialogRef4 = this.dialog.open(ConfirmationDialogComponent, dialogConfig);
+                    dialogRef4.afterClosed().subscribe(result => { this.closeDialog(); });
+                });
             }
-            if (res.message == "notinserted") {
-                tmpText = 'Your submission returned an error. Please contact the app add admin.'
-            }
-            if (res.message == "error") {
-                tmpText = 'An internal error ocurred. Please contact the app add admin.'
-            }
 
-            dialogConfig.data = { title: 'Notice', message: tmpText, notification: true };
-
-            const dialogRef = this.dialog.open(ConfirmationDialogComponent, dialogConfig);
-            dialogRef.afterClosed().subscribe((result: any) => { this.closeDialog(); });
-        });
-
-        console.log(fosterForm);
-        console.log(this.formdata);
+            });
     }
-
 }
