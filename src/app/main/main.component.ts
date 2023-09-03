@@ -5,6 +5,7 @@ import { MatSort, Sort, MatSortModule } from '@angular/material/sort';
 import { MatPaginator } from '@angular/material/paginator';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { TitleCasePipe } from '@angular/common';
+import { Title } from '@angular/platform-browser';
 
 import { NewRescueDialogComponent } from '../new-rescue-dialog/new-rescue-dialog.component';
 import { NewFosterDialogComponent } from '../new-foster-dialog/new-foster-dialog.component';
@@ -21,7 +22,6 @@ import { PleaDialogComponent } from '../plea-dialog/plea-dialog.component';
     styleUrls: ['./main.component.css']
 })
 export class MainComponent implements AfterViewInit, OnInit {
-    title = 'COSMO app';
     public cities: any = [{ name: 'Houston', value: '0' }, { name: 'San Antonio', value: '1' }, { name: 'Dallas', value: '2' }];
     public shelters: any = [{ name: 'BARC', value: '0' }, { name: 'HCAS', value: '1' }];
     selectedCity = '0';
@@ -34,7 +34,10 @@ export class MainComponent implements AfterViewInit, OnInit {
     @ViewChild(MatSort, { static: false }) sort!: MatSort;
     @ViewChild('paginator', { static: true }) paginator!: MatPaginator;
 
-    constructor(private dialog: MatDialog, private http: HttpClient, public global: Globals) { }
+      constructor(private dialog: MatDialog, private http: HttpClient, public global: Globals, private title: Title) {
+            console.log(this.title.getTitle());
+          this.title.setTitle('COSMO - Bernie Rescue');
+    }
 
 
     ngOnInit() { }

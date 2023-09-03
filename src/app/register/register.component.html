@@ -5,36 +5,36 @@
 <mat-stepper linear #stepper>
     <mat-step [stepControl]="firstFormGroup">
         <form [formGroup]="firstFormGroup">
-            <ng-template matStepLabel>Fill out your name</ng-template>
+            <ng-template matStepLabel>Select your account type</ng-template>
             <mat-form-field>
                 <mat-label>Name</mat-label>
                 <input matInput placeholder="Last name, First name" formControlName="firstCtrl" required>
             </mat-form-field>
             <div>
-                <button mat-button matStepperNext>Next</button>
+                <button mat-raised-button matStepperNext color="primary">Next</button>
             </div>
         </form>
     </mat-step>
     <mat-step [stepControl]="secondFormGroup" [optional]="isOptional">
         <form [formGroup]="secondFormGroup">
-            <ng-template matStepLabel>Fill out your address</ng-template>
+            <ng-template matStepLabel>Fill the details</ng-template>
             <mat-form-field>
                 <mat-label>Address</mat-label>
                 <input matInput formControlName="secondCtrl" placeholder="Ex. 1 Main St, New York, NY"
                        required>
             </mat-form-field>
             <div>
-                <button mat-button matStepperPrevious>Back</button>
-                <button mat-button matStepperNext>Next</button>
+                <button mat-raised-button matStepperPrevious color="primary">Back</button>
+                <button mat-raised-button matStepperNext color="primary">Next</button>
             </div>
         </form>
     </mat-step>
     <mat-step>
-        <ng-template matStepLabel>Done</ng-template>
+        <ng-template matStepLabel>Check your information and submit</ng-template>
         <p>You are now done.</p>
         <div>
-            <button mat-button matStepperPrevious>Back</button>
-            <button mat-button (click)="stepper.reset()">Reset</button>
+            <button mat-raised-button matStepperPrevious color="primary">Back</button>
+            <button mat-raised-button (click)="stepper.reset()" color="primary">Reset</button>
         </div>
     </mat-step>
 </mat-stepper>
