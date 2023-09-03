@@ -4,11 +4,12 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { MaterialModule } from './material-module';
 import { HttpClientModule } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { MainComponent } from './main/main.component';
 import { NewRescueDialogComponent } from './new-rescue-dialog/new-rescue-dialog.component';
 import { NewFosterDialogComponent } from './new-foster-dialog/new-foster-dialog.component';
 import { ConfirmationDialogComponent } from './confirmation-dialog/confirmation-dialog.component';
@@ -16,28 +17,20 @@ import { AnimalDetailDialogComponent } from './animal-detail-dialog/animal-detai
 import { NewShelterDialogComponent } from './new-shelter-dialog/new-shelter-dialog.component';
 import { MyAnimalsDialogComponent } from './my-animals-dialog/my-animals-dialog.component';
 import { PleaDialogComponent } from './plea-dialog/plea-dialog.component';
+import { RegisterComponent } from './register/register.component';
 
 
 @NgModule({
-  declarations: [
-        AppComponent,
-        NewRescueDialogComponent,
-        NewFosterDialogComponent,
-        ConfirmationDialogComponent,
-        AnimalDetailDialogComponent,
-        NewShelterDialogComponent,
-        MyAnimalsDialogComponent,
-        PleaDialogComponent,
-  ],
-  imports: [
-      BrowserModule,
-      AppRoutingModule,
-      BrowserAnimationsModule,
-      MaterialModule,
-      HttpClientModule,
-      FormsModule
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
+      declarations: [
+            AppComponent, MainComponent,
+            NewRescueDialogComponent, NewFosterDialogComponent, NewShelterDialogComponent,
+            MyAnimalsDialogComponent, AnimalDetailDialogComponent,
+            ConfirmationDialogComponent, PleaDialogComponent, RegisterComponent
+      ],
+      imports: [
+            BrowserModule, AppRoutingModule, BrowserAnimationsModule, MaterialModule, HttpClientModule, FormsModule, ReactiveFormsModule
+      ],
+      providers: [],
+      bootstrap: [AppComponent]
 })
 export class AppModule { }
