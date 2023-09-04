@@ -15,7 +15,7 @@
         <form #form1="ngForm">
             <ng-template matStepLabel>Select your account type</ng-template>
 
-            <p>Please select the most appropiate option from the selections below, then click the 'Next'' button</p>
+            <p>Please select the most appropiate option from the selections below, then click the <b>'Next'</b> button</p>
 
             <mat-label id="typeAccountLabel">Account Type:</mat-label>
             <mat-radio-group aria-label="Account Type" aria-labelledby="typeAccountLabel" name="typeAccount" [(ngModel)]="formdata.typeAccount">
@@ -25,7 +25,7 @@
                 <mat-radio-button value="4" [disabled]="true">Transport</mat-radio-button>
             </mat-radio-group>
             <p *ngIf="formdata.typeAccount=='1'" style="font-style: italic">Description: Shelters - City or state facilities where stray animals or owner surrenders are accepted.</p>
-            <p *ngIf="formdata.typeAccount=='2'" style="font-style: italic">Description: Rescue Groups - Private or semi-private organizations dedicated to pull animals from shelters, bring them back to health and offer them for adoption.</p>
+            <p *ngIf="formdata.typeAccount=='2'" style="font-style: italic">Description: Rescue Groups - Private or semi-private organizations dedicated to pull animals out from shelters, bring them back to health and offer them for adoption.</p>
             <p *ngIf="formdata.typeAccount=='3'" style="font-style: italic">Description: Fosters - Invididuals that hold rescued animals in their homes or other suitables places while they get adopted.</p>
             <div>
                 <button mat-raised-button matStepperNext color="primary">Next</button>
@@ -36,8 +36,254 @@
         <form #form2="ngForm">
             <ng-template matStepLabel>Fill in your details</ng-template>
 
+            <p>Now fill the requested information into their respective fields, then click the <b>'Next'</b> button</p>
+
+            <div *ngIf="formdata.typeAccount=='1'">
+                <mat-form-field style="width: 100%">
+                    <input matInput placeholder="Name" required name="shelterName" maxlength="128" [(ngModel)]="shelterdata.shelterName" [disabled]="entireFormEnabled">
+                    <mat-label>Shelter Name</mat-label>
+                    <mat-error>Please enter shelter name</mat-error>
+                </mat-form-field>
+
+                <mat-form-field style="width: 100%">
+                    <input matInput placeholder="Address" required name="shelterAddress" maxlength="128" [(ngModel)]="shelterdata.shelterAddress" [disabled]="entireFormEnabled">
+                    <mat-label>Address</mat-label>
+                    <mat-error>Please enter shelter address</mat-error>
+                </mat-form-field>
+
+                <mat-form-field style="width: 100%">
+                    <input matInput placeholder="City" required name="shelterCity" maxlength="64" [(ngModel)]="shelterdata.shelterCity" [disabled]="entireFormEnabled">
+                    <mat-label>City</mat-label>
+                    <mat-error>Please enter shelter city</mat-error>
+                </mat-form-field>
+
+                <table>
+                    <tr>
+                        <td>
+                            <mat-form-field>
+                                <mat-label> State </mat-label>
+                                <mat-select id="stat" name="shelterState" [(ngModel)]="shelterdata.shelterState" [disabled]="entireFormEnabled">
+                                    <mat-option *ngFor="let state of global.states" [value]="state.abbreviation">
+                                        {{ state.name }} - {{ state.abbreviation }}
+                                    </mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </td>
+                        <td>
+                            <mat-form-field>
+                                <input matInput type="number" max="99999" placeholder="Zip" required name="shelterZip" [(ngModel)]="shelterdata.shelterZip" onKeyPress="if(this.value.length==5) return false;" [disabled]="entireFormEnabled">
+                                <mat-label>Zip</mat-label>
+                                <mat-error>Please enter shelter zip</mat-error>
+                            </mat-form-field>
+                        </td>
+                        <td>
+                            <mat-form-field>
+                                <mat-label>Phone</mat-label>
+                                <span matPrefix>+1 &nbsp;</span>
+                                <input type="tel" matInput placeholder="555-555-1234" maxlength="10" (keydown)="numberOnlyEvent($event)" required name="shelterPhone" [(ngModel)]="shelterdata.shelterPhone" [disabled]="entireFormEnabled">
+                                <mat-error>Please enter shelter phone</mat-error>
+                            </mat-form-field>
+                        </td>
+                    </tr>
+                </table>
+
+                <mat-form-field style="width: 100%">
+                    <input matInput placeholder="Name" required name="adminName" [(ngModel)]="shelterdata.adminName" [disabled]="entireFormEnabled">
+                    <mat-label>Administrator Name</mat-label>
+                    <mat-error>Please enter administrator name</mat-error>
+                </mat-form-field>
+                <br />
+
+                <mat-form-field style="width: 100%">
+                    <input matInput placeholder="Email" required name="adminEmail" type="email" [(ngModel)]="shelterdata.adminEmail" [disabled]="entireFormEnabled">
+                    <mat-label> Administrator Email</mat-label>
+                    <mat-error>Please enter shelter email</mat-error>
+                </mat-form-field>
+                <br />
+
+                <mat-form-field>
+                    <mat-label>Phone</mat-label>
+                    <span matPrefix>+1 &nbsp;</span>
+                    <input type="tel" matInput placeholder="555-555-1234" maxlength="10" required name="adminPhone" [(ngModel)]="shelterdata.adminPhone" [disabled]="entireFormEnabled">
+                    <mat-error>Please enter administrator phone</mat-error>
+                </mat-form-field>
+                <br />
+
+                <mat-form-field style="width: 100%">
+                    <input matInput placeholder="Name" required name="coordinatorName" [(ngModel)]="shelterdata.coordinatorName" [disabled]="entireFormEnabled">
+                    <mat-label>Coordinator Name</mat-label>
+                    <mat-error>Please enter coordinator name</mat-error>
+                </mat-form-field>
+                <br />
+
+                <mat-form-field style="width: 100%">
+                    <input matInput placeholder="Email" required name="coordinatorEmail" [(ngModel)]="shelterdata.coordinatorEmail" [disabled]="entireFormEnabled">
+                    <mat-label> Coordinator Email</mat-label>
+                    <mat-error>Please enter coordinator email</mat-error>
+                </mat-form-field>
+
+                <mat-form-field>
+                    <mat-label>Phone</mat-label>
+                    <span matPrefix>+1 &nbsp;</span>
+                    <input type="tel" matInput placeholder="555-555-1234" maxlength="10" required name="coordinatorPhone" [(ngModel)]="shelterdata.coordinatorPhone" [disabled]="entireFormEnabled">
+                    <mat-error>Please enter coordinator phone</mat-error>
+                </mat-form-field>
+
+            </div>
+
+            <div *ngIf="formdata.typeAccount=='2'">
+                <mat-form-field style="width: 100%">
+                    <input matInput name="rescueName" placeholder="Name" maxlength="128" required [(ngModel)]="rescuedata.rescueName" [disabled]="entireFormEnabled">
+                    <mat-label>Rescue Name</mat-label>
+                    <mat-error>Please enter rescue name</mat-error>
+                </mat-form-field>
+
+
+                <mat-form-field style="width: 100%">
+                    <input matInput name="rescueAddress" placeholder="Address" maxlength="128" required [(ngModel)]="rescuedata.rescueAddress" [disabled]="entireFormEnabled">
+                    <mat-label>Address</mat-label>
+                    <mat-error>Please enter rescue address</mat-error>
+                </mat-form-field>
+
+                <mat-form-field style="width: 100%">
+                    <input matInput name="rescueCity" placeholder="City" maxlength="64" required [(ngModel)]="rescuedata.rescueCity" [disabled]="entireFormEnabled">
+                    <mat-label>City</mat-label>
+                    <mat-error>Please enter rescue city</mat-error>
+                </mat-form-field>
+
+                <table>
+                    <tr>
+                        <td>
+                            <mat-form-field>
+                                <mat-label> State </mat-label>
+                                <mat-select id="stat" name="state" [(ngModel)]="rescuedata.rescueState" [disabled]="entireFormEnabled">
+                                    <mat-option *ngFor="let state of global.states" [value]="state.abbreviation">
+                                        {{ state.name }} - {{ state.abbreviation }}
+                                    </mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </td>
+                        <td>
+                            <mat-form-field>
+                                <input matInput name="rescueZip" type="number" max="99999" placeholder="Zip" required [(ngModel)]="rescuedata.rescueZip" onKeyPress="if(this.value.length==5) return false;" [disabled]="entireFormEnabled">
+                                <mat-label>Zip</mat-label>
+                                <mat-error>Please enter rescue zip</mat-error>
+                            </mat-form-field>
+                        </td>
+                        <td>
+                            <mat-form-field>
+                                <mat-label>Rescue Phone</mat-label>
+                                <span matPrefix>+1 &nbsp;</span>
+                                <input type="tel" matInput name="rescuePhone" placeholder="555-555-1234" maxlength="10" required [(ngModel)]="rescuedata.rescuePhone" [disabled]="entireFormEnabled">
+                                <mat-error>Please enter rescue phone</mat-error>
+                            </mat-form-field>
+                        </td>
+                    </tr>
+                </table>
+
+                <mat-form-field style="width: 100%">
+                    <input matInput name="rescueEmail" type="email" placeholder="Email" maxlength="128" required [(ngModel)]="rescuedata.rescueEmail" [disabled]="entireFormEnabled">
+                    <mat-label>Rescue Email</mat-label>
+                    <mat-error>Please enter rescue email</mat-error>
+                </mat-form-field>
+
+                <mat-form-field style="width: 100%">
+                    <input matInput name="contactName" placeholder="Name" maxlength="128" required [(ngModel)]="rescuedata.contactName" [disabled]="entireFormEnabled">
+                    <mat-label>Contact Name</mat-label>
+                    <mat-error>Please enter contact name</mat-error>
+                </mat-form-field>
+
+                <mat-form-field>
+                    <mat-label>Contact Phone</mat-label>
+                    <span matPrefix>+1 &nbsp;</span>
+                    <input type="tel" matInput name="contactPhone" placeholder="555-555-1234" maxlength="10" required [(ngModel)]="rescuedata.contactPhone" [disabled]="entireFormEnabled">
+                    <mat-error>Please enter contact phone</mat-error>
+                </mat-form-field>
+                <br />
+
+                <mat-form-field style="width: 100%">
+                    <input matInput name="contactEmail" type="email" placeholder="Email" maxlength="128" required [(ngModel)]="rescuedata.contactEmail" [disabled]="entireFormEnabled">
+                    <mat-label>Contact Email</mat-label>
+                    <mat-error>Please enter contact email</mat-error>
+                </mat-form-field>
+                <br />
+
+
+                <mat-divider></mat-divider>
+                <mat-label style="font-style:italic; font-weight: bold">Rescue Preferences</mat-label>
+
+                <table>
+                    <tr>
+                        <td> <mat-label id="speciesLabel">Species</mat-label> </td>
+                        <td>
+                            <mat-radio-group aria-label="Species" aria-labelledby="speciesLabel" name="species" [(ngModel)]="rescuedata.species" [disabled]="entireFormEnabled">
+                                <mat-radio-button value="1" [checked]="true">Dog</mat-radio-button>
+                                <mat-radio-button value="2">Cat</mat-radio-button>
+                                <mat-radio-button value="3">Both</mat-radio-button>
+                            </mat-radio-group>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td> <mat-label id="genderLabel">Gender</mat-label> </td>
+                        <td>
+                            <mat-radio-group aria-label="Gender" aria-labelledby="genderLabel" name="gender" [(ngModel)]="rescuedata.gender" [disabled]="entireFormEnabled">
+                                <mat-radio-button value="1" [checked]="true">Both</mat-radio-button>
+                                <mat-radio-button value="2">Male</mat-radio-button>
+                                <mat-radio-button value="3">Female</mat-radio-button>
+                            </mat-radio-group>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td> <mat-label id="sizeLabel">Size</mat-label> </td>
+                        <td>
+                            <mat-radio-group aria-label="Size" aria-labelledby="sizeLabel" name="size" [(ngModel)]="rescuedata.size" [disabled]="entireFormEnabled">
+                                <mat-radio-button value="1" [checked]="true">Any</mat-radio-button>
+                                <mat-radio-button value="2">Extra Large</mat-radio-button>
+                                <mat-radio-button value="3">Large</mat-radio-button>
+                                <mat-radio-button value="4">Medium</mat-radio-button>
+                                <mat-radio-button value="5">Small</mat-radio-button>
+                            </mat-radio-group>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td> <mat-label id="ageLabel">Age</mat-label> </td>
+                        <td>
+                            <mat-radio-group aria-label="Age" aria-labelledby="ageLabel" name="age" [(ngModel)]="rescuedata.age" [disabled]="entireFormEnabled">
+                                <mat-radio-button value="1" [checked]="true">Any</mat-radio-button>
+                                <mat-radio-button value="2">Baby/Puppy</mat-radio-button>
+                                <mat-radio-button value="3">Young</mat-radio-button>
+                                <mat-radio-button value="4">Adult</mat-radio-button>
+                                <mat-radio-button value="5">Senior</mat-radio-button>
+                            </mat-radio-group>
+                        </td>
+                    </tr>
+                </table>
+
+                <mat-divider style="margin-top: 10px"></mat-divider>
+                <mat-label style="font-style:italic; font-weight: bold">Foster Application Preferences</mat-label>
+                <table>
+                    <tr>
+                        <td> <mat-label id="fosterApplication">Foster Application</mat-label> </td>
+                        <td>
+                            <mat-radio-group aria-label="Foster Application" aria-labelledby="fosterApplicationLabel" name="applicationType" [(ngModel)]="rescuedata.applicationType" [disabled]="entireFormEnabled">
+                                <mat-radio-button value="1" [checked]="true">Simple</mat-radio-button>
+                                <mat-radio-button value="2">Detailed</mat-radio-button>
+                            </mat-radio-group>
+                        </td>
+                    </tr>
+
+                </table>
+            </div>
+
+            <div *ngIf="formdata.typeAccount=='3'">
+            </div>
+
+            <div *ngIf="formdata.typeAccount=='4'">
+            </div>
+
             <div>
-                <button mat-raised-button matStepperPrevious color="primary">Back</button>
+                <button mat-raised-button matStepperPrevious color="primary" style="margin-right: 10px">Back</button>
                 <button mat-raised-button matStepperNext color="primary">Next</button>
             </div>
         </form>
@@ -45,8 +291,9 @@
     <mat-step>
         <ng-template matStepLabel>Check your information and submit</ng-template>
         <p>You are now done.</p>
+
         <div>
-            <button mat-raised-button matStepperPrevious color="primary">Back</button>
+            <button mat-raised-button matStepperPrevious color="primary" style="margin-right: 10px">Back</button>
             <button mat-raised-button (click)="stepper.reset()" color="primary">Reset</button>
         </div>
     </mat-step>

@@ -2,7 +2,7 @@
     <h2 mat-dialog-title>New {{data.role}}</h2>
 
     <mat-dialog-content>
-        <mat-form-field style="width: 100%" *ngIf="data.rescueName==true">
+        <mat-form-field style="width: 100%">
             <input matInput name="rescueName" placeholder="Name" maxlength="128" required [(ngModel)]="formdata.rescueName" [disabled]="entireFormEnabled">
             <mat-label>Rescue Name</mat-label>
             <mat-error>Please enter rescue name</mat-error>
