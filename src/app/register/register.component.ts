@@ -1,7 +1,6 @@
-import { Component, AfterViewInit, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { FormBuilder, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { MatDialogRef, MAT_DIALOG_DATA, MatDialog, MatDialogConfig } from "@angular/material/dialog";
+import { MatDialog, MatDialogConfig } from "@angular/material/dialog";
 
 import { Globals } from '../globals';
 import { ConfirmationDialogComponent } from '../confirmation-dialog/confirmation-dialog.component';
@@ -33,7 +32,7 @@ export class RegisterComponent implements OnInit {
             childOne: "", childOneAge: "", childOneRelation: "", childTwo: "", childTwoAge: "", childTwoRelation: "", anyoneAllergic: "1", childrenHome: "1", accommodations: "",
             referenceOne: "", firstPhone: "", referenceTwo: "", secondPhone: "", referenceThree: "", thirdPhone: "" }
 
-      constructor(private dialog: MatDialog, private http: HttpClient, public global: Globals, private _formBuilder: FormBuilder) {  }
+      constructor(private dialog: MatDialog, private http: HttpClient, public global: Globals) {  }
 
       ngOnInit() { console.log('registering') }
 
@@ -54,14 +53,20 @@ export class RegisterComponent implements OnInit {
 
             const dialogConfig = new MatDialogConfig();
             dialogConfig.disableClose = true;
-            dialogConfig.autoFocus = true;
+            dialogConfig.autoFocus = false;
             dialogConfig.data = { title: 'Confirm', message: "Are you sure to submit this " + this.reqType + " request?", notification: false };
 
             const dialogRef = this.dialog.open(ConfirmationDialogComponent, dialogConfig);
             dialogRef.afterClosed().subscribe(result => {
-                  this.entireFormEnabled = "true";
-                  this.entireFormSteps = "false";
+                  if (result == 'accept') {
+                        this.entireFormEnabled = "true";
+                        this.entireFormSteps = "false";
 
+                        var head = new HttpHeaders({ 'Content-Type': 'application/json' });
+                        const options = { headers: head };
+
+
+                  }
             });
 
       }

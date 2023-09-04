@@ -27,9 +27,9 @@ export class NewRescueDialogComponent {
 
     submitDialog(rescueForm: any) {
         const dialogConfig = new MatDialogConfig();
+        dialogConfig.disableClose = true;
 
         if (rescueForm.invalid) {
-            dialogConfig.disableClose = true;
             dialogConfig.autoFocus = true;
             dialogConfig.data = { title: 'Warning', message: "One or more errors were found. Please correct them and try again.", notification: true };
 
@@ -38,8 +38,7 @@ export class NewRescueDialogComponent {
             return;
         }
 
-        dialogConfig.disableClose = true;
-        dialogConfig.autoFocus = true;
+        dialogConfig.autoFocus = false;
         dialogConfig.data = { title: 'Confirm', message: "Are you sure to submit this Rescue request?", notification: false };
 
         const dialogRef3 = this.dialog.open(ConfirmationDialogComponent, dialogConfig);
