@@ -61,7 +61,6 @@ export class RegisterComponent implements OnInit {
             dialogRef.afterClosed().subscribe(result => {
                   if (result == 'accept') {
                         this.entireFormEnabled = "true";
-                        this.entireFormSteps = "false";
 
                         dialogConfig.data = { title: 'Loading', message: '', notification: false };
                         this.loadingRed = this.dialog.open(ConfirmationDialogComponent, dialogConfig);
@@ -94,6 +93,7 @@ export class RegisterComponent implements OnInit {
       }
 
       resultDialog(res: any) {
+            this.entireFormSteps = "false";
             this.loadingRed.close();
 
             const dialogConfig = new MatDialogConfig();
@@ -115,6 +115,12 @@ export class RegisterComponent implements OnInit {
 
             const dialogRef4 = this.dialog.open(ConfirmationDialogComponent, dialogConfig);
             dialogRef4.afterClosed().subscribe(result => {  });
+      }
+
+      weAreAllMadeOfStars() {
+           console.log('you are a star');
+
+           window.open('https://youtu.be/x1rFAaAKpVc', '_blank');
       }
 
 }

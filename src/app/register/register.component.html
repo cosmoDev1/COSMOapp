@@ -1,4 +1,3 @@
-
 <mat-toolbar color="primary">
     <mat-toolbar-row>
         <img src='assets/cosmo_logo.jpg' style="height: 60px; width: 60px; border-radius: 30px" alt="cosmo logo">
@@ -13,7 +12,10 @@
     <p>As we progress towards our goal of make all shelters a no-kill places, you contribution its absolutely necessary.</p>
     <br />
     <p style="font-style: italic">Lets make of our planet a nice place to live, one pup at a time.</p>
-    <span class="text-body-secondary" style="font-style: italic; font-size: 10px; cursor: default; position: absolute; bottom: 7px" onclick="weAreAllMadeOfStars()"> ambulat inter stellas </span>
+    <br />
+    <br />
+    <p>Now is safe to close your browser.</p>
+    <span class="text-body-secondary" style="font-style: italic; font-size: 10px; cursor: default; position: absolute; bottom: 7px" (click)="weAreAllMadeOfStars()"> ambulat inter stellas </span>
 </div>
 
 <mat-stepper linear #stepper *ngIf="entireFormSteps=='true'">
