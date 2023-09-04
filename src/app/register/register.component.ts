@@ -1,8 +1,10 @@
 import { Component, AfterViewInit, OnInit, ViewChild } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { FormBuilder, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatDialogRef, MAT_DIALOG_DATA, MatDialog, MatDialogConfig } from "@angular/material/dialog";
 
 import { Globals } from '../globals';
+import { ConfirmationDialogComponent } from '../confirmation-dialog/confirmation-dialog.component';
 
 @Component({
     selector: 'register',
@@ -10,9 +12,10 @@ import { Globals } from '../globals';
       styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
-      title = 'COSMO app - Register';
-      isOptional = false;
-      entireFormEnabled = 'false';
+      title: string = 'COSMO app - Register';
+      entireFormEnabled: string = 'false';
+      entireFormSteps: string = 'true';
+      reqType: string = "";
 
       formdata = { typeAccount: "1" }
 
@@ -30,7 +33,7 @@ export class RegisterComponent implements OnInit {
             childOne: "", childOneAge: "", childOneRelation: "", childTwo: "", childTwoAge: "", childTwoRelation: "", anyoneAllergic: "1", childrenHome: "1", accommodations: "",
             referenceOne: "", firstPhone: "", referenceTwo: "", secondPhone: "", referenceThree: "", thirdPhone: "" }
 
-      constructor(private http: HttpClient, public global: Globals, private _formBuilder: FormBuilder) {  }
+      constructor(private dialog: MatDialog, private http: HttpClient, public global: Globals, private _formBuilder: FormBuilder) {  }
 
       ngOnInit() { console.log('registering') }
 
@@ -41,6 +44,26 @@ export class RegisterComponent implements OnInit {
                   // Prevent non-numeric characters
                   event.preventDefault();
             }
+      }
+
+      submitForm() {
+            this.reqType = (this.formdata.typeAccount == '1') ? 'Shelter' : this.reqType;
+            this.reqType = (this.formdata.typeAccount == '2') ? 'Rescue' : this.reqType;
+            this.reqType = (this.formdata.typeAccount == '3') ? 'Foster' : this.reqType;
+            this.reqType = (this.formdata.typeAccount == '4') ? 'Transport' : this.reqType;
+
+            const dialogConfig = new MatDialogConfig();
+            dialogConfig.disableClose = true;
+            dialogConfig.autoFocus = true;
+            dialogConfig.data = { title: 'Confirm', message: "Are you sure to submit this " + this.reqType + " request?", notification: false };
+
+            const dialogRef = this.dialog.open(ConfirmationDialogComponent, dialogConfig);
+            dialogRef.afterClosed().subscribe(result => {
+                  this.entireFormEnabled = "true";
+                  this.entireFormSteps = "false";
+
+            });
+
       }
 
 }
