@@ -42,7 +42,7 @@
                 </td>
                 <td>
                     <mat-form-field>
-                        <mat-label>Phone</mat-label>
+                        <mat-label> Shelter Phone</mat-label>
                         <span matPrefix>+1 &nbsp;</span>
                         <input type="tel" matInput placeholder="555-555-1234" maxlength="10" (keydown)="numberOnlyEvent($event)" required name="shelterPhone" [(ngModel)]="formdata.shelterPhone" [disabled]="entireFormEnabled">
                         <mat-error>Please enter shelter phone</mat-error>
@@ -66,7 +66,7 @@
         <br />
 
         <mat-form-field>
-            <mat-label>Phone</mat-label>
+            <mat-label>Administrator Phone</mat-label>
             <span matPrefix>+1 &nbsp;</span>
             <input type="tel" matInput placeholder="555-555-1234" maxlength="10" required name="adminPhone" [(ngModel)]="formdata.adminPhone" [disabled]="entireFormEnabled">
             <mat-error>Please enter administrator phone</mat-error>
@@ -87,7 +87,7 @@
         </mat-form-field>
 
         <mat-form-field>
-            <mat-label>Phone</mat-label>
+            <mat-label>Coordinator Phone</mat-label>
             <span matPrefix>+1 &nbsp;</span>
             <input type="tel" matInput placeholder="555-555-1234" maxlength="10" required name="coordinatorPhone" [(ngModel)]="formdata.coordinatorPhone" [disabled]="entireFormEnabled">
             <mat-error>Please enter coordinator phone</mat-error>

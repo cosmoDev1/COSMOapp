@@ -3,7 +3,7 @@
     <h2 mat-dialog-title>New {{data.role}}</h2>
 
     <mat-dialog-content>
-        <mat-form-field style="width: 100%" *ngIf="data.contactName==true">
+        <mat-form-field style="width: 100%">
             <input matInput placeholder="First & Last Name" maxlength="128" required name="fosterName" [(ngModel)]="formdata.fosterName" [disabled]="entireFormEnabled">
             <mat-label>Contact Name</mat-label>
             <mat-error>Please enter foster name</mat-error>
@@ -523,5 +523,4 @@
         <button mat-button type="button" (click)="closeDialog()" [disabled]="entireFormEnabled">Cancel</button>
         <button mat-button type="submit" [disabled]="entireFormEnabled">Submit</button>
     </mat-dialog-actions>
-
 </form>
