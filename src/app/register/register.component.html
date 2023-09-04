@@ -1,28 +1,41 @@
-<button mat-raised-button (click)="isOptional = !isOptional">
+
+<mat-toolbar color="primary">
+    <mat-toolbar-row>
+        <img src='assets/cosmo_logo.jpg' style="height: 60px; width: 60px; border-radius: 30px" alt="cosmo logo">
+        <span style="margin-left: 17px">COSMO - Free app for animal rescue</span>
+    </mat-toolbar-row>
+</mat-toolbar>
+
+<button mat-raised-button (click)="isOptional = !isOptional" style="display: none">
     {{!isOptional ? 'Enable optional steps' : 'Disable optional steps'}}
 </button>
 
 <mat-stepper linear #stepper>
-    <mat-step [stepControl]="firstFormGroup">
-        <form [formGroup]="firstFormGroup">
+    <mat-step [stepControl]="form1.control">
+        <form #form1="ngForm">
             <ng-template matStepLabel>Select your account type</ng-template>
-            <mat-form-field>
-                <mat-label>Name</mat-label>
-                <input matInput placeholder="Last name, First name" formControlName="firstCtrl" required>
-            </mat-form-field>
+
+            <p>Please select the most appropiate option from the selections below, then click the 'Next'' button</p>
+
+            <mat-label id="typeAccountLabel">Account Type:</mat-label>
+            <mat-radio-group aria-label="Account Type" aria-labelledby="typeAccountLabel" name="typeAccount" [(ngModel)]="formdata.typeAccount">
+                <mat-radio-button value="1" [checked]="true">Shelter</mat-radio-button>
+                <mat-radio-button value="2">Rescue Group</mat-radio-button>
+                <mat-radio-button value="3">Foster</mat-radio-button>
+                <mat-radio-button value="4" [disabled]="true">Transport</mat-radio-button>
+            </mat-radio-group>
+            <p *ngIf="formdata.typeAccount=='1'" style="font-style: italic">Description: Shelters - City or state facilities where stray animals or owner surrenders are accepted.</p>
+            <p *ngIf="formdata.typeAccount=='2'" style="font-style: italic">Description: Rescue Groups - Private or semi-private organizations dedicated to pull animals from shelters, bring them back to health and offer them for adoption.</p>
+            <p *ngIf="formdata.typeAccount=='3'" style="font-style: italic">Description: Fosters - Invididuals that hold rescued animals in their homes or other suitables places while they get adopted.</p>
             <div>
                 <button mat-raised-button matStepperNext color="primary">Next</button>
             </div>
         </form>
     </mat-step>
-    <mat-step [stepControl]="secondFormGroup" [optional]="isOptional">
-        <form [formGroup]="secondFormGroup">
-            <ng-template matStepLabel>Fill the details</ng-template>
-            <mat-form-field>
-                <mat-label>Address</mat-label>
-                <input matInput formControlName="secondCtrl" placeholder="Ex. 1 Main St, New York, NY"
-                       required>
-            </mat-form-field>
+    <mat-step [stepControl]="form2.control" [optional]="isOptional">
+        <form #form2="ngForm">
+            <ng-template matStepLabel>Fill in your details</ng-template>
+
             <div>
                 <button mat-raised-button matStepperPrevious color="primary">Back</button>
                 <button mat-raised-button matStepperNext color="primary">Next</button>

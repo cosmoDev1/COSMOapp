@@ -12,13 +12,8 @@ import { Globals } from '../globals';
 export class RegisterComponent implements OnInit {
       title = 'COSMO app - Register';
       isOptional = false;
+      formdata = { typeAccount: "1"}
 
-      firstFormGroup = this._formBuilder.group({
-            firstCtrl: ['', Validators.required],
-      });
-      secondFormGroup = this._formBuilder.group({
-            secondCtrl: '',
-      });
       constructor(private http: HttpClient, public global: Globals, private _formBuilder: FormBuilder) {  }
 
 
