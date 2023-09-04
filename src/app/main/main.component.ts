@@ -34,9 +34,8 @@ export class MainComponent implements AfterViewInit, OnInit {
     @ViewChild(MatSort, { static: false }) sort!: MatSort;
     @ViewChild('paginator', { static: true }) paginator!: MatPaginator;
 
-      constructor(private dialog: MatDialog, private http: HttpClient, public global: Globals, private title: Title) {
-            console.log(this.title.getTitle());
-          this.title.setTitle('COSMO - Bernie Rescue');
+    constructor(private dialog: MatDialog, private http: HttpClient, public global: Globals, private title: Title) {
+        this.title.setTitle('COSMO - ' + global.rescueName);
     }
 
 
