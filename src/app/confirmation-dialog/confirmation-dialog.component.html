@@ -1,11 +1,16 @@
 
-<h2 mat-dialog-title>{{data.title}}</h2>
+<h2 mat-dialog-title *ngIf="data.title != 'Loading'">{{data.title}}</h2>
 
 <mat-dialog-content>
-  <mat-label>{{data.message}}</mat-label>
+    <mat-label *ngIf="data.title != 'Loading'">{{data.message}}</mat-label>
+
+    <div style="width: 100%; text-align: center" *ngIf="data.title == 'Loading'">
+        <mat-progress-spinner class="example-margin" color="primary" mode="indeterminate" style="margin-left: auto; margin-right: auto"> </mat-progress-spinner>
+        <p>Loading data, please wait...</p>
+    </div>
 </mat-dialog-content>
 
-<mat-dialog-actions>
+<mat-dialog-actions *ngIf="data.title != 'Loading'">
   <button mat-raised-button (click)="submitDialog()">Accept</button>
   <button mat-raised-button *ngIf="data.notification==false" (click)="closeDialog()">Cancel</button>
 </mat-dialog-actions>

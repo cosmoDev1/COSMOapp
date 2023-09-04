@@ -15,6 +15,7 @@ export class RegisterComponent implements OnInit {
       entireFormEnabled: string = 'false';
       entireFormSteps: string = 'true';
       reqType: string = "";
+      loadingRed: any;
 
       formdata = { typeAccount: "1" }
 
@@ -62,6 +63,9 @@ export class RegisterComponent implements OnInit {
                         this.entireFormEnabled = "true";
                         this.entireFormSteps = "false";
 
+                        dialogConfig.data = { title: 'Loading', message: '', notification: false };
+                        this.loadingRed = this.dialog.open(ConfirmationDialogComponent, dialogConfig);
+
                         var head = new HttpHeaders({ 'Content-Type': 'application/json' });
                         const options = { headers: head };
 
@@ -90,6 +94,8 @@ export class RegisterComponent implements OnInit {
       }
 
       resultDialog(res: any) {
+            this.loadingRed.close();
+
             const dialogConfig = new MatDialogConfig();
             dialogConfig.disableClose = true;
             dialogConfig.autoFocus = true;

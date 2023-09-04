@@ -2,11 +2,21 @@
 <mat-toolbar color="primary">
     <mat-toolbar-row>
         <img src='assets/cosmo_logo.jpg' style="height: 60px; width: 60px; border-radius: 30px" alt="cosmo logo">
-        <span style="margin-left: 17px">COSMO - Free app for animal rescue</span>
+        <span style="margin-left: 17px">COSMO - Free app for animal rescue - Request new account</span>
     </mat-toolbar-row>
 </mat-toolbar>
 
-<mat-stepper linear #stepper>
+<div style="text-align: center" *ngIf="entireFormSteps=='false'">
+    <br />
+    <h1>Thanks!</h1>
+    <p>We give you thanks for taking the first step to help more and more of our beloved pets to find a furever home.</p>
+    <p>As we progress towards our goal of make all shelters a no-kill places, you contribution its absolutely necessary.</p>
+    <br />
+    <p style="font-style: italic">Lets make of our planet a nice place to live, one pup at a time.</p>
+    <span class="text-body-secondary" style="font-style: italic; font-size: 10px; cursor: default; position: absolute; bottom: 7px" onclick="weAreAllMadeOfStars()"> ambulat inter stellas </span>
+</div>
+
+<mat-stepper linear #stepper *ngIf="entireFormSteps=='true'">
     <mat-step [stepControl]="form1.control">
         <form #form1="ngForm">
             <ng-template matStepLabel>Select your account type</ng-template>
