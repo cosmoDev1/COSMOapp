@@ -24,6 +24,15 @@ export class NewFosterDialogComponent {
 
     entireFormEnabled: boolean = false;
 
+    numberOnlyEvent(event: any): void {
+        const charCode = (event.which) ? event.which : event.keyCode;
+
+        if (charCode > 31 && (charCode < 48 || charCode > 57) && (charCode < 96 || charCode > 105) && charCode !== 110 && charCode !== 190) {
+            // Prevent non-numeric characters
+            event.preventDefault();
+        }
+    }
+
     constructor(@Inject(MAT_DIALOG_DATA) public data: any, public dialogRef: MatDialogRef<NewFosterDialogComponent>, public global: Globals, private http: HttpClient, private dialog: MatDialog) {  }
 
 

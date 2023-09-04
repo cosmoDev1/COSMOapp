@@ -44,7 +44,7 @@
                     <mat-form-field>
                         <mat-label>Rescue Phone</mat-label>
                         <span matPrefix>+1 &nbsp;</span>
-                        <input type="tel" matInput name="rescuePhone" placeholder="555-555-1234" maxlength="10" required [(ngModel)]="formdata.rescuePhone" [disabled]="entireFormEnabled">
+                        <input type="tel" matInput name="rescuePhone" placeholder="555-555-1234" maxlength="10" (keydown)="numberOnlyEvent($event)" required [(ngModel)]="formdata.rescuePhone" [disabled]="entireFormEnabled">
                         <mat-error>Please enter rescue phone</mat-error>
                     </mat-form-field>
                 </td>
@@ -66,7 +66,7 @@
         <mat-form-field>
             <mat-label>Contact Phone</mat-label>
             <span matPrefix>+1 &nbsp;</span>
-            <input type="tel" matInput name="contactPhone" placeholder="555-555-1234" maxlength="10" required [(ngModel)]="formdata.contactPhone" [disabled]="entireFormEnabled">
+            <input type="tel" matInput name="contactPhone" placeholder="555-555-1234" maxlength="10" (keydown)="numberOnlyEvent($event)" required [(ngModel)]="formdata.contactPhone" [disabled]="entireFormEnabled">
             <mat-error>Please enter contact phone</mat-error>
         </mat-form-field>
         <br />

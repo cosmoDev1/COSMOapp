@@ -45,7 +45,7 @@
                     <mat-form-field>
                         <mat-label>Phone</mat-label>
                         <span matPrefix>+1 &nbsp;</span>
-                        <input type="tel" matInput placeholder="555-555-1234" maxlength="10" required name="fosterPhone" [(ngModel)]="formdata.fosterPhone" [disabled]="entireFormEnabled">
+                        <input type="tel" matInput placeholder="555-555-1234" maxlength="10" (keydown)="numberOnlyEvent($event)" required name="fosterPhone" [(ngModel)]="formdata.fosterPhone" [disabled]="entireFormEnabled">
                         <mat-error>Please enter foster phone</mat-error>
                     </mat-form-field>
                 </td>
@@ -300,7 +300,7 @@
                         <mat-label>Phone</mat-label>
                         <mat-error>Please enter veterinary phone</mat-error>
                         <span matPrefix>+1 &nbsp;</span>
-                        <input type="tel" matInput placeholder="555-555-1234" maxlength="18" required name="vetPhone" [(ngModel)]="formdata.vetPhone" [disabled]="entireFormEnabled">
+                        <input type="tel" matInput placeholder="555-555-1234" maxlength="18" (keydown)="numberOnlyEvent($event)" required name="vetPhone" [(ngModel)]="formdata.vetPhone" [disabled]="entireFormEnabled">
                     </mat-form-field>
                 </td>
             </tr>
@@ -477,7 +477,7 @@
                         <mat-label>Phone</mat-label>
                         <mat-error>Please enter reference phone</mat-error>
                         <span matPrefix>+1 &nbsp;</span>
-                        <input type="tel" matInput placeholder="555-555-1234" maxlength="18" required name="firstPhone" [(ngModel)]="formdata.firstPhone" [disabled]="entireFormEnabled">
+                        <input type="tel" matInput placeholder="555-555-1234" maxlength="18" (keydown)="numberOnlyEvent($event)" required name="firstPhone" [(ngModel)]="formdata.firstPhone" [disabled]="entireFormEnabled">
                     </mat-form-field>
                 </td>
             </tr>
@@ -494,7 +494,7 @@
                         <mat-label>Phone</mat-label>
                         <mat-error>Please enter reference phone</mat-error>
                         <span matPrefix>+1 &nbsp;</span>
-                        <input type="tel" matInput placeholder="555-555-1234" maxlength="18" required name="secondPhone" [(ngModel)]="formdata.secondPhone" [disabled]="entireFormEnabled">
+                        <input type="tel" matInput placeholder="555-555-1234" maxlength="18" (keydown)="numberOnlyEvent($event)" required name="secondPhone" [(ngModel)]="formdata.secondPhone" [disabled]="entireFormEnabled">
                     </mat-form-field>
                 </td>
             </tr>
@@ -511,7 +511,7 @@
                         <mat-label>Phone</mat-label>
                         <mat-error>Please enter reference phone</mat-error>
                         <span matPrefix>+1 &nbsp;</span>
-                        <input type="tel" matInput placeholder="555-555-1234" maxlength="18" required name="thirdPhone" [(ngModel)]="formdata.thirdPhone" [disabled]="entireFormEnabled">
+                        <input type="tel" matInput placeholder="555-555-1234" maxlength="18" (keydown)="numberOnlyEvent($event)" required name="thirdPhone" [(ngModel)]="formdata.thirdPhone" [disabled]="entireFormEnabled">
                     </mat-form-field>
                 </td>
             </tr>
