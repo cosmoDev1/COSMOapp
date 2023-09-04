@@ -65,10 +65,50 @@ export class RegisterComponent implements OnInit {
                         var head = new HttpHeaders({ 'Content-Type': 'application/json' });
                         const options = { headers: head };
 
+                        if (this.formdata.typeAccount == '1') {
+                              this.http.post(this.global.webserviceBaseUrl + 'shelters', this.shelterdata, options).subscribe((res: any) => {
+                                    res = JSON.parse(res);
+                                    this.resultDialog(res);
+                              });
+                        }
 
+                        if (this.formdata.typeAccount == '2') {
+                              this.http.post(this.global.webserviceBaseUrl + 'rescues', this.rescuedata, options).subscribe((res: any) => {
+                                    res = JSON.parse(res);
+                                    this.resultDialog(res);
+                              });
+                        }
+
+                        if (this.formdata.typeAccount == '3') {
+                              this.http.post(this.global.webserviceBaseUrl + 'fosters', this.formdata, options).subscribe((res: any) => {
+                                    res = JSON.parse(res);
+                                    this.resultDialog(res);
+                              });
+                        }
                   }
             });
+      }
 
+      resultDialog(res: any) {
+            const dialogConfig = new MatDialogConfig();
+            dialogConfig.disableClose = true;
+            dialogConfig.autoFocus = true;
+
+            var tmpText = "";
+            if (res.message == "inserted") {
+                  tmpText = 'Your submission was successfully received. You will receive an email with further instructions.'
+            }
+            if (res.message == "notinserted") {
+                  tmpText = 'Your submission returned an error. Please contact the app add admin.'
+            }
+            if (res.message == "error") {
+                  tmpText = 'An internal error ocurred. Please contact the app add admin.'
+            }
+
+            dialogConfig.data = { title: 'Notice', message: tmpText, notification: true };
+
+            const dialogRef4 = this.dialog.open(ConfirmationDialogComponent, dialogConfig);
+            dialogRef4.afterClosed().subscribe(result => {  });
       }
 
 }

@@ -7,7 +7,7 @@
 </mat-toolbar>
 
 <mat-stepper linear #stepper>
-    <mat-step [stepControl]="form1.control" [completed]="entireFormSteps">
+    <mat-step [stepControl]="form1.control">
         <form #form1="ngForm">
             <ng-template matStepLabel>Select your account type</ng-template>
 
@@ -28,7 +28,7 @@
             </div>
         </form>
     </mat-step>
-    <mat-step [stepControl]="form2.control" [completed]="entireFormSteps">
+    <mat-step [stepControl]="form2.control">
         <form #form2="ngForm">
             <ng-template matStepLabel>Fill in your details</ng-template>
 
