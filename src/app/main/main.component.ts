@@ -9,10 +9,12 @@ import { Title } from '@angular/platform-browser';
 
 import { NewRescueDialogComponent } from '../new-rescue-dialog/new-rescue-dialog.component';
 import { NewFosterDialogComponent } from '../new-foster-dialog/new-foster-dialog.component';
+import { NewShelterDialogComponent } from '../new-shelter-dialog/new-shelter-dialog.component';
+import { NewNetworkerDialogComponent } from '../new-networker-dialog/new-networker-dialog.component';
+
 import { ConfirmationDialogComponent } from '../confirmation-dialog/confirmation-dialog.component';
 import { AnimalDetailDialogComponent } from '../animal-detail-dialog/animal-detail-dialog.component';
 import { Globals, Animal } from '../globals';
-import { NewShelterDialogComponent } from '../new-shelter-dialog/new-shelter-dialog.component';
 import { MyAnimalsDialogComponent } from '../my-animals-dialog/my-animals-dialog.component';
 import { PleaDialogComponent } from '../plea-dialog/plea-dialog.component';
 
@@ -179,6 +181,20 @@ export class MainComponent implements AfterViewInit, OnInit {
         dialogConfig.data = { role: 'Shelter Account', rescueName: true, contactName: true };
 
         const dialogRef = this.dialog.open(NewShelterDialogComponent, dialogConfig);
+
+        dialogRef.afterClosed().subscribe((result) => {
+            console.log(`Dialog result: ${result}`);
+        });
+    }
+
+    newNetworkerDialog() {
+        const dialogConfig = new MatDialogConfig();
+
+        dialogConfig.disableClose = true;
+        dialogConfig.autoFocus = true;
+        dialogConfig.data = { role: 'Networker Account' };
+
+        const dialogRef = this.dialog.open(NewNetworkerDialogComponent, dialogConfig);
 
         dialogRef.afterClosed().subscribe((result) => {
             console.log(`Dialog result: ${result}`);
