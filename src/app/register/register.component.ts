@@ -33,6 +33,11 @@ export class RegisterComponent implements OnInit {
             childOne: "", childOneAge: "", childOneRelation: "", childTwo: "", childTwoAge: "", childTwoRelation: "", anyoneAllergic: "1", childrenHome: "1", accommodations: "",
             referenceOne: "", firstPhone: "", referenceTwo: "", secondPhone: "", referenceThree: "", thirdPhone: "" }
 
+      networkerdata = {
+            networkerName: "", networkerAddress: "", networkerCity: "", networkerState: "TX", networkerZip: "", networkerPhone: "", networkerEmail: ""
+      };
+
+
       constructor(private dialog: MatDialog, private http: HttpClient, public global: Globals) {  }
 
       ngOnInit() { console.log('registering') }
@@ -51,6 +56,7 @@ export class RegisterComponent implements OnInit {
             this.reqType = (this.formdata.typeAccount == '2') ? 'Rescue' : this.reqType;
             this.reqType = (this.formdata.typeAccount == '3') ? 'Foster' : this.reqType;
             this.reqType = (this.formdata.typeAccount == '4') ? 'Transport' : this.reqType;
+            this.reqType = (this.formdata.typeAccount == '5') ? 'Networker' : this.reqType;
 
             const dialogConfig = new MatDialogConfig();
             dialogConfig.disableClose = true;
@@ -83,11 +89,19 @@ export class RegisterComponent implements OnInit {
                         }
 
                         if (this.formdata.typeAccount == '3') {
-                              this.http.post(this.global.webserviceBaseUrl + 'fosters', this.formdata, options).subscribe((res: any) => {
+                              this.http.post(this.global.webserviceBaseUrl + 'fosters', this.fosterdata, options).subscribe((res: any) => {
                                     res = JSON.parse(res);
                                     this.resultDialog(res);
                               });
                         }
+
+                        if (this.formdata.typeAccount == '5') {
+                              this.http.post(this.global.webserviceBaseUrl + 'networkers', this.networkerdata, options).subscribe((res: any) => {
+                                    res = JSON.parse(res);
+                                    this.resultDialog(res);
+                              });
+                        }
+
                   }
             });
       }

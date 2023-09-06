@@ -11,7 +11,7 @@
     <p>We give you thanks for taking the first step to help more and more of our beloved pets to find a furever home.</p>
     <p>As we progress towards our goal of make all shelters a no-kill places, you contribution its absolutely necessary.</p>
     <br />
-    <p style="font-style: italic">Lets make of our planet a nice place to live, one pup at a time.</p>
+    <p style="font-style: italic">Let's make of our planet a nice place to live, one pup at a time.</p>
     <br />
     <br />
     <p>Now is safe to close your browser.</p>
@@ -31,10 +31,12 @@
                 <mat-radio-button value="2">Rescue Group</mat-radio-button>
                 <mat-radio-button value="3">Foster</mat-radio-button>
                 <mat-radio-button value="4" [disabled]="true">Transport</mat-radio-button>
+                <mat-radio-button value="5">Networker</mat-radio-button>
             </mat-radio-group>
             <p *ngIf="formdata.typeAccount=='1'" style="font-style: italic">Description: Shelters - City or state facilities where stray animals or owner surrenders are accepted.</p>
             <p *ngIf="formdata.typeAccount=='2'" style="font-style: italic">Description: Rescue Groups - Private or semi-private organizations dedicated to rescuing animals from shelters, nursing them back to health and offering them for adoption.</p>
             <p *ngIf="formdata.typeAccount=='3'" style="font-style: italic">Description: Fosters - Invididuals that hold rescued animals in their homes or other suitables places while seeking adoption. </p>
+            <p *ngIf="formdata.typeAccount=='5'" style="font-style: italic">Description: Networkers - Invididuals that promotes animals in danger across multiple social media outlets, or serves as activists for animal rescues. </p>
             <div>
                 <button mat-raised-button matStepperNext color="primary" [disabled]="entireFormEnabled">Next</button>
             </div>
@@ -803,6 +805,64 @@
             </div>
 
             <div *ngIf="formdata.typeAccount=='4'">
+            </div>
+
+            <!--networker form-->
+            <div *ngIf="formdata.typeAccount=='5'">
+                <mat-form-field style="width: 100%">
+                    <input matInput placeholder="Name" required name="networkerName" maxlength="128" [(ngModel)]="networkerdata.networkerName" [disabled]="entireFormEnabled">
+                    <mat-label>Networker Name</mat-label>
+                    <mat-error>Please enter networker name</mat-error>
+                </mat-form-field>
+
+                <mat-form-field style="width: 100%">
+                    <input matInput placeholder="Address" required name="networkerAddress" maxlength="128" [(ngModel)]="networkerdata.networkerAddress" [disabled]="entireFormEnabled">
+                    <mat-label>Address</mat-label>
+                    <mat-error>Please enter networker address</mat-error>
+                </mat-form-field>
+
+                <mat-form-field style="width: 100%">
+                    <input matInput placeholder="City" required name="networkerCity" maxlength="64" [(ngModel)]="networkerdata.networkerCity" [disabled]="entireFormEnabled">
+                    <mat-label>City</mat-label>
+                    <mat-error>Please enter networker city</mat-error>
+                </mat-form-field>
+
+                <table>
+                    <tr>
+                        <td>
+                            <mat-form-field>
+                                <mat-label> State </mat-label>
+                                <mat-select id="stat" name="networkerState" [(ngModel)]="networkerdata.networkerState" [disabled]="entireFormEnabled">
+                                    <mat-option *ngFor="let state of global.states" [value]="state.abbreviation">
+                                        {{ state.name }} - {{ state.abbreviation }}
+                                    </mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </td>
+                        <td>
+                            <mat-form-field>
+                                <input matInput type="number" max="99999" placeholder="Zip" required name="networkerZip" [(ngModel)]="networkerdata.networkerZip" onKeyPress="if(this.value.length==5) return false;" [disabled]="entireFormEnabled">
+                                <mat-label>Zip</mat-label>
+                                <mat-error>Please enter networker zip</mat-error>
+                            </mat-form-field>
+                        </td>
+                        <td>
+                            <mat-form-field>
+                                <mat-label> Networker Phone</mat-label>
+                                <span matPrefix>+1 &nbsp;</span>
+                                <input type="tel" matInput placeholder="555-555-1234" maxlength="10" (keydown)="numberOnlyEvent($event)" required name="networkerPhone" [(ngModel)]="networkerdata.networkerPhone" [disabled]="entireFormEnabled">
+                                <mat-error>Please enter networker phone</mat-error>
+                            </mat-form-field>
+                        </td>
+                    </tr>
+                </table>
+
+
+                <mat-form-field style="width: 100%">
+                    <input matInput placeholder="Email" required name="adminEmail" type="email" [(ngModel)]="networkerdata.networkerEmail" [disabled]="entireFormEnabled">
+                    <mat-label> Networker Email</mat-label>
+                    <mat-error>Please enter networker email</mat-error>
+                </mat-form-field>
             </div>
 
             <div>
