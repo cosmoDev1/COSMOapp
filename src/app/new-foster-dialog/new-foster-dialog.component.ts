@@ -35,7 +35,19 @@ export class NewFosterDialogComponent {
 
     constructor(@Inject(MAT_DIALOG_DATA) public data: any, public dialogRef: MatDialogRef<NewFosterDialogComponent>, public global: Globals, private http: HttpClient, private dialog: MatDialog) {  }
 
+    fosterYardChange() {
+          if (this.formdata.fosterYard == "1") {
+                this.formdata.fosterFence = "";
+                this.formdata.exerciseMethod = "n/a";
+          } else {
+                this.formdata.fosterFence = "n/a";
+                this.formdata.exerciseMethod = "";
+          }
+    }
 
+    ownedBeforeChange() {
+          if (this.formdata.ownedBefore == "1") { this.formdata.breedType = "" } else { this.formdata.breedType = "n/a" }
+    }
  
     closeDialog() {
         console.log('closing dialog')

@@ -12,7 +12,7 @@ import { ConfirmationDialogComponent } from '../confirmation-dialog/confirmation
 })
 export class RegisterComponent implements OnInit {
       title: string = 'COSMO app - Register';
-      entireFormEnabled: string = 'false';
+      entireFormEnabled: boolean = false;
       entireFormSteps: string = 'true';
       reqType: string = "";
       loadingRed: any;
@@ -26,7 +26,7 @@ export class RegisterComponent implements OnInit {
             species: "1", gender: "1", size: "1", age: "1", applicationType: "1" };
 
       fosterdata = { fosterName: "", fosterAddress: "", fosterCity: "", fosterState: "TX", fosterZip: "", fosterPhone: "", fosterEmail: "", fosterDL: "", fosterHome: "1", fosterOwnership: "1",
-            fosterLandlord: "1", fosterYard: "1", fosterFence: "", exerciseMethod: "", addressDuration: "", fosterSpecies: "1", fosterPetGender: "1", fosterPetSize: "1", petExperience: "",
+            fosterLandlord: "1", fosterYard: "1", fosterFence: "", exerciseMethod: "n/a", addressDuration: "", fosterSpecies: "1", fosterPetGender: "1", fosterPetSize: "1", petExperience: "",
             ownedBefore: "1", breedType: "", fosteredBefore: "1", fosterExperience: "", firstPet: "", firstYears: "", firstGender: "1", spayedNeutered1: false, secondPet: "", secondYears: "",
             twoGender: "1", spayedNeutered2: false, thirdPet: "", thirdYears: "", thirdGender: "1", spayedNeutered3: false, vetName: "", vetPhone: "", hoursAlone: "", dailyOccupancy: "",
             nightlyOccupancy: "", crateTrained: "1", adultOne: "", adultOneAge: "", adultOneRelation: "", adultTwo: "", adultTwoAge: "", adultTwoRelation: "",
@@ -36,7 +36,6 @@ export class RegisterComponent implements OnInit {
       networkerdata = {
             networkerName: "", networkerAddress: "", networkerCity: "", networkerState: "TX", networkerZip: "", networkerPhone: "", networkerEmail: ""
       };
-
 
       constructor(private dialog: MatDialog, private http: HttpClient, public global: Globals) {  }
 
@@ -49,6 +48,20 @@ export class RegisterComponent implements OnInit {
                   // Prevent non-numeric characters
                   event.preventDefault();
             }
+      }
+
+      fosterYardChange() {
+            if (this.fosterdata.fosterYard == "1") {
+                  this.fosterdata.fosterFence = "";
+                  this.fosterdata.exerciseMethod = "n/a";
+            } else {
+                  this.fosterdata.fosterFence = "n/a";
+                  this.fosterdata.exerciseMethod = "";
+            }
+      }
+
+      ownedBeforeChange() {
+            if (this.fosterdata.ownedBefore == "1") { this.fosterdata.breedType = "" } else { this.fosterdata.breedType = "n/a" }
       }
 
       submitForm() {
@@ -66,7 +79,7 @@ export class RegisterComponent implements OnInit {
             const dialogRef = this.dialog.open(ConfirmationDialogComponent, dialogConfig);
             dialogRef.afterClosed().subscribe(result => {
                   if (result == 'accept') {
-                        this.entireFormEnabled = "true";
+                        this.entireFormEnabled = true;
 
                         dialogConfig.data = { title: 'Loading', message: '', notification: false };
                         this.loadingRed = this.dialog.open(ConfirmationDialogComponent, dialogConfig);

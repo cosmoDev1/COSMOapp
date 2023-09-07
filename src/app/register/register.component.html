@@ -370,7 +370,7 @@
                                 <mat-radio-button value="2">Own</mat-radio-button>
                             </mat-radio-group>
                         </td>
-                        <td> <mat-label id="landordLabel" style="margin-left: 30px">Lanlord allows Pets</mat-label> </td>
+                        <td> <mat-label id="landordLabel" style="margin-left: 30px">Landlord allows Pets</mat-label> </td>
                         <td>
                             <mat-radio-group aria-label="Landord" aria-labelledby="landordLabel" name="fosterLandlord" [(ngModel)]="fosterdata.fosterLandlord" [disabled]="entireFormEnabled">
                                 <mat-radio-button value="1" [checked]="true">No</mat-radio-button>
@@ -381,7 +381,7 @@
                     <tr>
                         <td> <mat-label id="fenceLabel">Fenced Yard</mat-label> </td>
                         <td colspan="3">
-                            <mat-radio-group aria-label="Fence" aria-labelledby="fenceLabel" name="fosterYard" [(ngModel)]="fosterdata.fosterYard" [disabled]="entireFormEnabled">
+                            <mat-radio-group aria-label="Fence" aria-labelledby="fenceLabel" name="fosterYard" [(ngModel)]="fosterdata.fosterYard" [disabled]="entireFormEnabled" (change)="fosterYardChange()">
                                 <mat-radio-button value="1" [checked]="true">Yes</mat-radio-button>
                                 <mat-radio-button value="2">No</mat-radio-button>
                             </mat-radio-group>
@@ -390,13 +390,13 @@
                 </table>
 
                 <mat-form-field style="width: 100%">
-                    <input matInput placeholder="Brief Description" maxlength="216" required name="fosterFence" [(ngModel)]="fosterdata.fosterFence" [disabled]="entireFormEnabled">
+                    <input matInput placeholder="Brief Description" maxlength="216" required name="fosterFence" [(ngModel)]="fosterdata.fosterFence" [disabled]="entireFormEnabled || fosterdata.fosterYard=='2'">
                     <mat-label>Please describe your fence</mat-label>
                     <mat-error>Please enter description</mat-error>
                 </mat-form-field>
 
                 <mat-form-field style="width: 100%">
-                    <input matInput placeholder="Brief Explanation" maxlength="216" required name="exerciseMethod" [(ngModel)]="fosterdata.exerciseMethod" [disabled]="entireFormEnabled">
+                    <input matInput placeholder="Brief Explanation" maxlength="216" required name="exerciseMethod" [(ngModel)]="fosterdata.exerciseMethod" [disabled]="entireFormEnabled || fosterdata.fosterYard=='1'">
                     <mat-label>Since you do not have a fenced yard, how will the animal get exercise?</mat-label>
                     <mat-error>Please enter description</mat-error>
                 </mat-form-field>
@@ -460,13 +460,13 @@
                 <br />
 
                 <mat-label id="ownedBeforeLabel">Have you ever owned a pet before?</mat-label>
-                <mat-radio-group aria-label="Owned" aria-labelledby="ownedBeforeLabel" name="ownedBefore" [(ngModel)]="fosterdata.ownedBefore" [disabled]="entireFormEnabled">
+                <mat-radio-group aria-label="Owned" aria-labelledby="ownedBeforeLabel" name="ownedBefore" [(ngModel)]="fosterdata.ownedBefore" [disabled]="entireFormEnabled" (change)="ownedBeforeChange()">
                     <mat-radio-button value="1" [checked]="true">Yes</mat-radio-button>
                     <mat-radio-button value="2">No</mat-radio-button>
                 </mat-radio-group>
 
                 <mat-form-field style="width: 100%">
-                    <input matInput placeholder="Type/Breed" required maxlength="18" name="breedType" [(ngModel)]="fosterdata.breedType" [disabled]="entireFormEnabled">
+                    <input matInput placeholder="Type/Breed" required maxlength="128" name="breedType" [(ngModel)]="fosterdata.breedType" [disabled]="entireFormEnabled || fosterdata.ownedBefore=='2'">
                     <mat-label>Type/Breed</mat-label>
                     <mat-error>Please enter description</mat-error>
                 </mat-form-field>
