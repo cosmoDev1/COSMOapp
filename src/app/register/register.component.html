@@ -673,27 +673,34 @@
                     </tr>
 
                     <tr>
-                        <td>How many children are living in the house?</td>
+                        <td colspan="2">
+                            <mat-label id="childHomeLabel">How many children are living in the house?</mat-label>
+                            <mat-radio-group aria-label="Owned" aria-labelledby="childHomeLabel" name="childHome" [(ngModel)]="fosterdata.childHome" [disabled]="entireFormEnabled" (change)="childHomeChange()">
+                                <mat-radio-button value="0" [checked]="true">0</mat-radio-button>
+                                <mat-radio-button value="1">1</mat-radio-button>
+                                <mat-radio-button value="2">2</mat-radio-button>
+                            </mat-radio-group>
+                        </td>
                     </tr>
 
                     <tr>
                         <td>
                             <mat-form-field style="width: 100%">
-                                <input matInput placeholder="Name" maxlength="128" required name="childOne" [(ngModel)]="fosterdata.childOne" [disabled]="entireFormEnabled">
+                                <input matInput placeholder="Name" maxlength="128" required name="childOne" [(ngModel)]="fosterdata.childOne" [disabled]="entireFormEnabled || fosterdata.childHome=='0'">
                                 <mat-label>Child #1</mat-label>
                                 <mat-error>Please enter name</mat-error>
                             </mat-form-field>
                         </td>
                         <td>
                             <mat-form-field>
-                                <input matInput type="number" min="0" max="50" placeholder="Enter  Age" required name="childOneAge" [(ngModel)]="fosterdata.childOneAge" [disabled]="entireFormEnabled">
+                                <input matInput type="number" min="0" max="50" placeholder="Enter  Age" required name="childOneAge" [(ngModel)]="fosterdata.childOneAge" [disabled]="entireFormEnabled || fosterdata.childHome=='0'">
                                 <mat-label>Age</mat-label>
                                 <mat-error>Please enter age</mat-error>
                             </mat-form-field>
                         </td>
                         <td>
                             <mat-form-field>
-                                <input matInput placeholder="Relation" maxlength="128" required name="childOneRelation" [(ngModel)]="fosterdata.childOneRelation" [disabled]="entireFormEnabled">
+                                <input matInput placeholder="Relation" maxlength="128" required name="childOneRelation" [(ngModel)]="fosterdata.childOneRelation" [disabled]="entireFormEnabled || fosterdata.childHome=='0'">
                                 <mat-label>Relationship</mat-label>
                                 <mat-error>Please enter relationship</mat-error>
                             </mat-form-field>
@@ -702,21 +709,21 @@
                     <tr>
                         <td>
                             <mat-form-field style="width: 100%">
-                                <input matInput placeholder="Name" maxlength="128" required name="childTwo" [(ngModel)]="fosterdata.childTwo" [disabled]="entireFormEnabled">
+                                <input matInput placeholder="Name" maxlength="128" required name="childTwo" [(ngModel)]="fosterdata.childTwo" [disabled]="entireFormEnabled || fosterdata.childHome=='0' || fosterdata.childHome=='1'">
                                 <mat-label>Child #2</mat-label>
                                 <mat-error>Please enter name</mat-error>
                             </mat-form-field>
                         </td>
                         <td>
                             <mat-form-field>
-                                <input matInput type="number" min="0" max="50" placeholder="Enter  Age" required name="childTwoAge" [(ngModel)]="fosterdata.childTwoAge" [disabled]="entireFormEnabled">
+                                <input matInput type="number" min="0" max="50" placeholder="Enter  Age" required name="childTwoAge" [(ngModel)]="fosterdata.childTwoAge" [disabled]="entireFormEnabled || fosterdata.childHome=='0' || fosterdata.childHome=='1'">
                                 <mat-label>Age</mat-label>
                                 <mat-error>Please enter age</mat-error>
                             </mat-form-field>
                         </td>
                         <td>
                             <mat-form-field>
-                                <input matInput placeholder="Relation" maxlength="128" required name="childTwoRelation" [(ngModel)]="fosterdata.childTwoRelation" [disabled]="entireFormEnabled">
+                                <input matInput placeholder="Relation" maxlength="128" required name="childTwoRelation" [(ngModel)]="fosterdata.childTwoRelation" [disabled]="entireFormEnabled || fosterdata.childHome=='0' || fosterdata.childHome=='1'">
                                 <mat-label>Relationship</mat-label>
                                 <mat-error>Please enter relationship</mat-error>
                             </mat-form-field>

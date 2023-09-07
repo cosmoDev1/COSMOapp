@@ -17,8 +17,8 @@ export class NewFosterDialogComponent {
         fosterLandlord:"1", fosterYard:"1", fosterFence:"", exerciseMethod:"", addressDuration:"", fosterSpecies:"1", fosterPetGender:"1", fosterPetSize:"1", petExperience:"",
         ownedBefore:"1", breedType:"", fosteredBefore:"1", fosterExperience:"", firstPet:"", firstYears:"", firstGender:"1", spayedNeutered1: false, secondPet:"", secondYears:"",
         twoGender: "1", spayedNeutered2: false, thirdPet:"", thirdYears:"", thirdGender:"1", spayedNeutered3: false, vetName:"", vetPhone:"", hoursAlone:"", dailyOccupancy:"",
-        nightlyOccupancy: "", crateTrained: "1", adultOne: "", adultOneAge: "", adultOneRelation: "", adultTwo: "", adultTwoAge: "", adultTwoRelation: "",
-        childOne: "", childOneAge: "", childOneRelation: "", childTwo: "", childTwoAge: "", childTwoRelation: "", anyoneAllergic: "1", childrenHome: "1", accommodations: "",
+        nightlyOccupancy: "", crateTrained: "1", adultOne: "", adultOneAge: "", adultOneRelation: "", adultTwo: "", adultTwoAge: "", adultTwoRelation: "", childHome:"0",
+        childOne: "n/a", childOneAge: "0", childOneRelation: "n/a", childTwo: "n/a", childTwoAge: "0", childTwoRelation: "n/a", anyoneAllergic: "1", childrenHome: "1", accommodations: "",
         referenceOne: "", firstPhone: "", referenceTwo:"", secondPhone: "", referenceThree:"", thirdPhone:""
     }
 
@@ -49,6 +49,35 @@ export class NewFosterDialogComponent {
           if (this.formdata.ownedBefore == "1") { this.formdata.breedType = "" } else { this.formdata.breedType = "n/a" }
     }
  
+
+    childHomeChange() {
+        if (this.formdata.childHome == "0") {
+            this.formdata.childOne = "n/a";
+            this.formdata.childOneAge = "0";
+            this.formdata.childOneRelation = "n/a";
+            this.formdata.childTwo = "n/a";
+            this.formdata.childTwoAge = "0";
+            this.formdata.childTwoRelation = "n/a";
+        }
+        if (this.formdata.childHome == "1") {
+            this.formdata.childOne = "";
+            this.formdata.childOneAge = "";
+            this.formdata.childOneRelation = "";
+            this.formdata.childTwo = "n/a";
+            this.formdata.childTwoAge = "0";
+            this.formdata.childTwoRelation = "n/a";
+        }
+
+        if (this.formdata.childHome == "2") {
+            this.formdata.childOne = "";
+            this.formdata.childOneAge = "";
+            this.formdata.childOneRelation = "";
+            this.formdata.childTwo = "";
+            this.formdata.childTwoAge = "";
+            this.formdata.childTwoRelation = "";
+        }
+    }
+
     closeDialog() {
         console.log('closing dialog')
         this.dialogRef.close();
