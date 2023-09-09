@@ -3,25 +3,26 @@
     <h2 mat-dialog-title *ngIf="data.title != 'Loading'">{{data.title}}</h2>
 
     <mat-dialog-content>
+            <mat-label id="fenceLabel">What would you like to do?</mat-label>
+        
+            <mat-radio-group aria-label="tagAnimal" aria-labelledby="animalTag" name="tagAnimal" [(ngModel)]="formdata.tagAnimal" (change)="tagAnimalChange()">
+                <mat-radio-button value="1" [checked]="true">Request Tag</mat-radio-button>
+                <mat-radio-button value="2">Notify Tag</mat-radio-button>
+            </mat-radio-group>
+            <br />
 
-        <mat-radio-group aria-label="tagAnimal" aria-labelledby="animalTag" name="tagAnimal" [(ngModel)]="formdata.tagAnimal" (change)="tagAnimalChange()">
-            <mat-radio-button value="1" [checked]="true">Request Tag</mat-radio-button>
-            <mat-radio-button value="2">Notify Tag</mat-radio-button>
-        </mat-radio-group>
-        <br />
+            <mat-label *ngIf="formdata.tagAnimal === '1'" [(ngModel)]="formdata.emailTag">{{data.message}}</mat-label>
 
-        <mat-label *ngIf="formdata.tagAnimal === '1'" [(ngModel)]="formdata.emailTag">{{data.message}}</mat-label>
+            <mat-form-field style="width: 100%">
+                <mat-label>Please enter additional tag information</mat-label>
+                <textarea placeholder="Provide details" matInput name="tagInfo" [(ngModel)]="formdata.tagInfo" [disabled]="formdata.tagAnimal=='1'"></textarea>
+            </mat-form-field>
+            <br />
 
-        <mat-form-field style="width: 100%">
-            <mat-label>Please enter additional tag information</mat-label>
-            <textarea placeholder="Provide details" matInput name="tagInfo" [(ngModel)]="formdata.tagInfo" [disabled]="formdata.tagAnimal=='1'"></textarea>
-        </mat-form-field>
-        <br />
-
-        <div style="width: 100%; text-align: center" *ngIf="data.title == 'Loading'">
-            <mat-progress-spinner class="example-margin" color="primary" mode="indeterminate" style="margin-left: auto; margin-right: auto"> </mat-progress-spinner>
-            <p>Loading data, please wait...</p>
-        </div>
+            <div style="width: 100%; text-align: center" *ngIf="data.title == 'Loading'">
+                <mat-progress-spinner class="example-margin" color="primary" mode="indeterminate" style="margin-left: auto; margin-right: auto"> </mat-progress-spinner>
+                <p>Loading data, please wait...</p>
+            </div>
     </mat-dialog-content>
 
     <mat-dialog-actions *ngIf="data.title != 'Loading'">

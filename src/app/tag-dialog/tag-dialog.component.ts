@@ -14,7 +14,7 @@ import { ConfirmationDialogComponent } from '../confirmation-dialog/confirmation
 
 export class TagDialogComponent{
 
-    formdata = {tagAnimal:"1", emailTag:"", tagInfo:""}
+    formdata = {tagAnimal:"0", emailTag:"", tagInfo:""}
     constructor(@Inject(MAT_DIALOG_DATA) public data: any, public dialogRef: MatDialogRef<TagDialogComponent>) { }
 
     tagAnimalChange() {

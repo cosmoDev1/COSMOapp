@@ -240,7 +240,7 @@ export class MainComponent implements AfterViewInit, OnInit {
     tagAnimal(ID: any, name: any) {
         const dialogConfig = new MatDialogConfig();
 
-        dialogConfig.width = '800px';
+        dialogConfig.width = '900px';
         dialogConfig.disableClose = true;
         dialogConfig.autoFocus = true;
         dialogConfig.data = { title: 'Please confirm', message: 'An email will be sent to the shelter requesting a tag for this animal on your behalf. ' + name + ' (' + ID + ')?', notification: false };
