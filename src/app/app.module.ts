@@ -17,6 +17,7 @@ import { NewShelterDialogComponent } from './new-shelter-dialog/new-shelter-dial
 import { NewNetworkerDialogComponent } from './new-networker-dialog/new-networker-dialog.component';
 
 import { ConfirmationDialogComponent } from './confirmation-dialog/confirmation-dialog.component';
+import { TagDialogComponent } from './tag-dialog/tag-dialog.component';
 import { AnimalDetailDialogComponent } from './animal-detail-dialog/animal-detail-dialog.component';
 import { MyAnimalsDialogComponent } from './my-animals-dialog/my-animals-dialog.component';
 import { PleaDialogComponent } from './plea-dialog/plea-dialog.component';
@@ -28,10 +29,10 @@ import { RegisterComponent } from './register/register.component';
         AppComponent, MainComponent,
         NewRescueDialogComponent, NewFosterDialogComponent, NewShelterDialogComponent, NewNetworkerDialogComponent,
         MyAnimalsDialogComponent, AnimalDetailDialogComponent,
-        ConfirmationDialogComponent, PleaDialogComponent, RegisterComponent
+        ConfirmationDialogComponent, PleaDialogComponent, RegisterComponent, TagDialogComponent
     ],
     imports: [
-        BrowserModule, AppRoutingModule, BrowserAnimationsModule, MaterialModule, HttpClientModule, FormsModule, ReactiveFormsModule
+        BrowserModule, AppRoutingModule, BrowserAnimationsModule, MaterialModule, HttpClientModule, FormsModule, ReactiveFormsModule, 
     ],
     providers: [{ provide: LocationStrategy, useClass: HashLocationStrategy }],
     bootstrap: [AppComponent]

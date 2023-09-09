@@ -13,10 +13,12 @@ import { NewShelterDialogComponent } from '../new-shelter-dialog/new-shelter-dia
 import { NewNetworkerDialogComponent } from '../new-networker-dialog/new-networker-dialog.component';
 
 import { ConfirmationDialogComponent } from '../confirmation-dialog/confirmation-dialog.component';
+
 import { AnimalDetailDialogComponent } from '../animal-detail-dialog/animal-detail-dialog.component';
 import { Globals, Animal } from '../globals';
 import { MyAnimalsDialogComponent } from '../my-animals-dialog/my-animals-dialog.component';
 import { PleaDialogComponent } from '../plea-dialog/plea-dialog.component';
+import { TagDialogComponent } from '../tag-dialog/tag-dialog.component';
 
 @Component({
     selector: 'main-root',
@@ -238,11 +240,12 @@ export class MainComponent implements AfterViewInit, OnInit {
     tagAnimal(ID: any, name: any) {
         const dialogConfig = new MatDialogConfig();
 
+        dialogConfig.width = '800px';
         dialogConfig.disableClose = true;
         dialogConfig.autoFocus = true;
-        dialogConfig.data = { title: 'Please confirm', message: 'Are you sure you want to request the tag for the animal ' + name + ' (' + ID + ')?', notification: false };
+        dialogConfig.data = { title: 'Please confirm', message: 'An email will be sent to the shelter requesting a tag for this animal on your behalf. ' + name + ' (' + ID + ')?', notification: false };
 
-        const dialogRef = this.dialog.open(ConfirmationDialogComponent, dialogConfig);
+        const dialogRef = this.dialog.open(TagDialogComponent, dialogConfig);
 
         dialogRef.afterClosed().subscribe((result) => {
             if (result == 'accept') {
