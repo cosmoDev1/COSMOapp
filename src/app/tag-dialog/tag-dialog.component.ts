@@ -14,24 +14,16 @@ import { ConfirmationDialogComponent } from '../confirmation-dialog/confirmation
 
 export class TagDialogComponent{
 
-    formdata = {tagAnimal:"0", emailTag:"", tagInfo:""}
+      formdata = { tagAnimal: "0", tagInfo: "" }
     constructor(@Inject(MAT_DIALOG_DATA) public data: any, public dialogRef: MatDialogRef<TagDialogComponent>) { }
 
     tagAnimalChange() {
-        if (this.formdata.tagAnimal == "1") {
-            this.formdata.emailTag = "";
-            this.formdata.tagInfo = "n/a";
-        } else {
-            this.formdata.emailTag = "n/a";
-            this.formdata.tagInfo = "";
-            
-        }
+        if (this.formdata.tagAnimal == "0") { this.formdata.tagInfo = ""; }
     }
 
     closeDialog() { this.dialogRef.close('close'); }
 
     submitDialog(tagForm: any) {
-        
         this.dialogRef.close('accept');
     }
 

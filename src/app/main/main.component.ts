@@ -243,7 +243,7 @@ export class MainComponent implements AfterViewInit, OnInit {
         dialogConfig.width = '900px';
         dialogConfig.disableClose = true;
         dialogConfig.autoFocus = true;
-        dialogConfig.data = { title: 'Please confirm', message: 'An email will be sent to the shelter requesting a tag for this animal on your behalf. ' + name + ' (' + ID + ')?', notification: false };
+        dialogConfig.data = { title: 'Please confirm', message: 'An email will be sent to the shelter requesting a tag for the animal ' + name + ' (' + ID + ') on your behalf. ', notification: false };
 
         const dialogRef = this.dialog.open(TagDialogComponent, dialogConfig);
 
