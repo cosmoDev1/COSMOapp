@@ -4,85 +4,124 @@
 <mat-dialog-content style="text-align: center">
   <img src="{{data.animalInfo.imageFile}}" style="height: 273px" />
   <br />
-  <table style="width: 100%; text-align: left">
-      <tr>
-          <td><b>Gender:</b> </td>
-          <td>{{data.animalInfo.gender}}</td>
-      </tr>
-      <tr>
-          <td><b>Breed:</b> </td>
-          <td>{{data.animalInfo.breed}}</td>
-      </tr>
-      <tr>
-          <td><b>Age:</b> </td>
-          <td>{{data.animalInfo.age}}</td>
-      </tr>
-      <tr>
-          <td><b>Weight:</b> </td>
-          <td>{{data.animalInfo.weight}}</td>
-      </tr>
+  <form #fosterForm="ngForm">
+      <table style="width: 100%; text-align: left">
+          <tr>
+              <td><b>Gender:</b> </td>
+              <td> {{data.animalInfo.gender}} </td>
+          </tr>
+          <tr>
+              <td><b>Breed:</b> </td>
+              <td>{{data.animalInfo.breed
+                  }}
+              </td>
+          </tr>
+          <tr>
+              <td><b>Age:</b> </td>
+              <td>{{data.animalInfo.age}}</td>
+          </tr>
+          <tr>
+              <td><b>Weight:</b> </td>
+              <td>{{data.animalInfo.weight}}</td>
+          </tr>
 
 
-      <tr>
-          <td><b>Heartworm/FIV:</b> </td>
-          <td>{{data.animalInfo.hwFIVstatus}}</td>
-      </tr>
-      <tr>
-          <td><b>Due Out Date:</b> </td>
-          <td>{{data.animalInfo.dueOutDate}}</td>
-      </tr>
-      <tr>
-          <td><b>Shelter Notes:</b> </td>
-          <td>{{data.animalInfo.evalNotes}}</td>
-      </tr>
+          <tr>
+              <td><b>Heartworm/FIV:</b> </td>
+              <td>{{data.animalInfo.hwFIVstatus}}</td>
+          </tr>
+          <tr>
+              <td><b>Due Out Date:</b> </td>
+              <td>{{data.animalInfo.dueOutDate}}</td>
+          </tr>
+          <tr>
+              <td><b>Shelter Notes:</b> </td>
+              <td>{{data.animalInfo.evalNotes}}</td>
+          </tr>
 
-      <tr>
-          <td><b>Youtube URL:</b> </td>
-          <td>  </td>
-      </tr>
-      <tr>
-          <td><b>Facebook URL:</b> </td>
-          <td>  </td>
-      </tr>
+          <tr>
+              <td><b>Youtube URL:</b> </td>
+              <td>
+                  <mat-form-field *ngIf="editMode==true" style="width: 100%">
+                      <input matInput placeholder="Youtube link" maxlength="216" name="fosterFence" [(ngModel)]="data.animalInfo.youtubeLink">
+                      <mat-label>Youtube Link</mat-label>
+                      <mat-error>Please enter the youtube link</mat-error>
+                  </mat-form-field>
 
-      <tr>
-          <td><b>Volunteer Notes:</b> </td>
-          <td>{{data.animalInfo.volunteerNotes}}</td>
-      </tr>
-      <tr>
-          <td><b>Volunteer Favorite:</b> </td>
-          <td>{{data.animalInfo.volunteerFavorite}}</td>
-      </tr>
-      <tr>
-          <td><b>Kennel:</b> </td>
-          <td>{{data.animalInfo.kennel}}</td>
-      </tr>
-      <tr>
-          <td><b>Days in Shelter:</b> </td>
-          <td>{{data.animalInfo.daysShelter}}</td>
-      </tr>
-      <tr>
-          <td><b>Spay or Neuter:</b> </td>
-          <td>{{data.animalInfo.spayNeuter}}</td>
-      </tr>
-      <tr>
-          <td><b>Color:</b> </td>
-          <td>{{data.animalInfo.color}}</td>
-      </tr>
-      <tr>
-          <td><b>Outcome Request:</b> </td>
-          <td>{{data.animalInfo.outcomeRequest}}</td>
-      </tr>
-      <tr>
-          <td><b>Reason:</b> </td>
-          <td>{{data.animalInfo.reason}}</td>
-      </tr>
-  </table>
+                  <p *ngIf="editMode==false" style="margin: 0 !important">{{data.animalInfo.youtubeLink}}</p>
+              </td>
+          </tr>
+          <tr>
+              <td><b>Facebook URL:</b> </td>
+              <td>
+                  <mat-form-field *ngIf="editMode==true" style="width: 100%">
+                      <input matInput placeholder="Facebook link" maxlength="216" name="fosterFence" [(ngModel)]="data.animalInfo.facebookLink">
+                      <mat-label>Facebook Link</mat-label>
+                      <mat-error>Please enter the facebook link</mat-error>
+                  </mat-form-field>
+
+                  <p *ngIf="editMode==false" style="margin: 0 !important">{{data.animalInfo.facebookLink}}</p>
+              </td>
+          </tr>
+
+          <tr>
+              <td><b>Volunteer Notes:</b> </td>
+              <td>
+                  <mat-form-field *ngIf="editMode==true" style="width: 100%">
+                      <textarea matInput placeholder="Volunteer notes" maxlength="216" name="fosterFence" [(ngModel)]="data.animalInfo.volunteerNotes"></textarea>
+                      <mat-label>Volunteer Notes</mat-label>
+                      <mat-error>Please enter volunteer notes</mat-error>
+                  </mat-form-field>
+
+                  <p *ngIf="editMode==false" style="margin: 0 !important">{{data.animalInfo.volunteerNotes}}</p>
+              </td>
+          </tr>
+          <tr>
+              <td><b>Volunteer Favorite:</b> </td>
+              <td>
+                  <mat-radio-group aria-label=">Volunteer Favorite" aria-labelledby="housingLabel" name=">VolunteerFavorite" [(ngModel)]="data.animalInfo.volunteerFavorite" *ngIf="editMode==true" >
+                      <mat-radio-button [value]="true">Yes</mat-radio-button>
+                      <mat-radio-button [value]="false">No</mat-radio-button>
+                  </mat-radio-group>
+
+                  <p *ngIf="editMode==false" style="margin: 0 !important">{{data.animalInfo.volunteerFavorite}}</p>
+              </td>
+          </tr>
+          <tr>
+              <td><b>Kennel:</b> </td>
+              <td>{{data.animalInfo.kennel}}</td>
+          </tr>
+          <tr>
+              <td><b>Days in Shelter:</b> </td>
+              <td>{{data.animalInfo.daysShelter}}</td>
+          </tr>
+          <tr>
+              <td><b>Spay or Neuter:</b> </td>
+              <td>{{data.animalInfo.spayNeuter}}</td>
+          </tr>
+          <tr>
+              <td><b>Color:</b> </td>
+              <td>{{data.animalInfo.color}}</td>
+          </tr>
+          <tr>
+              <td><b>Outcome Request:</b> </td>
+              <td>{{data.animalInfo.outcomeRequest}}</td>
+          </tr>
+          <tr>
+              <td><b>Reason:</b> </td>
+              <td>{{data.animalInfo.reason}}</td>
+          </tr>
+      </table>
+
+  </form>
+  
   <br />
 
 </mat-dialog-content>
 
 <mat-dialog-actions>
-  <button mat-raised-button (click)="closeDialog()">Close</button>
+    <button mat-raised-button (click)="closeDialog()">Close</button>
+    <button mat-raised-button (click)="editDialog()" *ngIf="editMode==false">Edit</button>
+    <button mat-raised-button *ngIf="editMode==true">Save</button>
 </mat-dialog-actions>
 

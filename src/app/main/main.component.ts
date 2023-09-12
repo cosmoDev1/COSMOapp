@@ -82,7 +82,9 @@ export class MainComponent implements AfterViewInit, OnInit {
                     volunteerNotes: '',
                     volunteerFavorite: false,
                     imageFile: 'https://cosmoapp.org/webservices/PDFdata/' + el.id + '.jpg',
-                    status: 0
+                    status: 0,
+                    youtubeLink: '',
+                    facebookLink: ''
                 };
                 this.global.animals.push(tmpAnimal);
             });
@@ -112,7 +114,9 @@ export class MainComponent implements AfterViewInit, OnInit {
                     volunteerNotes: '',
                     volunteerFavorite: false,
                     imageFile: 'https://cosmoapp.org/webservices/PDFdata/' + el.id + '.jpg',
-                    status: 0
+                    status: 0,
+                    youtubeLink: '',
+                    facebookLink: ''
                 };
                 this.global.animals.push(tmpAnimal);
             });

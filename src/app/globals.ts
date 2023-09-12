@@ -47,6 +47,8 @@ export interface Animal {
     volunteerFavorite: boolean;
     imageFile: string;
     status: number;
+    youtubeLink: string;
+    facebookLink: string;
 }
 
 

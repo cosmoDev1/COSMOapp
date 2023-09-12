@@ -7,8 +7,14 @@ import { MatDialogRef, MAT_DIALOG_DATA } from "@angular/material/dialog";
   styleUrls: ['./animal-detail-dialog.component.css']
 })
 export class AnimalDetailDialogComponent {
+    editMode: boolean = false;
 
-  constructor(@Inject(MAT_DIALOG_DATA) public data: any, public dialogRef: MatDialogRef<AnimalDetailDialogComponent>) { }
+    constructor(@Inject(MAT_DIALOG_DATA) public data: any, public dialogRef: MatDialogRef<AnimalDetailDialogComponent>) { }
   
-  closeDialog() { this.dialogRef.close('close'); }
+    closeDialog() { this.dialogRef.close('close'); }
+
+    editDialog() {
+        this.editMode = !this.editMode;
+
+    }
 }
