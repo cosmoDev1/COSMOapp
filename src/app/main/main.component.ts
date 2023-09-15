@@ -30,6 +30,7 @@ export class MainComponent implements AfterViewInit, OnInit {
     public shelters: any = [{ name: 'BARC', value: '0' }, { name: 'HCAS', value: '1' }];
     selectedCity = '0';
     selectedShelter = '0';
+    citiesData: any;
 
     //animals: Array<Animal> = [];
     dataSource = new MatTableDataSource<Animal>(this.global.animals);
@@ -50,6 +51,12 @@ export class MainComponent implements AfterViewInit, OnInit {
     getData() {
         var head = new HttpHeaders({ 'Content-Type': 'application/json' });
         const options = { headers: head };
+        
+        //call cities endpoint
+        this.http.get(this.global.cities).subscribe((res: any) => {
+            this.citiesData = res;
+            console.log(this.citiesData);
+        });
 
         //this.http.get("https://v1.nocodeapi.com/casper/airtable/hOIlnPJwPYcZIyyL?tableName=BARC", options).subscribe((res: any) => {
         this.http.get(this.global.webserviceBaseUrl+'values'+this.global.testSource, options).subscribe((res: any) => {

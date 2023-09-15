@@ -121,7 +121,7 @@ export class Globals {
         { "name": "Wisconsin", "abbreviation": "WI" },
         { "name": "Wyoming", "abbreviation": "WY" }
     ];
-
+    public cities: string = "https://localhost:44307/api/cities?testSource=true" 
     public animals: Array<Animal> = [];
     public myAnimals: Array<Animal> = [];
 
