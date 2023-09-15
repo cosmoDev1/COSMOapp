@@ -3,7 +3,6 @@ import { MatDialogRef, MAT_DIALOG_DATA, MatDialogConfig, MatDialog } from "@angu
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 import { Globals } from "../globals";
-import { ConfirmationDialogComponent } from '../confirmation-dialog/confirmation-dialog.component';
 
 
 @Component({
@@ -13,8 +12,8 @@ import { ConfirmationDialogComponent } from '../confirmation-dialog/confirmation
 })
 
 export class TagDialogComponent{
+    formdata = { tagAnimal: "0", tagInfo: "" }
 
-      formdata = { tagAnimal: "0", tagInfo: "" }
     constructor(@Inject(MAT_DIALOG_DATA) public data: any, public dialogRef: MatDialogRef<TagDialogComponent>) { }
 
     tagAnimalChange() {

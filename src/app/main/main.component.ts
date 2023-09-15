@@ -295,7 +295,7 @@ export class MainComponent implements AfterViewInit, OnInit {
         const dialogConfig = new MatDialogConfig();
 
         dialogConfig.disableClose = true;
-        dialogConfig.autoFocus = true;
+        dialogConfig.autoFocus = false;
         dialogConfig.width = '500px';
         dialogConfig.data = { animalInfo: info };
 
@@ -314,7 +314,7 @@ export class MainComponent implements AfterViewInit, OnInit {
         const dialogConfig = new MatDialogConfig();
 
         dialogConfig.disableClose = true;
-        dialogConfig.autoFocus = true;
+        dialogConfig.autoFocus = false;
         dialogConfig.data = { role: 'My Dogs', rescueName: true, contactName: true };
 
         const dialogRef = this.dialog.open(PleaDialogComponent, dialogConfig);
