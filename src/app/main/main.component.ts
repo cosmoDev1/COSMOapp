@@ -57,6 +57,11 @@ export class MainComponent implements AfterViewInit, OnInit {
             console.log(this.global.cities);
         });
 
+        this.http.get(this.global.webserviceBaseUrl + 'states').subscribe((res: any) => {
+            this.global.states = res;
+            console.log(this.global.states)
+        });
+
         //this.http.get("https://v1.nocodeapi.com/casper/airtable/hOIlnPJwPYcZIyyL?tableName=BARC", options).subscribe((res: any) => {
         this.http.get(this.global.webserviceBaseUrl+'values'+this.global.testSource, options).subscribe((res: any) => {
             console.log(res);
