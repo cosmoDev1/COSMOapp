@@ -1,32 +1,36 @@
 <mat-toolbar>
-  <button mat-button [matMenuTriggerFor]="menu">
-    <span class="material-symbols-outlined" style="vertical-align: middle">menu</span>
-  </button>
-  <mat-menu #menu="matMenu">
-      <button (click)="newShelterDialog()" mat-menu-item>Create Shelter Account</button>
-      <button (click)="newRescueDialog()" mat-menu-item>Create Rescue Group Account</button>
-      <button (click)="newFosterDialog()" mat-menu-item>Create Foster Account</button>
-      <button (click)="newNetworkerDialog()" mat-menu-item>Create Networker Account</button>
-      <button mat-menu-item>Create Transport Account</button>
-      <mat-divider></mat-divider>
-      <button (click)="myAnimalsDialog()" mat-menu-item>My Animals</button>
-      <button (click)="myFosterDialog()" mat-menu-item>My Fosters</button>
-      <button mat-menu-item>My Transports</button>
-  </mat-menu>
-  <span>Welcome, {{global.rescueName}}</span>
-  <span class="example-spacer"></span>
+    <button mat-button [matMenuTriggerFor]="menu">
+        <span class="material-symbols-outlined" style="vertical-align: middle">menu</span>
+    </button>
+    <mat-menu #menu="matMenu">
+        <button (click)="newShelterDialog()" mat-menu-item>Create Shelter Account</button>
+        <button (click)="newRescueDialog()" mat-menu-item>Create Rescue Group Account</button>
+        <button (click)="newFosterDialog()" mat-menu-item>Create Foster Account</button>
+        <button (click)="newNetworkerDialog()" mat-menu-item>Create Networker Account</button>
+        <button mat-menu-item>Create Transport Account</button>
+        <mat-divider></mat-divider>
+        <button (click)="myAnimalsDialog()" mat-menu-item>My Animals</button>
+        <button (click)="myFosterDialog()" mat-menu-item>My Fosters</button>
+        <button mat-menu-item>My Transports</button>
 
-  <button mat-button> <span class="material-symbols-outlined" style="vertical-align: middle">save_as</span> <span style="vertical-align: middle">Save Workspace</span></button>
-  <button mat-button (click)="refresh()"> <span class="material-symbols-outlined" style="vertical-align: middle">refresh</span> <span style="vertical-align: middle">Refresh </span></button>
+        <mat-divider></mat-divider>
+        <button mat-menu-item (click)="loginNew()">login</button>
+        <button mat-menu-item (click)="logout()">Logout</button>
+    </mat-menu>
+    <span *ngIf="auth.user$ | async as user">Welcome, {{global.rescueName}} {{ user.email }}</span>
+    <span class="example-spacer"></span>
 
-  <button mat-raised-button [matMenuTriggerFor]="notifications" color="primary" matBadge="8" matBadgePosition="after" matBadgeColor="accent">
-    Notifications
-  </button>
-  <mat-menu #notifications="matMenu">
-    <button mat-menu-item>New Foster Appl Submitted - 4</button>
-    <button mat-menu-item>Foster Vet Attention Request - 1</button>
-    <button mat-menu-item>New Adoption Request - 3</button>
-  </mat-menu>
+    <button mat-button> <span class="material-symbols-outlined" style="vertical-align: middle">save_as</span> <span style="vertical-align: middle">Save Workspace</span></button>
+    <button mat-button (click)="refresh()"> <span class="material-symbols-outlined" style="vertical-align: middle">refresh</span> <span style="vertical-align: middle">Refresh </span></button>
+
+    <button mat-raised-button [matMenuTriggerFor]="notifications" color="primary" matBadge="8" matBadgePosition="after" matBadgeColor="accent">
+        Notifications
+    </button>
+    <mat-menu #notifications="matMenu">
+        <button mat-menu-item>New Foster Appl Submitted - 4</button>
+        <button mat-menu-item>Foster Vet Attention Request - 1</button>
+        <button mat-menu-item>New Adoption Request - 3</button>
+    </mat-menu>
 
 </mat-toolbar>
 

@@ -7,6 +7,7 @@ import { MaterialModule } from './material-module';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
+import { AuthModule } from '@auth0/auth0-angular';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -32,7 +33,14 @@ import { RegisterComponent } from './register/register.component';
         ConfirmationDialogComponent, PleaDialogComponent, RegisterComponent, TagDialogComponent
     ],
     imports: [
-        BrowserModule, AppRoutingModule, BrowserAnimationsModule, MaterialModule, HttpClientModule, FormsModule, ReactiveFormsModule, 
+          BrowserModule, AppRoutingModule, BrowserAnimationsModule, MaterialModule, HttpClientModule, FormsModule, ReactiveFormsModule, 
+          AuthModule.forRoot({
+                domain: 'dev-1tjg2tztyxoxvinb.us.auth0.com',
+                clientId: 'V58jvBwPdYmCIcbR9xKLg6QdELSPdzQZ',
+                authorizationParams: {
+                      redirect_uri: window.location.origin
+                }
+          }),
     ],
     providers: [{ provide: LocationStrategy, useClass: HashLocationStrategy }],
     bootstrap: [AppComponent]

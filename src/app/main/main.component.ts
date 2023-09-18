@@ -7,6 +7,8 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { TitleCasePipe } from '@angular/common';
 import { Title } from '@angular/platform-browser';
 
+import { AuthService } from '@auth0/auth0-angular';
+
 import { NewRescueDialogComponent } from '../new-rescue-dialog/new-rescue-dialog.component';
 import { NewFosterDialogComponent } from '../new-foster-dialog/new-foster-dialog.component';
 import { NewShelterDialogComponent } from '../new-shelter-dialog/new-shelter-dialog.component';
@@ -38,7 +40,7 @@ export class MainComponent implements AfterViewInit, OnInit {
     @ViewChild(MatSort, { static: false }) sort!: MatSort;
     @ViewChild('paginator', { static: true }) paginator!: MatPaginator;
 
-    constructor(private dialog: MatDialog, private http: HttpClient, public global: Globals, private title: Title) {
+      constructor(private dialog: MatDialog, private http: HttpClient, public global: Globals, private title: Title, public auth: AuthService) {
         this.title.setTitle('COSMO - ' + global.rescueName);
     }
 
@@ -324,5 +326,15 @@ export class MainComponent implements AfterViewInit, OnInit {
 
         const dialogRef = this.dialog.open(PleaDialogComponent, dialogConfig);
     }
+
+
+      loginNew() {
+            console.log('trying to login');
+            this.auth.loginWithRedirect();
+      }
+
+      logout() {
+            this.auth.logout({ logoutParams: { returnTo: document.location.origin } });
+      }
 
 }
