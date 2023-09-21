@@ -4,10 +4,12 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 
 import { MaterialModule } from './material-module';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-import { AuthModule } from '@auth0/auth0-angular';
+import { AuthModule, AuthHttpInterceptor } from '@auth0/auth0-angular';
+
+import { environment as env } from '../environments/environment';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -35,14 +37,21 @@ import { RegisterComponent } from './register/register.component';
     imports: [
           BrowserModule, AppRoutingModule, BrowserAnimationsModule, MaterialModule, HttpClientModule, FormsModule, ReactiveFormsModule, 
           AuthModule.forRoot({
-                domain: 'dev-1tjg2tztyxoxvinb.us.auth0.com',
-                clientId: 'V58jvBwPdYmCIcbR9xKLg6QdELSPdzQZ',
+                ...env.auth,
                 authorizationParams: {
-                      redirect_uri: window.location.origin
-                }
+                      audience: 'https://cosmoapp.org/webservices',
+                      redirectUri: window.location.origin
+                },
+                httpInterceptor: {
+                      allowedList: [`${env.dev.serverUrl}/api/messages/protected`, 'https://cosmoapp.org/webservices', 'https://cosmoapp.org/apps2'],
+                },
+
+                //authorizationParams: { redirect_uri: window.location.origin + '/apps' }
           }),
     ],
-    providers: [{ provide: LocationStrategy, useClass: HashLocationStrategy }],
+      providers: [{ provide: HTTP_INTERCEPTORS, useClass: AuthHttpInterceptor, multi: true },
+            { provide: LocationStrategy, useClass: HashLocationStrategy }
+      ],
     bootstrap: [AppComponent]
 })
 export class AppModule { }

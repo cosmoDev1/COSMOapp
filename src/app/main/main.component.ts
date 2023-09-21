@@ -40,8 +40,39 @@ export class MainComponent implements AfterViewInit, OnInit {
     @ViewChild(MatSort, { static: false }) sort!: MatSort;
     @ViewChild('paginator', { static: true }) paginator!: MatPaginator;
 
-      constructor(private dialog: MatDialog, private http: HttpClient, public global: Globals, private title: Title, public auth: AuthService) {
-        this.title.setTitle('COSMO - ' + global.rescueName);
+    profileJson: string = '';
+    constructor(private dialog: MatDialog, private http: HttpClient, public global: Globals, private title: Title, public auth: AuthService) {
+          this.title.setTitle('COSMO - ' + global.rescueName);
+
+
+          this.auth.user$.subscribe(
+                (profile) => (this.profileJson = JSON.stringify(profile, null, 2)),
+          );
+
+        this.auth.user$.subscribe((claims: any) => console.log(claims))
+
+
+          this.auth.getAccessTokenSilently().subscribe((claims: any) => {
+                console.log(claims)
+                const headers = new HttpHeaders({
+                      'Access-Control-Allow-Origin': 'http://localhost:4200',
+                      'Content-Type': 'application/json',
+                      'Authorization': 'Bearer ' + claims,
+                      'Accept': '*/*',
+                      //'Access-Control-Allow-Headers': 'Content-Type',
+                });
+
+
+
+                //this.http.get('https://cosmoapp.org/apps2/api/messages/protected', { headers: headers }).subscribe((data) => {
+                this.http.get('https://cosmoapp.org/apps2/api/messages/protected').subscribe((data) => {
+                      console.log(data);
+                });
+
+          }
+        )
+
+
     }
 
 
@@ -328,13 +359,21 @@ export class MainComponent implements AfterViewInit, OnInit {
     }
 
 
-      loginNew() {
-            console.log('trying to login');
-            this.auth.loginWithRedirect();
+    //loginNew() { this.auth.loginWithRedirect(); }
+
+      logout() { this.auth.logout({ logoutParams: { returnTo: document.location.origin } }); }
+
+      call() {
+
       }
 
-      logout() {
-            this.auth.logout({ logoutParams: { returnTo: document.location.origin } });
+      login() {
+            this.auth.loginWithRedirect({
+                  appState: {
+                        target: '/',
+                  },
+            });
+
       }
 
 }
