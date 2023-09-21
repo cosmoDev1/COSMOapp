@@ -30,8 +30,12 @@ import { TagDialogComponent } from '../tag-dialog/tag-dialog.component';
 export class MainComponent implements AfterViewInit, OnInit {
     public cities: any = [{ name: 'Houston', value: '0' }, { name: 'San Antonio', value: '1' }, { name: 'Dallas', value: '2' }];
     public shelters: any = [{ name: 'BARC', value: '0' }, { name: 'HCAS', value: '1' }];
-    selectedCity = '0';
+    selectedCity = '1';
     selectedShelter = '0';
+    selectedState = "";
+    allCities: any[] = [];
+    
+
 
     //animals: Array<Animal> = [];
     dataSource = new MatTableDataSource<Animal>(this.global.animals);
@@ -76,15 +80,29 @@ export class MainComponent implements AfterViewInit, OnInit {
     }
 
 
-    ngOnInit() { }
+    ngOnInit() {
+        // Fetch all cities once when the component initializes
+        this.http.get(this.global.webserviceBaseUrl + 'cities').subscribe((res: any) => {
+            console.log("All cities fetched from API:", res);
+            this.allCities = res;
+        });
+    }
 
     ngAfterViewInit() { this.getData(); }
+
+    onStateChange(selectedState: string) {
+        
+        console.log("State changed to:", selectedState);
+
+        this.cities = this.allCities.filter(city => city.state === selectedState);
+            console.log(this.cities);
+
+    }
 
     getData() {
         var head = new HttpHeaders({ 'Content-Type': 'application/json' });
         const options = { headers: head };
         
-        //call cities endpoint
         this.http.get(this.global.webserviceBaseUrl + 'cities').subscribe((res: any) => {
             this.global.cities = res;
             console.log(this.global.cities);

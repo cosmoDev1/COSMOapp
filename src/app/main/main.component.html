@@ -39,117 +39,129 @@
 
 
 <mat-tab-group mat-stretch-tabs="false" mat-align-tabs="start">
-  <mat-tab label="Houston - BARC">
-    <mat-form-field style="margin-right: 10px">
-      <mat-label>City</mat-label>
-      <mat-select [(ngModel)]='selectedCity'>
-        <mat-option *ngFor="let city of cities" [value]="city.value">
-          {{city.name}}
-        </mat-option>
-      </mat-select>
-    </mat-form-field>
-
-    <mat-form-field>
-      <mat-label>Shelter</mat-label>
-      <mat-select [(ngModel)]='selectedShelter'>
-        <mat-option *ngFor="let shelter of shelters" [value]="shelter.value">
-          {{shelter.name}}
-        </mat-option>
-      </mat-select>
-    </mat-form-field>
-
-    <div style="width: 100%; text-align: center; margin-top: 30px" *ngIf="global.animals.length == 0">
-      <mat-progress-spinner class="example-margin" color="primary" mode="indeterminate" style="margin-left: auto; margin-right: auto"> </mat-progress-spinner>
-      <p>Loading data, please wait...</p>
-    </div>
-
-    <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8" [style.display]="global.animals.length > 0 ? 'table' : 'none'">
-
-        <ng-container matColumnDef="action">
-            <th mat-header-cell *matHeaderCellDef> Quick Action </th>
-            <td mat-cell *matCellDef="let element" style="min-width: 290px !important">
-                <button mat-raised-button color="accent" (click)="tagAnimal(element.shelterAnimalID, element.name)" matTooltip="Request Tag" matTooltipPosition="right" style="margin-right: 8px; min-width: 56px !important" *ngIf="element.status==0"> <span class="material-symbols-outlined">new_label</span> </button>
-                <button mat-raised-button color="primary" (click)="confirmTagAnimal(element.shelterAnimalID, element.name)" matTooltip="Confirm Tag" matTooltipPosition="right" style="margin-right: 8px; min-width: 56px !important" *ngIf="element.status==1"> <span class="material-symbols-outlined">check</span> </button>
-                <button mat-raised-button matTooltip="Find Foster" matTooltipPosition="right" style="margin-right: 8px; min-width: 56px !important">  <span class="material-symbols-outlined">person_search</span> </button>
-                <button mat-raised-button matTooltip="Edit Information" matTooltipPosition="right" style="margin-right: 8px; min-width: 56px !important">  <span class="material-symbols-outlined">edit_note</span> </button>
-                <button mat-raised-button (click)="fosterPlea()" matTooltip="Plea" matTooltipPosition="right" style="min-width: 56px !important"> <span class="material-symbols-outlined">folded_hands</span> </button>
-            </td>
-        </ng-container>
-
-        <ng-container matColumnDef="imageURL">
-            <th mat-header-cell *matHeaderCellDef> Photo </th>
-            <td mat-cell *matCellDef="let element">
-                <img [src]="element.imageFile" style="height: 60px" matTooltip="{{element.shelterNotes}}" matTooltipPosition="right" (click)="animalDetail(element)" />
-            </td>
-        </ng-container>
-
-        <ng-container matColumnDef="status">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header> Status </th>
-            <td mat-cell *matCellDef="let element">
-                <div style="height: 30px; width: 30px; border-radius: 15px; background-color: red; border: 1px solid black" *ngIf="element.status==0" matTooltip="In Danger" matTooltipPosition="right"></div>
-                <div style="height: 30px; width: 30px; border-radius: 15px; background-color: yellow; border: 1px solid black" *ngIf="element.status==1" matTooltip="Tag sent - waiting confirmation" matTooltipPosition="right"></div>
-                <div style="height: 30px; width: 30px; border-radius: 15px; background-color: green; border: 1px solid black" *ngIf="element.status==2" matTooltip="Tag confirmed - waiting foster" matTooltipPosition="right"></div>
-            </td>
-        </ng-container>
-
-        <ng-container matColumnDef="shelterAnimalID">
-            <th mat-header-cell *matHeaderCellDef> ID </th>
-            <td mat-cell *matCellDef="let element"> {{element.shelterAnimalID}} </td>
-        </ng-container>
-
-        <ng-container matColumnDef="name">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
-            <td mat-cell *matCellDef="let element"> {{element.name | titlecase}} </td>
-        </ng-container>
-
-        <ng-container matColumnDef="gender">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header> Gender </th>
-            <td mat-cell *matCellDef="let element"> {{element.gender | titlecase}} </td>
-        </ng-container>
-
-        <ng-container matColumnDef="breed">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header> Breed </th>
-            <td mat-cell *matCellDef="let element"> {{element.breed | titlecase}} </td>
-        </ng-container>
-
-        <ng-container matColumnDef="weight">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header> Weight (lbs) </th>
-            <td mat-cell *matCellDef="let element"> {{element.weight}} </td>
-        </ng-container>
-
-        <ng-container matColumnDef="age">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header> Age </th>
-            <td mat-cell *matCellDef="let element"> {{element.age}} </td>
-        </ng-container>
-
-        <ng-container matColumnDef="reason">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header> Reason </th>
-            <td mat-cell *matCellDef="let element"> {{element.reason}} </td>
-        </ng-container>
-
-        <ng-container matColumnDef="outcomeRequest">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header> Outcome Request </th>
-            <td mat-cell *matCellDef="let element"> {{element.outcomeRequest}} </td>
-        </ng-container>
 
 
-        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-    </table>
+    <mat-tab label="Houston - BARC">
 
-    <mat-paginator #paginator [pageSize]="25" [pageSizeOptions]="[5, 10, 25, 50, 100, 200]" showFirstLastButtons aria-label="Select page" [style.display]="global.animals.length > 0 ? 'block' : 'none'"> </mat-paginator>
+        <mat-form-field style="margin-right: 10px">
+            <mat-label> State </mat-label>
+            <mat-select id="stat" name="state" [(ngModel)]="selectedState" (selectionChange)="onStateChange($event.value)">
+                <mat-option *ngFor="let state of global.states" [value]="state.abbreviation">
+                    {{ state.stateName }} - {{ state.abbreviation }}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
 
-  </mat-tab>
-  <mat-tab label="Houston - Harris County">
+        <mat-form-field style="margin-right: 10px" *ngIf="cities && cities.length > 0">
+            <mat-label>City</mat-label>
+            <mat-select [(ngModel)]='selectedCity'>
+                <mat-option *ngFor="let city of cities" [value]="city.id">
+                    {{city.name}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
 
-  </mat-tab>
-  <mat-tab>
-    <ng-template mat-tab-label>
-      <span class="material-symbols-outlined">
-        add
-      </span>
-      <span>Add Worksheet</span>
-    </ng-template>
+        <mat-form-field>
+            <mat-label>Shelter</mat-label>
+            <mat-select [(ngModel)]='selectedShelter'>
+                <mat-option *ngFor="let shelter of shelters" [value]="shelter.value">
+                    {{shelter.name}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
 
-  </mat-tab>
+        <div style="width: 100%; text-align: center; margin-top: 30px" *ngIf="global.animals.length == 0">
+            <mat-progress-spinner class="example-margin" color="primary" mode="indeterminate" style="margin-left: auto; margin-right: auto"> </mat-progress-spinner>
+            <p>Loading data, please wait...</p>
+        </div>
+
+        <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8" [style.display]="global.animals.length > 0 ? 'table' : 'none'">
+
+            <ng-container matColumnDef="action">
+                <th mat-header-cell *matHeaderCellDef> Quick Action </th>
+                <td mat-cell *matCellDef="let element" style="min-width: 290px !important">
+                    <button mat-raised-button color="accent" (click)="tagAnimal(element.shelterAnimalID, element.name)" matTooltip="Request Tag" matTooltipPosition="right" style="margin-right: 8px; min-width: 56px !important" *ngIf="element.status==0"> <span class="material-symbols-outlined">new_label</span> </button>
+                    <button mat-raised-button color="primary" (click)="confirmTagAnimal(element.shelterAnimalID, element.name)" matTooltip="Confirm Tag" matTooltipPosition="right" style="margin-right: 8px; min-width: 56px !important" *ngIf="element.status==1"> <span class="material-symbols-outlined">check</span> </button>
+                    <button mat-raised-button matTooltip="Find Foster" matTooltipPosition="right" style="margin-right: 8px; min-width: 56px !important">  <span class="material-symbols-outlined">person_search</span> </button>
+                    <button mat-raised-button matTooltip="Edit Information" matTooltipPosition="right" style="margin-right: 8px; min-width: 56px !important">  <span class="material-symbols-outlined">edit_note</span> </button>
+                    <button mat-raised-button (click)="fosterPlea()" matTooltip="Plea" matTooltipPosition="right" style="min-width: 56px !important"> <span class="material-symbols-outlined">folded_hands</span> </button>
+                </td>
+            </ng-container>
+
+            <ng-container matColumnDef="imageURL">
+                <th mat-header-cell *matHeaderCellDef> Photo </th>
+                <td mat-cell *matCellDef="let element">
+                    <img [src]="element.imageFile" style="height: 60px" matTooltip="{{element.shelterNotes}}" matTooltipPosition="right" (click)="animalDetail(element)" />
+                </td>
+            </ng-container>
+
+            <ng-container matColumnDef="status">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Status </th>
+                <td mat-cell *matCellDef="let element">
+                    <div style="height: 30px; width: 30px; border-radius: 15px; background-color: red; border: 1px solid black" *ngIf="element.status==0" matTooltip="In Danger" matTooltipPosition="right"></div>
+                    <div style="height: 30px; width: 30px; border-radius: 15px; background-color: yellow; border: 1px solid black" *ngIf="element.status==1" matTooltip="Tag sent - waiting confirmation" matTooltipPosition="right"></div>
+                    <div style="height: 30px; width: 30px; border-radius: 15px; background-color: green; border: 1px solid black" *ngIf="element.status==2" matTooltip="Tag confirmed - waiting foster" matTooltipPosition="right"></div>
+                </td>
+            </ng-container>
+
+            <ng-container matColumnDef="shelterAnimalID">
+                <th mat-header-cell *matHeaderCellDef> ID </th>
+                <td mat-cell *matCellDef="let element"> {{element.shelterAnimalID}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="name">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
+                <td mat-cell *matCellDef="let element"> {{element.name | titlecase}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="gender">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Gender </th>
+                <td mat-cell *matCellDef="let element"> {{element.gender | titlecase}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="breed">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Breed </th>
+                <td mat-cell *matCellDef="let element"> {{element.breed | titlecase}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="weight">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Weight (lbs) </th>
+                <td mat-cell *matCellDef="let element"> {{element.weight}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="age">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Age </th>
+                <td mat-cell *matCellDef="let element"> {{element.age}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="reason">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Reason </th>
+                <td mat-cell *matCellDef="let element"> {{element.reason}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="outcomeRequest">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Outcome Request </th>
+                <td mat-cell *matCellDef="let element"> {{element.outcomeRequest}} </td>
+            </ng-container>
+
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+
+        <mat-paginator #paginator [pageSize]="25" [pageSizeOptions]="[5, 10, 25, 50, 100, 200]" showFirstLastButtons aria-label="Select page" [style.display]="global.animals.length > 0 ? 'block' : 'none'"> </mat-paginator>
+
+    </mat-tab>
+    <mat-tab label="Houston - Harris County">
+
+    </mat-tab>
+    <mat-tab>
+        <ng-template mat-tab-label>
+            <span class="material-symbols-outlined">
+                add
+            </span>
+            <span>Add Worksheet</span>
+        </ng-template>
+
+    </mat-tab>
 </mat-tab-group>
