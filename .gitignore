@@ -10,3 +10,4 @@
 /.vs/slnx.sqlite-journal
 /.vs/slnx.sqlite
 /.vs/app/v17/.wsuo
+/src/environments/environment.ts
