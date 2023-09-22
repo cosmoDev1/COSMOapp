@@ -28,16 +28,12 @@ import { TagDialogComponent } from '../tag-dialog/tag-dialog.component';
     styleUrls: ['./main.component.css']
 })
 export class MainComponent implements AfterViewInit, OnInit {
-    public cities: any = [{ name: 'Houston', value: '0' }, { name: 'San Antonio', value: '1' }, { name: 'Dallas', value: '2' }];
     public shelters: any = [{ name: 'BARC', value: '0' }, { name: 'HCAS', value: '1' }];
     selectedCity = '1';
     selectedShelter = '0';
-    selectedState = "";
-    allCities: any[] = [];
+    selectedState = "TX";
+    cities: any[] = [];
     
-
-
-    //animals: Array<Animal> = [];
     dataSource = new MatTableDataSource<Animal>(this.global.animals);
     displayedColumns: string[] = ['action', 'imageURL', 'status', 'shelterAnimalID', 'name', 'gender', 'breed', 'weight', 'age', 'reason', 'outcomeRequest'];
 
@@ -46,15 +42,14 @@ export class MainComponent implements AfterViewInit, OnInit {
 
     profileJson: string = '';
     constructor(private dialog: MatDialog, private http: HttpClient, public global: Globals, private title: Title, public auth: AuthService) {
-          this.title.setTitle('COSMO - ' + global.rescueName);
+          this.title.setTitle('COSMO - Loading your dashboard' );
 
-
-          this.auth.user$.subscribe(
-                (profile) => (this.profileJson = JSON.stringify(profile, null, 2)),
-          );
-
-        this.auth.user$.subscribe((claims: any) => console.log(claims))
-
+          this.auth.user$.subscribe((profile) => {
+               console.log(profile)
+               this.title.setTitle('COSMO - ' + profile!.name);
+               this.global.rescueName = profile!.name!;
+               this.profileJson = JSON.stringify(profile, null, 2);
+          });
 
           this.auth.getAccessTokenSilently().subscribe((claims: any) => {
                 console.log(claims)
@@ -67,9 +62,8 @@ export class MainComponent implements AfterViewInit, OnInit {
                 });
 
 
-
                 //this.http.get('https://cosmoapp.org/apps2/api/messages/protected', { headers: headers }).subscribe((data) => {
-                this.http.get('https://cosmoapp.org/apps2/api/messages/protected').subscribe((data) => {
+                this.http.get('http://localhost:6060/api/messages/protected').subscribe((data) => {
                       console.log(data);
                 });
 
@@ -80,23 +74,15 @@ export class MainComponent implements AfterViewInit, OnInit {
     }
 
 
-    ngOnInit() {
-        // Fetch all cities once when the component initializes
-        this.http.get(this.global.webserviceBaseUrl + 'cities').subscribe((res: any) => {
-            console.log("All cities fetched from API:", res);
-            this.allCities = res;
-        });
-    }
+    ngOnInit() {  }
 
     ngAfterViewInit() { this.getData(); }
 
     onStateChange(selectedState: string) {
-        
         console.log("State changed to:", selectedState);
 
-        this.cities = this.allCities.filter(city => city.state === selectedState);
-            console.log(this.cities);
-
+        this.cities = this.global.allCities.filter(city => city.state === selectedState);
+        console.log(this.cities);
     }
 
     getData() {
@@ -104,13 +90,14 @@ export class MainComponent implements AfterViewInit, OnInit {
         const options = { headers: head };
         
         this.http.get(this.global.webserviceBaseUrl + 'cities').subscribe((res: any) => {
-            this.global.cities = res;
-            console.log(this.global.cities);
+            this.global.allCities = res;
+            console.log(this.global.allCities);
         });
 
         this.http.get(this.global.webserviceBaseUrl + 'states').subscribe((res: any) => {
             this.global.states = res;
             console.log(this.global.states)
+            this.onStateChange(this.selectedState);
         });
 
         //this.http.get("https://v1.nocodeapi.com/casper/airtable/hOIlnPJwPYcZIyyL?tableName=BARC", options).subscribe((res: any) => {

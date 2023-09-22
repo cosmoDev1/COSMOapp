@@ -122,7 +122,8 @@ export class Globals {
     //    { "name": "Wisconsin", "abbreviation": "WI" },
     //    { "name": "Wyoming", "abbreviation": "WY" }
     //];
-    public cities: Array<any> = [];
+
+    public allCities: Array<any> = [];
     public animals: Array<Animal> = [];
     public myAnimals: Array<Animal> = [];
 

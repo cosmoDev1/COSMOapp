@@ -36,22 +36,11 @@ import { RegisterComponent } from './register/register.component';
     ],
     imports: [
           BrowserModule, AppRoutingModule, BrowserAnimationsModule, MaterialModule, HttpClientModule, FormsModule, ReactiveFormsModule, 
-          AuthModule.forRoot({
-                ...env.auth,
-                authorizationParams: {
-                      audience: 'https://cosmoapp.org/webservices',
-                      redirectUri: window.location.origin
-                },
-                httpInterceptor: {
-                      allowedList: [`${env.dev.serverUrl}/api/messages/protected`, 'https://cosmoapp.org/webservices', 'https://cosmoapp.org/apps2'],
-                },
-
-                //authorizationParams: { redirect_uri: window.location.origin + '/apps' }
-          }),
+          AuthModule.forRoot({ ...env.auth }),
     ],
-      providers: [{ provide: HTTP_INTERCEPTORS, useClass: AuthHttpInterceptor, multi: true },
-            { provide: LocationStrategy, useClass: HashLocationStrategy }
-      ],
+    providers: [{ provide: HTTP_INTERCEPTORS, useClass: AuthHttpInterceptor, multi: true },
+          { provide: LocationStrategy, useClass: HashLocationStrategy }
+    ],
     bootstrap: [AppComponent]
 })
 export class AppModule { }
