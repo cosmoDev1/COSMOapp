@@ -53,17 +53,16 @@ export class MainComponent implements AfterViewInit, OnInit {
 
           this.auth.getAccessTokenSilently().subscribe((claims: any) => {
                 console.log(claims)
-                const headers = new HttpHeaders({
-                      'Access-Control-Allow-Origin': 'http://localhost:4200',
-                      'Content-Type': 'application/json',
-                      'Authorization': 'Bearer ' + claims,
-                      'Accept': '*/*',
-                      //'Access-Control-Allow-Headers': 'Content-Type',
-                });
-
+                //const headers = new HttpHeaders({
+                //      'Access-Control-Allow-Origin': 'http://localhost:4200',
+                //      'Content-Type': 'application/json',
+                //      'Authorization': 'Bearer ' + claims,
+                //      'Accept': '*/*',
+                //      'Access-Control-Allow-Headers': 'Content-Type',
+                //});
 
                 //this.http.get('https://cosmoapp.org/apps2/api/messages/protected', { headers: headers }).subscribe((data) => {
-                this.http.get('http://localhost:6060/api/messages/protected').subscribe((data) => {
+                this.http.get('https://cosmoapp.org/apps2/api/messages/protected').subscribe((data) => {
                       console.log(data);
                 });
 
