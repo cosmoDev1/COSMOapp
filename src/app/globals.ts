@@ -55,8 +55,8 @@ export interface Animal {
 
 @Injectable({ providedIn: 'root' })
 export class Globals {
-    public webserviceBaseUrl: string = "https://cosmoapp.org/webservices/api/";
-    //public webserviceBaseUrl: string = "https://localhost:44307/api/";
+    //public webserviceBaseUrl: string = "https://cosmoapp.org/app2/api/";
+    public webserviceBaseUrl: string = "http://localhost:5000/api/";
     public testSource: string = '?testSource=false';
     //public webserviceUrl: string = "https://localhost:44307/api/values?testSource=true";
     public rescueName: string = "Bernie Test Rescue";

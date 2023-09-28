@@ -7,7 +7,6 @@ import { RegisterComponent } from './register/register.component';
 
 const routes: Routes = [
       { path: '', component: MainComponent, canActivate: [AuthGuard] },
-      //{ path: '', component: MainComponent },
       { path: 'register', component: RegisterComponent, pathMatch: 'full', title: 'COSMO - Request new account' }
 ];
 

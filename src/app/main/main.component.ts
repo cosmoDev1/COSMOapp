@@ -33,7 +33,7 @@ export class MainComponent implements AfterViewInit, OnInit {
     selectedShelter = '0';
     selectedState = "TX";
     cities: any[] = [];
-    
+
     dataSource = new MatTableDataSource<Animal>(this.global.animals);
     displayedColumns: string[] = ['action', 'imageURL', 'status', 'shelterAnimalID', 'name', 'gender', 'breed', 'weight', 'age', 'reason', 'outcomeRequest'];
 
@@ -42,25 +42,25 @@ export class MainComponent implements AfterViewInit, OnInit {
 
     profileJson: string = '';
     constructor(private dialog: MatDialog, private http: HttpClient, public global: Globals, private title: Title, public auth: AuthService) {
-          this.title.setTitle('COSMO - Loading your dashboard' );
+        this.title.setTitle('COSMO - Loading your dashboard');
 
-          this.auth.user$.subscribe((profile) => {
-               console.log(profile)
-               this.title.setTitle('COSMO - ' + profile!.name);
-               this.global.rescueName = profile!.name!;
-               this.profileJson = JSON.stringify(profile, null, 2);
-          });
+        this.auth.user$.subscribe((profile) => {
+            console.log(profile)
+            this.title.setTitle('COSMO - ' + profile!.name);
+            this.global.rescueName = profile!.name!;
+            this.profileJson = JSON.stringify(profile, null, 2);
+        });
 
-          this.auth.getAccessTokenSilently().subscribe((claims: any) => {
-                const headers = new HttpHeaders({
-                      'Content-Type': 'application/json',
-                });
+        this.auth.getAccessTokenSilently().subscribe((claims: any) => {
+            const headers = new HttpHeaders({
+                'Content-Type': 'application/json',
+            });
 
-          });
+        });
     }
 
 
-    ngOnInit() {  }
+    ngOnInit() { }
 
     ngAfterViewInit() { this.getData(); }
 
@@ -76,113 +76,113 @@ export class MainComponent implements AfterViewInit, OnInit {
         const options = { headers: head };
 
         //this.http.get('http://localhost:5000/api/cities/protected').subscribe((res: any) => {
-        this.http.get('https://cosmoapp.org/apps2/api/cities/protected').subscribe((res: any) => {
-              console.log('cities loaded')
-              if (res.status == "success") {
-                  this.global.allCities = res.data;
-              }
+        this.http.get(this.global.webserviceBaseUrl + 'cities/protected').subscribe((res: any) => {
+            console.log('cities loaded')
+            if (res.status == "success") {
+                this.global.allCities = res.data;
+            }
 
-              //this.http.get('http://localhost:5000/api/states/protected').subscribe((res: any) => {
-              this.http.get('https://cosmoapp.org/apps2/api/states/protected').subscribe((res: any) => {
-                    console.log('states loaded')
-                    if (res.status == "success") {
-                        this.global.states = res.data;
-                        this.onStateChange(this.selectedState);
-                    }
-              });
+            //this.http.get('http://localhost:5000/api/states/protected').subscribe((res: any) => {
+            this.http.get(this.global.webserviceBaseUrl + 'states/protected').subscribe((res: any) => {
+                console.log('states loaded')
+                if (res.status == "success") {
+                    this.global.states = res.data;
+                    this.onStateChange(this.selectedState);
+                }
+            });
         });
 
 
-          //this.http.get('http://localhost:5000/api/animals/protected?testSource=true').subscribe((res: any) => {
-          this.http.get('https://cosmoapp.org/apps2/api/animals/protected?testSource=true').subscribe((res: any) => {
-                console.log(res);
+        //this.http.get('http://localhost:5000/api/animals/protected?testSource=true').subscribe((res: any) => {
+        this.http.get(this.global.webserviceBaseUrl + 'animals/protected?testSource=true').subscribe((res: any) => {
+            console.log(res);
 
-                var cats = res.data[0].cats;
-                var dogs = res.data[0].dogs;
+            var cats = res.data[0].cats;
+            var dogs = res.data[0].dogs;
 
-                cats.forEach((el: any) => {
-                      var tmpAnimal: Animal = {
-                            animalID: el.id,
-                            shelterAnimalID: el.id,
-                            shelterID: 'BARC',
-                            name: this.global.capitalize(el.name),
-                            dueOutDate: el.dueOutDate,
-                            kennel: el.kennel,
-                            weight: this.global.capitalize(el.weight.replace('lbs', '').replace('pounds', '')),
-                            condition: el.condition,
-                            daysShelter: el.daysShelter,
-                            decription: el.decription,
-                            gender: this.global.capitalize(el.gender),
-                            age: this.global.capitalize(el.age),
-                            spayNeuter: el.spayNeuter,
-                            breed: this.global.capitalize(el.breed),
-                            color: el.color,
-                            hwFIVstatus: el.hwFIVstatus,
-                            outcomeRequest: el.outcomeRequest,
-                            reason: el.reason,
-                            evalNotes: el.evalNotes,
-                            species: this.global.capitalize('cat'),
-                            volunteerNotes: '',
-                            volunteerFavorite: false,
-                            imageFile: 'https://cosmoapp.org/webservices/PDFdata/' + el.id + '.jpg',
-                            status: 0,
-                            youtubeLink: '',
-                            facebookLink: ''
-                      };
-                      this.global.animals.push(tmpAnimal);
-                });
+            cats.forEach((el: any) => {
+                var tmpAnimal: Animal = {
+                    animalID: el.id,
+                    shelterAnimalID: el.id,
+                    shelterID: 'BARC',
+                    name: this.global.capitalize(el.name),
+                    dueOutDate: el.dueOutDate,
+                    kennel: el.kennel,
+                    weight: this.global.capitalize(el.weight.replace('lbs', '').replace('pounds', '')),
+                    condition: el.condition,
+                    daysShelter: el.daysShelter,
+                    decription: el.decription,
+                    gender: this.global.capitalize(el.gender),
+                    age: this.global.capitalize(el.age),
+                    spayNeuter: el.spayNeuter,
+                    breed: this.global.capitalize(el.breed),
+                    color: el.color,
+                    hwFIVstatus: el.hwFIVstatus,
+                    outcomeRequest: el.outcomeRequest,
+                    reason: el.reason,
+                    evalNotes: el.evalNotes,
+                    species: this.global.capitalize('cat'),
+                    volunteerNotes: '',
+                    volunteerFavorite: false,
+                    imageFile: 'https://cosmoapp.org/webservices/PDFdata/' + el.id + '.jpg',
+                    status: 0,
+                    youtubeLink: '',
+                    facebookLink: ''
+                };
+                this.global.animals.push(tmpAnimal);
+            });
 
-                dogs.forEach((el: any) => {
-                      var tmpAnimal: Animal = {
-                            animalID: el.id,
-                            shelterAnimalID: el.id,
-                            shelterID: 'BARC',
-                            name: this.global.capitalize(el.name),
-                            dueOutDate: el.dueOutDate,
-                            kennel: el.kennel,
-                            weight: this.global.capitalize(el.weight.replace('lbs', '').replace('pounds', '')),
-                            condition: el.condition,
-                            daysShelter: el.daysShelter,
-                            decription: el.decription,
-                            gender: this.global.capitalize(el.gender),
-                            age: this.global.capitalize(el.age),
-                            spayNeuter: el.spayNeuter,
-                            breed: this.global.capitalize(el.breed),
-                            color: el.color,
-                            hwFIVstatus: el.hwFIVstatus,
-                            outcomeRequest: el.outcomeRequest,
-                            reason: el.reason,
-                            evalNotes: el.evalNotes,
-                            species: this.global.capitalize('dog'),
-                            volunteerNotes: '',
-                            volunteerFavorite: false,
-                            imageFile: 'https://cosmoapp.org/webservices/PDFdata/' + el.id + '.jpg',
-                            status: 0,
-                            youtubeLink: '',
-                            facebookLink: ''
-                      };
-                      this.global.animals.push(tmpAnimal);
-                });
+            dogs.forEach((el: any) => {
+                var tmpAnimal: Animal = {
+                    animalID: el.id,
+                    shelterAnimalID: el.id,
+                    shelterID: 'BARC',
+                    name: this.global.capitalize(el.name),
+                    dueOutDate: el.dueOutDate,
+                    kennel: el.kennel,
+                    weight: this.global.capitalize(el.weight.replace('lbs', '').replace('pounds', '')),
+                    condition: el.condition,
+                    daysShelter: el.daysShelter,
+                    decription: el.decription,
+                    gender: this.global.capitalize(el.gender),
+                    age: this.global.capitalize(el.age),
+                    spayNeuter: el.spayNeuter,
+                    breed: this.global.capitalize(el.breed),
+                    color: el.color,
+                    hwFIVstatus: el.hwFIVstatus,
+                    outcomeRequest: el.outcomeRequest,
+                    reason: el.reason,
+                    evalNotes: el.evalNotes,
+                    species: this.global.capitalize('dog'),
+                    volunteerNotes: '',
+                    volunteerFavorite: false,
+                    imageFile: 'https://cosmoapp.org/webservices/PDFdata/' + el.id + '.jpg',
+                    status: 0,
+                    youtubeLink: '',
+                    facebookLink: ''
+                };
+                this.global.animals.push(tmpAnimal);
+            });
 
-                //res.records.forEach((el: any) => {
-                //    var tmpAnimal: Animal = { animalID: el.id.trim(), shelterAnimalID: el.fields.ID.trim(), shelterID: 'BARC', name: this.global.capitalize(el.fields.Name.trim()), species: this.global.capitalize(el.fields.Type.trim()), age: this.global.capitalize(el.fields.Age.trim()), breed: this.global.capitalize(el.fields.Breed.trim()), weight: this.global.capitalize(el.fields.Weight.trim().replace('lbs', '').replace('pounds', '')), hwfiv: el.fields['FELV/ FIV or HW Status'], intakeDate: el.fields['Date of intake'], shelterNotes: el.fields.Story.trim(), volunteerNotes: '', volunteerFavorite: false, gender: this.global.capitalize(el.fields.Gender.trim()), imageURL: el.fields['Image URL'][0].url.trim(), imageFile: el.fields['Image URL'][0].filename.trim(), status: 0 };
-                //    this.global.animals.push(tmpAnimal);
-                //});
+            //res.records.forEach((el: any) => {
+            //    var tmpAnimal: Animal = { animalID: el.id.trim(), shelterAnimalID: el.fields.ID.trim(), shelterID: 'BARC', name: this.global.capitalize(el.fields.Name.trim()), species: this.global.capitalize(el.fields.Type.trim()), age: this.global.capitalize(el.fields.Age.trim()), breed: this.global.capitalize(el.fields.Breed.trim()), weight: this.global.capitalize(el.fields.Weight.trim().replace('lbs', '').replace('pounds', '')), hwfiv: el.fields['FELV/ FIV or HW Status'], intakeDate: el.fields['Date of intake'], shelterNotes: el.fields.Story.trim(), volunteerNotes: '', volunteerFavorite: false, gender: this.global.capitalize(el.fields.Gender.trim()), imageURL: el.fields['Image URL'][0].url.trim(), imageFile: el.fields['Image URL'][0].filename.trim(), status: 0 };
+            //    this.global.animals.push(tmpAnimal);
+            //});
 
-                if (this.global.animals.length > 0) {
-                      this.dataSource = new MatTableDataSource(this.global.animals);
-                      //this.dataSource = this.animals;
-                      this.dataSource.sort = this.sort;
-                      this.dataSource.paginator = this.paginator;
-                }
+            if (this.global.animals.length > 0) {
+                this.dataSource = new MatTableDataSource(this.global.animals);
+                //this.dataSource = this.animals;
+                this.dataSource.sort = this.sort;
+                this.dataSource.paginator = this.paginator;
+            }
 
-                console.log(this.global.animals);
-          });
+            console.log(this.global.animals);
+        });
 
 
         //this.http.get("https://v1.nocodeapi.com/casper/airtable/hOIlnPJwPYcZIyyL?tableName=BARC", options).subscribe((res: any) => {
         //this.http.get(this.global.webserviceBaseUrl+'values'+this.global.testSource, options).subscribe((res: any) => {
-            //console.log(res);
+        //console.log(res);
         //}, (err: any) => { console.log(err); });
     }
 
@@ -366,19 +366,19 @@ export class MainComponent implements AfterViewInit, OnInit {
 
     //loginNew() { this.auth.loginWithRedirect(); }
 
-      logout() { this.auth.logout({ logoutParams: { returnTo: document.location.origin } }); }
+    logout() { this.auth.logout({ logoutParams: { returnTo: document.location.origin } }); }
 
-      call() {
+    call() {
 
-      }
+    }
 
-      login() {
-            this.auth.loginWithRedirect({
-                  appState: {
-                        target: '/',
-                  },
-            });
+    login() {
+        this.auth.loginWithRedirect({
+            appState: {
+                target: '/',
+            },
+        });
 
-      }
+    }
 
 }
