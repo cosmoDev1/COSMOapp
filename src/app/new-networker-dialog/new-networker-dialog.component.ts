@@ -58,20 +58,22 @@ export class NewNetworkerDialogComponent {
                 var head = new HttpHeaders({ 'Content-Type': 'application/json' });
                 const options = { headers: head };
 
-                this.http.post(this.global.webserviceBaseUrl + 'networkers', this.formdata, options).subscribe((res: any) => {
+                var newFormData = this.formdata;
+                newFormData.networkerZip = this.formdata.networkerZip.toString();
+
+                this.http.post(this.global.webserviceBaseUrl + 'networkers/protected', this.formdata, options).subscribe((res: any) => {
                     console.log(res);
-                    res = JSON.parse(res);
 
                     dialogConfig.disableClose = true;
                     dialogConfig.autoFocus = true;
                     var tmpText = "";
-                    if (res.message == "inserted") {
+                    if (res.status == "inserted") {
                         tmpText = 'Your submission was successfully received. You will receive an email with further instructions.'
                     }
-                    if (res.message == "notinserted") {
+                    if (res.status == "notinserted") {
                         tmpText = 'Your submission returned an error. Please contact the app add admin.'
                     }
-                    if (res.message == "error") {
+                    if (res.status == "error") {
                         tmpText = 'An internal error ocurred. Please contact the app add admin.'
                     }
 
