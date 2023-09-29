@@ -58,7 +58,7 @@ export class NewNetworkerDialogComponent {
                 var head = new HttpHeaders({ 'Content-Type': 'application/json' });
                 const options = { headers: head };
 
-                this.http.post(this.global.webserviceBaseUrl + 'networkers', this.formdata, options).subscribe((res: any) => {
+                this.http.post(this.global.webserviceBaseUrl + 'networkers', this.formdata).subscribe((res: any) => {
                     console.log(res);
                     res = JSON.parse(res);
 
