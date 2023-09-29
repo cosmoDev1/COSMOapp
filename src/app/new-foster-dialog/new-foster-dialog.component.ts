@@ -108,20 +108,29 @@ export class NewFosterDialogComponent {
                 var head = new HttpHeaders({ 'Content-Type': 'application/json' });
                 const options = { headers: head };
 
-                this.http.post(this.global.webserviceBaseUrl + 'fosters', this.formdata, options).subscribe((res: any) => {
+                var newFormData = this.formdata;
+                newFormData.fosterZip = this.formdata.fosterZip.toString();
+
+                var newFormData2 = this.formdata;
+                newFormData2.addressDuration = this.formdata.addressDuration.toString();
+
+                var newFormData3 = this.formdata;
+                newFormData3.firstYears = this.formdata.firstYears.toString();
+
+                this.http.post(this.global.webserviceBaseUrl + 'fosters/protected', this.formdata, options).subscribe((res: any) => {
                     console.log(res);
-                    res = JSON.parse(res);
+                    //res = JSON.parse(res);
 
                     dialogConfig.disableClose = true;
                     dialogConfig.autoFocus = true;
                     var tmpText = "";
-                    if (res.message == "inserted") {
+                    if (res.status == "inserted") {
                         tmpText = 'Your submission was successfully received. You will receive an email with further instructions.'
                     }
-                    if (res.message == "notinserted") {
+                    if (res.status == "notinserted") {
                         tmpText = 'Your submission returned an error. Please contact the app add admin.'
                     }
-                    if (res.message == "error") {
+                    if (res.status == "error") {
                         tmpText = 'An internal error ocurred. Please contact the app add admin.'
                     }
 

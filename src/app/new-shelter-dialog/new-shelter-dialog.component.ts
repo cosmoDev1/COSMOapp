@@ -13,7 +13,7 @@ import { ConfirmationDialogComponent } from '../confirmation-dialog/confirmation
 export class NewShelterDialogComponent {
 
     formdata = {
-        shelterName: "", shelterAddress: "", shelterCity: "", shelterState: "TX", shelterZip: "", shelterPhone: "", adminName: "", adminPhone: "", adminEmail: "", coordinatorName: "", coordinatorPhone: "",
+        shelterName: "", shelterAddress: "", city: "", shelterState: "TX", shelterZip: "", shelterPhone: "", adminName: "", adminPhone: "", adminEmail: "", coordinatorName: "", coordinatorPhone: "",
         coordinatorEmail: ""
     };
 
@@ -60,20 +60,24 @@ export class NewShelterDialogComponent {
                 var head = new HttpHeaders({ 'Content-Type': 'application/json' });
                 const options = { headers: head };
 
-                this.http.post(this.global.webserviceBaseUrl + 'shelters', this.formdata, options).subscribe((res: any) => {
+                var newFormData = this.formdata;
+                newFormData.shelterZip = this.formdata.shelterZip.toString();
+
+
+                this.http.post(this.global.webserviceBaseUrl + 'shelters/protected', this.formdata, options).subscribe((res: any) => {
                     console.log(res);
-                    res = JSON.parse(res);
+                   // res = JSON.parse(res);
 
                     dialogConfig.disableClose = true;
                     dialogConfig.autoFocus = true;
                     var tmpText = "";
-                    if (res.message == "inserted") {
+                    if (res.status == "inserted") {
                         tmpText = 'Your submission was successfully received. You will receive an email with further instructions.'
                     }
-                    if (res.message == "notinserted") {
+                    if (res.status == "notinserted") {
                         tmpText = 'Your submission returned an error. Please contact the app add admin.'
                     }
-                    if (res.message == "error") {
+                    if (res.status == "error") {
                         tmpText = 'An internal error ocurred. Please contact the app add admin.'
                     }
 
