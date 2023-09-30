@@ -59,7 +59,7 @@ export class Globals {
     public webserviceBaseUrl: string = "http://localhost:5000/api/";
     public testSource: string = '?testSource=false';
     //public webserviceUrl: string = "https://localhost:44307/api/values?testSource=true";
-    public rescueName: string = "Bernie Test Rescue";
+    public rescueName: string = "";
     public states: Array<any> = [];
     //public states: any = [
     //    { "name": "Alabama", "abbreviation": "AL" },

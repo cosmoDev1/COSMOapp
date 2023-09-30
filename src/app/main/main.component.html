@@ -47,7 +47,7 @@
             <mat-label> State </mat-label>
             <mat-select id="stat" name="state" [(ngModel)]="selectedState" (selectionChange)="onStateChange($event.value)">
                 <mat-option *ngFor="let state of global.states" [value]="state.abbreviation">
-                    {{ state.stateName }} - {{ state.abbreviation }}
+                    {{ state.name }} - {{ state.abbreviation }}
                 </mat-option>
             </mat-select>
         </mat-form-field>

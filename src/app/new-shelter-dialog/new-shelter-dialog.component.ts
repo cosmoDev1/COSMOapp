@@ -13,7 +13,7 @@ import { ConfirmationDialogComponent } from '../confirmation-dialog/confirmation
 export class NewShelterDialogComponent {
 
     formdata = {
-        shelterName: "", shelterAddress: "", city: "", shelterState: "TX", shelterZip: "", shelterPhone: "", adminName: "", adminPhone: "", adminEmail: "", coordinatorName: "", coordinatorPhone: "",
+        shelterName: "", shelterAddress: "", shelterCity: "", shelterState: "TX", shelterZip: "", shelterPhone: "", adminName: "", adminPhone: "", adminEmail: "", coordinatorName: "", coordinatorPhone: "",
         coordinatorEmail: ""
     };
 
