@@ -95,7 +95,7 @@ export class MainComponent implements AfterViewInit, OnInit {
 
 
         //this.http.get('http://localhost:5000/api/animals/protected?testSource=false').subscribe((res: any) => {
-        this.http.get(this.global.webserviceBaseUrl + 'animals/protected?testSource=true').subscribe((res: any) => {
+        this.http.get(this.global.webserviceBaseUrl + 'animals/protected?testSource=false&shelterId=6').subscribe((res: any) => {
             console.log(res);
 
             var cats = res.data[0].cats;

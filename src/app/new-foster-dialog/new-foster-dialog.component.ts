@@ -110,8 +110,6 @@ export class NewFosterDialogComponent {
 
                 var newFormData = this.formdata;
                 newFormData.fosterZip = this.formdata.fosterZip.toString();
-                //newFormData.addressDuration = this.formdata.addressDuration.toString();
-                //newFormData.firstYears = this.formdata.firstYears.toString();
 
                 this.http.post(this.global.webserviceBaseUrl + 'fosters/protected', this.formdata, options).subscribe((res: any) => {
                     console.log(res);
