@@ -16,7 +16,8 @@ export class RegisterComponent implements OnInit {
     entireFormSteps: string = 'true';
     reqType: string = "";
     loadingRed: any;
-
+    
+    
     formdata = { typeAccount: "1" }
 
     shelterdata = {
@@ -122,30 +123,45 @@ export class RegisterComponent implements OnInit {
                 var head = new HttpHeaders({ 'Content-Type': 'application/json' });
                 const options = { headers: head };
 
+                var newShelterData = this.shelterdata;
+                newShelterData.shelterZip = this.shelterdata.shelterZip.toString();
+
+                var newRescueData = this.rescuedata;
+                newRescueData.rescueZip = this.rescuedata.rescueZip.toString();
+
+                var newFosterData = this.fosterdata;
+                newFosterData.fosterZip = this.fosterdata.fosterZip.toString();
+
+                var newFosterData = this.fosterdata;
+                newFosterData.addressDuration = this.fosterdata.addressDuration.toString();
+
+                var newNetworkerData = this.networkerdata;
+                newNetworkerData.networkerZip = this.networkerdata.networkerZip.toString();
+
                 if (this.formdata.typeAccount == '1') {
-                    this.http.post(this.global.webserviceBaseUrl + 'shelters', this.shelterdata, options).subscribe((res: any) => {
-                        res = JSON.parse(res);
+                    this.http.post(this.global.webserviceBaseUrl + 'shelters/protected', this.shelterdata, options).subscribe((res: any) => {
+                        //res = JSON.parse(res);
                         this.resultDialog(res);
                     });
                 }
 
                 if (this.formdata.typeAccount == '2') {
-                    this.http.post(this.global.webserviceBaseUrl + 'rescues', this.rescuedata, options).subscribe((res: any) => {
-                        res = JSON.parse(res);
+                    this.http.post(this.global.webserviceBaseUrl + 'rescues/protected', this.rescuedata, options).subscribe((res: any) => {
+                       // res = JSON.parse(res);
                         this.resultDialog(res);
                     });
                 }
 
                 if (this.formdata.typeAccount == '3') {
-                    this.http.post(this.global.webserviceBaseUrl + 'fosters', this.fosterdata, options).subscribe((res: any) => {
-                        res = JSON.parse(res);
+                    this.http.post(this.global.webserviceBaseUrl + 'fosters/protected', this.fosterdata, options).subscribe((res: any) => {
+                      //  res = JSON.parse(res);
                         this.resultDialog(res);
                     });
                 }
 
                 if (this.formdata.typeAccount == '5') {
-                    this.http.post(this.global.webserviceBaseUrl + 'networkers', this.networkerdata, options).subscribe((res: any) => {
-                        res = JSON.parse(res);
+                    this.http.post(this.global.webserviceBaseUrl + 'networkers/protected', this.networkerdata, options).subscribe((res: any) => {
+                      //  res = JSON.parse(res);
                         this.resultDialog(res);
                     });
                 }
@@ -163,13 +179,13 @@ export class RegisterComponent implements OnInit {
         dialogConfig.autoFocus = true;
 
         var tmpText = "";
-        if (res.message == "inserted") {
+        if (res.status == "inserted") {
             tmpText = 'Your submission was successfully received. You will receive an email with further instructions.'
         }
-        if (res.message == "notinserted") {
+        if (res.status == "notinserted") {
             tmpText = 'Your submission returned an error. Please contact the app add admin.'
         }
-        if (res.message == "error") {
+        if (res.status == "error") {
             tmpText = 'An internal error ocurred. Please contact the app add admin.'
         }
 
