@@ -61,7 +61,7 @@ export class NewNetworkerDialogComponent {
                 var newFormData = this.formdata;
                 newFormData.networkerZip = this.formdata.networkerZip.toString();
 
-                this.http.post(this.global.webserviceBaseUrl + 'networkers/protected', this.formdata, options).subscribe((res: any) => {
+                this.http.post(this.global.webserviceBaseUrl + 'networkers/pupost', this.formdata, options).subscribe((res: any) => {
                     console.log(res);
 
                     dialogConfig.disableClose = true;

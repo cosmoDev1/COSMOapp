@@ -94,7 +94,7 @@ export class MainComponent implements AfterViewInit, OnInit {
 
         this.http.get(this.global.webserviceBaseUrl + 'animals/prget?testSource=false&shelterId=6').subscribe((res: any) => {
             console.log(res);
-              if (res.status == 'error') {
+            if (res.status == 'error') {
                     console.log('error loading animals');
                   return;
             }

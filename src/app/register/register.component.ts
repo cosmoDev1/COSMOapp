@@ -137,28 +137,28 @@ export class RegisterComponent implements OnInit {
                 newNetworkerData.networkerZip = this.networkerdata.networkerZip.toString();
 
                 if (this.formdata.typeAccount == '1') {
-                    this.http.post(this.global.webserviceBaseUrl + 'shelters/prpost', this.shelterdata, options).subscribe((res: any) => {
+                    this.http.post(this.global.webserviceBaseUrl + 'shelters/pupost', this.shelterdata, options).subscribe((res: any) => {
                         //res = JSON.parse(res);
                         this.resultDialog(res);
                     });
                 }
 
                 if (this.formdata.typeAccount == '2') {
-                    this.http.post(this.global.webserviceBaseUrl + 'rescues/protected', this.rescuedata, options).subscribe((res: any) => {
+                    this.http.post(this.global.webserviceBaseUrl + 'rescues/pupost', this.rescuedata, options).subscribe((res: any) => {
                        // res = JSON.parse(res);
                         this.resultDialog(res);
                     });
                 }
 
                 if (this.formdata.typeAccount == '3') {
-                    this.http.post(this.global.webserviceBaseUrl + 'fosters/protected', this.fosterdata, options).subscribe((res: any) => {
+                    this.http.post(this.global.webserviceBaseUrl + 'fosters/pupost', this.fosterdata, options).subscribe((res: any) => {
                       //  res = JSON.parse(res);
                         this.resultDialog(res);
                     });
                 }
 
                 if (this.formdata.typeAccount == '5') {
-                    this.http.post(this.global.webserviceBaseUrl + 'networkers/protected', this.networkerdata, options).subscribe((res: any) => {
+                    this.http.post(this.global.webserviceBaseUrl + 'networkers/pupost', this.networkerdata, options).subscribe((res: any) => {
                       //  res = JSON.parse(res);
                         this.resultDialog(res);
                     });

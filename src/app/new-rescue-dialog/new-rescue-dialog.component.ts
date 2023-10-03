@@ -61,7 +61,7 @@ export class NewRescueDialogComponent {
                 var newFormData = this.formdata;
                 newFormData.rescueZip = this.formdata.rescueZip.toString();
 
-                this.http.post(this.global.webserviceBaseUrl + 'rescues/protected', this.formdata, options).subscribe((res: any) => {
+                this.http.post(this.global.webserviceBaseUrl + 'rescues/pupost', this.formdata, options).subscribe((res: any) => {
                     console.log(res);
                    // res = JSON.parse(res);
 

@@ -64,7 +64,7 @@ export class NewShelterDialogComponent {
                 newFormData.shelterZip = this.formdata.shelterZip.toString();
 
 
-                this.http.post(this.global.webserviceBaseUrl + 'shelters/protected', this.formdata, options).subscribe((res: any) => {
+                this.http.post(this.global.webserviceBaseUrl + 'shelters/pupost', this.formdata, options).subscribe((res: any) => {
                     console.log(res);
                    // res = JSON.parse(res);
 
