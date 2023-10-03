@@ -75,15 +75,13 @@ export class MainComponent implements AfterViewInit, OnInit {
         var head = new HttpHeaders({ 'Content-Type': 'application/json' });
         const options = { headers: head };
 
-        //this.http.get('http://localhost:5000/api/cities/protected').subscribe((res: any) => {
-        this.http.get(this.global.webserviceBaseUrl + 'cities/protected').subscribe((res: any) => {
+        this.http.get(this.global.webserviceBaseUrl + 'cities/prget').subscribe((res: any) => {
             console.log('cities loaded')
             if (res.status == "success") {
                 this.global.allCities = res.data;
             }
 
-            //this.http.get('http://localhost:5000/api/states/protected').subscribe((res: any) => {
-            this.http.get(this.global.webserviceBaseUrl + 'states/protected').subscribe((res: any) => {
+            this.http.get(this.global.webserviceBaseUrl + 'states/prget').subscribe((res: any) => {
                 console.log('states loaded')
                   console.log(res)
                   if (res.status == "success") {
@@ -94,9 +92,12 @@ export class MainComponent implements AfterViewInit, OnInit {
         });
 
 
-        //this.http.get('http://localhost:5000/api/animals/protected?testSource=false').subscribe((res: any) => {
-        this.http.get(this.global.webserviceBaseUrl + 'animals/protected?testSource=false&shelterId=6').subscribe((res: any) => {
+        this.http.get(this.global.webserviceBaseUrl + 'animals/prget?testSource=false&shelterId=6').subscribe((res: any) => {
             console.log(res);
+              if (res.status == 'error') {
+                    console.log('error loading animals');
+                  return;
+            }
 
             var cats = res.data[0].cats;
             var dogs = res.data[0].dogs;
@@ -105,14 +106,14 @@ export class MainComponent implements AfterViewInit, OnInit {
                 var tmpAnimal: Animal = {
                     animalID: el.id,
                     shelterAnimalID: el.id,
-                    shelterID: 'BARC',
+                    shelterID: 6,
                     name: this.global.capitalize(el.name),
                     dueOutDate: el.dueOutDate,
                     kennel: el.kennel,
                     weight: this.global.capitalize(el.weight.replace('lbs', '').replace('pounds', '')),
                     condition: el.condition,
                     daysShelter: el.daysShelter,
-                    decription: el.decription,
+                    description: el.description,
                     gender: this.global.capitalize(el.gender),
                     age: this.global.capitalize(el.age),
                     spayNeuter: el.spayNeuter,
@@ -128,7 +129,8 @@ export class MainComponent implements AfterViewInit, OnInit {
                     imageFile: 'https://cosmoapp.org/webservices/PDFdata/' + el.id + '.jpg',
                     status: 0,
                     youtubeLink: '',
-                    facebookLink: ''
+                    facebookLink: '',
+                    dateAdded: ''
                 };
                 this.global.animals.push(tmpAnimal);
             });
@@ -137,14 +139,14 @@ export class MainComponent implements AfterViewInit, OnInit {
                 var tmpAnimal: Animal = {
                     animalID: el.id,
                     shelterAnimalID: el.id,
-                    shelterID: 'BARC',
-                    name: this.global.capitalize(el.name),
+                    shelterID: 6,
+                    name: el.name,
                     dueOutDate: el.dueOutDate,
                     kennel: el.kennel,
                     weight: this.global.capitalize(el.weight.replace('lbs', '').replace('pounds', '')),
                     condition: el.condition,
                     daysShelter: el.daysShelter,
-                    decription: el.decription,
+                    description: el.description,
                     gender: this.global.capitalize(el.gender),
                     age: this.global.capitalize(el.age),
                     spayNeuter: el.spayNeuter,
@@ -160,7 +162,8 @@ export class MainComponent implements AfterViewInit, OnInit {
                     imageFile: 'https://cosmoapp.org/webservices/PDFdata/' + el.id + '.jpg',
                     status: 0,
                     youtubeLink: '',
-                    facebookLink: ''
+                    facebookLink: '',
+                    dateAdded: ''
                 };
                 this.global.animals.push(tmpAnimal);
             });
@@ -182,9 +185,6 @@ export class MainComponent implements AfterViewInit, OnInit {
 
 
         //this.http.get("https://v1.nocodeapi.com/casper/airtable/hOIlnPJwPYcZIyyL?tableName=BARC", options).subscribe((res: any) => {
-        //this.http.get(this.global.webserviceBaseUrl+'values'+this.global.testSource, options).subscribe((res: any) => {
-        //console.log(res);
-        //}, (err: any) => { console.log(err); });
     }
 
     refresh() {

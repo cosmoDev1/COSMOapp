@@ -131,15 +131,13 @@ export class RegisterComponent implements OnInit {
 
                 var newFosterData = this.fosterdata;
                 newFosterData.fosterZip = this.fosterdata.fosterZip.toString();
-
-                var newFosterData = this.fosterdata;
                 newFosterData.addressDuration = this.fosterdata.addressDuration.toString();
 
                 var newNetworkerData = this.networkerdata;
                 newNetworkerData.networkerZip = this.networkerdata.networkerZip.toString();
 
                 if (this.formdata.typeAccount == '1') {
-                    this.http.post(this.global.webserviceBaseUrl + 'shelters/protected', this.shelterdata, options).subscribe((res: any) => {
+                    this.http.post(this.global.webserviceBaseUrl + 'shelters/prpost', this.shelterdata, options).subscribe((res: any) => {
                         //res = JSON.parse(res);
                         this.resultDialog(res);
                     });

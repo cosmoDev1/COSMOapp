@@ -111,7 +111,7 @@ export class NewFosterDialogComponent {
                 var newFormData = this.formdata;
                 newFormData.fosterZip = this.formdata.fosterZip.toString();
 
-                this.http.post(this.global.webserviceBaseUrl + 'fosters/protected', this.formdata, options).subscribe((res: any) => {
+                this.http.post(this.global.webserviceBaseUrl + 'fosters/prpost', this.formdata, options).subscribe((res: any) => {
                     console.log(res);
                     //res = JSON.parse(res);
 
