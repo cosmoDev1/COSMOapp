@@ -22,7 +22,7 @@
     <span class="example-spacer"></span>
 
     <button mat-button> <span class="material-symbols-outlined" style="vertical-align: middle">save_as</span> <span style="vertical-align: middle">Save Workspace</span></button>
-    <button mat-button (click)="refresh()"> <span class="material-symbols-outlined" style="vertical-align: middle">refresh</span> <span style="vertical-align: middle">Refresh </span></button>
+    <button mat-button (click)="refresh()" [disabled]="global.animalsLoading"> <span class="material-symbols-outlined" style="vertical-align: middle">refresh</span> <span style="vertical-align: middle">Refresh </span></button>
 
     <button mat-raised-button [matMenuTriggerFor]="notifications" color="primary" matBadge="8" matBadgePosition="after" matBadgeColor="accent">
         Notifications
@@ -70,9 +70,13 @@
             </mat-select>
         </mat-form-field>
 
-        <div style="width: 100%; text-align: center; margin-top: 30px" *ngIf="global.animals.length == 0">
+        <div style="width: 100%; text-align: center; margin-top: 30px" *ngIf="global.animalsLoading == true">
             <mat-progress-spinner class="example-margin" color="primary" mode="indeterminate" style="margin-left: auto; margin-right: auto"> </mat-progress-spinner>
             <p>Loading data, please wait...</p>
+        </div>
+
+        <div style="width: 100%; text-align: center; margin-top: 30px" *ngIf="global.animalsError.length > 0">
+            <h1>{{global.animalsError}}</h1>
         </div>
 
         <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8" [style.display]="global.animals.length > 0 ? 'table' : 'none'">

@@ -95,7 +95,9 @@ export class MainComponent implements AfterViewInit, OnInit {
         this.http.get(this.global.webserviceBaseUrl + 'animals/prget?testSource=false&shelterId=6').subscribe((res: any) => {
             console.log(res);
             if (res.status == 'error') {
-                    console.log('error loading animals');
+                  this.global.animalsLoading = false;
+                  this.global.animalsError = res.description;
+                  console.log('error loading animals');
                   return;
             }
 
@@ -104,9 +106,9 @@ export class MainComponent implements AfterViewInit, OnInit {
 
             cats.forEach((el: any) => {
                 var tmpAnimal: Animal = {
-                    animalID: el.id,
-                    shelterAnimalID: el.id,
-                    shelterID: 6,
+                    id: el.id,
+                    shelterAnimalId: el.shelterAnimalId,
+                    shelterId: 6,
                     name: this.global.capitalize(el.name),
                     dueOutDate: el.dueOutDate,
                     kennel: el.kennel,
@@ -126,20 +128,20 @@ export class MainComponent implements AfterViewInit, OnInit {
                     species: this.global.capitalize('cat'),
                     volunteerNotes: '',
                     volunteerFavorite: false,
-                    imageFile: 'https://cosmoapp.org/webservices/PDFdata/' + el.id + '.jpg',
+                    imageFile: 'https://cosmoapp.org/webservices/PDFdata/' + el.shelterAnimalId + '.jpg',
                     status: 0,
                     youtubeLink: '',
                     facebookLink: '',
-                    dateAdded: ''
+                    dateAdded: el.dateAdded
                 };
                 this.global.animals.push(tmpAnimal);
             });
 
             dogs.forEach((el: any) => {
                 var tmpAnimal: Animal = {
-                    animalID: el.id,
-                    shelterAnimalID: el.id,
-                    shelterID: 6,
+                    id: el.id,
+                    shelterAnimalId: el.shelterAnimalId,
+                    shelterId: 6,
                     name: el.name,
                     dueOutDate: el.dueOutDate,
                     kennel: el.kennel,
@@ -159,11 +161,11 @@ export class MainComponent implements AfterViewInit, OnInit {
                     species: this.global.capitalize('dog'),
                     volunteerNotes: '',
                     volunteerFavorite: false,
-                    imageFile: 'https://cosmoapp.org/webservices/PDFdata/' + el.id + '.jpg',
+                    imageFile: 'https://cosmoapp.org/webservices/PDFdata/' + el.shelterAnimalId + '.jpg',
                     status: 0,
                     youtubeLink: '',
                     facebookLink: '',
-                    dateAdded: ''
+                    dateAdded: el.dateAdded
                 };
                 this.global.animals.push(tmpAnimal);
             });
@@ -180,6 +182,8 @@ export class MainComponent implements AfterViewInit, OnInit {
                 this.dataSource.paginator = this.paginator;
             }
 
+            this.global.animalsLoading = false;
+
             console.log(this.global.animals);
         });
 
@@ -189,6 +193,8 @@ export class MainComponent implements AfterViewInit, OnInit {
 
     refresh() {
         this.global.animals = [];
+        this.global.animalsLoading = true;
+        this.global.animalsError = "";
         this.dataSource = new MatTableDataSource(this.global.animals);
         //this.dataSource = this.animals;
         this.dataSource.sort = this.sort;

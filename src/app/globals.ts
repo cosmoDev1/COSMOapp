@@ -2,9 +2,9 @@ import { Injectable } from '@angular/core';
 
 
 export interface Animal {
-    animalID: string;
-    shelterAnimalID: string;
-    shelterID: number;
+    id: string;
+    shelterAnimalId: string;
+    shelterId: number;
     name: string;
     dueOutDate: string;
     kennel: string;
@@ -46,6 +46,8 @@ export class Globals {
     public allCities: Array<any> = [];
     public animals: Array<Animal> = [];
     public myAnimals: Array<Animal> = [];
+    public animalsLoading: boolean = true;
+    public animalsError: string = "";
 
   capitalize(s: any) {
     return s && s[0].toUpperCase() + s.slice(1).toLowerCase();
