@@ -22,6 +22,8 @@ import { MyAnimalsDialogComponent } from '../my-animals-dialog/my-animals-dialog
 import { PleaDialogComponent } from '../plea-dialog/plea-dialog.component';
 import { TagDialogComponent } from '../tag-dialog/tag-dialog.component';
 
+import { timer } from 'rxjs';
+
 @Component({
     selector: 'main-root',
     templateUrl: './main.component.html',
@@ -31,8 +33,9 @@ export class MainComponent implements AfterViewInit, OnInit {
     public shelters: any = [{ name: 'BARC', value: '0' }, { name: 'HCAS', value: '1' }];
     selectedCity = '1';
     selectedShelter = '0';
-    selectedState = "TX";
+    selectedState = 'TX';
     cities: any[] = [];
+    refreshTimer = timer(0, 300000);
 
     dataSource = new MatTableDataSource<Animal>(this.global.animals);
     displayedColumns: string[] = ['action', 'imageURL', 'status', 'shelterAnimalID', 'name', 'gender', 'breed', 'weight', 'age', 'reason', 'outcomeRequest'];
@@ -54,7 +57,7 @@ export class MainComponent implements AfterViewInit, OnInit {
         this.auth.getAccessTokenSilently().subscribe((claims: any) => {
             const headers = new HttpHeaders({
                 'Content-Type': 'application/json',
-            });
+           });
 
         });
     }
@@ -62,7 +65,9 @@ export class MainComponent implements AfterViewInit, OnInit {
 
     ngOnInit() { }
 
-    ngAfterViewInit() { this.getData(); }
+    ngAfterViewInit() {
+          const refreshTimerSub = this.refreshTimer.subscribe(val => this.refresh() );
+    }
 
     onStateChange(selectedState: string) {
         console.log("State changed to:", selectedState);
@@ -374,10 +379,6 @@ export class MainComponent implements AfterViewInit, OnInit {
     //loginNew() { this.auth.loginWithRedirect(); }
 
     logout() { this.auth.logout({ logoutParams: { returnTo: document.location.origin } }); }
-
-    call() {
-
-    }
 
     login() {
         this.auth.loginWithRedirect({
