@@ -4,6 +4,12 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 import { Globals } from "../globals";
 
+export interface AnimalData {
+    animalId?: string;
+    operationType?: number;
+    operationInfo?: string; 
+}
+
 
 @Component({
     selector: 'tag-dialog',
@@ -13,8 +19,10 @@ import { Globals } from "../globals";
 
 export class TagDialogComponent{
     formdata = { tagAnimal: "0", tagInfo: "" }
+    selectedOperationKey: any;
 
-    constructor(@Inject(MAT_DIALOG_DATA) public data: any, public dialogRef: MatDialogRef<TagDialogComponent>) { }
+
+    constructor(@Inject(MAT_DIALOG_DATA) public data: any, private http: HttpClient, public global: Globals, public dialogRef: MatDialogRef<TagDialogComponent>) { }
 
     tagAnimalChange() {
         if (this.formdata.tagAnimal == "0") { this.formdata.tagInfo = ""; }
@@ -25,6 +33,23 @@ export class TagDialogComponent{
     submitDialog(tagForm: any) {
         console.log(tagForm)
         this.dialogRef.close('accept');
+
+        var opType: Number = 0;
+        if (this.formdata.tagAnimal == "0") { opType = 100; }
+        if (this.formdata.tagAnimal == "1") { opType = 101; }
+        if (this.formdata.tagAnimal == "2") { opType = 900; }
+        if (this.formdata.tagAnimal == "3") { opType = -1; }
+
+        var tagInfo = { animalId: this.data.id, operationType: opType, operationInfo: this.formdata.tagInfo }
+
+        this.http.post(this.global.webserviceBaseUrl + 'tag/prpost', tagInfo).subscribe((response: any) => {
+                    console.log(response);
+                }, (error: any) => {
+                    console.error('There was an error sending the data:', error);
+                });
+
+        //call api POST  /tag/prpost
+
     }
 
 }

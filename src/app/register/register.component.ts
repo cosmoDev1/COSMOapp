@@ -46,7 +46,23 @@ export class RegisterComponent implements OnInit {
 
     constructor(private dialog: MatDialog, private http: HttpClient, public global: Globals) { }
 
-    ngOnInit() { console.log('registering') }
+    ngOnInit() {
+
+        this.http.get(this.global.webserviceBaseUrl + 'cities/prget').subscribe((res: any) => {
+            console.log('cities loaded')
+            if (res.status == "success") {
+                this.global.allCities = res.data;
+            }
+
+            this.http.get(this.global.webserviceBaseUrl + 'states/prget').subscribe((res: any) => {
+                console.log('states loaded')
+                if (res.status == "success") {
+                    this.global.states = res.data;
+                }
+            });
+        });
+        console.log('registering')
+    }
 
     numberOnlyEvent(event: any): void {
         const charCode = (event.which) ? event.which : event.keyCode;
@@ -70,7 +86,6 @@ export class RegisterComponent implements OnInit {
     ownedBeforeChange() {
         if (this.fosterdata.ownedBefore == "1") { this.fosterdata.breedType = "" } else { this.fosterdata.breedType = "n/a" }
     }
-
 
     childHomeChange() {
         if (this.fosterdata.childHome == "0") {
@@ -128,6 +143,7 @@ export class RegisterComponent implements OnInit {
 
                 var newRescueData = this.rescuedata;
                 newRescueData.rescueZip = this.rescuedata.rescueZip.toString();
+                console.log(newRescueData);
 
                 var newFosterData = this.fosterdata;
                 newFosterData.fosterZip = this.fosterdata.fosterZip.toString();
@@ -137,28 +153,28 @@ export class RegisterComponent implements OnInit {
                 newNetworkerData.networkerZip = this.networkerdata.networkerZip.toString();
 
                 if (this.formdata.typeAccount == '1') {
-                    this.http.post(this.global.webserviceBaseUrl + 'shelters/pupost', this.shelterdata, options).subscribe((res: any) => {
+                    this.http.post(this.global.webserviceBaseUrl + 'shelters/pupost', newShelterData, options).subscribe((res: any) => {
                         //res = JSON.parse(res);
                         this.resultDialog(res);
                     });
                 }
 
                 if (this.formdata.typeAccount == '2') {
-                    this.http.post(this.global.webserviceBaseUrl + 'rescues/pupost', this.rescuedata, options).subscribe((res: any) => {
+                    this.http.post(this.global.webserviceBaseUrl + 'rescues/pupost', newRescueData, options).subscribe((res: any) => {
                        // res = JSON.parse(res);
                         this.resultDialog(res);
                     });
                 }
 
                 if (this.formdata.typeAccount == '3') {
-                    this.http.post(this.global.webserviceBaseUrl + 'fosters/pupost', this.fosterdata, options).subscribe((res: any) => {
+                    this.http.post(this.global.webserviceBaseUrl + 'fosters/pupost', newFosterData, options).subscribe((res: any) => {
                       //  res = JSON.parse(res);
                         this.resultDialog(res);
                     });
                 }
 
                 if (this.formdata.typeAccount == '5') {
-                    this.http.post(this.global.webserviceBaseUrl + 'networkers/pupost', this.networkerdata, options).subscribe((res: any) => {
+                    this.http.post(this.global.webserviceBaseUrl + 'networkers/pupost', newNetworkerData, options).subscribe((res: any) => {
                       //  res = JSON.parse(res);
                         this.resultDialog(res);
                     });
