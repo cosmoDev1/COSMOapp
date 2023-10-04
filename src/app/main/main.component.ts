@@ -147,7 +147,7 @@ export class MainComponent implements AfterViewInit, OnInit {
                     id: el.id,
                     shelterAnimalId: el.shelterAnimalId,
                     shelterId: 6,
-                    name: el.name,
+                    name: this.global.capitalize(el.name),
                     dueOutDate: el.dueOutDate,
                     kennel: el.kennel,
                     weight: this.global.capitalize(el.weight.replace('lbs', '').replace('pounds', '')),
@@ -302,20 +302,20 @@ export class MainComponent implements AfterViewInit, OnInit {
         return;
     }
 
-    tagAnimal(ID: any, name: any) {
+    tagAnimal(id: any, shelterAnimalId: string, name: string, species: string) {
         const dialogConfig = new MatDialogConfig();
 
         dialogConfig.width = '900px';
         dialogConfig.disableClose = true;
         dialogConfig.autoFocus = true;
-        dialogConfig.data = { title: 'Please confirm', message: 'An email will be sent to the shelter requesting a tag for the animal ' + name + ' (' + ID + ') on your behalf. ', notification: false };
+        dialogConfig.data = { title: 'Please confirm', name: name, shelterAnimalId: shelterAnimalId, species: species, message: 'An email will be sent to the shelter requesting a tag for the '+species+' '+ name + ' (' + shelterAnimalId + ') on your behalf. ', notification: false };
 
         const dialogRef = this.dialog.open(TagDialogComponent, dialogConfig);
 
         dialogRef.afterClosed().subscribe((result) => {
             if (result == 'accept') {
                 this.global.animals.forEach((el: any) => {
-                    if (el.shelterAnimalID == ID) { el.status = 1; }
+                    if (el.id == id) { el.status = 1; }
                 });
 
                 this.dataSource.data = this.global.animals;

@@ -3,21 +3,36 @@
     <h2 mat-dialog-title>{{data.title}}</h2>
 
     <mat-dialog-content>
-            <mat-label id="fenceLabel">What would you like to do?</mat-label>
-        
-            <mat-radio-group aria-label="tagAnimal" aria-labelledby="animalTag" name="tagAnimal" [(ngModel)]="formdata.tagAnimal" (change)="tagAnimalChange()">
-                <mat-radio-button value="0" [checked]="true">Request Tag</mat-radio-button>
-                <mat-radio-button value="1">Notify Tag</mat-radio-button>
-            </mat-radio-group>
-            <br />
+        <mat-label id="fenceLabel">Please select an option for the <b> {{data.species}} {{data.name}} </b> ({{data.shelterAnimalId}})</mat-label>
+        <br/>
+        <mat-label id="fenceLabel">What would you like to do?</mat-label>
 
-            <mat-label *ngIf="formdata.tagAnimal === '0'">{{data.message}}</mat-label>
+        <mat-radio-group aria-label="tagAnimal" aria-labelledby="animalTag" name="tagAnimal" [(ngModel)]="formdata.tagAnimal" (change)="tagAnimalChange()">
+            <mat-radio-button value="0" [checked]="true">Request Tag</mat-radio-button>
+            <mat-radio-button value="1">Notify Tag</mat-radio-button>
+            <mat-radio-button value="2">Notify Adoption</mat-radio-button>
+            <mat-radio-button value="3">Notify Euthanasia</mat-radio-button>
+        </mat-radio-group>
+        <br />
 
-            <mat-form-field style="width: 100%" *ngIf="formdata.tagAnimal=='1'">
-                <mat-label>Please enter additional tag information</mat-label>
-                <textarea placeholder="Provide details" matInput name="tagInfo" [(ngModel)]="formdata.tagInfo"></textarea>
-            </mat-form-field>
-            <br />
+        <mat-label *ngIf="formdata.tagAnimal === '0'">{{data.message}}</mat-label>
+
+        <mat-form-field style="width: 100%" *ngIf="formdata.tagAnimal=='1'">
+            <mat-label>Please enter additional tag information</mat-label>
+            <textarea placeholder="Provide details" matInput name="tagInfo" [(ngModel)]="formdata.tagInfo"></textarea>
+        </mat-form-field>
+        <mat-form-field style="width: 100%" *ngIf="formdata.tagAnimal=='2'">
+            <mat-label>Please enter additional adoption information</mat-label>
+            <textarea placeholder="Provide details" matInput name="tagInfo" [(ngModel)]="formdata.tagInfo"></textarea>
+        </mat-form-field>
+        <mat-form-field style="width: 100%" *ngIf="formdata.tagAnimal=='3'">
+            <mat-label>Please enter additional euthanasia information</mat-label>
+            <textarea placeholder="Provide details" matInput name="tagInfo" [(ngModel)]="formdata.tagInfo"></textarea>
+        </mat-form-field>
+
+
+
+        <br />
 
     </mat-dialog-content>
 

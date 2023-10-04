@@ -23,6 +23,7 @@ export class TagDialogComponent{
     closeDialog() { this.dialogRef.close('close'); }
 
     submitDialog(tagForm: any) {
+        console.log(tagForm)
         this.dialogRef.close('accept');
     }
 
