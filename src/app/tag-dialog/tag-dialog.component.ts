@@ -36,7 +36,7 @@ export class TagDialogComponent{
 
         var opType: Number = 0;
         if (this.formdata.tagAnimal == "0") { opType = 100; }
-        if (this.formdata.tagAnimal == "1") { opType = 101; }
+        if (this.formdata.tagAnimal == "1") { opType = 110; }
         if (this.formdata.tagAnimal == "2") { opType = 900; }
         if (this.formdata.tagAnimal == "3") { opType = -1; }
 
@@ -47,8 +47,6 @@ export class TagDialogComponent{
                 }, (error: any) => {
                     console.error('There was an error sending the data:', error);
                 });
-
-        //call api POST  /tag/prpost
 
     }
 

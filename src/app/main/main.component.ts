@@ -130,14 +130,15 @@ export class MainComponent implements AfterViewInit, OnInit {
                     outcomeRequest: el.outcomeRequest,
                     reason: el.reason,
                     evalNotes: el.evalNotes,
-                    species: this.global.capitalize('cat'),
+                    species: this.global.capitalize(el.species),
                     volunteerNotes: '',
                     volunteerFavorite: false,
                     imageFile: 'https://cosmoapp.org/webservices/PDFdata/' + el.shelterAnimalId + '.jpg',
-                    status: 0,
+                    status: el.status,
+                    statusInfo: el.statusInfo,
                     youtubeLink: '',
                     facebookLink: '',
-                    dateAdded: el.dateAdded
+                    addedDate: el.addedDate
                 };
                 this.global.animals.push(tmpAnimal);
             });
@@ -163,14 +164,15 @@ export class MainComponent implements AfterViewInit, OnInit {
                     outcomeRequest: el.outcomeRequest,
                     reason: el.reason,
                     evalNotes: el.evalNotes,
-                    species: this.global.capitalize('dog'),
+                    species: this.global.capitalize(el.species),
                     volunteerNotes: '',
                     volunteerFavorite: false,
                     imageFile: 'https://cosmoapp.org/webservices/PDFdata/' + el.shelterAnimalId + '.jpg',
-                    status: 0,
+                    status: el.status,
+                    statusInfo:el.statusInfo,
                     youtubeLink: '',
                     facebookLink: '',
-                    dateAdded: el.dateAdded
+                    addedDate: el.addedDate
                 };
                 this.global.animals.push(tmpAnimal);
             });
@@ -269,7 +271,7 @@ export class MainComponent implements AfterViewInit, OnInit {
     }
 
     myAnimalsDialog() {
-        var tempAnimals = this.global.animals.filter((el) => el.status == 2);
+        var tempAnimals = this.global.animals.filter((el) => el.status > 99);
         if (tempAnimals.length < 1) {
             const dialogConfig = new MatDialogConfig();
 
@@ -314,34 +316,44 @@ export class MainComponent implements AfterViewInit, OnInit {
 
         dialogRef.afterClosed().subscribe((result) => {
             if (result == 'accept') {
-                this.global.animals.forEach((el: any) => {
-                    if (el.id == id) { el.status = 1; }
-                });
+                this.refresh();
+            //    this.global.animals.forEach((el: any) => {
+            //        if (el.id == id) { el.status = 1; }
+            //    });
 
-                this.dataSource.data = this.global.animals;
+            //    this.dataSource.data = this.global.animals;
             }
             console.log(`Dialog result: ${result}`);
         });
     }
 
-    confirmTagAnimal(ID: any, name: any) {
+    confirmTagAnimal(id: any, shelterAnimalId: any, name: any, species: string) {
         const dialogConfig = new MatDialogConfig();
 
         dialogConfig.disableClose = true;
         dialogConfig.autoFocus = true;
-        dialogConfig.data = { title: 'Please confirm', message: 'The tag for the animal ' + name + ' (' + ID + ') was confirmed?', notification: false };
+        dialogConfig.data = { title: 'Please confirm', message: 'The tag for the ' + species + ' ' + name + ' (' + shelterAnimalId + ') was confirmed?', notification: false };
 
         const dialogRef = this.dialog.open(ConfirmationDialogComponent, dialogConfig);
 
         dialogRef.afterClosed().subscribe((result) => {
             if (result == 'accept') {
-                this.global.animals.forEach((el: any) => {
-                    if (el.shelterAnimalID == ID) {
-                        el.status = 2;
-                    }
-                });
+                var tagInfo = { animalId: id, operationType: 200, operationInfo: "" }
 
-                this.dataSource.data = this.global.animals;
+                  this.http.post(this.global.webserviceBaseUrl + 'tag/prpost', tagInfo).subscribe((response: any) => {
+                        console.log(response);
+                        this.refresh();
+                  }, (error: any) => {
+                        console.error('There was an error sending the data:', error);
+                  });
+
+            //    this.global.animals.forEach((el: any) => {
+            //        if (el.shelterAnimalId == shelterAnimalId) {
+            //            el.status = 2;
+            //        }
+            //    });
+
+            //    this.dataSource.data = this.global.animals;
             }
         });
     }
