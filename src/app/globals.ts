@@ -27,9 +27,10 @@ export interface Animal {
     volunteerFavorite: boolean;
     imageFile: string;
     status: number;
+    statusInfo: string;
     youtubeLink: string;
     facebookLink: string;
-    dateAdded: string;
+    addedDate: string;
 }
 
 
