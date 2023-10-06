@@ -4,12 +4,6 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 import { Globals } from "../globals";
 
-export interface AnimalData {
-    animalId?: string;
-    operationType?: number;
-    operationInfo?: string; 
-}
-
 
 @Component({
     selector: 'tag-dialog',
@@ -19,7 +13,7 @@ export interface AnimalData {
 
 export class TagDialogComponent{
     formdata = { tagAnimal: "0", tagInfo: "" }
-    selectedOperationKey: any;
+    
 
 
     constructor(@Inject(MAT_DIALOG_DATA) public data: any, private http: HttpClient, public global: Globals, public dialogRef: MatDialogRef<TagDialogComponent>) { }
