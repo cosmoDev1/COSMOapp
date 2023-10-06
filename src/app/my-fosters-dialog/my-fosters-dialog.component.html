@@ -1,0 +1,57 @@
+<h1 mat-dialog-title>My Fosters</h1>
+<div mat-dialog-content>
+    <table mat-table [dataSource]="myFosters" class="mat-elevation-z8">
+
+        <ng-container matColumnDef="action">
+            <th mat-header-cell *matHeaderCellDef> Quick Action </th>
+            <td mat-cell *matCellDef="let element">
+                <button mat-raised-button matTooltip="Select this foster" matTooltipPosition="right"> <span class="material-symbols-outlined"> verified_user </span> </button>
+            </td>
+        </ng-container>
+
+        <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef> Name </th>
+            <td mat-cell *matCellDef="let element"> {{element.fosterName}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="city">
+            <th mat-header-cell *matHeaderCellDef> City </th>
+            <td mat-cell *matCellDef="let element"> {{element.fosterCity}} </td>
+        </ng-container>
+
+        <!-- Name Column -->
+        <ng-container matColumnDef="state">
+            <th mat-header-cell *matHeaderCellDef> State </th>
+            <td mat-cell *matCellDef="let element"> {{element.fosterState}} </td>
+        </ng-container>
+
+        <!-- Weight Column -->
+        <ng-container matColumnDef="zip">
+            <th mat-header-cell *matHeaderCellDef> Zip </th>
+            <td mat-cell *matCellDef="let element"> {{element.fosterZip}} </td>
+        </ng-container>
+
+        <!-- Symbol Column -->
+        <ng-container matColumnDef="phone">
+            <th mat-header-cell *matHeaderCellDef> Phone </th>
+            <td mat-cell *matCellDef="let element"> {{element.fosterPhone}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="email">
+            <th mat-header-cell *matHeaderCellDef> Email </th>
+            <td mat-cell *matCellDef="let element"> {{element.fosterEmail}} </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="fosterColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: fosterColumns;"></tr>
+
+
+
+    </table>
+</div>
+
+<div mat-dialog-actions>
+    <button mat-button mat-dialog-close>Cancel</button>
+</div>
+
+

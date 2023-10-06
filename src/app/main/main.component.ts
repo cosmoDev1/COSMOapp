@@ -21,8 +21,10 @@ import { Globals, Animal } from '../globals';
 import { MyAnimalsDialogComponent } from '../my-animals-dialog/my-animals-dialog.component';
 import { PleaDialogComponent } from '../plea-dialog/plea-dialog.component';
 import { TagDialogComponent } from '../tag-dialog/tag-dialog.component';
+import { MyFostersDialogComponent } from '../my-fosters-dialog/my-fosters-dialog.component';
 
 import { timer } from 'rxjs';
+
 
 @Component({
     selector: 'main-root',
@@ -299,9 +301,9 @@ export class MainComponent implements AfterViewInit, OnInit {
         dialogConfig.autoFocus = true;
         dialogConfig.data = { title: 'Notice', message: 'There are no fosters created yet.', notification: true };
 
-        const dialogRef = this.dialog.open(ConfirmationDialogComponent, dialogConfig);
+        const dialogRef = this.dialog.open(MyFostersDialogComponent, dialogConfig);
 
-        return;
+        
     }
 
     tagAnimal(id: any, shelterAnimalId: string, name: string, species: string) {
@@ -385,6 +387,17 @@ export class MainComponent implements AfterViewInit, OnInit {
         dialogConfig.data = { role: 'My Dogs', rescueName: true, contactName: true };
 
         const dialogRef = this.dialog.open(PleaDialogComponent, dialogConfig);
+    }
+
+    findFoster() {
+        const dialogConfig = new MatDialogConfig();
+
+        dialogConfig.disableClose = true;
+        dialogConfig.autoFocus = true;
+        dialogConfig.data = { title: 'Notice', message: 'There are no fosters created yet.', notification: true };
+
+        const dialogRef = this.dialog.open(MyFostersDialogComponent, dialogConfig);
+
     }
 
 
