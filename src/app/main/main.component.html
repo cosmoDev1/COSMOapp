@@ -14,7 +14,7 @@
         <button mat-menu-item [disabled]="true">My Transports</button>
 
         <mat-divider></mat-divider>
-<!--        <button mat-menu-item (click)="login()">Login</button>-->
+        <button mat-menu-item (click)="test()">test</button>
         <button mat-menu-item (click)="logout()">Logout</button>
     </mat-menu>
     <span *ngIf="auth.user$ | async as user">Welcome, {{global.rescueName}}</span>

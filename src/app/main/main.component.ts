@@ -60,6 +60,8 @@ export class MainComponent implements AfterViewInit, OnInit {
            });
 
         });
+
+        this.global.statesChange.subscribe(res => { this.onStateChange(this.selectedState); });
     }
 
 
@@ -80,24 +82,26 @@ export class MainComponent implements AfterViewInit, OnInit {
         var head = new HttpHeaders({ 'Content-Type': 'application/json' });
         const options = { headers: head };
 
-        this.http.get(this.global.webserviceBaseUrl + 'cities/prget').subscribe((res: any) => {
-            console.log('cities loaded')
-            if (res.status == "success") {
-                this.global.allCities = res.data;
-            }
+        //this.http.get(this.global.webserviceBaseUrl + 'cities/prget').subscribe((res: any) => {
+        //    console.log('cities loaded')
+        //    if (res.status == "success") {
+        //        this.global.allCities = res.data;
+        //    }
 
-            this.http.get(this.global.webserviceBaseUrl + 'states/prget').subscribe((res: any) => {
-                console.log('states loaded')
-                  console.log(res)
-                  if (res.status == "success") {
-                    this.global.states = res.data;
-                    this.onStateChange(this.selectedState);
-                }
-            });
-        });
+        //    this.http.get(this.global.webserviceBaseUrl + 'states/prget').subscribe((res: any) => {
+        //        console.log('states loaded')
+        //          console.log(res)
+        //          if (res.status == "success") {
+        //            this.global.states = res.data;
+
+        //        }
+        //    });
+        //});
+
+          
 
 
-        this.http.get(this.global.webserviceBaseUrl + 'animals/prget?testSource=false&shelterId=6').subscribe((res: any) => {
+        this.http.get(this.global.webserviceBaseUrl + 'animals/prget?testSource=true&shelterId=6').subscribe((res: any) => {
             console.log(res);
             if (res.status == 'error') {
                   this.global.animalsLoading = false;
@@ -177,14 +181,8 @@ export class MainComponent implements AfterViewInit, OnInit {
                 this.global.animals.push(tmpAnimal);
             });
 
-            //res.records.forEach((el: any) => {
-            //    var tmpAnimal: Animal = { animalID: el.id.trim(), shelterAnimalID: el.fields.ID.trim(), shelterID: 'BARC', name: this.global.capitalize(el.fields.Name.trim()), species: this.global.capitalize(el.fields.Type.trim()), age: this.global.capitalize(el.fields.Age.trim()), breed: this.global.capitalize(el.fields.Breed.trim()), weight: this.global.capitalize(el.fields.Weight.trim().replace('lbs', '').replace('pounds', '')), hwfiv: el.fields['FELV/ FIV or HW Status'], intakeDate: el.fields['Date of intake'], shelterNotes: el.fields.Story.trim(), volunteerNotes: '', volunteerFavorite: false, gender: this.global.capitalize(el.fields.Gender.trim()), imageURL: el.fields['Image URL'][0].url.trim(), imageFile: el.fields['Image URL'][0].filename.trim(), status: 0 };
-            //    this.global.animals.push(tmpAnimal);
-            //});
-
             if (this.global.animals.length > 0) {
                 this.dataSource = new MatTableDataSource(this.global.animals);
-                //this.dataSource = this.animals;
                 this.dataSource.sort = this.sort;
                 this.dataSource.paginator = this.paginator;
             }
@@ -203,7 +201,6 @@ export class MainComponent implements AfterViewInit, OnInit {
         this.global.animalsLoading = true;
         this.global.animalsError = "";
         this.dataSource = new MatTableDataSource(this.global.animals);
-        //this.dataSource = this.animals;
         this.dataSource.sort = this.sort;
         this.dataSource.paginator = this.paginator;
 
@@ -398,6 +395,13 @@ export class MainComponent implements AfterViewInit, OnInit {
                 target: '/',
             },
         });
+
+      }
+
+    test() {
+          this.http.get(this.global.webserviceBaseUrl + 'animals/admin').subscribe((res: any) => {
+                console.log(res)
+          });
 
     }
 
