@@ -139,7 +139,8 @@ export class MainComponent implements AfterViewInit, OnInit {
                     volunteerFavorite: false,
                     imageFile: 'https://cosmoapp.org/webservices/PDFdata/' + el.shelterAnimalId + '.jpg',
                     status: el.status,
-                    statusInfo: el.statusInfo,
+                      statusInfo: el.statusInfo,
+                    statusDate: el.statusDate,
                     youtubeLink: '',
                     facebookLink: '',
                     addedDate: el.addedDate
@@ -174,6 +175,7 @@ export class MainComponent implements AfterViewInit, OnInit {
                     imageFile: 'https://cosmoapp.org/webservices/PDFdata/' + el.shelterAnimalId + '.jpg',
                     status: el.status,
                     statusInfo:el.statusInfo,
+                    statusDate: el.statusDate,
                     youtubeLink: '',
                     facebookLink: '',
                     addedDate: el.addedDate
@@ -397,12 +399,4 @@ export class MainComponent implements AfterViewInit, OnInit {
         });
 
       }
-
-    test() {
-          this.http.get(this.global.webserviceBaseUrl + 'animals/admin').subscribe((res: any) => {
-                console.log(res)
-          });
-
-    }
-
 }

@@ -14,7 +14,6 @@
         <button mat-menu-item [disabled]="true">My Transports</button>
 
         <mat-divider></mat-divider>
-        <button mat-menu-item (click)="test()">test</button>
         <button mat-menu-item (click)="logout()">Logout</button>
     </mat-menu>
     <span *ngIf="auth.user$ | async as user">Welcome, {{global.rescueName}}</span>
@@ -101,13 +100,13 @@
             <ng-container matColumnDef="status">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header> Status </th>
                 <td mat-cell *matCellDef="let element">
-                    <div style="height: 30px; width: 30px; border-radius: 15px; background-color: black; border: 1px solid black" *ngIf="element.status==-1" matTooltip="Euthanized :(" matTooltipPosition="right"></div>
+                    <div style="height: 30px; width: 30px; border-radius: 15px; background-color: black; border: 1px solid black" *ngIf="element.status==-1" matTooltip="Euthanized :( - {{element.statusDate}}" matTooltipPosition="right"></div>
                     <div style="height: 30px; width: 30px; border-radius: 15px; background-color: red; border: 1px solid black" *ngIf="element.status==0" matTooltip="In Danger" matTooltipPosition="right"></div>
-                    <div style="height: 30px; width: 30px; border-radius: 15px; background-color: yellow; border: 1px solid black; display: flex; justify-content: center; align-items: center" *ngIf="element.status==100" matTooltip="Tag sent - waiting confirmation" matTooltipPosition="right"><span class="material-symbols-outlined">hourglass</span></div>
-                    <div style="height: 30px; width: 30px; border-radius: 15px; background-color: yellow; border: 1px solid black; display: flex; justify-content: center; align-items: center" *ngIf="element.status==110" matTooltip="Tag notification {{element.statusInfo}}" matTooltipPosition="right"><span class="material-symbols-outlined">bookmark</span></div>
-                    <div style="height: 30px; width: 30px; border-radius: 15px; background-color: yellow; border: 1px solid black; text-align: center" *ngIf="element.status==200" matTooltip="Tag confirmed - waiting foster" matTooltipPosition="right"><span class="material-symbols-outlined">person</span></div>
-                    <div style="height: 30px; width: 30px; border-radius: 15px; background-color: green; border: 1px solid black" *ngIf="element.status==300" matTooltip="Foster parent assigned" matTooltipPosition="right"></div>
-                    <div style="height: 30px; width: 30px; border-radius: 15px; background-color: cornflowerblue; border: 1px solid black" *ngIf="element.status==900" matTooltip="Adopted! {{element.statusInfo}}" matTooltipPosition="right"></div>
+                    <div style="height: 30px; width: 30px; border-radius: 15px; background-color: yellow; border: 1px solid black; display: flex; justify-content: center; align-items: center" *ngIf="element.status==100" matTooltip="Tag sent - waiting confirmation - {{element.statusDate}}" matTooltipPosition="right"><span class="material-symbols-outlined">hourglass</span></div>
+                    <div style="height: 30px; width: 30px; border-radius: 15px; background-color: yellow; border: 1px solid black; display: flex; justify-content: center; align-items: center" *ngIf="element.status==110" matTooltip="Tag notification - {{element.statusInfo}} - {{element.statusDate}}" matTooltipPosition="right"><span class="material-symbols-outlined">bookmark</span></div>
+                    <div style="height: 30px; width: 30px; border-radius: 15px; background-color: yellow; border: 1px solid black; text-align: center" *ngIf="element.status==200" matTooltip="Tag confirmed - waiting foster - {{element.statusDate}}" matTooltipPosition="right"><span class="material-symbols-outlined">person</span></div>
+                    <div style="height: 30px; width: 30px; border-radius: 15px; background-color: green; border: 1px solid black" *ngIf="element.status==300" matTooltip="Foster parent assigned - {{element.statusDate}}" matTooltipPosition="right"></div>
+                    <div style="height: 30px; width: 30px; border-radius: 15px; background-color: cornflowerblue; border: 1px solid black" *ngIf="element.status==900" matTooltip="Adopted! - {{element.statusInfo}} - {{element.statusDate}}" matTooltipPosition="right"></div>
                 </td>
             </ng-container>
 

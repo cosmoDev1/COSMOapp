@@ -29,6 +29,7 @@ export interface Animal {
     imageFile: string;
     status: number;
     statusInfo: string;
+    statusDate: string;
     youtubeLink: string;
     facebookLink: string;
     addedDate: string;
