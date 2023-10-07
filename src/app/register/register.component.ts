@@ -26,7 +26,7 @@ export class RegisterComponent implements OnInit {
     };
 
     rescuedata = {
-        rescueName: "", rescueAddress: "", rescueCity: "", rescueState: "", rescueZip: "", rescuePhone: "", rescueEmail: "", contactName: "", contactEmail: "", contactPhone: "",
+        rescueName: "", rescueAddress: "", rescueCity: "", rescueState: "TX", rescueZip: "", rescuePhone: "", rescueEmail: "", contactName: "", contactEmail: "", contactPhone: "",
         species: "1", gender: "1", size: "1", age: "1", applicationType: "1"
     };
 
@@ -47,20 +47,6 @@ export class RegisterComponent implements OnInit {
     constructor(private dialog: MatDialog, private http: HttpClient, public global: Globals) { }
 
     ngOnInit() {
-
-        this.http.get(this.global.webserviceBaseUrl + 'cities/prget').subscribe((res: any) => {
-            console.log('cities loaded')
-            if (res.status == "success") {
-                this.global.allCities = res.data;
-            }
-
-            this.http.get(this.global.webserviceBaseUrl + 'states/prget').subscribe((res: any) => {
-                console.log('states loaded')
-                if (res.status == "success") {
-                    this.global.states = res.data;
-                }
-            });
-        });
         console.log('registering')
     }
 
