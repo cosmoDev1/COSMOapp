@@ -54,8 +54,8 @@ export class Globals {
             });
       }
 
-    public webserviceBaseUrl: string = "https://cosmoapp.org/apps2/api/";
-    //public webserviceBaseUrl: string = "http://localhost:5000/api/";
+    //public webserviceBaseUrl: string = "https://cosmoapp.org/apps2/api/";
+    public webserviceBaseUrl: string = "http://localhost:5000/api/";
     public testSource: string = '?testSource=false';
     public rescueName: string = "";
     public states: Array<any> = [];
