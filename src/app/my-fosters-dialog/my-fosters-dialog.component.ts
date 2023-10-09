@@ -23,8 +23,14 @@ export class MyFostersDialogComponent {
     ngOnInit(): void {
         this.http.get<any>(this.global.webserviceBaseUrl + 'fosters/prget').subscribe(response => {
             console.log("API Response:", response);  // Check the full response
-            this.myFosters.data = response.data;
-            console.log("Assigned Fosters:", this.myFosters.data);  // Check the assigned fosters data
+
+            if (response.status == 'error') {
+                response.description
+                //confirmation dialog con la info que viene de response.description, un solo boton (cancel)
+            } else {
+                this.myFosters.data = response.data;
+                console.log("Assigned Fosters:", this.myFosters.data);  // Check the assigned fosters data
+            }
         });
     }
 

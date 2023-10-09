@@ -23,7 +23,7 @@ import { PleaDialogComponent } from '../plea-dialog/plea-dialog.component';
 import { TagDialogComponent } from '../tag-dialog/tag-dialog.component';
 import { MyFostersDialogComponent } from '../my-fosters-dialog/my-fosters-dialog.component';
 
-import { timer } from 'rxjs';
+import { endWith, timer } from 'rxjs';
 
 
 @Component({
@@ -84,25 +84,6 @@ export class MainComponent implements AfterViewInit, OnInit {
     getData() {
         var head = new HttpHeaders({ 'Content-Type': 'application/json' });
         const options = { headers: head };
-
-        //this.http.get(this.global.webserviceBaseUrl + 'cities/prget').subscribe((res: any) => {
-        //    console.log('cities loaded')
-        //    if (res.status == "success") {
-        //        this.global.allCities = res.data;
-        //    }
-
-        //    this.http.get(this.global.webserviceBaseUrl + 'states/prget').subscribe((res: any) => {
-        //        console.log('states loaded')
-        //          console.log(res)
-        //          if (res.status == "success") {
-        //            this.global.states = res.data;
-
-        //        }
-        //    });
-        //});
-
-          
-
 
         this.http.get(this.global.webserviceBaseUrl + 'animals/prget?testSource=true&shelterId=6').subscribe((res: any) => {
             console.log(res);
