@@ -24,6 +24,7 @@ import { TagDialogComponent } from '../tag-dialog/tag-dialog.component';
 import { MyFostersDialogComponent } from '../my-fosters-dialog/my-fosters-dialog.component';
 
 import { endWith, timer } from 'rxjs';
+import { InviteFosterDialogComponent } from '../invite-foster-dialog/invite-foster-dialog.component';
 
 
 @Component({
@@ -397,6 +398,17 @@ export class MainComponent implements AfterViewInit, OnInit {
             }
         });
 
+    }
+
+    inviteFosterDialog() {
+        const dialogConfig = new MatDialogConfig();
+
+        dialogConfig.disableClose = true;
+        dialogConfig.autoFocus = false;
+        dialogConfig.width = '500px';
+        dialogConfig.data = { title: 'Invite a Foster', message: 'Input an Email' };
+
+        const confDialogRef = this.dialog.open(InviteFosterDialogComponent, dialogConfig);
     }
 
 

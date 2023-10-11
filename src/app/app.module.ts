@@ -26,6 +26,7 @@ import { MyAnimalsDialogComponent } from './my-animals-dialog/my-animals-dialog.
 import { PleaDialogComponent } from './plea-dialog/plea-dialog.component';
 import { RegisterComponent } from './register/register.component';
 import { MyFostersDialogComponent } from './my-fosters-dialog/my-fosters-dialog.component';
+import { InviteFosterDialogComponent } from './invite-foster-dialog/invite-foster-dialog.component';
 
 
 @NgModule({
@@ -33,7 +34,7 @@ import { MyFostersDialogComponent } from './my-fosters-dialog/my-fosters-dialog.
         AppComponent, MainComponent,
         NewRescueDialogComponent, NewFosterDialogComponent, NewShelterDialogComponent, NewNetworkerDialogComponent,
         MyAnimalsDialogComponent, AnimalDetailDialogComponent,
-        ConfirmationDialogComponent, PleaDialogComponent, RegisterComponent, TagDialogComponent, MyFostersDialogComponent
+        ConfirmationDialogComponent, PleaDialogComponent, RegisterComponent, TagDialogComponent, MyFostersDialogComponent, InviteFosterDialogComponent
     ],
     imports: [
           BrowserModule, AppRoutingModule, BrowserAnimationsModule, MaterialModule, HttpClientModule, FormsModule, ReactiveFormsModule, 
