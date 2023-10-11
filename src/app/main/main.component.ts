@@ -38,6 +38,7 @@ export class MainComponent implements AfterViewInit, OnInit {
     selectedState = 'TX';
     cities: any[] = [];
     refreshTimer = timer(0, 300000);
+    myFosters = new MatTableDataSource<any>();
 
     dataSource = new MatTableDataSource<Animal>(this.global.animals);
     displayedColumns: string[] = ['action', 'imageURL', 'status', 'shelterAnimalID', 'name', 'gender', 'breed', 'weight', 'age', 'reason', 'outcomeRequest'];
@@ -277,14 +278,22 @@ export class MainComponent implements AfterViewInit, OnInit {
 
     myFosterDialog() {
         const dialogConfig = new MatDialogConfig();
-
         dialogConfig.disableClose = true;
-        dialogConfig.autoFocus = true;
-        dialogConfig.data = { title: 'Notice', message: 'There are no fosters created yet.', notification: true };
+        dialogConfig.autoFocus = false;
 
         const dialogRef = this.dialog.open(MyFostersDialogComponent, dialogConfig);
+        dialogRef.afterClosed().subscribe(result => {
+            if (result.title != '') {
+                const dialogConfig = new MatDialogConfig();
 
-        
+                dialogConfig.disableClose = true;
+                dialogConfig.autoFocus = false;
+                dialogConfig.data = { title: result.title, message: result.data, notification: true };
+
+                const confDialogRef = this.dialog.open(ConfirmationDialogComponent, dialogConfig);
+            }
+        });
+
     }
 
     tagAnimal(id: any, shelterAnimalId: string, name: string, species: string) {
@@ -372,12 +381,21 @@ export class MainComponent implements AfterViewInit, OnInit {
 
     findFoster() {
         const dialogConfig = new MatDialogConfig();
-
         dialogConfig.disableClose = true;
-        dialogConfig.autoFocus = true;
-        dialogConfig.data = { title: 'Notice', message: 'There are no fosters created yet.', notification: true };
+        dialogConfig.autoFocus = false;
 
         const dialogRef = this.dialog.open(MyFostersDialogComponent, dialogConfig);
+        dialogRef.afterClosed().subscribe(result => {
+            if (result.title != '') {
+                const dialogConfig = new MatDialogConfig();
+
+                dialogConfig.disableClose = true;
+                dialogConfig.autoFocus = false;
+                dialogConfig.data = { title: result.title, message: result.data, notification: true };
+
+                const confDialogRef = this.dialog.open(ConfirmationDialogComponent, dialogConfig);
+            }
+        });
 
     }
 
