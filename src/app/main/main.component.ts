@@ -48,6 +48,7 @@ export class MainComponent implements AfterViewInit, OnInit {
         this.title.setTitle('COSMO - Loading your dashboard');
 
         this.auth.user$.subscribe((profile) => {
+            if (profile == null) { this.login(); }
             console.log(profile)
             this.title.setTitle('COSMO - ' + profile!.name);
             this.global.rescueName = profile!.name!;
