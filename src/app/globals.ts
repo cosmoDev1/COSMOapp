@@ -38,6 +38,7 @@ export interface Animal {
 
 @Injectable({ providedIn: 'root' })
 export class Globals {
+    myFosters: any;
 
       constructor(private http: HttpClient) {
             this.http.get(this.webserviceBaseUrl + 'cities/prget').subscribe((res: any) => {
@@ -54,8 +55,8 @@ export class Globals {
             });
       }
 
-    public webserviceBaseUrl: string = "https://cosmoapp.org/apps2/api/";
-    //public webserviceBaseUrl: string = "http://localhost:5000/api/";
+    //public webserviceBaseUrl: string = "https://cosmoapp.org/apps2/api/";
+    public webserviceBaseUrl: string = "http://localhost:5000/api/";
     public testSource: string = '?testSource=false';
     public rescueName: string = "";
     public states: Array<any> = [];
@@ -66,6 +67,7 @@ export class Globals {
     public myAnimals: Array<Animal> = [];
     public animalsLoading: boolean = true;
     public animalsError: string = "";
+
 
     capitalize(s: any) {
        return s && s[0].toUpperCase() + s.slice(1).toLowerCase();

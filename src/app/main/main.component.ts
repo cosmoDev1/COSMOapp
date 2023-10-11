@@ -21,8 +21,10 @@ import { Globals, Animal } from '../globals';
 import { MyAnimalsDialogComponent } from '../my-animals-dialog/my-animals-dialog.component';
 import { PleaDialogComponent } from '../plea-dialog/plea-dialog.component';
 import { TagDialogComponent } from '../tag-dialog/tag-dialog.component';
+import { MyFostersDialogComponent } from '../my-fosters-dialog/my-fosters-dialog.component';
 
-import { timer } from 'rxjs';
+import { endWith, timer } from 'rxjs';
+
 
 @Component({
     selector: 'main-root',
@@ -36,6 +38,7 @@ export class MainComponent implements AfterViewInit, OnInit {
     selectedState = 'TX';
     cities: any[] = [];
     refreshTimer = timer(0, 300000);
+    myFosters = new MatTableDataSource<any>();
 
     dataSource = new MatTableDataSource<Animal>(this.global.animals);
     displayedColumns: string[] = ['action', 'imageURL', 'status', 'shelterAnimalID', 'name', 'gender', 'breed', 'weight', 'age', 'reason', 'outcomeRequest'];
@@ -82,25 +85,6 @@ export class MainComponent implements AfterViewInit, OnInit {
     getData() {
         var head = new HttpHeaders({ 'Content-Type': 'application/json' });
         const options = { headers: head };
-
-        //this.http.get(this.global.webserviceBaseUrl + 'cities/prget').subscribe((res: any) => {
-        //    console.log('cities loaded')
-        //    if (res.status == "success") {
-        //        this.global.allCities = res.data;
-        //    }
-
-        //    this.http.get(this.global.webserviceBaseUrl + 'states/prget').subscribe((res: any) => {
-        //        console.log('states loaded')
-        //          console.log(res)
-        //          if (res.status == "success") {
-        //            this.global.states = res.data;
-
-        //        }
-        //    });
-        //});
-
-          
-
 
         this.http.get(this.global.webserviceBaseUrl + 'animals/prget?testSource=true&shelterId=6').subscribe((res: any) => {
             console.log(res);
@@ -294,14 +278,22 @@ export class MainComponent implements AfterViewInit, OnInit {
 
     myFosterDialog() {
         const dialogConfig = new MatDialogConfig();
-
         dialogConfig.disableClose = true;
-        dialogConfig.autoFocus = true;
-        dialogConfig.data = { title: 'Notice', message: 'There are no fosters created yet.', notification: true };
+        dialogConfig.autoFocus = false;
 
-        const dialogRef = this.dialog.open(ConfirmationDialogComponent, dialogConfig);
+        const dialogRef = this.dialog.open(MyFostersDialogComponent, dialogConfig);
+        dialogRef.afterClosed().subscribe(result => {
+            if (result.title != '') {
+                const dialogConfig = new MatDialogConfig();
 
-        return;
+                dialogConfig.disableClose = true;
+                dialogConfig.autoFocus = false;
+                dialogConfig.data = { title: result.title, message: result.data, notification: true };
+
+                const confDialogRef = this.dialog.open(ConfirmationDialogComponent, dialogConfig);
+            }
+        });
+
     }
 
     tagAnimal(id: any, shelterAnimalId: string, name: string, species: string) {
@@ -385,6 +377,26 @@ export class MainComponent implements AfterViewInit, OnInit {
         dialogConfig.data = { role: 'My Dogs', rescueName: true, contactName: true };
 
         const dialogRef = this.dialog.open(PleaDialogComponent, dialogConfig);
+    }
+
+    findFoster() {
+        const dialogConfig = new MatDialogConfig();
+        dialogConfig.disableClose = true;
+        dialogConfig.autoFocus = false;
+
+        const dialogRef = this.dialog.open(MyFostersDialogComponent, dialogConfig);
+        dialogRef.afterClosed().subscribe(result => {
+            if (result.title != '') {
+                const dialogConfig = new MatDialogConfig();
+
+                dialogConfig.disableClose = true;
+                dialogConfig.autoFocus = false;
+                dialogConfig.data = { title: result.title, message: result.data, notification: true };
+
+                const confDialogRef = this.dialog.open(ConfirmationDialogComponent, dialogConfig);
+            }
+        });
+
     }
 
 
