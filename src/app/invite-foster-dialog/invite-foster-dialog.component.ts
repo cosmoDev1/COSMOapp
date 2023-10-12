@@ -11,42 +11,30 @@ import { ConfirmationDialogComponent } from '../confirmation-dialog/confirmation
 })
 export class InviteFosterDialogComponent {
     formdata = { inviteFosterEmail: '' };
+    emailInProgress: boolean = false;
 
     constructor(@Inject(MAT_DIALOG_DATA) public data: any, public dialogRef: MatDialogRef<InviteFosterDialogComponent>, private dialog: MatDialog, private http: HttpClient, public global: Globals) { }
 
     submitDialog(inviteForm: any) {
+        if (!inviteForm.valid) { return }
 
-        if (inviteForm.valid) {
-
+        this.emailInProgress = true;
         const inviteEmail = inviteForm.value.fosterEmail;
 
         this.http.post(this.global.webserviceBaseUrl + 'invitefoster/prpost', { email: inviteEmail }).subscribe(
             (response: any) => {
-                console.log('Invitation sent successfully', inviteEmail);
                 if (response.status == 'error') {
                     this.dialog.open(ConfirmationDialogComponent, {
                         data: { title: 'Error', message: response.description }
                     });
-                }
-                else {
-                    // Handle success, like showing a success message or closing the dialog
                     this.dialogRef.close();
                 }
-            },
-                error => {
-                    console.error('Error sending invitation', error);
-                        // Handle error, like showing an error message
+                else {
+                      console.log('Invitation sent successfully', inviteEmail);
+                      this.dialogRef.close();
                 }
-
+            },
+                error => { console.error('Error sending invitation', error); }
           );
-
-        }
-
     }
 }
-
-
-
-
-
-

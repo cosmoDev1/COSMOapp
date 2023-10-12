@@ -83,7 +83,6 @@ export class MainComponent implements AfterViewInit, OnInit {
         console.log("State changed to:", selectedState);
 
         this.cities = this.global.allCities.filter(city => city.state === selectedState);
-        console.log(this.cities);
     }
 
     getData() {

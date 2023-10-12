@@ -2,18 +2,18 @@
     <h2 mat-dialog-title>{{data.title}}</h2>
 
     <mat-dialog-content>
-        <mat-label>{{data.message}}</mat-label>
-
         <mat-form-field style="width: 100%">
             <input matInput placeholder="Email" maxlength="128" required name="fosterEmail" type="email" [(ngModel)]="formdata.inviteFosterEmail">
             <mat-label>Email</mat-label>
             <mat-error>Please enter foster invitee email</mat-error>
         </mat-form-field>
 
+        <mat-label *ngIf="emailInProgress==true">Please wait while the send the message...</mat-label>
+
     </mat-dialog-content>
 
     <mat-dialog-actions>
-        <button mat-raised-button type="submit">Accept</button>
-        <button mat-raised-button mat-dialog-close type="button">Cancel</button>
+        <button mat-raised-button type="submit" [disabled]="emailInProgress">Accept</button>
+        <button mat-raised-button mat-dialog-close type="button" [disabled]="emailInProgress">Cancel</button>
     </mat-dialog-actions>
 </form>
