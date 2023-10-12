@@ -73,7 +73,10 @@ export class MainComponent implements AfterViewInit, OnInit {
     ngOnInit() { }
 
     ngAfterViewInit() {
-          const refreshTimerSub = this.refreshTimer.subscribe(val => this.refresh() );
+        if (this.global.registerActive == false) {
+            console.log('refresh active');
+            const refreshTimerSub = this.refreshTimer.subscribe(val => this.refresh());
+        }
     }
 
     onStateChange(selectedState: string) {

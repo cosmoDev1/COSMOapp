@@ -44,7 +44,9 @@ export class RegisterComponent implements OnInit {
         networkerName: "", networkerAddress: "", networkerCity: "", networkerState: "TX", networkerZip: "", networkerPhone: "", networkerEmail: ""
     };
 
-    constructor(private dialog: MatDialog, private http: HttpClient, public global: Globals) { }
+    constructor(private dialog: MatDialog, private http: HttpClient, public global: Globals) {
+        global.registerActive = true;
+    }
 
     ngOnInit() {
         console.log('registering')
