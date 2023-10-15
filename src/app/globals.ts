@@ -1,5 +1,5 @@
 import { Injectable, EventEmitter } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpBackend } from '@angular/common/http';
 
 
 export interface Animal {
@@ -38,20 +38,29 @@ export interface Animal {
 
 @Injectable({ providedIn: 'root' })
 export class Globals {
-    myFosters: any;
+      myFosters: any;
+      private customHttpClient: HttpClient;
 
-      constructor(private http: HttpClient) {
-            this.http.get(this.webserviceBaseUrl + 'cities/prget').subscribe((res: any) => {
+      constructor(private backend: HttpBackend) {
+            this.customHttpClient = new HttpClient(backend);
+
+            this.customHttpClient.get(this.webserviceBaseUrl + 'cities/puget').subscribe((res: any) => {
                   console.log('cities loaded')
                   if (res.status == "success") { this.allCities = res.data; }
 
-                  this.http.get(this.webserviceBaseUrl + 'states/prget').subscribe((res: any) => {
+                  this.customHttpClient.get(this.webserviceBaseUrl + 'states/puget').subscribe((res: any) => {
                         console.log('states loaded')
                         if (res.status == "success") {
                               this.states = res.data;
                               this.statesChange.emit(this.states);
                         }
+                  }, (err: any) => {
+                        console.log('error states')
+                        console.log(err);
                   });
+            }, (err: any) => {
+                  console.log('error cities')
+                  console.log(err);
             });
       }
 

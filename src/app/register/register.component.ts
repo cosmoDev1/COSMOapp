@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpBackend } from '@angular/common/http';
 import { MatDialog, MatDialogConfig } from "@angular/material/dialog";
 
 import { Globals } from '../globals';
@@ -16,6 +16,7 @@ export class RegisterComponent implements OnInit {
     entireFormSteps: string = 'true';
     reqType: string = "";
     loadingRed: any;
+    private customHttpClient: HttpClient;
     
     
     formdata = { typeAccount: "1" }
@@ -44,7 +45,8 @@ export class RegisterComponent implements OnInit {
         networkerName: "", networkerAddress: "", networkerCity: "", networkerState: "TX", networkerZip: "", networkerPhone: "", networkerEmail: ""
     };
 
-    constructor(private dialog: MatDialog, private http: HttpClient, public global: Globals) {
+    constructor(private dialog: MatDialog, private backend: HttpBackend, public global: Globals) {
+        this.customHttpClient = new HttpClient(backend);
         global.registerActive = true;
     }
 
@@ -141,28 +143,28 @@ export class RegisterComponent implements OnInit {
                 newNetworkerData.networkerZip = this.networkerdata.networkerZip.toString();
 
                 if (this.formdata.typeAccount == '1') {
-                    this.http.post(this.global.webserviceBaseUrl + 'shelters/pupost', newShelterData, options).subscribe((res: any) => {
+                    this.customHttpClient.post(this.global.webserviceBaseUrl + 'shelters/pupost', newShelterData, options).subscribe((res: any) => {
                         //res = JSON.parse(res);
                         this.resultDialog(res);
                     });
                 }
 
                 if (this.formdata.typeAccount == '2') {
-                    this.http.post(this.global.webserviceBaseUrl + 'rescues/pupost', newRescueData, options).subscribe((res: any) => {
+                    this.customHttpClient.post(this.global.webserviceBaseUrl + 'rescues/pupost', newRescueData, options).subscribe((res: any) => {
                        // res = JSON.parse(res);
                         this.resultDialog(res);
                     });
                 }
 
                 if (this.formdata.typeAccount == '3') {
-                    this.http.post(this.global.webserviceBaseUrl + 'fosters/pupost', newFosterData, options).subscribe((res: any) => {
+                    this.customHttpClient.post(this.global.webserviceBaseUrl + 'fosters/pupost', newFosterData, options).subscribe((res: any) => {
                       //  res = JSON.parse(res);
                         this.resultDialog(res);
                     });
                 }
 
                 if (this.formdata.typeAccount == '5') {
-                    this.http.post(this.global.webserviceBaseUrl + 'networkers/pupost', newNetworkerData, options).subscribe((res: any) => {
+                    this.customHttpClient.post(this.global.webserviceBaseUrl + 'networkers/pupost', newNetworkerData, options).subscribe((res: any) => {
                       //  res = JSON.parse(res);
                         this.resultDialog(res);
                     });
