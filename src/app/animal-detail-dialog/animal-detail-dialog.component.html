@@ -11,8 +11,7 @@
           </tr>
           <tr>
               <td><b>Breed:</b> </td>
-              <td>{{data.animalInfo.breed
-                  }}
+              <td>{{data.animalInfo.breed}}
               </td>
           </tr>
           <tr>
@@ -42,7 +41,7 @@
               <td><b>Youtube URL:</b> </td>
               <td>
                   <mat-form-field *ngIf="editMode==true" style="width: 100%">
-                      <input matInput placeholder="Youtube link" maxlength="216" name="fosterFence" [(ngModel)]="data.animalInfo.youtubeLink">
+                      <input matInput placeholder="Youtube link" maxlength="216" name="youtubeLink" [(ngModel)]="data.animalInfo.youtubeLink">
                       <mat-label>Youtube Link</mat-label>
                       <mat-error>Please enter the youtube link</mat-error>
                   </mat-form-field>
@@ -54,7 +53,7 @@
               <td><b>Facebook URL:</b> </td>
               <td>
                   <mat-form-field *ngIf="editMode==true" style="width: 100%">
-                      <input matInput placeholder="Facebook link" maxlength="216" name="fosterFence" [(ngModel)]="data.animalInfo.facebookLink">
+                      <input matInput placeholder="Facebook link" maxlength="216" name="facebookLink" [(ngModel)]="data.animalInfo.facebookLink">
                       <mat-label>Facebook Link</mat-label>
                       <mat-error>Please enter the facebook link</mat-error>
                   </mat-form-field>
@@ -67,7 +66,7 @@
               <td><b>Volunteer Notes:</b> </td>
               <td>
                   <mat-form-field *ngIf="editMode==true" style="width: 100%">
-                      <textarea matInput placeholder="Volunteer notes" maxlength="216" name="fosterFence" [(ngModel)]="data.animalInfo.volunteerNotes"></textarea>
+                      <textarea matInput placeholder="Volunteer notes" maxlength="216" name="volunteerNotes" [(ngModel)]="data.animalInfo.volunteerNotes"></textarea>
                       <mat-label>Volunteer Notes</mat-label>
                       <mat-error>Please enter volunteer notes</mat-error>
                   </mat-form-field>
@@ -121,6 +120,6 @@
 <mat-dialog-actions>
     <button mat-raised-button (click)="closeDialog()">Close</button>
     <button mat-raised-button (click)="editDialog()" *ngIf="editMode==false">Edit</button>
-    <button mat-raised-button *ngIf="editMode==true">Save</button>
+    <button mat-raised-button (click)="saveDialog()" *ngIf="editMode==true">Save</button>
 </mat-dialog-actions>
 

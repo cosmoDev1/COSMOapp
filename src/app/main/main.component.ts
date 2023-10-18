@@ -123,14 +123,14 @@ export class MainComponent implements AfterViewInit, OnInit {
                     reason: el.reason,
                     evalNotes: el.evalNotes,
                     species: this.global.capitalize(el.species),
-                    volunteerNotes: '',
-                    volunteerFavorite: false,
+                    volunteerNotes: el.volunteerNotes,
+                    volunteerFavorite: el.volunteerFavorite,
                     imageFile: 'https://cosmoapp.org/webservices/PDFdata/' + el.shelterAnimalId + '.jpg',
                     status: el.status,
-                      statusInfo: el.statusInfo,
+                    statusInfo: el.statusInfo,
                     statusDate: el.statusDate,
-                    youtubeLink: '',
-                    facebookLink: '',
+                    youtubeLink: el.youtubeLink,
+                    facebookLink: el.facebookLink,
                     addedDate: el.addedDate
                 };
                 this.global.animals.push(tmpAnimal);
@@ -158,14 +158,14 @@ export class MainComponent implements AfterViewInit, OnInit {
                     reason: el.reason,
                     evalNotes: el.evalNotes,
                     species: this.global.capitalize(el.species),
-                    volunteerNotes: '',
-                    volunteerFavorite: false,
+                    volunteerNotes: el.volunteerNotes,
+                    volunteerFavorite: el.volunteerFavorite,
                     imageFile: 'https://cosmoapp.org/webservices/PDFdata/' + el.shelterAnimalId + '.jpg',
                     status: el.status,
                     statusInfo:el.statusInfo,
                     statusDate: el.statusDate,
-                    youtubeLink: '',
-                    facebookLink: '',
+                    youtubeLink: el.youtubeLink,
+                    facebookLink: el.facebookLink,
                     addedDate: el.addedDate
                 };
                 this.global.animals.push(tmpAnimal);
@@ -363,14 +363,8 @@ export class MainComponent implements AfterViewInit, OnInit {
 
         const dialogRef = this.dialog.open(AnimalDetailDialogComponent, dialogConfig);
 
-
-        dialogRef.afterClosed().subscribe((result) => {
-            console.log(`Dialog result: ${result}`);
-        });
-
+        dialogRef.afterClosed().subscribe((result) => { if (result == 'update') { this.refresh(); }  });
     }
-
-
 
     fosterPlea() {
         const dialogConfig = new MatDialogConfig();
@@ -420,9 +414,7 @@ export class MainComponent implements AfterViewInit, OnInit {
 
     login() {
         this.auth.loginWithRedirect({
-            appState: {
-                target: '/',
-            },
+            appState: { target: '/' },
         });
 
       }
