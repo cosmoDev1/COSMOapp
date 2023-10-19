@@ -27,29 +27,10 @@ export class AnimalDetailDialogComponent {
             (response: any) => {
                 console.log('Animal information updated successfully', response);
                 // You can perform any additional actions here after a successful update.
-                if (response.status == 'success') {
-
-                    this.dialog.open(ConfirmationDialogComponent, {
-                        width: '350px',
-                        data: { title: 'Information Received', message: response.description }
-                    });
-
-                    this.dialogRef.afterClosed().subscribe(result => {
-                        console.log('The ConfirmationDialogComponent was closed', result);
-                    });
-                } else {
-                    if (response.status == 'error') {
-
-                        this.dialog.open(ConfirmationDialogComponent, {
-                            width: '350px',
-                            data: { title: 'Information Not Received', message: response.description }
-                        });
-
-                        this.dialogRef.afterClosed().subscribe(result => {
-                            console.log('The ConfirmationDialogComponent was closed', result);
-                        });
-                    }
-                }
+                this.dialog.open(ConfirmationDialogComponent, {
+                    width: '350px',
+                    data: { title: response.status.toUpperCase(), message: response.description }
+                });
 
                 this.dialogRef.close('update');
             },

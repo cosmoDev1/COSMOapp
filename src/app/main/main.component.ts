@@ -310,14 +310,7 @@ export class MainComponent implements AfterViewInit, OnInit {
         const dialogRef = this.dialog.open(TagDialogComponent, dialogConfig);
 
         dialogRef.afterClosed().subscribe((result) => {
-            if (result == 'accept') {
-                this.refresh();
-            //    this.global.animals.forEach((el: any) => {
-            //        if (el.id == id) { el.status = 1; }
-            //    });
-
-            //    this.dataSource.data = this.global.animals;
-            }
+            if (result == 'accept') { this.refresh(); }
             console.log(`Dialog result: ${result}`);
         });
     }

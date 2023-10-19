@@ -2,6 +2,7 @@ import { Component, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA, MatDialogConfig, MatDialog } from "@angular/material/dialog";
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
+import { ConfirmationDialogComponent } from '../confirmation-dialog/confirmation-dialog.component';
 import { Globals } from "../globals";
 
 
@@ -13,10 +14,10 @@ import { Globals } from "../globals";
 
 export class TagDialogComponent{
     formdata = { tagAnimal: "0", tagInfo: "" }
-    
+    formSaving: boolean = false;
 
 
-    constructor(@Inject(MAT_DIALOG_DATA) public data: any, private http: HttpClient, public global: Globals, public dialogRef: MatDialogRef<TagDialogComponent>) { }
+    constructor(@Inject(MAT_DIALOG_DATA) public data: any, private http: HttpClient, public global: Globals, private dialog: MatDialog, public dialogRef: MatDialogRef<TagDialogComponent>) { }
 
     tagAnimalChange() {
         if (this.formdata.tagAnimal == "0") { this.formdata.tagInfo = ""; }
@@ -25,8 +26,8 @@ export class TagDialogComponent{
     closeDialog() { this.dialogRef.close('close'); }
 
     submitDialog(tagForm: any) {
-        console.log(tagForm)
-        this.dialogRef.close('accept');
+        console.log(tagForm);
+        this.formSaving = true;
 
         var opType: Number = 0;
         if (this.formdata.tagAnimal == "0") { opType = 100; }
@@ -37,10 +38,23 @@ export class TagDialogComponent{
         var tagInfo = { animalId: this.data.id, operationType: opType, operationInfo: this.formdata.tagInfo }
 
         this.http.post(this.global.webserviceBaseUrl + 'tag/prpost', tagInfo).subscribe((response: any) => {
-                    console.log(response);
-                }, (error: any) => {
-                    console.error('There was an error sending the data:', error);
-                });
+            console.log(response);
+            this.dialogRef.close('accept');
+
+            this.dialog.open(ConfirmationDialogComponent, {
+                width: '350px',
+                data: { title: response.status.toUpperCase(), message: response.description }
+            });
+        }, (error: any) => {
+            this.dialogRef.close();
+
+            this.dialog.open(ConfirmationDialogComponent, {
+                width: '350px',
+                data: { title: 'Error', message: error }
+            });
+
+            console.error('There was an error sending the data:', error);
+        });
 
     }
 
