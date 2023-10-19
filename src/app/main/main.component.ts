@@ -330,18 +330,20 @@ export class MainComponent implements AfterViewInit, OnInit {
 
                   this.http.post(this.global.webserviceBaseUrl + 'tag/prpost', tagInfo).subscribe((response: any) => {
                         console.log(response);
-                        this.refresh();
+                      this.refresh();
+
+                      this.dialog.open(ConfirmationDialogComponent, {
+                          width: '350px',
+                          data: { title: response.status.toUpperCase(), message: response.description }
+                      });
                   }, (error: any) => {
+
+                      this.dialog.open(ConfirmationDialogComponent, {
+                          width: '350px',
+                          data: { title: 'error', message: error }
+                      });
                         console.error('There was an error sending the data:', error);
                   });
-
-            //    this.global.animals.forEach((el: any) => {
-            //        if (el.shelterAnimalId == shelterAnimalId) {
-            //            el.status = 2;
-            //        }
-            //    });
-
-            //    this.dataSource.data = this.global.animals;
             }
         });
     }

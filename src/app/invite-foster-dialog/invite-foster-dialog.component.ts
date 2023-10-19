@@ -23,9 +23,9 @@ export class InviteFosterDialogComponent {
 
         this.http.post(this.global.webserviceBaseUrl + 'invitefoster/prpost', { email: inviteEmail }).subscribe(
             (response: any) => {
-                if (response.status == 'error') {
+                if (response.status == 'success') {
                     this.dialog.open(ConfirmationDialogComponent, {
-                        data: { title: 'Error', message: response.description }
+                        data: { title: response.status.toUpperCase(), message: response.description }
                     });
                     this.dialogRef.close();
                 }
@@ -34,7 +34,18 @@ export class InviteFosterDialogComponent {
                       this.dialogRef.close();
                 }
             },
-                error => { console.error('Error sending invitation', error); }
+            (error) => {
+                this.dialog.open(ConfirmationDialogComponent, {
+                    width: '350px',
+                    data: { title: 'Error', message: error }
+                });
+
+                this.dialogRef.close('update');
+
+                console.error('Error sending invitation', error);
+                // Handle errors or display error messages to the user.
+            }
+               // error => { console.error('Error sending invitation', error); }
           );
     }
 }

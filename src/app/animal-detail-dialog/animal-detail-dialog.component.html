@@ -118,8 +118,8 @@
 </mat-dialog-content>
 
 <mat-dialog-actions>
-    <button mat-raised-button (click)="closeDialog()">Close</button>
+    <button mat-raised-button (click)="closeDialog()" [disabled]="formSaving">Close</button>
     <button mat-raised-button (click)="editDialog()" *ngIf="editMode==false">Edit</button>
-    <button mat-raised-button (click)="saveDialog()" *ngIf="editMode==true">Save</button>
+    <button mat-raised-button (click)="saveDialog()" *ngIf="editMode==true" [disabled]="formSaving">Save</button>
 </mat-dialog-actions>
 
