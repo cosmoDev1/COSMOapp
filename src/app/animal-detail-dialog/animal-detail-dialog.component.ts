@@ -23,7 +23,7 @@ export class AnimalDetailDialogComponent {
     saveDialog() {
         var animalInfo = { shelterAnimalId: this.data.animalInfo.shelterAnimalId, facebookLink: this.data.animalInfo.facebookLink, youtubeLink: this.data.animalInfo.youtubeLink, volunteerNotes: this.data.animalInfo.volunteerNotes, volunteerFavorite: this.data.animalInfo.volunteerFavorite };
         console.log(animalInfo)
-        this.formSaving = true
+        this.formSaving = true;
         
         this.http.post(this.global.webserviceBaseUrl + 'animalUpdateInfo/prpost', animalInfo).subscribe(
             (response: any) => {

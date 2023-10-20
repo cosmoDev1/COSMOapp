@@ -14,7 +14,7 @@ import { ConfirmationDialogComponent } from '../confirmation-dialog/confirmation
 export class MyFostersDialogComponent implements OnInit {
     myFosters = new MatTableDataSource<any>();
     fosterColumns: string[] = ['action', 'name', 'city', 'state', 'zip', 'phone', 'email'];
-    selectedState = 'TX';
+    selectedState = 'any';
     cities: any[] = [];
     
     constructor(@Inject(MAT_DIALOG_DATA) public data: any, public dialogRef: MatDialogRef<MyFostersDialogComponent>, private dialog: MatDialog, private http: HttpClient, public global: Globals) {

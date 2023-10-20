@@ -89,99 +89,104 @@ export class MainComponent implements AfterViewInit, OnInit {
         var head = new HttpHeaders({ 'Content-Type': 'application/json' });
         const options = { headers: head };
 
-        this.http.get(this.global.webserviceBaseUrl + 'animals/prget?testSource=true&shelterId=6').subscribe((res: any) => {
-            console.log(res);
-            if (res.status == 'error') {
-                  this.global.animalsLoading = false;
-                  this.global.animalsError = res.description;
-                  console.log('error loading animals');
-                  return;
-            }
+          this.http.get(this.global.webserviceBaseUrl + 'animals/prget?testSource=true&shelterId=6').subscribe((res: any) => {
+                console.log(res);
+                if (res.status == 'error') {
+                      this.global.animalsLoading = false;
+                      this.global.animalsError = res.description;
+                      console.log('error loading animals');
+                      return;
+                }
 
-            var cats = res.data[0].cats;
-            var dogs = res.data[0].dogs;
+                var cats = res.data[0].cats;
+                var dogs = res.data[0].dogs;
 
-            cats.forEach((el: any) => {
-                var tmpAnimal: Animal = {
-                    id: el.id,
-                    shelterAnimalId: el.shelterAnimalId,
-                    shelterId: 6,
-                    name: this.global.capitalize(el.name),
-                    dueOutDate: el.dueOutDate,
-                    kennel: el.kennel,
-                    weight: this.global.capitalize(el.weight.replace('lbs', '').replace('pounds', '')),
-                    condition: el.condition,
-                    daysShelter: el.daysShelter,
-                    description: el.description,
-                    gender: this.global.capitalize(el.gender),
-                    age: this.global.capitalize(el.age),
-                    spayNeuter: el.spayNeuter,
-                    breed: this.global.capitalize(el.breed),
-                    color: el.color,
-                    hwFIVstatus: el.hwFIVstatus,
-                    outcomeRequest: el.outcomeRequest,
-                    reason: el.reason,
-                    evalNotes: el.evalNotes,
-                    species: this.global.capitalize(el.species),
-                    volunteerNotes: el.volunteerNotes,
-                    volunteerFavorite: el.volunteerFavorite,
-                    imageFile: 'https://cosmoapp.org/webservices/PDFdata/' + el.shelterAnimalId + '.jpg',
-                    status: el.status,
-                    statusInfo: el.statusInfo,
-                    statusDate: el.statusDate,
-                    youtubeLink: el.youtubeLink,
-                    facebookLink: el.facebookLink,
-                    addedDate: el.addedDate
-                };
-                this.global.animals.push(tmpAnimal);
-            });
+                cats.forEach((el: any) => {
+                      var tmpAnimal: Animal = {
+                            id: el.id,
+                            shelterAnimalId: el.shelterAnimalId,
+                            shelterId: 6,
+                            name: this.global.capitalize(el.name),
+                            dueOutDate: el.dueOutDate,
+                            kennel: el.kennel,
+                            weight: this.global.capitalize(el.weight.replace('lbs', '').replace('pounds', '')),
+                            condition: el.condition,
+                            daysShelter: el.daysShelter,
+                            description: el.description,
+                            gender: this.global.capitalize(el.gender),
+                            age: this.global.capitalize(el.age),
+                            spayNeuter: el.spayNeuter,
+                            breed: this.global.capitalize(el.breed),
+                            color: el.color,
+                            hwFIVstatus: el.hwFIVstatus,
+                            outcomeRequest: el.outcomeRequest,
+                            reason: el.reason,
+                            evalNotes: el.evalNotes,
+                            species: this.global.capitalize(el.species),
+                            volunteerNotes: el.volunteerNotes,
+                            volunteerFavorite: el.volunteerFavorite,
+                            imageFile: 'https://cosmoapp.org/webservices/PDFdata/' + el.shelterAnimalId + '.jpg',
+                            status: el.status,
+                            statusInfo: el.statusInfo,
+                            statusDate: el.statusDate,
+                            youtubeLink: el.youtubeLink,
+                            facebookLink: el.facebookLink,
+                            addedDate: el.addedDate
+                      };
+                      this.global.animals.push(tmpAnimal);
+                });
 
-            dogs.forEach((el: any) => {
-                var tmpAnimal: Animal = {
-                    id: el.id,
-                    shelterAnimalId: el.shelterAnimalId,
-                    shelterId: 6,
-                    name: this.global.capitalize(el.name),
-                    dueOutDate: el.dueOutDate,
-                    kennel: el.kennel,
-                    weight: this.global.capitalize(el.weight.replace('lbs', '').replace('pounds', '')),
-                    condition: el.condition,
-                    daysShelter: el.daysShelter,
-                    description: el.description,
-                    gender: this.global.capitalize(el.gender),
-                    age: this.global.capitalize(el.age),
-                    spayNeuter: el.spayNeuter,
-                    breed: this.global.capitalize(el.breed),
-                    color: el.color,
-                    hwFIVstatus: el.hwFIVstatus,
-                    outcomeRequest: el.outcomeRequest,
-                    reason: el.reason,
-                    evalNotes: el.evalNotes,
-                    species: this.global.capitalize(el.species),
-                    volunteerNotes: el.volunteerNotes,
-                    volunteerFavorite: el.volunteerFavorite,
-                    imageFile: 'https://cosmoapp.org/webservices/PDFdata/' + el.shelterAnimalId + '.jpg',
-                    status: el.status,
-                    statusInfo:el.statusInfo,
-                    statusDate: el.statusDate,
-                    youtubeLink: el.youtubeLink,
-                    facebookLink: el.facebookLink,
-                    addedDate: el.addedDate
-                };
-                this.global.animals.push(tmpAnimal);
-            });
+                dogs.forEach((el: any) => {
+                      var tmpAnimal: Animal = {
+                            id: el.id,
+                            shelterAnimalId: el.shelterAnimalId,
+                            shelterId: 6,
+                            name: this.global.capitalize(el.name),
+                            dueOutDate: el.dueOutDate,
+                            kennel: el.kennel,
+                            weight: this.global.capitalize(el.weight.replace('lbs', '').replace('pounds', '')),
+                            condition: el.condition,
+                            daysShelter: el.daysShelter,
+                            description: el.description,
+                            gender: this.global.capitalize(el.gender),
+                            age: this.global.capitalize(el.age),
+                            spayNeuter: el.spayNeuter,
+                            breed: this.global.capitalize(el.breed),
+                            color: el.color,
+                            hwFIVstatus: el.hwFIVstatus,
+                            outcomeRequest: el.outcomeRequest,
+                            reason: el.reason,
+                            evalNotes: el.evalNotes,
+                            species: this.global.capitalize(el.species),
+                            volunteerNotes: el.volunteerNotes,
+                            volunteerFavorite: el.volunteerFavorite,
+                            imageFile: 'https://cosmoapp.org/webservices/PDFdata/' + el.shelterAnimalId + '.jpg',
+                            status: el.status,
+                            statusInfo: el.statusInfo,
+                            statusDate: el.statusDate,
+                            youtubeLink: el.youtubeLink,
+                            facebookLink: el.facebookLink,
+                            addedDate: el.addedDate
+                      };
+                      this.global.animals.push(tmpAnimal);
+                });
 
-            if (this.global.animals.length > 0) {
-                this.dataSource = new MatTableDataSource(this.global.animals);
-                this.dataSource.sort = this.sort;
-                this.dataSource.paginator = this.paginator;
-            }
+                if (this.global.animals.length > 0) {
+                      this.dataSource = new MatTableDataSource(this.global.animals);
+                      this.dataSource.sort = this.sort;
+                      this.dataSource.paginator = this.paginator;
+                }
 
-            this.global.animalsLoading = false;
+                this.global.animalsLoading = false;
 
-            console.log(this.global.animals);
-        });
+                console.log(this.global.animals);
+          }, (error: any) => {
+                this.global.animalsLoading = false;
 
+                this.dialog.open(ConfirmationDialogComponent, {
+                      width: '350px', data: { title: 'Error', message: 'Network error, please try again in few minutes' }
+                });
+          });
 
         //this.http.get("https://v1.nocodeapi.com/casper/airtable/hOIlnPJwPYcZIyyL?tableName=BARC", options).subscribe((res: any) => {
     }
@@ -208,10 +213,9 @@ export class MainComponent implements AfterViewInit, OnInit {
 
         const dialogRef = this.dialog.open(NewRescueDialogComponent, dialogConfig);
 
-
-        dialogRef.afterClosed().subscribe((result) => {
-            console.log(`Dialog result: ${result}`);
-        });
+        //dialogRef.afterClosed().subscribe((result) => {
+        //    console.log(`Dialog result: ${result}`);
+        //});
     }
 
     newFosterDialog() {
@@ -223,10 +227,9 @@ export class MainComponent implements AfterViewInit, OnInit {
 
         const dialogRef = this.dialog.open(NewFosterDialogComponent, dialogConfig);
 
-
-        dialogRef.afterClosed().subscribe((result) => {
-            console.log(`Dialog result: ${result}`);
-        });
+        //dialogRef.afterClosed().subscribe((result) => {
+        //    console.log(`Dialog result: ${result}`);
+        //});
     }
 
     newShelterDialog() {
@@ -238,9 +241,9 @@ export class MainComponent implements AfterViewInit, OnInit {
 
         const dialogRef = this.dialog.open(NewShelterDialogComponent, dialogConfig);
 
-        dialogRef.afterClosed().subscribe((result) => {
-            console.log(`Dialog result: ${result}`);
-        });
+        //dialogRef.afterClosed().subscribe((result) => {
+        //    console.log(`Dialog result: ${result}`);
+        //});
     }
 
     newNetworkerDialog() {
@@ -252,9 +255,9 @@ export class MainComponent implements AfterViewInit, OnInit {
 
         const dialogRef = this.dialog.open(NewNetworkerDialogComponent, dialogConfig);
 
-        dialogRef.afterClosed().subscribe((result) => {
-            console.log(`Dialog result: ${result}`);
-        });
+        //dialogRef.afterClosed().subscribe((result) => {
+        //    console.log(`Dialog result: ${result}`);
+        //});
     }
 
     myAnimalsDialog() {
@@ -273,8 +276,7 @@ export class MainComponent implements AfterViewInit, OnInit {
         const dialogConfig = new MatDialogConfig();
 
         dialogConfig.disableClose = true;
-        dialogConfig.autoFocus = true;
-        dialogConfig.data = { role: 'My Dogs', rescueName: true, contactName: true };
+        dialogConfig.autoFocus = false;
 
         const dialogRef = this.dialog.open(MyAnimalsDialogComponent, dialogConfig);
     }
@@ -304,7 +306,7 @@ export class MainComponent implements AfterViewInit, OnInit {
 
         dialogConfig.width = '900px';
         dialogConfig.disableClose = true;
-        dialogConfig.autoFocus = true;
+        dialogConfig.autoFocus = false;
         dialogConfig.data = { title: 'Please confirm', name: name, id: id, shelterAnimalId: shelterAnimalId, species: species, message: 'An email will be sent to the shelter requesting a tag for the '+species+' '+ name + ' (' + shelterAnimalId + ') on your behalf. ', notification: false };
 
         const dialogRef = this.dialog.open(TagDialogComponent, dialogConfig);
@@ -319,7 +321,7 @@ export class MainComponent implements AfterViewInit, OnInit {
         const dialogConfig = new MatDialogConfig();
 
         dialogConfig.disableClose = true;
-        dialogConfig.autoFocus = true;
+        dialogConfig.autoFocus = false;
         dialogConfig.data = { title: 'Please confirm', message: 'The tag for the ' + species + ' ' + name + ' (' + shelterAnimalId + ') was confirmed?', notification: false };
 
         const dialogRef = this.dialog.open(ConfirmationDialogComponent, dialogConfig);
@@ -329,7 +331,7 @@ export class MainComponent implements AfterViewInit, OnInit {
                 var tagInfo = { animalId: id, operationType: 200, operationInfo: "" }
 
                   this.http.post(this.global.webserviceBaseUrl + 'tag/prpost', tagInfo).subscribe((response: any) => {
-                        console.log(response);
+                      console.log(response);
                       this.refresh();
 
                       this.dialog.open(ConfirmationDialogComponent, {
@@ -337,12 +339,12 @@ export class MainComponent implements AfterViewInit, OnInit {
                           data: { title: response.status.toUpperCase(), message: response.description }
                       });
                   }, (error: any) => {
-
                       this.dialog.open(ConfirmationDialogComponent, {
                           width: '350px',
                           data: { title: 'error', message: error }
                       });
-                        console.error('There was an error sending the data:', error);
+
+                      console.error('There was an error sending the data:', error);
                   });
             }
         });
