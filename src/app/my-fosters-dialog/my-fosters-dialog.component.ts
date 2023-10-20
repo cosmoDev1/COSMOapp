@@ -17,6 +17,7 @@ export class MyFostersDialogComponent implements OnInit {
     fosterColumns: string[] = ['action', 'name', 'city', 'state', 'zip', 'phone', 'email'];
     selectedState = 'any';
     cities: any[] = [];
+    formdata = { fosterSelect:""}
     
     constructor(@Inject(MAT_DIALOG_DATA) public data: any, public dialogRef: MatDialogRef<MyFostersDialogComponent>, private dialog: MatDialog, private http: HttpClient, public global: Globals) {
       
@@ -52,6 +53,11 @@ export class MyFostersDialogComponent implements OnInit {
         }
         
         this.myFostersDatasource.data = tempMyFosters;
+    }
+
+    selectedFoster(fosterName: string) {
+        console.log("Inside selectedFoster with Name:", fosterName); // This will log the foster ID.
+        this.dialogRef.close(fosterName);
     }
 
 }

@@ -379,20 +379,24 @@ export class MainComponent implements AfterViewInit, OnInit {
         dialogConfig.autoFocus = false;
 
         const dialogRef = this.dialog.open(MyFostersDialogComponent, dialogConfig);
-        dialogRef.afterClosed().subscribe(result => {
-            ///show id of foster ONLY WHEN SELECTED. if user clicks cancel button, nothing happens
+        dialogRef.afterClosed().subscribe((fosterName: string | undefined) => {
+            if (fosterName) {
+                console.log('Selected Foster ID:', fosterName);
 
-            //if (result.title != '') {
-            //    const dialogConfig = new MatDialogConfig();
+                ///show id of foster ONLY WHEN SELECTED. if user clicks cancel button, nothing happens
 
-            //    dialogConfig.disableClose = true;
-            //    dialogConfig.autoFocus = false;
-            //    dialogConfig.data = { title: result.title, message: result.data, notification: true };
+                //if (result.title != '') {
+                //    const dialogConfig = new MatDialogConfig();
 
-            //    const confDialogRef = this.dialog.open(ConfirmationDialogComponent, dialogConfig);
-            //}
-        });
+                //    dialogConfig.disableClose = true;
+                //    dialogConfig.autoFocus = false;
+                //    dialogConfig.data = { title: result.title, message: result.data, notification: true };
 
+                //    const confDialogRef = this.dialog.open(ConfirmationDialogComponent, dialogConfig);
+                //}
+                }
+            });
+    
     }
 
     inviteFosterDialog() {
