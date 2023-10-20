@@ -378,15 +378,32 @@ export class MainComponent implements AfterViewInit, OnInit {
         const dialogRef = this.dialog.open(PleaDialogComponent, dialogConfig);
     }
 
-    findFoster() {
+    findFoster(id: any) {
         const dialogConfig = new MatDialogConfig();
         dialogConfig.disableClose = true;
         dialogConfig.autoFocus = false;
 
         const dialogRef = this.dialog.open(MyFostersDialogComponent, dialogConfig);
-        dialogRef.afterClosed().subscribe((fosterName: string | undefined) => {
-            if (fosterName) {
-                console.log('Selected Foster ID:', fosterName);
+        dialogRef.afterClosed().subscribe((res: any) => {
+            if (res.button=='select') {
+                var tagInfo = { animalId: id, operationType: 300, operationInfo: res.data }
+
+                this.http.post(this.global.webserviceBaseUrl + 'tag/prpost', tagInfo).subscribe((response: any) => {
+                    console.log(response);
+                    this.refresh();
+
+                    this.dialog.open(ConfirmationDialogComponent, {
+                        width: '350px',
+                        data: { title: response.status.toUpperCase(), message: response.description }
+                    });
+                }, (error: any) => {
+                    this.dialog.open(ConfirmationDialogComponent, {
+                        width: '350px',
+                        data: { title: 'error', message: error.message }
+                    });
+
+                    console.error('There was an error sending the data:', error);
+                });
 
                 ///show id of foster ONLY WHEN SELECTED. if user clicks cancel button, nothing happens
 

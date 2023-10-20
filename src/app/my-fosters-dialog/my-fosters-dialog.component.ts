@@ -42,7 +42,7 @@ export class MyFostersDialogComponent implements OnInit {
         });
     }
 
-    closeDialog() { this.dialogRef.close({ title: '', data: '' }); }
+    closeDialog() { this.dialogRef.close({ button: 'close', data: '' }); }
 
     onStateChange(selectedState: string) {
         console.log("State changed to:", selectedState);
@@ -55,9 +55,9 @@ export class MyFostersDialogComponent implements OnInit {
         this.myFostersDatasource.data = tempMyFosters;
     }
 
-    selectedFoster(fosterName: string) {
-        console.log("Inside selectedFoster with Name:", fosterName); // This will log the foster ID.
-        this.dialogRef.close(fosterName);
+    selectedFoster(fosterId: string) {
+        console.log("Inside selectedFoster with Name:", fosterId); // This will log the foster ID.
+        this.dialogRef.close({ button: 'select', data: fosterId });
     }
 
 }
