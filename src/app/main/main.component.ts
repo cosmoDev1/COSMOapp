@@ -39,6 +39,7 @@ export class MainComponent implements AfterViewInit, OnInit {
     selectedState = 'TX';
     cities: any[] = [];
     refreshTimer = timer(0, 300000);
+    refreshInProgress: boolean = false;
     myFosters = new MatTableDataSource<any>();
 
     dataSource = new MatTableDataSource<Animal>(this.global.animals);
@@ -88,20 +89,21 @@ export class MainComponent implements AfterViewInit, OnInit {
     getData() {
         var head = new HttpHeaders({ 'Content-Type': 'application/json' });
         const options = { headers: head };
+        this.refreshInProgress = true;
 
-          this.http.get(this.global.webserviceBaseUrl + 'animals/prget?testSource=true&shelterId=6').subscribe((res: any) => {
-                console.log(res);
-                if (res.status == 'error') {
+        this.http.get(this.global.webserviceBaseUrl + 'animals/prget?testSource=true&shelterId=6').subscribe((res: any) => {
+             console.log(res);
+             if (res.status == 'error') {
                       this.global.animalsLoading = false;
                       this.global.animalsError = res.description;
                       console.log('error loading animals');
                       return;
                 }
 
-                var cats = res.data[0].cats;
-                var dogs = res.data[0].dogs;
+             var cats = res.data[0].cats;
+             var dogs = res.data[0].dogs;
 
-                cats.forEach((el: any) => {
+             cats.forEach((el: any) => {
                       var tmpAnimal: Animal = {
                             id: el.id,
                             shelterAnimalId: el.shelterAnimalId,
@@ -136,7 +138,7 @@ export class MainComponent implements AfterViewInit, OnInit {
                       this.global.animals.push(tmpAnimal);
                 });
 
-                dogs.forEach((el: any) => {
+             dogs.forEach((el: any) => {
                       var tmpAnimal: Animal = {
                             id: el.id,
                             shelterAnimalId: el.shelterAnimalId,
@@ -171,35 +173,38 @@ export class MainComponent implements AfterViewInit, OnInit {
                       this.global.animals.push(tmpAnimal);
                 });
 
-                if (this.global.animals.length > 0) {
-                      this.dataSource = new MatTableDataSource(this.global.animals);
-                      this.dataSource.sort = this.sort;
-                      this.dataSource.paginator = this.paginator;
-                }
+             if (this.global.animals.length > 0) {
+                this.dataSource = new MatTableDataSource(this.global.animals);
+                this.dataSource.sort = this.sort;
+                this.dataSource.paginator = this.paginator;
+             }
 
-                this.global.animalsLoading = false;
+            this.global.animalsLoading = false;
+            this.refreshInProgress = false;
 
-                console.log(this.global.animals);
-          }, (error: any) => {
-                this.global.animalsLoading = false;
+            console.log(this.global.animals);
+        }, (error: any) => {
+           this.global.animalsLoading = false;
 
-                this.dialog.open(ConfirmationDialogComponent, {
-                      width: '350px', data: { title: 'Error', message: error.message }
-                });
-          });
+           const dialogRef = this.dialog.open(ConfirmationDialogComponent, {
+                width: '450px', data: { title: 'Error', message: error.message }
+           });
+           dialogRef.afterClosed().subscribe(result => { this.refreshInProgress = false; });
+        });
 
         //this.http.get("https://v1.nocodeapi.com/casper/airtable/hOIlnPJwPYcZIyyL?tableName=BARC", options).subscribe((res: any) => {
     }
 
     refresh() {
+        console.log('refreshing');
+        if (this.refreshInProgress) { return; }
+
         this.global.animals = [];
         this.global.animalsLoading = true;
         this.global.animalsError = "";
         this.dataSource = new MatTableDataSource(this.global.animals);
         this.dataSource.sort = this.sort;
         this.dataSource.paginator = this.paginator;
-
-        console.log('refreshing');
 
         this.getData();
     }
