@@ -184,7 +184,7 @@ export class MainComponent implements AfterViewInit, OnInit {
                 this.global.animalsLoading = false;
 
                 this.dialog.open(ConfirmationDialogComponent, {
-                      width: '350px', data: { title: 'Error', message: 'Network error, please try again in few minutes' }
+                      width: '350px', data: { title: 'Error', message: error.message }
                 });
           });
 
@@ -312,8 +312,25 @@ export class MainComponent implements AfterViewInit, OnInit {
         const dialogRef = this.dialog.open(TagDialogComponent, dialogConfig);
 
         dialogRef.afterClosed().subscribe((result) => {
-            if (result == 'accept') { this.refresh(); }
-            console.log(`Dialog result: ${result}`);
+              if (result.button == 'accept') {
+                    this.http.post(this.global.webserviceBaseUrl + 'tag/prpost', result.tagInfo).subscribe((response: any) => {
+                          console.log(response);
+
+                          this.dialog.open(ConfirmationDialogComponent, { width: '350px',
+                                data: { title: response.status.toUpperCase(), message: response.description }
+                          });
+
+                          this.refresh();
+                    }, (error: any) => {
+                          console.log(error)
+                          this.dialog.open(ConfirmationDialogComponent, {
+                                width: '350px',
+                                data: { title: 'Error', message: error.message }
+                          });
+
+                          console.error('There was an error sending the data:', error);
+                    });
+              }
         });
     }
 
@@ -334,14 +351,13 @@ export class MainComponent implements AfterViewInit, OnInit {
                       console.log(response);
                       this.refresh();
 
-                      this.dialog.open(ConfirmationDialogComponent, {
-                          width: '350px',
+                      this.dialog.open(ConfirmationDialogComponent, { width: '350px',
                           data: { title: response.status.toUpperCase(), message: response.description }
                       });
                   }, (error: any) => {
                       this.dialog.open(ConfirmationDialogComponent, {
                           width: '350px',
-                          data: { title: 'error', message: error }
+                          data: { title: 'error', message: error.message }
                       });
 
                       console.error('There was an error sending the data:', error);

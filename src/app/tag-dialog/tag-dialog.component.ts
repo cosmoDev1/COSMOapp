@@ -23,7 +23,7 @@ export class TagDialogComponent{
         if (this.formdata.tagAnimal == "0") { this.formdata.tagInfo = ""; }
     }
 
-    closeDialog() { this.dialogRef.close('close'); }
+    closeDialog() { this.dialogRef.close({ button: 'close' }); }
 
     submitDialog(tagForm: any) {
         console.log(tagForm);
@@ -37,25 +37,7 @@ export class TagDialogComponent{
 
         var tagInfo = { animalId: this.data.id, operationType: opType, operationInfo: this.formdata.tagInfo }
 
-        this.http.post(this.global.webserviceBaseUrl + 'tag/prpost', tagInfo).subscribe((response: any) => {
-            console.log(response);
-            this.dialogRef.close('accept');
-
-            this.dialog.open(ConfirmationDialogComponent, {
-                width: '350px',
-                data: { title: response.status.toUpperCase(), message: response.description }
-            });
-        }, (error: any) => {
-            this.dialogRef.close();
-
-            this.dialog.open(ConfirmationDialogComponent, {
-                width: '350px',
-                data: { title: 'Error', message: error }
-            });
-
-            console.error('There was an error sending the data:', error);
-        });
-
+        this.dialogRef.close({ button: 'accept', tagInfo: { animalId: this.data.id, operationType: opType, operationInfo: this.formdata.tagInfo } });
     }
 
 }
