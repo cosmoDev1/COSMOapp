@@ -12,7 +12,8 @@ import { ConfirmationDialogComponent } from '../confirmation-dialog/confirmation
   styleUrls: ['./my-fosters-dialog.component.css']
 })
 export class MyFostersDialogComponent implements OnInit {
-    myFosters = new MatTableDataSource<any>();
+    myFosters: any = [];
+    myFostersDatasource = new MatTableDataSource<any>();
     fosterColumns: string[] = ['action', 'name', 'city', 'state', 'zip', 'phone', 'email'];
     selectedState = 'any';
     cities: any[] = [];
@@ -31,12 +32,26 @@ export class MyFostersDialogComponent implements OnInit {
                 if (response.data.length == 0) {
                     this.dialogRef.close({ title: 'Notification', data: 'There are no registered fosters' });
                 } else {
-                    this.myFosters.data = response.data;
-                    console.log("Assigned Fosters:", this.myFosters.data);
+
+                    this.myFosters = response.data;
+                    this.myFostersDatasource.data = response.data;
+                    console.log("Assigned Fosters:", this.myFosters);
                 }
             }
         });
     }
 
     closeDialog() { this.dialogRef.close({ title: '', data: '' }); }
+
+    onStateChange(selectedState: string) {
+        console.log("State changed to:", selectedState);
+        var tempMyFosters = [];
+
+        if (selectedState == 'any') { tempMyFosters = this.myFosters; } else {
+            tempMyFosters = this.myFosters.filter((foster: any) => foster.fosterState === selectedState);
+        }
+        
+        this.myFostersDatasource.data = tempMyFosters;
+    }
+
 }

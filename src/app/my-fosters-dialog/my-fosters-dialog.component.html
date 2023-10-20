@@ -3,7 +3,7 @@
 
     <mat-form-field style="margin-right: 10px">
         <mat-label> State </mat-label>
-        <mat-select id="stat" name="state" [(ngModel)]="selectedState" >
+        <mat-select id="stat" name="state" [(ngModel)]="selectedState" (selectionChange)="onStateChange($event.value)">
             <mat-option value="any">Any</mat-option>
             <mat-option *ngFor="let state of global.states" [value]="state.abbreviation">
                 {{ state.name }} - {{ state.abbreviation }}
@@ -11,7 +11,7 @@
         </mat-select>
     </mat-form-field>
 
-    <table mat-table [dataSource]="myFosters" class="mat-elevation-z8">
+    <table mat-table [dataSource]="myFostersDatasource" class="mat-elevation-z8">
 
         <ng-container matColumnDef="action">
             <th mat-header-cell *matHeaderCellDef> Quick Action </th>
@@ -56,9 +56,12 @@
         <tr mat-header-row *matHeaderRowDef="fosterColumns"></tr>
         <tr mat-row *matRowDef="let row; columns: fosterColumns;"></tr>
 
-
-
     </table>
+
+    <div *ngIf="myFostersDatasource.data.length==0" style="width: 100%; height: auto; text-align: center; margin-top: 20px">
+        <p> No available records </p>
+    </div>
+
 </div>
 
 <div mat-dialog-actions>

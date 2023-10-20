@@ -212,10 +212,6 @@ export class MainComponent implements AfterViewInit, OnInit {
         dialogConfig.data = { role: 'Rescue Group', rescueName: true, contactName: true };
 
         const dialogRef = this.dialog.open(NewRescueDialogComponent, dialogConfig);
-
-        //dialogRef.afterClosed().subscribe((result) => {
-        //    console.log(`Dialog result: ${result}`);
-        //});
     }
 
     newFosterDialog() {
@@ -226,10 +222,6 @@ export class MainComponent implements AfterViewInit, OnInit {
         dialogConfig.data = { role: 'Foster', rescueName: true, contactName: true };
 
         const dialogRef = this.dialog.open(NewFosterDialogComponent, dialogConfig);
-
-        //dialogRef.afterClosed().subscribe((result) => {
-        //    console.log(`Dialog result: ${result}`);
-        //});
     }
 
     newShelterDialog() {
@@ -240,10 +232,6 @@ export class MainComponent implements AfterViewInit, OnInit {
         dialogConfig.data = { role: 'Shelter Account', rescueName: true, contactName: true };
 
         const dialogRef = this.dialog.open(NewShelterDialogComponent, dialogConfig);
-
-        //dialogRef.afterClosed().subscribe((result) => {
-        //    console.log(`Dialog result: ${result}`);
-        //});
     }
 
     newNetworkerDialog() {
@@ -254,10 +242,6 @@ export class MainComponent implements AfterViewInit, OnInit {
         dialogConfig.data = { role: 'Networker Account' };
 
         const dialogRef = this.dialog.open(NewNetworkerDialogComponent, dialogConfig);
-
-        //dialogRef.afterClosed().subscribe((result) => {
-        //    console.log(`Dialog result: ${result}`);
-        //});
     }
 
     myAnimalsDialog() {
@@ -396,15 +380,17 @@ export class MainComponent implements AfterViewInit, OnInit {
 
         const dialogRef = this.dialog.open(MyFostersDialogComponent, dialogConfig);
         dialogRef.afterClosed().subscribe(result => {
-            if (result.title != '') {
-                const dialogConfig = new MatDialogConfig();
+            ///show id of foster ONLY WHEN SELECTED. if user clicks cancel button, nothing happens
 
-                dialogConfig.disableClose = true;
-                dialogConfig.autoFocus = false;
-                dialogConfig.data = { title: result.title, message: result.data, notification: true };
+            //if (result.title != '') {
+            //    const dialogConfig = new MatDialogConfig();
 
-                const confDialogRef = this.dialog.open(ConfirmationDialogComponent, dialogConfig);
-            }
+            //    dialogConfig.disableClose = true;
+            //    dialogConfig.autoFocus = false;
+            //    dialogConfig.data = { title: result.title, message: result.data, notification: true };
+
+            //    const confDialogRef = this.dialog.open(ConfirmationDialogComponent, dialogConfig);
+            //}
         });
 
     }
