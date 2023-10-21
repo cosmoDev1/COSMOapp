@@ -1,0 +1,68 @@
+<form #transportForm="ngForm" (ngSubmit)="submitDialog(transportForm)">
+
+    <h2 mat-dialog-title>New {{data.role}}</h2>
+
+    <mat-dialog-content>
+        <mat-form-field style="width: 100%">
+            <input matInput placeholder="Name" required name="transportName" maxlength="128" [(ngModel)]="formdata.transportName" [disabled]="entireFormEnabled">
+            <mat-label>Transport Name</mat-label>
+            <mat-error>Please enter transport name</mat-error>
+        </mat-form-field>
+
+        <mat-form-field style="width: 100%">
+            <input matInput placeholder="Address" required name="transportAddress" maxlength="128" [(ngModel)]="formdata.transportAddress" [disabled]="entireFormEnabled">
+            <mat-label>Address</mat-label>
+            <mat-error>Please enter transport address</mat-error>
+        </mat-form-field>
+
+        <mat-form-field style="width: 100%">
+            <input matInput placeholder="City" required name="transportCity" maxlength="64" [(ngModel)]="formdata.transportCity" [disabled]="entireFormEnabled">
+            <mat-label>City</mat-label>
+            <mat-error>Please enter transport city</mat-error>
+        </mat-form-field>
+
+        <table>
+            <tr>
+                <td>
+                    <mat-form-field>
+                        <mat-label> State </mat-label>
+                        <mat-select id="stat" name="transportState" [(ngModel)]="formdata.transportState" [disabled]="entireFormEnabled">
+                            <mat-option *ngFor="let state of global.states" [value]="state.abbreviation">
+                                {{ state.name }} - {{ state.abbreviation }}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </td>
+                <td>
+                    <mat-form-field>
+                        <input matInput type="number" max="99999" placeholder="Zip" required name="transportZip" [(ngModel)]="formdata.transportZip" onKeyPress="if(this.value.length==5) return false;" [disabled]="entireFormEnabled">
+                        <mat-label>Zip</mat-label>
+                        <mat-error>Please enter transport zip</mat-error>
+                    </mat-form-field>
+                </td>
+                <td>
+                    <mat-form-field>
+                        <mat-label> Transport Phone</mat-label>
+                        <span matPrefix>+1 &nbsp;</span>
+                        <input type="tel" matInput placeholder="555-555-1234" maxlength="10" (keydown)="numberOnlyEvent($event)" required name="transportPhone" [(ngModel)]="formdata.transportPhone" [disabled]="entireFormEnabled">
+                        <mat-error>Please enter transport phone</mat-error>
+                    </mat-form-field>
+                </td>
+            </tr>
+        </table>
+
+
+        <mat-form-field style="width: 100%">
+            <input matInput placeholder="Email" required name="transportEmail" type="email" [(ngModel)]="formdata.transportEmail" [disabled]="entireFormEnabled">
+            <mat-label> Transport Email</mat-label>
+            <mat-error>Please enter transport email</mat-error>
+        </mat-form-field>
+        <br />
+
+    </mat-dialog-content>
+
+    <mat-dialog-actions>
+        <button mat-button type="button" (click)="closeDialog()" [disabled]="entireFormEnabled">Close</button>
+        <button mat-button type="submit" [disabled]="entireFormEnabled">Submit</button>
+    </mat-dialog-actions>
+</form>

@@ -8,7 +8,7 @@
         <button (click)="inviteFosterDialog()" mat-menu-item>Invite Foster</button>
         <button (click)="newFosterDialog()" mat-menu-item>Create Foster Account</button>
         <button (click)="newNetworkerDialog()" mat-menu-item>Create Networker Account</button>
-        <button mat-menu-item [disabled]="true">Create Transport Account</button>
+        <button (click)="newTransportDialog()" mat-menu-item>Create Transport Account</button>
         <mat-divider></mat-divider>
         <button (click)="myAnimalsDialog()" mat-menu-item>My Animals</button>
         <button (click)="myFosterDialog()" mat-menu-item>My Fosters</button>
@@ -88,7 +88,7 @@
                     <button mat-raised-button (click)="findFoster(element.id)" matTooltip="Find Foster" matTooltipPosition="right" style="margin-right: 8px; min-width: 56px !important" *ngIf="element.status==0 || element.status==100 || element.status==110 || element.status==200">  <span class="material-symbols-outlined">person_search</span> </button>
                     <button mat-raised-button matTooltip="Edit Information" matTooltipPosition="right" style="margin-right: 8px; min-width: 56px !important" *ngIf="element.status==0 || element.status==100 || element.status==110">  <span class="material-symbols-outlined">edit_note</span> </button>
                     <button mat-raised-button (click)="fosterPlea()" matTooltip="Plea" matTooltipPosition="right" style="min-width: 56px !important" *ngIf="element.status==0  || element.status==100 || element.status==110 || element.status==200"> <span class="material-symbols-outlined">folded_hands</span> </button>
-
+                    <button mat-raised-button matTooltip="Transport" matTooltipPosition="right" style="margin-right: 8px" *ngIf="element.status==300"> <span class="material-symbols-outlined">airport_shuttle</span> </button>
                 </td>
             </ng-container>
 

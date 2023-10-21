@@ -25,6 +25,7 @@ import { MyFostersDialogComponent } from '../my-fosters-dialog/my-fosters-dialog
 
 import { endWith, timer } from 'rxjs';
 import { InviteFosterDialogComponent } from '../invite-foster-dialog/invite-foster-dialog.component';
+import { NewTransportDialogComponent } from '../new-transport-dialog/new-transport-dialog.component';
 
 
 @Component({
@@ -247,6 +248,18 @@ export class MainComponent implements AfterViewInit, OnInit {
         dialogConfig.data = { role: 'Networker Account' };
 
         const dialogRef = this.dialog.open(NewNetworkerDialogComponent, dialogConfig);
+    }
+
+    newTransportDialog() {
+
+        const dialogConfig = new MatDialogConfig();
+
+        dialogConfig.disableClose = true;
+        dialogConfig.autoFocus = true;
+        dialogConfig.data = { role: 'Transport Account' };
+
+        const dialogRef = this.dialog.open(NewTransportDialogComponent, dialogConfig);
+
     }
 
     myAnimalsDialog() {
