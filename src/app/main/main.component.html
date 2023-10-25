@@ -12,7 +12,7 @@
         <mat-divider></mat-divider>
         <button (click)="myAnimalsDialog()" mat-menu-item>My Animals</button>
         <button (click)="myFosterDialog()" mat-menu-item>My Fosters</button>
-        <button mat-menu-item [disabled]="true">My Transports</button>
+        <button (click)="transportDialog()" mat-menu-item>My Transports</button>
 
         <mat-divider></mat-divider>
         <button mat-menu-item (click)="logout()">Logout</button>

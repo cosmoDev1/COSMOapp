@@ -26,6 +26,7 @@ import { MyFostersDialogComponent } from '../my-fosters-dialog/my-fosters-dialog
 import { endWith, timer } from 'rxjs';
 import { InviteFosterDialogComponent } from '../invite-foster-dialog/invite-foster-dialog.component';
 import { NewTransportDialogComponent } from '../new-transport-dialog/new-transport-dialog.component';
+import { TransportDialogComponent } from '../transport-dialog/transport-dialog.component';
 
 
 @Component({
@@ -92,7 +93,7 @@ export class MainComponent implements AfterViewInit, OnInit {
         const options = { headers: head };
         this.refreshInProgress = true;
 
-        this.http.get(this.global.webserviceBaseUrl + 'animals/prget?testSource=true&shelterId=6').subscribe((res: any) => {
+        this.http.get(this.global.webserviceBaseUrl + 'animals/prget?testSource=false&shelterId=6').subscribe((res: any) => {
              console.log(res);
              if (res.status == 'error') {
                       this.global.animalsLoading = false;
@@ -302,6 +303,27 @@ export class MainComponent implements AfterViewInit, OnInit {
         });
 
     }
+
+    transportDialog() {
+        const dialogConfig = new MatDialogConfig();
+        dialogConfig.disableClose = true;
+        dialogConfig.autoFocus = false;
+
+        const dialogRef = this.dialog.open(TransportDialogComponent, dialogConfig);
+        dialogRef.afterClosed().subscribe(result => {
+            if (result.title != '') {
+                const dialogConfig = new MatDialogConfig();
+
+                dialogConfig.disableClose = true;
+                dialogConfig.autoFocus = false;
+                dialogConfig.data = { title: result.title, message: result.data, notification: true };
+
+                const confDialogRef = this.dialog.open(ConfirmationDialogComponent, dialogConfig);
+            }
+        });
+
+    }
+
 
     tagAnimal(id: any, shelterAnimalId: string, name: string, species: string) {
         const dialogConfig = new MatDialogConfig();

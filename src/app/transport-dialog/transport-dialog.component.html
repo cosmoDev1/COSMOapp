@@ -1,0 +1,77 @@
+<h1 mat-dialog-title>Available Transports</h1>
+<div mat-dialog-content>
+
+    <mat-form-field style="margin-right: 10px">
+        <mat-label> State </mat-label>
+        <mat-select id="stat" name="state" [(ngModel)]="selectedState" (selectionChange)="onStateChange($event.value)">
+            <mat-option value="any">Any</mat-option>
+            <mat-option *ngFor="let state of global.states" [value]="state.abbreviation">
+                {{ state.name }} - {{ state.abbreviation }}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+
+    <table mat-table [dataSource]="transportDatasource" class="mat-elevation-z8">
+
+        <ng-container matColumnDef="action">
+            <th mat-header-cell *matHeaderCellDef> Quick Action </th>
+            <td mat-cell *matCellDef="let element">
+                <button mat-raised-button (click)="selectedTransport(element.id)" matTooltip="Select this transportoster" matTooltipPosition="right"> <span class="material-symbols-outlined"> verified_user </span> </button>
+            </td>
+        </ng-container>
+
+        <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef> Name </th>
+            <td mat-cell *matCellDef="let element"> {{element.transportName}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="address">
+            <th mat-header-cell *matHeaderCellDef> Address </th>
+            <td mat-cell *matCellDef="let element"> {{element.transportAddress}} </td>
+        </ng-container>
+
+        <!-- Name Column -->
+        <ng-container matColumnDef="city">
+            <th mat-header-cell *matHeaderCellDef> City </th>
+            <td mat-cell *matCellDef="let element"> {{element.transportCity}} </td>
+        </ng-container>
+
+        <!-- Weight Column -->
+        <ng-container matColumnDef="state">
+            <th mat-header-cell *matHeaderCellDef> State </th>
+            <td mat-cell *matCellDef="let element"> {{element.transportState}} </td>
+        </ng-container>
+
+        <!-- Symbol Column -->
+        <ng-container matColumnDef="zip">
+            <th mat-header-cell *matHeaderCellDef> Zip </th>
+            <td mat-cell *matCellDef="let element"> {{element.transportZip}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="phone">
+            <th mat-header-cell *matHeaderCellDef> Phone </th>
+            <td mat-cell *matCellDef="let element"> {{element.transportPhone}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="email">
+            <th mat-header-cell *matHeaderCellDef> Email </th>
+            <td mat-cell *matCellDef="let element"> {{element.transportEmail}} </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="transportColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: transportColumns;"></tr>
+
+    </table>
+
+    <div *ngIf="transportDatasource.data.length==0" style="width: 100%; height: auto; text-align: center; margin-top: 20px">
+        <p> No available records </p>
+    </div>
+
+</div>
+
+<div mat-dialog-actions>
+    <!--<button mat-button mat-dialog-close>Cancel</button>-->
+    <button mat-button (click)="closeDialog()">Cancel</button>
+</div>
+
+
