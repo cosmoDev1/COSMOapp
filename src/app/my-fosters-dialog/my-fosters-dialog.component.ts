@@ -42,7 +42,7 @@ export class MyFostersDialogComponent implements OnInit {
         });
     }
 
-    closeDialog() { this.dialogRef.close({ button: 'close', data: '' }); }
+    closeDialog() { this.dialogRef.close({ title: "", button: 'close', data: '' }); }
 
     onStateChange(selectedState: string) {
         console.log("State changed to:", selectedState);

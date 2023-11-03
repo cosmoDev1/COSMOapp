@@ -10,7 +10,7 @@ import { Globals } from '../globals';
   styleUrls: ['./transport-dialog.component.css']
 })
 export class TransportDialogComponent implements OnInit {
-    transports: any = [];
+    transport: any = [];
     transportDatasource = new MatTableDataSource<any>();
     transportColumns: string[] = ['action', 'name', 'city', 'state', 'zip', 'phone', 'email'];
     selectedState = 'any';
@@ -32,22 +32,22 @@ export class TransportDialogComponent implements OnInit {
                     this.dialogRef.close({ title: 'Notification', data: 'There are no registered transports' });
                 } else {
 
-                    this.transports = response.data;
+                    this.transport = response.data;
                     this.transportDatasource.data = response.data;
-                    console.log("Assigned Transports:", this.transports);
+                    console.log("Assigned Transports:", this.transport);
                 }
             }
         });
     }
 
-    closeDialog() { this.dialogRef.close({ button: 'close', data: '' }); }
+    closeDialog() { this.dialogRef.close({ title:"", button: 'close', data: '' }); }
 
     onStateChange(selectedState: string) {
         console.log("State changed to:", selectedState);
         var tempTransports = [];
 
-        if (selectedState == 'any') { tempTransports = this.transports; } else {
-            tempTransports = this.transports.filter((transport: any) => this.transports === selectedState);
+        if (selectedState == 'any') { tempTransports = this.transport; } else {
+            tempTransports = this.transport.filter((availTransports: any) => availTransports.transportState === selectedState);
         }
 
         this.transportDatasource.data = tempTransports;

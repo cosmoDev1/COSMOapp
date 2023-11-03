@@ -45,7 +45,7 @@ export class NewTransportDialogComponent {
         }
 
         dialogConfig.autoFocus = false;
-        dialogConfig.data = { title: 'Confirm', message: "Are you sure to submit this Networker request?", notification: false };
+        dialogConfig.data = { title: 'Confirm', message: "Are you sure to submit this Transport request?", notification: false };
 
         const dialogRef3 = this.dialog.open(ConfirmationDialogComponent, dialogConfig);
         dialogRef3.afterClosed().subscribe(result => {
@@ -59,7 +59,7 @@ export class NewTransportDialogComponent {
                 var newFormData = this.formdata;
                 newFormData.transportZip = this.formdata.transportZip.toString();
 
-                this.http.post(this.global.webserviceBaseUrl + 'networkers/pupost', this.formdata, options).subscribe((res: any) => {
+                this.http.post(this.global.webserviceBaseUrl + 'transport/pupost', this.formdata, options).subscribe((res: any) => {
                     console.log(res);
 
                     dialogConfig.disableClose = true;

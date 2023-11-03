@@ -45,6 +45,10 @@ export class RegisterComponent implements OnInit {
         networkerName: "", networkerAddress: "", networkerCity: "", networkerState: "TX", networkerZip: "", networkerPhone: "", networkerEmail: ""
     };
 
+    transportdata = {
+        transportName: "", transportAddress: "", transportCity: "", transportState: "TX", transportZip: "", transportPhone: "", transportEmail: ""
+    }
+
     constructor(private dialog: MatDialog, private backend: HttpBackend, public global: Globals) {
         this.customHttpClient = new HttpClient(backend);
         global.registerActive = true;
@@ -142,6 +146,10 @@ export class RegisterComponent implements OnInit {
                 var newNetworkerData = this.networkerdata;
                 newNetworkerData.networkerZip = this.networkerdata.networkerZip.toString();
 
+                var newTransportData = this.transportdata;
+                newTransportData.transportZip = this.transportdata.transportZip.toString();
+
+
                 if (this.formdata.typeAccount == '1') {
                     this.customHttpClient.post(this.global.webserviceBaseUrl + 'shelters/pupost', newShelterData, options).subscribe((res: any) => {
                         //res = JSON.parse(res);
@@ -162,6 +170,15 @@ export class RegisterComponent implements OnInit {
                         this.resultDialog(res);
                     });
                 }
+
+                if (this.formdata.typeAccount == '4') {
+                    this.customHttpClient.post(this.global.webserviceBaseUrl + 'transport/pupost', newTransportData, options).subscribe((res: any) => {
+                        //  res = JSON.parse(res);
+                        this.resultDialog(res);
+                    });
+                }
+
+
 
                 if (this.formdata.typeAccount == '5') {
                     this.customHttpClient.post(this.global.webserviceBaseUrl + 'networkers/pupost', newNetworkerData, options).subscribe((res: any) => {
