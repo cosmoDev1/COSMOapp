@@ -93,7 +93,8 @@ export class MainComponent implements AfterViewInit, OnInit {
         const options = { headers: head };
         this.refreshInProgress = true;
 
-        this.http.get(this.global.webserviceBaseUrl + 'animals/prget?testSource=false&shelterId=6').subscribe((res: any) => {
+        //testSource=true to force download, false to skip download and use instead pre downloaded file on server
+        this.http.get(this.global.webserviceBaseUrl + 'animals/prget?testSource=true&shelterId=6').subscribe((res: any) => {
              console.log(res);
              if (res.status == 'error') {
                       this.global.animalsLoading = false;
