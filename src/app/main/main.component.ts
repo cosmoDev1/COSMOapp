@@ -45,7 +45,7 @@ export class MainComponent implements AfterViewInit, OnInit {
     myFosters = new MatTableDataSource<any>();
 
     dataSource = new MatTableDataSource<Animal>(this.global.animals);
-    displayedColumns: string[] = ['action', 'imageURL', 'status', 'shelterAnimalID', 'name', 'gender', 'breed', 'weight', 'age', 'reason', 'outcomeRequest'];
+    displayedColumns: string[] = ['action', 'imageURL', 'status', 'shelterAnimalID', 'name', 'gender', 'breed', 'weight', 'age', 'reason', 'outcomeRequest', 'dueOutDate'];
 
     @ViewChild(MatSort, { static: false }) sort!: MatSort;
     @ViewChild('paginator', { static: true }) paginator!: MatPaginator;
@@ -180,6 +180,13 @@ export class MainComponent implements AfterViewInit, OnInit {
                 this.dataSource = new MatTableDataSource(this.global.animals);
                 this.dataSource.sort = this.sort;
                 this.dataSource.paginator = this.paginator;
+
+                this.dataSource.sortingDataAccessor = (item: any, property) => {
+                    switch (property) {
+                        case 'dueOutDate': return new Date(item.dueOutDate);
+                        default: return item[property];
+                    }
+                };
              }
 
             this.global.animalsLoading = false;
@@ -208,6 +215,12 @@ export class MainComponent implements AfterViewInit, OnInit {
         this.dataSource = new MatTableDataSource(this.global.animals);
         this.dataSource.sort = this.sort;
         this.dataSource.paginator = this.paginator;
+        this.dataSource.sortingDataAccessor = (item: any, property) => {
+            switch (property) {
+                case 'dueOutDate': return new Date(item.dueOutDate);
+                default: return item[property];
+            }
+        };
 
         this.getData();
     }
