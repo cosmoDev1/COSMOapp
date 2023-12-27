@@ -154,7 +154,7 @@
 
             <ng-container matColumnDef="dueOutDate">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header> Due Out Date </th>
-                <td mat-cell *matCellDef="let element"> {{element.dueOutDate}} </td>
+                <td mat-cell *matCellDef="let element"> {{element.dueOutDate | date: 'MM/dd/yyyy'}} </td>
             </ng-container>
 
 
