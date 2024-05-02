@@ -92,8 +92,10 @@ export class MainComponent implements AfterViewInit, OnInit {
         var head = new HttpHeaders({ 'Content-Type': 'application/json' });
         const options = { headers: head };
         this.refreshInProgress = true;
+        //return;
 
         //testSource=true to force download, false to skip download and use instead pre downloaded file on server
+
         this.http.get(this.global.webserviceBaseUrl + 'animals/prget?testSource=true&shelterId=6').subscribe((res: any) => {
              console.log(res);
              if (res.status == 'error') {
@@ -130,7 +132,7 @@ export class MainComponent implements AfterViewInit, OnInit {
                             species: this.global.capitalize(el.species),
                             volunteerNotes: el.volunteerNotes,
                             volunteerFavorite: el.volunteerFavorite,
-                            imageFile: 'https://cosmoapp.org/webservices/PDFdata/' + el.shelterAnimalId + '.jpg',
+                            imageFile: this.global.imagesBaseUrl+ el.shelterAnimalId + '.jpg',
                             status: el.status,
                             statusInfo: el.statusInfo,
                             statusDate: el.statusDate,
@@ -165,7 +167,8 @@ export class MainComponent implements AfterViewInit, OnInit {
                             species: this.global.capitalize(el.species),
                             volunteerNotes: el.volunteerNotes,
                             volunteerFavorite: el.volunteerFavorite,
-                            imageFile: 'https://cosmoapp.org/webservices/PDFdata/' + el.shelterAnimalId + '.jpg',
+                            imageFile: this.global.imagesBaseUrl + el.shelterAnimalId + '.jpg',
+                            //imageFile: 'https://cosmoapp.org/webservices/PDFdata/' + el.shelterAnimalId + '.jpg',
                             status: el.status,
                             statusInfo: el.statusInfo,
                             statusDate: el.statusDate,
@@ -199,6 +202,7 @@ export class MainComponent implements AfterViewInit, OnInit {
            const dialogRef = this.dialog.open(ConfirmationDialogComponent, {
                 width: '450px', data: { title: 'Error', message: error.message }
            });
+
            dialogRef.afterClosed().subscribe(result => { this.refreshInProgress = false; });
         });
 
@@ -212,15 +216,15 @@ export class MainComponent implements AfterViewInit, OnInit {
         this.global.animals = [];
         this.global.animalsLoading = true;
         this.global.animalsError = "";
-        this.dataSource = new MatTableDataSource(this.global.animals);
-        this.dataSource.sort = this.sort;
-        this.dataSource.paginator = this.paginator;
-        this.dataSource.sortingDataAccessor = (item: any, property) => {
-            switch (property) {
-                case 'dueOutDate': return new Date(item.dueOutDate);
-                default: return item[property];
-            }
-        };
+        //this.dataSource = new MatTableDataSource(this.global.animals);
+        //this.dataSource.sort = this.sort;
+        //this.dataSource.paginator = this.paginator;
+        //this.dataSource.sortingDataAccessor = (item: any, property) => {
+        //    switch (property) {
+        //        case 'dueOutDate': return new Date(item.dueOutDate);
+        //        default: return item[property];
+        //    }
+        //};
 
         this.getData();
     }

@@ -1,0 +1,12 @@
+button {
+    margin-right: 8px;
+}
+
+
+.mat-mdc-radio-button ~ .mat-mdc-radio-button {
+    margin-left: 16px;
+}
+
+.example-full-width {
+    width: 100%;
+}
