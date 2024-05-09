@@ -5,13 +5,12 @@
         <ng-container matColumnDef="action">
             <th mat-header-cell *matHeaderCellDef> Quick Action </th>
             <td mat-cell *matCellDef="let element">
-                <button mat-raised-button color="accent" matTooltip="Medical" matTooltipPosition="right" style="margin-right: 8px"> <span class="material-symbols-outlined">ecg_heart</span> </button>
+                <button mat-raised-button color="warn" matTooltip="Medical" matTooltipPosition="right" style="margin-right: 8px" (click)="requestMedical()"> <span class="material-symbols-outlined">ecg_heart</span> </button>
                 <button mat-raised-button color="primary" matTooltip="Supplies" matTooltipPosition="right" style="margin-right: 8px"> <span class="material-symbols-outlined">shopping_cart</span> </button>
-                <button mat-raised-button color="primary" matTooltip="Other expenses" matTooltipPosition="right" style="margin-right: 8px"> <span class="material-symbols-outlined">paid</span> </button>
+                <button mat-raised-button color="primary" matTooltip="Other expenses" matTooltipPosition="right" style="margin-right: 8px" class="supplies"> <span class="material-symbols-outlined">paid</span> </button>
                 <button mat-raised-button matTooltip="Transport" matTooltipPosition="right" style="margin-right: 8px"> <span class="material-symbols-outlined">airport_shuttle</span> </button>
-                <button mat-raised-button matTooltip="Transfer to another foster" matTooltipPosition="right"> <span class="material-symbols-outlined">move_up</span> </button>
-                <button mat-raised-button matTooltip="Edit Information" matTooltipPosition="right" style="margin-right: 8px; min-width: 56px !important">  <span class="material-symbols-outlined">edit_note</span>
-                </button>
+                <button mat-raised-button matTooltip="Transfer to another foster" matTooltipPosition="right" style="margin-right: 8px"> <span class="material-symbols-outlined">move_up</span> </button>
+                <button mat-raised-button matTooltip="Edit Information" matTooltipPosition="right" style="margin-right: 8px; min-width: 56px !important">  <span class="material-symbols-outlined">edit_note</span> </button>
             </td>
         </ng-container>
 
