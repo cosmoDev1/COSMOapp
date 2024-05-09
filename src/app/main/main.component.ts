@@ -27,6 +27,7 @@ import { endWith, timer } from 'rxjs';
 import { InviteFosterDialogComponent } from '../invite-foster-dialog/invite-foster-dialog.component';
 import { NewTransportDialogComponent } from '../new-transport-dialog/new-transport-dialog.component';
 import { TransportDialogComponent } from '../transport-dialog/transport-dialog.component';
+import { BioDialogComponent } from '../bio-dialog/bio-dialog.component';
 
 
 @Component({
@@ -491,5 +492,15 @@ export class MainComponent implements AfterViewInit, OnInit {
             appState: { target: '/' },
         });
 
-      }
+    }
+
+    BioInfoDialog() {
+        const dialogConfig = new MatDialogConfig();
+        dialogConfig.disableClose = true;
+        dialogConfig.autoFocus = true;
+    
+        const dialogRef = this.dialog.open(BioDialogComponent, dialogConfig);
+
+           
+    }
 }

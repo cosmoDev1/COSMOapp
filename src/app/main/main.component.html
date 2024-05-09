@@ -16,6 +16,7 @@
 
         <mat-divider></mat-divider>
         <button mat-menu-item (click)="logout()">Logout</button>
+        <button mat-menu-item (click)="BioInfoDialog()"> Bio Information</button>
     </mat-menu>
     <span *ngIf="auth.user$ | async as user">Welcome, {{global.rescueName}}</span>
     <span class="example-spacer"></span>
