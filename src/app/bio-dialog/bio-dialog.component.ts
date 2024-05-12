@@ -1,9 +1,5 @@
-import { Component, inject } from '@angular/core';
-import { MatDialogRef, MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
-
-
-
-
+import { Component } from '@angular/core';
+import { MatDialogRef, MatDialogConfig } from '@angular/material/dialog';
 
 @Component({
     selector: 'bio-dialog',
@@ -11,5 +7,20 @@ import { MatDialogRef, MAT_DIALOG_DATA, MatDialog } from '@angular/material/dial
     styleUrls: ['./bio-dialog.component.css']
 })
 export class BioDialogComponent {
-    constructor(public dialogRef: MatDialogRef<BioDialogComponent> ) { }
+
+    LongDescription = { SelectedDate: "", BehaveriolDescription:"",}
+
+    entireFormEnabled: boolean = false;
+constructor(public dialogRef: MatDialogRef<BioDialogComponent>) { }
+
+    submitDialog(BioInfo: any) {
+        const dialogConfig = new MatDialogConfig();
+        dialogConfig.disableClose = true;
+        console.log(this.LongDescription)
+    }
+
+    closeDialog() {
+        console.log('closed')
+        this.dialogRef.close();
+    }
 }

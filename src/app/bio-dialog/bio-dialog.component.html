@@ -1,21 +1,29 @@
+<form #BioInfo="ngForm" (ngSubmit)="submitDialog(BioInfo)">
 
     <h1 mat-dialog-title> Bio information for foster animal </h1>
+    <div mat-dialog-content>
+        <mat-form-field class="picker" >
+            <mat-label>Choose a date</mat-label>
+            <input matInput name=" SelectedDate" [matDatepicker]="picker" [disabled]="entireFormEnabled" [(ngModel)]="LongDescription.SelectedDate">
+            <mat-hint>MM/DD/YYYY</mat-hint>
+            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+        <br />
 
-    <mat-dialog-content>
-        <mat-label>Choose a date</mat-label>
-        <input matInput [matDatepicker]="picker">
-        <mat-hint>MM/DD/YYYY</mat-hint>
-        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-        <mat-datepicker #picker></mat-datepicker>
+        <h3>Animal behavior description.</h3>
+        <mat-form-field class="example-full-width">
+            <textarea matInput placeholder="Ex.Mogi has anxiety..." name="BehavioralDescription" [disabled]="entireFormEnabled" [(ngModel)]="LongDescription.BehaveriolDescription"></textarea>
+            <mat-label>
+                Describe in detail your foster animal behavior,
+                friendly towards other dogs? cats? people? children? etc...
+            </mat-label>
+        </mat-form-field>
 
-        <mat-label> Animal behavior description </mat-label>
-        <input matInput #message maxlength="256" placeholder="Ex. Mogi has anxiety...">
-        <mat-hint align="start"><strong>Describe in detail your foster animal behavior, friendly towards other dogs? cats? people? children? etc... </strong> </mat-hint>
-        <mat-hint align="end">{{message.value.length}} / 256</mat-hint>
-       
-    </mat-dialog-content>
-            
-    <mat-dialog-actions>
-        <button mat-menu-item> Submit</button>
-        <button mat-button mat-dialog-close>Cancel</button>
-    </mat-dialog-actions>
+    </div>
+
+    <div mat-dialog-actions>
+        <button mat-button type="submit" [disabled]="entireFormEnabled">Submit</button>
+        <button mat-button type="button" (click)="closeDialog()" [disabled]="entireFormEnabled">Cancel</button>
+    </div>
+</form>
