@@ -2,7 +2,7 @@
 
     <h1 mat-dialog-title> Bio information for foster animal </h1>
     <div mat-dialog-content>
-        <mat-form-field class="picker" >
+        <mat-form-field class="picker">
             <mat-label>Choose a date</mat-label>
             <input matInput name=" SelectedDate" [matDatepicker]="picker" [disabled]="entireFormEnabled" [(ngModel)]="LongDescription.SelectedDate">
             <mat-hint>MM/DD/YYYY</mat-hint>

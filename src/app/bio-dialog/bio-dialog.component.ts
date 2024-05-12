@@ -17,6 +17,7 @@ constructor(public dialogRef: MatDialogRef<BioDialogComponent>) { }
         const dialogConfig = new MatDialogConfig();
         dialogConfig.disableClose = true;
         console.log(this.LongDescription)
+
     }
 
     closeDialog() {
