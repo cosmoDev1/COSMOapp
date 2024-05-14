@@ -15,6 +15,8 @@ export class MedicalRequestComponent {
     constructor(public dialogRef: MatDialogRef<MedicalRequestComponent>) { }
 
     submitDialog(medicalForm: any) {
+
+
         const dialogConfig = new MatDialogConfig();
         dialogConfig.disableClose = true;
         console.log(this.medicalData)

@@ -13,7 +13,11 @@ export class BioDialogComponent {
     entireFormEnabled: boolean = false;
 constructor(public dialogRef: MatDialogRef<BioDialogComponent>) { }
 
-    submitDialog(BioInfo: any) {
+    submitDialog(bioInfo: any) {
+        console.log(bioInfo)
+
+        if (bioInfo.invalid) { return; }
+
         const dialogConfig = new MatDialogConfig();
         dialogConfig.disableClose = true;
         console.log(this.LongDescription)
