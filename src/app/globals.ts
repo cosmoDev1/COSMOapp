@@ -43,13 +43,14 @@ export class Globals {
 
       constructor(private backend: HttpBackend) {
             this.customHttpClient = new HttpClient(backend);
-
+          
             this.customHttpClient.get(this.webserviceBaseUrl + 'cities/puget').subscribe((res: any) => {
                   console.log('cities loaded')
                   if (res.status == "success") { this.allCities = res.data; }
 
                   this.customHttpClient.get(this.webserviceBaseUrl + 'states/puget').subscribe((res: any) => {
                         console.log('states loaded')
+
                         if (res.status == "success") {
                               this.states = res.data;
                               this.statesChange.emit(this.states);
@@ -64,8 +65,8 @@ export class Globals {
             });
       }
 
-    //public webserviceBaseUrl: string = "https://cosmoapp.org/apps2/api/";
-    public webserviceBaseUrl: string = "http://localhost:5000/api/";
+    public webserviceBaseUrl: string = "https://cosmoapp.org/apps2/api/";
+    //public webserviceBaseUrl: string = "http://localhost:5000/api/";
     public registerActive: boolean = false;
     public testSource: string = '?testSource=false';
     public rescueName: string = "";

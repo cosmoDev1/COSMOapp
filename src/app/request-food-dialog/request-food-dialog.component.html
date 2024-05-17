@@ -1,0 +1,35 @@
+<h2>Request Pet Food</h2>
+
+<mat-dialog-content>
+    <p>How many bags do you need?</p>
+    <mat-form-field>
+        <mat-label>Enter number 1-99</mat-label>
+        <input type="number" min="1" max="99" matInput>
+    </mat-form-field>
+
+    <p>Please specify the food brand</p>
+    <mat-form-field appearance="fill">
+        <mat-label>Brand</mat-label>
+        <input matInput type="text" [(ngModel)]="brand">
+    </mat-form-field>
+
+    <p>How many bags do you have left?</p>
+    <mat-form-field>
+        <mat-label>Enter number 0-9?</mat-label>
+        <input type="number" min="0" max="9" matInput>
+    </mat-form-field>
+
+</mat-dialog-content>
+<mat-dialog-actions>
+    <button mat-button (click)="onClose()">Cancel</button>
+    <button mat-button [mat-dialog-close]="brand" cdkFocusInitial (click)="requestFunc()">Request</button>
+<mat-dialog-actions />
+
+    <!--TODO
+        add ngModel to all inputs,
+        when Cancel pressed, close dialog
+        when Request pressed, take the value of all inputs and put them inside a json object
+        --when Request pressed, if any of the inputs its empty (no values entered) then show errors
+        --*or*
+        --Request button disabled until all the inputs have valid values
+        -->

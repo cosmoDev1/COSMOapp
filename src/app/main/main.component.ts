@@ -28,6 +28,8 @@ import { InviteFosterDialogComponent } from '../invite-foster-dialog/invite-fost
 import { NewTransportDialogComponent } from '../new-transport-dialog/new-transport-dialog.component';
 import { TransportDialogComponent } from '../transport-dialog/transport-dialog.component';
 
+import { RequestFoodDialogComponent } from '../request-food-dialog/request-food-dialog.component';
+
 
 @Component({
     selector: 'main-root',
@@ -492,4 +494,19 @@ export class MainComponent implements AfterViewInit, OnInit {
         });
 
       }
+
+      testing123(){
+         //here goes the code to open your dialog
+
+    }
+
+    testingDaniel() {
+        const dialogConfig = new MatDialogConfig();
+
+        dialogConfig.disableClose = true;
+        dialogConfig.autoFocus = true;
+
+        const dialogRef = this.dialog.open(RequestFoodDialogComponent, dialogConfig);
+
+    }
 }
