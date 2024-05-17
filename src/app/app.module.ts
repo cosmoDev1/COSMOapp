@@ -31,6 +31,7 @@ import { NewTransportDialogComponent } from './new-transport-dialog/new-transpor
 import { TransportDialogComponent } from './transport-dialog/transport-dialog.component';
 import { MedicalRequestComponent } from './medical-request/medical-request.component';
 import { BioDialogComponent } from './bio-dialog/bio-dialog.component';
+import { RequestFoodDialogComponent } from './request-food-dialog/request-food-dialog.component';
 
 
 @NgModule({
@@ -38,7 +39,9 @@ import { BioDialogComponent } from './bio-dialog/bio-dialog.component';
         AppComponent, MainComponent,
         NewRescueDialogComponent, NewFosterDialogComponent, NewShelterDialogComponent, NewNetworkerDialogComponent,
         MyAnimalsDialogComponent, AnimalDetailDialogComponent,
-        ConfirmationDialogComponent, PleaDialogComponent, RegisterComponent, TagDialogComponent, MyFostersDialogComponent, InviteFosterDialogComponent, NewTransportDialogComponent, TransportDialogComponent, MedicalRequestComponent, BioDialogComponent
+        ConfirmationDialogComponent, PleaDialogComponent, RegisterComponent, TagDialogComponent, MyFostersDialogComponent, InviteFosterDialogComponent, NewTransportDialogComponent, TransportDialogComponent, MedicalRequestComponent, BioDialogComponent,
+        RequestFoodDialogComponent
+
     ],
     imports: [
           BrowserModule, AppRoutingModule, BrowserAnimationsModule, MaterialModule, HttpClientModule, FormsModule, ReactiveFormsModule, 

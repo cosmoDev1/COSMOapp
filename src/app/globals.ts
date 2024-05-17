@@ -64,8 +64,8 @@ export class Globals {
             });
       }
 
-    //public webserviceBaseUrl: string = "https://cosmoapp.org/apps2/api/";
-    public webserviceBaseUrl: string = "http://localhost:5000/api/";
+    public webserviceBaseUrl: string = "https://cosmoapp.org/apps2/api/";
+    //public webserviceBaseUrl: string = "http://localhost:5000/api/";
     //'https://cosmoapp.org/webservices/PDFdata/'
     //change this setting for production environment
     public imagesBaseUrl: string = "assets//images//";
