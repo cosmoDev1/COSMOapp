@@ -20,9 +20,10 @@ constructor(public dialogRef: MatDialogRef<BioDialogComponent>) { }
 
         if (bioInfo.invalid) { return; }
 
-        const dialogConfig = new MatDialogConfig();
+        const dialogConfig = new MatDialogConfig(); 
         dialogConfig.disableClose = true;
         console.log(dataToSend)
+
 
     }
 
