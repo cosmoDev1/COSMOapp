@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { MAT_DATE_LOCALE } from '@angular/material/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
@@ -48,7 +49,8 @@ import { RequestFoodDialogComponent } from './request-food-dialog/request-food-d
           AuthModule.forRoot({ ...env.auth }),
     ],
     providers: [{ provide: HTTP_INTERCEPTORS, useClass: AuthHttpInterceptor, multi: true },
-          { provide: LocationStrategy, useClass: HashLocationStrategy }
+        { provide: LocationStrategy, useClass: HashLocationStrategy },
+        { provide: MAT_DATE_LOCALE, useValue: 'en-US' }
     ],
     bootstrap: [AppComponent]
 })
