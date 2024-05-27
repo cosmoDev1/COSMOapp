@@ -1,0 +1,28 @@
+<form name="supplies">
+    
+    <h1 mat-dialog-title> Request Supplies </h1>
+    <div mat-dialog-content>
+        <p> What are you Requesting</p>
+        <mat-radio-group class="radio">
+            <mat-radio-button value="1">Leash</mat-radio-button>
+            <mat-radio-button value="2">Collar</mat-radio-button>
+            <mat-radio-button value="3">Toy</mat-radio-button>
+        </mat-radio-group>
+        <br />
+        <p>What is the quantity?</p>
+        <mat-form-field class="spinner">
+            <mat-label>Enter number?</mat-label>
+            <input type="number" min="1" max="100" matInput>
+        </mat-form-field>
+
+        <p> Describe the type of supply you're requesting?</p>
+        <mat-form-field class="textarea">
+            <textarea matInput> </textarea>
+        </mat-form-field>
+    </div>
+    
+    <div mat-dialog-actions>
+        <button mat-button type="submit">Submit</button>
+        <button mat-button type="button" (click)="closeDialog()">Cancel</button>
+    </div>
+</form>

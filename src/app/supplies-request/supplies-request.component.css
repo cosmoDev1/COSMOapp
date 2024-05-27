@@ -1,0 +1,15 @@
+.radio{
+    display: flex;
+    width:50%;
+}
+
+.spinner {
+    display: flex;
+    width: 50%;
+}
+
+
+.textarea{
+    width:100%;
+}
+
