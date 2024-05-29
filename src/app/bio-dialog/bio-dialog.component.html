@@ -4,7 +4,7 @@
     <div mat-dialog-content>
         <mat-form-field class="picker">
             <mat-label>Choose a date</mat-label>
-            <input matInput name="bioDate" #bioDate="ngModel" [matDatepicker]="picker" [disabled]="entireFormEnabled" [(ngModel)]="LongDescription.SelectedDate" required>
+            <input matInput name="bioDate" #bioDate="ngModel" [matDatepicker]="picker" [disabled]="entireFormEnabled" [(ngModel)]="bioData.SelectedDate" required>
             <mat-hint>MM/DD/YYYY</mat-hint>
             <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
             <mat-datepicker #picker></mat-datepicker>
@@ -13,7 +13,7 @@
         <br />
 
         <mat-form-field class="example-full-width">
-            <textarea matInput name="animalDescription" #animalDescription="ngModel" placeholder="Ex. Mogi is dog and cat friendly..." [disabled]="entireFormEnabled" [(ngModel)]="LongDescription.BehaveriolDescription" required></textarea>
+            <textarea matInput name="animalDescription" #animalDescription="ngModel" placeholder="Ex. Mogi is dog and cat friendly..." [disabled]="entireFormEnabled" [(ngModel)]="bioData.BehaveriolDescription" required></textarea>
             <mat-label>
                 Describe in detail your foster animal behavior
             </mat-label>

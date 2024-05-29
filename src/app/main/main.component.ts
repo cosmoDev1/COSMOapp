@@ -30,6 +30,7 @@ import { TransportDialogComponent } from '../transport-dialog/transport-dialog.c
 
 import { RequestFoodDialogComponent } from '../request-food-dialog/request-food-dialog.component';
 import { BioDialogComponent } from '../bio-dialog/bio-dialog.component';
+import { SuppliesRequestComponent } from '../supplies-request/supplies-request.component';
 
 
 @Component({
@@ -504,7 +505,7 @@ export class MainComponent implements AfterViewInit, OnInit {
 
           dialogConfig.disableClose = true;
           dialogConfig.autoFocus = true;
-          dialogConfig.width = '500px';
+          dialogConfig.width = '600px';
           const dialogRef = this.dialog.open(BioDialogComponent, dialogConfig);
     }
 
@@ -516,5 +517,17 @@ export class MainComponent implements AfterViewInit, OnInit {
 
         const dialogRef = this.dialog.open(RequestFoodDialogComponent, dialogConfig);
 
+    }
+
+    testing1234() {
+        //here goes the code to open your dialog
+        SuppliesRequestComponent
+
+        const dialogConfig = new MatDialogConfig();
+
+        dialogConfig.disableClose = true;
+        dialogConfig.autoFocus = true;
+        dialogConfig.width = '600px';
+        const dialogRef = this.dialog.open(SuppliesRequestComponent, dialogConfig);
     }
 }

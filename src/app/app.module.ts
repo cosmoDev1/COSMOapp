@@ -33,7 +33,7 @@ import { TransportDialogComponent } from './transport-dialog/transport-dialog.co
 import { MedicalRequestComponent } from './medical-request/medical-request.component';
 import { BioDialogComponent } from './bio-dialog/bio-dialog.component';
 import { RequestFoodDialogComponent } from './request-food-dialog/request-food-dialog.component';
-import { MoveRequestComponent } from './move-request/move-request.component';
+import { SuppliesRequestComponent } from './supplies-request/supplies-request.component';
 
 
 @NgModule({
@@ -43,7 +43,7 @@ import { MoveRequestComponent } from './move-request/move-request.component';
         MyAnimalsDialogComponent, AnimalDetailDialogComponent,
         ConfirmationDialogComponent, PleaDialogComponent, RegisterComponent, TagDialogComponent, MyFostersDialogComponent, InviteFosterDialogComponent, NewTransportDialogComponent, TransportDialogComponent, MedicalRequestComponent, BioDialogComponent,
         RequestFoodDialogComponent,
-        MoveRequestComponent
+        SuppliesRequestComponent
 
     ],
     imports: [

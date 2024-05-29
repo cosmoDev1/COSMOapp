@@ -1,0 +1,15 @@
+.Radio{
+    display: flex;
+    width:50%;
+}
+
+.Quantity {
+    display: flex;
+    width: 50%;
+}
+
+
+.TextDescription{
+    width:200%;
+}
+

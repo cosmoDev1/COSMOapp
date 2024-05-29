@@ -1,0 +1,35 @@
+<form name="supplyInfo" #supplyInfo="ngForm" (ngSubmit)="submitDialog(supplyInfo)">
+    
+    <h1 mat-dialog-title> Request Supplies </h1>
+    <div mat-dialog-content>
+        
+        <mat-label> What are you Requesting</mat-label>
+        <mat-radio-group class="Radio" matInput #RadioDescription="ngModel" [(ngModel)]="supplyData.RadioDescription" [disabled]="entireFormEnabled" required>
+            <mat-radio-button value="1">Leash</mat-radio-button>
+            <mat-radio-button value="2">Collar</mat-radio-button>
+            <mat-radio-button value="3">Toy</mat-radio-button>
+            <mat-radio-button value="4">Other</mat-radio-button>
+            <mat-error *ngIf="!RadioDescription.valid"></mat-error>
+        </mat-radio-group>
+        <br />
+        
+        <mat-label>What is the quantity?</mat-label>
+        <mat-form-field class="Quantity">
+            <input matInput #Quantity="ngModel" [(ngModel)]="supplyData.Quantity" [disabled]="entireFormEnabled" required>
+            <mat-label>Enter number?</mat-label>
+            <input type="number" min="1" max="100" matInput />
+            <mat-error *ngIf="!Quantity.valid"></mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+            <textarea matInput class="TextDescription" #TextDescription="ngModel" [(ngModel)]="supplyData.TextDescription" [disabled]="entireFormEnabled" required> </textarea>  
+            <mat-label> Describe the type of supply you're requesting?</mat-label>
+            <mat-error *ngIf="!TextDescription.valid"></mat-error>
+        </mat-form-field>
+    </div>
+    
+    <div mat-dialog-actions>
+        <button mat-button type="submit" [disabled]="!supplyInfo.valid" >Submit</button>
+        <button mat-button type="button" (click)="closeDialog()" [disabled]="entireFormEnabled" >Cancel</button>
+    </div>
+</form>
