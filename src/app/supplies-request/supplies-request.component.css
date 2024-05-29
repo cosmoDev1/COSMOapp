@@ -1,15 +1,15 @@
-.Radio{
+.radio{
     display: flex;
     width:50%;
 }
 
-.Quantity {
+.quantity {
     display: flex;
     width: 50%;
 }
 
 
-.TextDescription{
-    width:200%;
+.text{
+    width:300%;
 }
 

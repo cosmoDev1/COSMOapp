@@ -520,7 +520,7 @@ export class MainComponent implements AfterViewInit, OnInit {
     }
 
     testing1234() {
-        //here goes the code to open your dialog
+       
         SuppliesRequestComponent
 
         const dialogConfig = new MatDialogConfig();

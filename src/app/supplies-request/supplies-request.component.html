@@ -4,7 +4,7 @@
     <div mat-dialog-content>
         
         <mat-label> What are you Requesting</mat-label>
-        <mat-radio-group class="Radio" matInput #RadioDescription="ngModel" [(ngModel)]="supplyData.RadioDescription" [disabled]="entireFormEnabled" required>
+        <mat-radio-group class="radio" matInput #RadioDescription="ngModel" [(ngModel)]="supplyData.RadioDescription" [disabled]="entireFormEnabled" required>
             <mat-radio-button value="1">Leash</mat-radio-button>
             <mat-radio-button value="2">Collar</mat-radio-button>
             <mat-radio-button value="3">Toy</mat-radio-button>
@@ -14,7 +14,7 @@
         <br />
         
         <mat-label>What is the quantity?</mat-label>
-        <mat-form-field class="Quantity">
+        <mat-form-field class="quantity">
             <input matInput #Quantity="ngModel" [(ngModel)]="supplyData.Quantity" [disabled]="entireFormEnabled" required>
             <mat-label>Enter number?</mat-label>
             <input type="number" min="1" max="100" matInput />
@@ -22,7 +22,7 @@
         </mat-form-field>
 
         <mat-form-field>
-            <textarea matInput class="TextDescription" #TextDescription="ngModel" [(ngModel)]="supplyData.TextDescription" [disabled]="entireFormEnabled" required> </textarea>  
+            <textarea class="text" matInput #TextDescription="ngModel" [(ngModel)]="supplyData.TextDescription" [disabled]="entireFormEnabled" required> </textarea>  
             <mat-label> Describe the type of supply you're requesting?</mat-label>
             <mat-error *ngIf="!TextDescription.valid"></mat-error>
         </mat-form-field>
