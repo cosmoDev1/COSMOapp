@@ -504,7 +504,7 @@ export class MainComponent implements AfterViewInit, OnInit {
 
           dialogConfig.disableClose = true;
           dialogConfig.autoFocus = true;
-
+          dialogConfig.width = '500px';
           const dialogRef = this.dialog.open(BioDialogComponent, dialogConfig);
     }
 
