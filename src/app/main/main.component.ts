@@ -499,7 +499,7 @@ export class MainComponent implements AfterViewInit, OnInit {
 
       testing123(){
           //here goes the code to open your dialog
-          BioDialogComponent
+          //BioDialogComponent
 
           const dialogConfig = new MatDialogConfig();
 
@@ -521,7 +521,7 @@ export class MainComponent implements AfterViewInit, OnInit {
 
     testing1234() {
         //here goes the code to open your dialog
-        SuppliesRequestComponent
+        //SuppliesRequestComponent
 
         const dialogConfig = new MatDialogConfig();
 
