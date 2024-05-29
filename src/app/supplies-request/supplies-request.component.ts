@@ -8,21 +8,21 @@ import { MatDialogRef, MatDialogConfig } from '@angular/material/dialog';
 })
 export class SuppliesRequestComponent {
 
-    supplyData = { RadioDescription: "", Quantity: "", TextDescription: "", }
+    supplyData = { radioDescription: "", quantity: "", textDescription: "", }
 
     entireFormEnabled: boolean = false;
     constructor(public dialogRef: MatDialogRef<SuppliesRequestComponent>) { }
 
-    submitDialog(supplyInfo: any) { 
-     var dataToSend = { RadioDescription: this.supplyData.RadioDescription.toLocaleString(), Quantity: this.supplyData.Quantity, TextDescription: this.supplyData.TextDescription }
+    submitDialog(supplyInfo: any) {
+        var dataToSend = { radioDescription: this.supplyData.radioDescription.toLocaleString(), quantity: this.supplyData.quantity, textDescription: this.supplyData.textDescription }
 
-    console.log(supplyInfo)
+        console.log(supplyInfo)
 
-    if (supplyInfo.invalid) { return; }
+        if (supplyInfo.invalid) { return; }
 
-    const dialogConfig = new MatDialogConfig();
-    dialogConfig.disableClose = true;
-    console.log(dataToSend)
+        const dialogConfig = new MatDialogConfig();
+        dialogConfig.disableClose = true;
+        console.log(dataToSend)
     }
 
 
