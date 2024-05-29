@@ -8,7 +8,7 @@ import { MatDialogConfig, MatDialogRef } from '@angular/material/dialog';
 })
 export class MoveRequestComponent {
 
-    moveData = { homeStatus:"", behaviorStatus:"", describeTrauma:"" }
+    moveData = { homeStatus:"1", behaviorStatus:"1", describeTrauma:"" }
 
     entireFormEnabled: boolean = false;
 

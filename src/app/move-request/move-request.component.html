@@ -6,19 +6,18 @@
         <table>
             <tr>
                 <td>
-                    <p>What is the frequency of the symptoms?</p>
+                    <p>Foster request to move the animal to another home?</p>
                 </td>
                 <td>
                     <mat-radio-group aria-label="Select an option" name="livingStatus" #livingStatus="ngModel" [(ngModel)]="moveData.homeStatus" [disabled]="entireFormEnabled">
-                        <mat-radio-button color="primary" value="1" [checked]="true">Every Hour</mat-radio-button>
-                        <mat-radio-button color="primary" value="2">Every 2 Hours</mat-radio-button>
-                        <mat-radio-button color="primary" value="3">Every 3 Hours</mat-radio-button>
+                        <mat-radio-button color="primary" value="1" [checked]="true">Temporary</mat-radio-button>
+                        <mat-radio-button color="primary" value="2">Permanent</mat-radio-button>
                     </mat-radio-group>
                 </td>
             </tr>
             <tr>
                 <td>
-                    <p>Does the animal require transportation?</p>
+                    <p>Does the animal have behavior issues?</p>
                 </td>
                 <td>
                     <mat-radio-group aria-label="Select an option" name="animalBehavior" #animalBehavior="ngModel" [(ngModel)]="moveData.behaviorStatus" [disabled]="entireFormEnabled">
@@ -30,9 +29,9 @@
             <tr>
                 <td colspan="2">
                     <mat-form-field class="example-full-width">
-                        <mat-label>Please describe the symptoms</mat-label>
+                        <mat-label>Please describe the animals behavior</mat-label>
                         <textarea matInput required name="traumaDump" #traumaDump="ngModel" [(ngModel)]="moveData.describeTrauma" placeholder="Ex. The animal shows signs..." [disabled]="entireFormEnabled"></textarea>
-                        <mat-error>Please enter description of symptoms</mat-error>
+                        <mat-error>Please enter a description of behavior</mat-error>
                     </mat-form-field>
                 </td>
             </tr>
