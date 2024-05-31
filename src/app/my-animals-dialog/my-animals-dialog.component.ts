@@ -3,6 +3,7 @@ import { MatDialogRef, MAT_DIALOG_DATA, MatDialog, MatDialogConfig } from '@angu
 import { MatTableDataSource } from '@angular/material/table';
 import { Animal, Globals } from '../globals';
 import { MedicalRequestComponent } from '../medical-request/medical-request.component';
+import { MoveRequestComponent } from '../move-request/move-request.component';
 
 
 @Component({
@@ -30,5 +31,18 @@ export class MyAnimalsDialogComponent {
 
    
     }
+
+    moveRequest() {
+        const dialogConfig = new MatDialogConfig();
+
+        dialogConfig.disableClose = true;
+        dialogConfig.autoFocus = true;
+        dialogConfig.data = { title: 'Notice', message: 'There are no animals tagged yet.', notification: true };
+
+        const dialogRef = this.dialog.open(MoveRequestComponent, dialogConfig);
+
+
+    }
+
 
 }

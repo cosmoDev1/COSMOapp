@@ -1,0 +1,48 @@
+<form name="moveForm" #moveForm="ngForm" (ngSubmit)="submitDialog(moveForm)">
+
+    <h1 mat-dialog-title>Medical Inquires</h1>
+    <div mat-dialog-content>
+
+        <table>
+            <tr>
+                <td>
+                    <p>Foster request to move the animal to another home?</p>
+                </td>
+                <td>
+                    <mat-radio-group aria-label="Select an option" name="livingStatus" #livingStatus="ngModel" [(ngModel)]="moveData.homeStatus" [disabled]="entireFormEnabled">
+                        <mat-radio-button color="primary" value="1" [checked]="true">Temporary</mat-radio-button>
+                        <mat-radio-button color="primary" value="2">Permanent</mat-radio-button>
+                    </mat-radio-group>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <p>Does the animal have behavior issues?</p>
+                </td>
+                <td>
+                    <mat-radio-group aria-label="Select an option" name="animalBehavior" #animalBehavior="ngModel" [(ngModel)]="moveData.behaviorStatus" [disabled]="entireFormEnabled">
+                        <mat-radio-button color="primary" value="1" [checked]="true">No</mat-radio-button>
+                        <mat-radio-button color="primary" value="2">Yes</mat-radio-button>
+                    </mat-radio-group>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <mat-form-field class="example-full-width">
+                        <mat-label>Please describe the animals behavior</mat-label>
+                        <textarea matInput required name="traumaDump" #traumaDump="ngModel" [(ngModel)]="moveData.describeTrauma" placeholder="Ex. The animal shows signs..." [disabled]="entireFormEnabled"></textarea>
+                        <mat-error>Please enter a description of behavior</mat-error>
+                    </mat-form-field>
+                </td>
+            </tr>
+
+        </table>
+
+
+    </div>
+    <div mat-dialog-actions>
+        <button mat-button type="button" (click)="closeDialog()" [disabled]="entireFormEnabled">Cancel</button>
+        <button mat-button type="submit" [disabled]="!moveForm.valid">Submit</button>
+    </div>
+
+</form>

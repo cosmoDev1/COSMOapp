@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { MAT_DATE_LOCALE } from '@angular/material/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
@@ -32,6 +33,8 @@ import { TransportDialogComponent } from './transport-dialog/transport-dialog.co
 import { MedicalRequestComponent } from './medical-request/medical-request.component';
 import { BioDialogComponent } from './bio-dialog/bio-dialog.component';
 import { RequestFoodDialogComponent } from './request-food-dialog/request-food-dialog.component';
+import { SuppliesRequestComponent } from './supplies-request/supplies-request.component';
+import { MoveRequestComponent } from './move-request/move-request.component';
 
 
 @NgModule({
@@ -40,7 +43,8 @@ import { RequestFoodDialogComponent } from './request-food-dialog/request-food-d
         NewRescueDialogComponent, NewFosterDialogComponent, NewShelterDialogComponent, NewNetworkerDialogComponent,
         MyAnimalsDialogComponent, AnimalDetailDialogComponent,
         ConfirmationDialogComponent, PleaDialogComponent, RegisterComponent, TagDialogComponent, MyFostersDialogComponent, InviteFosterDialogComponent, NewTransportDialogComponent, TransportDialogComponent, MedicalRequestComponent, BioDialogComponent,
-        RequestFoodDialogComponent
+        RequestFoodDialogComponent,
+        SuppliesRequestComponent, MoveRequestComponent
 
     ],
     imports: [
@@ -48,7 +52,8 @@ import { RequestFoodDialogComponent } from './request-food-dialog/request-food-d
           AuthModule.forRoot({ ...env.auth }),
     ],
     providers: [{ provide: HTTP_INTERCEPTORS, useClass: AuthHttpInterceptor, multi: true },
-          { provide: LocationStrategy, useClass: HashLocationStrategy }
+        { provide: LocationStrategy, useClass: HashLocationStrategy },
+        { provide: MAT_DATE_LOCALE, useValue: 'en-US' }
     ],
     bootstrap: [AppComponent]
 })

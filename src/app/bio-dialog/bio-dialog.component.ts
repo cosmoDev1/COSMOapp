@@ -8,19 +8,22 @@ import { MatDialogRef, MatDialogConfig } from '@angular/material/dialog';
 })
 export class BioDialogComponent {
 
-    LongDescription = { SelectedDate: "", BehaveriolDescription:"",}
+    bioData = { SelectedDate: "", BehaveriolDescription: "" };
 
     entireFormEnabled: boolean = false;
 constructor(public dialogRef: MatDialogRef<BioDialogComponent>) { }
 
     submitDialog(bioInfo: any) {
+        var dataToSend = { SelectedDate: this.bioData.SelectedDate.toLocaleString(), BehaveriolDescription: this.bioData.BehaveriolDescription }
+
         console.log(bioInfo)
 
         if (bioInfo.invalid) { return; }
 
-        const dialogConfig = new MatDialogConfig();
+        const dialogConfig = new MatDialogConfig(); 
         dialogConfig.disableClose = true;
-        console.log(this.LongDescription)
+        console.log(dataToSend)
+
 
     }
 

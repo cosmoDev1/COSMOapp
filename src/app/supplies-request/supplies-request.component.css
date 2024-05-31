@@ -1,0 +1,15 @@
+.radio{
+    display: flex;
+    width:50%;
+}
+
+.quantity {
+    display: flex;
+    width: 50%;
+}
+
+
+.text{
+    width: 100% !important;
+}
+
