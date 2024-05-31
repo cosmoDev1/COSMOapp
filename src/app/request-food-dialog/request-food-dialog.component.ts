@@ -14,10 +14,14 @@ import {
   styleUrls: ['./request-food-dialog.component.css']
 })
 export class RequestFoodDialogComponent {
-    brand: string = "";
+    constructor(public dialogRef: MatDialogRef<RequestFoodDialogComponent>) { }
+    brand: string = ""
+    quantity_needed: number = 0
+    quantity_owned: number = 0
+    ;
 
     onClose() {
-
+        this.dialogRef.close();
     }
 
     requestFunc() {
