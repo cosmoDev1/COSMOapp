@@ -519,6 +519,19 @@ export class MainComponent implements AfterViewInit, OnInit {
 
     }
 
+
+
+    testingDaniel2() {
+        const dialogConfig = new MatDialogConfig();
+
+        dialogConfig.disableClose = true;
+        dialogConfig.autoFocus = true;
+        dialogConfig.width = '600px';
+
+        const dialogRef = this.dialog.open(RequestFoodDialogComponent, dialogConfig);
+
+    }
+
     testing1234() {
         //here goes the code to open your dialog
         //SuppliesRequestComponent
