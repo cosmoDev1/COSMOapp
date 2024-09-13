@@ -13,14 +13,13 @@
         <button (click)="myAnimalsDialog()" mat-menu-item>My Animals</button>
         <button (click)="myFosterDialog()" mat-menu-item>My Fosters</button>
         <button (click)="transportDialog()" mat-menu-item>My Transports</button>
-        <button (click)="testSample()" mat-menu-item>Test Sample</button>
+        <button (click)="testSample()" mat-menu-item>Test Sample WS</button>
 
         <mat-divider></mat-divider>
         <button mat-menu-item (click)="logout()">Logout</button>
-        <button mat-menu-item (click)="testing123()">Test Jackie Code</button>
-        <button mat-menu-item (click)="testing1234()">Test2 Jackie Code</button>
-        <button mat-menu-item (click)="testingDaniel()">Test Daniel Code</button>
-        <button mat-menu-item (click)="testingDaniel2()">Test2 Daniel Code</button>
+        <button mat-menu-item (click)="testing123()">Test Bio Dialog</button>
+        <button mat-menu-item (click)="testing1234()">Test Req Supplies Dialog</button>
+        <button mat-menu-item (click)="testingDaniel()">Test Pet Food</button>
     </mat-menu>
     <span *ngIf="auth.user$ | async as user">Welcome, {{global.rescueName}}</span>
     <span class="example-spacer"></span>
