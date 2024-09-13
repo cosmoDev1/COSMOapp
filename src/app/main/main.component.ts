@@ -342,6 +342,17 @@ export class MainComponent implements AfterViewInit, OnInit {
 
     }
 
+    testSample() {
+        //METHODS: POST GET DELETE 
+        this.http.get('http://localhost:5000/api/sample').subscribe((resp: any) => {
+            console.log('call successful')
+            console.log(resp);
+        }, (error: any) => {
+            console.log(error)
+            console.error('There was an error sending the data:', error);
+        });
+    }
+
 
     tagAnimal(id: any, shelterAnimalId: string, name: string, species: string) {
         const dialogConfig = new MatDialogConfig();
