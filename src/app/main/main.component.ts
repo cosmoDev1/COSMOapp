@@ -342,6 +342,17 @@ export class MainComponent implements AfterViewInit, OnInit {
 
     }
 
+    testSample() {
+        //METHODS: POST GET DELETE 
+        this.http.get('http://localhost:5000/api/sample').subscribe((resp: any) => {
+            console.log('call successful')
+            console.log(resp);
+        }, (error: any) => {
+            console.log(error)
+            console.error('There was an error sending the data:', error);
+        });
+    }
+
 
     tagAnimal(id: any, shelterAnimalId: string, name: string, species: string) {
         const dialogConfig = new MatDialogConfig();
@@ -514,23 +525,13 @@ export class MainComponent implements AfterViewInit, OnInit {
 
         dialogConfig.disableClose = true;
         dialogConfig.autoFocus = true;
+        //dialogConfig.width = '600px';
 
         const dialogRef = this.dialog.open(RequestFoodDialogComponent, dialogConfig);
 
     }
 
 
-
-    testingDaniel2() {
-        const dialogConfig = new MatDialogConfig();
-
-        dialogConfig.disableClose = true;
-        dialogConfig.autoFocus = true;
-        dialogConfig.width = '600px';
-
-        const dialogRef = this.dialog.open(RequestFoodDialogComponent, dialogConfig);
-
-    }
 
     testing1234() {
         //here goes the code to open your dialog

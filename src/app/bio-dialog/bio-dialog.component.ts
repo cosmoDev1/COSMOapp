@@ -1,5 +1,7 @@
-import { ApplicationInitStatus, Component } from '@angular/core';
+import { Component } from '@angular/core';
 import { MatDialogRef, MatDialogConfig } from '@angular/material/dialog';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Globals, Animal } from '../globals';
 
 @Component({
     selector: 'bio-dialog',
@@ -8,33 +10,63 @@ import { MatDialogRef, MatDialogConfig } from '@angular/material/dialog';
 })
 export class BioDialogComponent {
 
-    bioData = { SelectedDate: "", BehaveriolDescription: "" };
+    //bioData = { SelectedDate: "", BehaveriolDescription: "" };
+    SelectedDate = "";
+    BehaveriolDescription = "";
 
-
-    entireFormEnabled: boolean = true;
-    constructor(public dialogRef: MatDialogRef<BioDialogComponent>) { }
+    entireFormEnabled: boolean = false;
+    constructor(public global: Globals, private http: HttpClient, public dialogRef: MatDialogRef<BioDialogComponent>) { }
 
     submitDialog(bioInfo: any) {
-        var dataToSend = { SelectedDate: this.bioData.SelectedDate.toLocaleString(), BehaveriolDescription: this.bioData.BehaveriolDescription }
+        var dataToSend = { SelectedDate: this.SelectedDate.toLocaleString(), BehaveriolDescription: this.BehaveriolDescription }
 
-        console.log(this.bioData)
+        console.log(bioInfo)
 
         if (bioInfo.invalid) { return; }
 
         const dialogConfig = new MatDialogConfig(); 
         dialogConfig.disableClose = true;
         console.log(dataToSend)
-        //here we send that info to the database using an httpclient
+    }
 
+    testBio() {
+        //POST client -> serverside
+        //GET  client <- serverside
+        //XML  xtended markup language  HTML  packet sniff
 
-        //loosely typed language
-        //strongly typed language - strict mode
+        //this.http.post(this.global.webserviceBaseUrl + 'bio/pupost', {}).subscribe((res: any) => {
+        this.http.post('http://localhost:5000/api/bio/pupost', {}).subscribe((res: any) => {
+            console.log(res);
+            //if (res.text == 'error') {
+            //    //openm dialog "AN ERROR OCURRED"
+            //}
+            //if (res.text == 'ok') {
+            //    //open dialog Operation Successful
+            //}
+        });
 
-        //SQL         C#               HTML CSS javascript typescript Angular (typescript framework)  React
-        database < -> server side                    <-> client side
-                      //API                               //http client
-                      //webservices -> endpoints
-                      //sql clients
+    }
+
+    saveBio() {
+        //var data = { date: this.bioData.SelectedDate, description: this.bioData.BehaveriolDescription }
+
+        var tempDate = this.SelectedDate;
+        tempDate = tempDate.toLocaleString();
+        
+        var myObj = { date: this.SelectedDate.toLocaleString(), description: this.BehaveriolDescription };
+        console.clear()
+        console.log(myObj)
+
+        this.http.post('http://localhost:5000/api/bio', myObj).subscribe((res: any) => {
+
+            console.log('everything went ok')
+            console.log(res);
+
+            if (res.indexOf('error') > -1) { console.log('An error ocurred ' + res); }
+        }, (err: any) => {
+            //this section only happens if clientside -> serverside fails
+            console.log('something horrible happened')
+        })
 
     }
 
