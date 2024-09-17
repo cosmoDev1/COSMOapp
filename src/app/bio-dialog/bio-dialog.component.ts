@@ -62,7 +62,7 @@ export class BioDialogComponent {
             console.log('everything went ok')
             console.log(res);
 
-            if (res.indexOf('error') > -1) { console.log('An error ocurred ' + res); }
+            
         }, (err: any) => {
             //this section only happens if clientside -> serverside fails
             console.log('something horrible happened')

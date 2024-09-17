@@ -1,6 +1,6 @@
 <form name="medicalForm" #medicalForm="ngForm" (ngSubmit)="submitDialog(medicalForm)">
 
-    <h1 mat-dialog-title>Medical Inquires</h1>
+    <h1 mat-dialog-title>Medical Inquiries</h1>
     <div mat-dialog-content>
 
         <table>
@@ -18,10 +18,10 @@
                     <p>What is the frequency of the symptoms?</p>
                 </td>
                 <td>
-                    <mat-radio-group aria-label="Select an option" name="medicalFrequency" #medicalFrequency="ngModel" [(ngModel)]="medicalData.frequency" [disabled]="entireFormEnabled">
-                        <mat-radio-button color="primary" value="1" [checked]="true">Every Hour</mat-radio-button>
-                        <mat-radio-button color="primary" value="2">Every 2 Hours</mat-radio-button>
-                        <mat-radio-button color="primary" value="3">Every 3 Hours</mat-radio-button>
+                    <mat-radio-group aria-label="Select an option" name="medicalFrequency" maxlength="128" #medicalFrequency="ngModel" [(ngModel)]="medicalData.frequency" [disabled]="entireFormEnabled">
+                        <mat-radio-button color="primary" value="0" [checked]="true">Every Hour</mat-radio-button>
+                        <mat-radio-button color="primary" value="1">Every 2 Hours</mat-radio-button>
+                        <mat-radio-button color="primary" value="2">Every 3 Hours</mat-radio-button>
                     </mat-radio-group>
                 </td>
             </tr>
@@ -32,7 +32,7 @@
                 <td>
                     <mat-form-field class="example-full-width">
                         <mat-label>Choose a date</mat-label>
-                        <input matInput required name="medicalDate" #medicalDate="ngModel" [(ngModel)]="medicalData.selectedDate" [matDatepicker]="picker" [disabled]="entireFormEnabled">
+                        <input matInput required name="medicalDate" maxlength="128" #medicalDate="ngModel" [(ngModel)]="medicalData.selectedDate" [matDatepicker]="picker" [disabled]="entireFormEnabled">
                         <mat-hint>MM/DD/YYYY</mat-hint>
                         <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
                         <mat-datepicker #picker></mat-datepicker>
@@ -45,9 +45,9 @@
                     <p>Does the animal require transportation?</p>
                 </td>
                 <td>
-                    <mat-radio-group aria-label="Select an option" name="medicalTransport" #medicalTransport="ngModel" [(ngModel)]="medicalData.requiresTransport" [disabled]="entireFormEnabled">
-                        <mat-radio-button color="primary" value="1" [checked]="true">No</mat-radio-button>
-                        <mat-radio-button color="primary" value="2">Yes</mat-radio-button>
+                    <mat-radio-group aria-label="Select an option" name="medicalTransport" maxlength="128" #medicalTransport="ngModel" [(ngModel)]="medicalData.requiresTransport" [disabled]="entireFormEnabled">
+                        <mat-radio-button color="primary" value="0" [checked]="true">No</mat-radio-button>
+                        <mat-radio-button color="primary" value="1">Yes</mat-radio-button>
                     </mat-radio-group>
                 </td>
             </tr>
