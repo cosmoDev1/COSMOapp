@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { MatDialogConfig, MatDialogRef } from '@angular/material/dialog';
-
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Component({
   selector: 'app-medical-request',
@@ -13,10 +13,21 @@ export class MedicalRequestComponent {
 
     entireFormEnabled: boolean = false;
 
-    constructor(public dialogRef: MatDialogRef<MedicalRequestComponent>) { }
+    constructor(private http: HttpClient, public dialogRef: MatDialogRef<MedicalRequestComponent>) { }
 
     submitDialog(medicalForm: any) {
         var dataToSend = { symptomDescription: this.medicalData.symptomDescription, frequency: this.medicalData.frequency, selectedDate: this.medicalData.selectedDate.toLocaleString(), requiresTransport: this.medicalData.requiresTransport }
+
+        this.http.post('http://localhost:5000/api/medical', dataToSend).subscribe((res: any) => {
+
+            console.log('everything went ok')
+            console.log(res);
+
+
+        }, (err: any) => {
+            //this section only happens if clientside -> serverside fails
+            console.log('something horrible happened')
+        })
 
         if (medicalForm.invalid) { return; }
 
