@@ -8,13 +8,13 @@ import { MatDialogRef, MatDialogConfig } from '@angular/material/dialog';
 })
 export class SuppliesRequestComponent {
 
-    supplyData = { radioDescription: "", quantity: "", textDescription: "", }
+    supplyData = { radioDescription: "1", quantity: "", textDescription: "", }
 
     entireFormEnabled: boolean = false;
     constructor(public dialogRef: MatDialogRef<SuppliesRequestComponent>) { }
 
     submitDialog(supplyInfo: any) {
-        var dataToSend = { radioDescription: this.supplyData.radioDescription.toLocaleString(), quantity: this.supplyData.quantity, textDescription: this.supplyData.textDescription }
+        var dataToSend = { radioDescription: this.supplyData.radioDescription, quantity: this.supplyData.quantity, textDescription: this.supplyData.textDescription }
 
         console.log(supplyInfo)
 

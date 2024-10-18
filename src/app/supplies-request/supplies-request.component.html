@@ -15,9 +15,8 @@
         
 <!--        <mat-label>What is the quantity?</mat-label>-->
         <mat-form-field class="quantity">
-            <input matInput #quantity="ngModel" name="quantity" [(ngModel)]="supplyData.quantity" [disabled]="entireFormEnabled" required>
+            <input matInput type="number" min="1" max="100" #quantity="ngModel" name="quantity" [(ngModel)]="supplyData.quantity" [disabled]="entireFormEnabled" required>
             <mat-label>Quantity</mat-label>
-            <input type="number" min="1" max="100" matInput />
             <mat-error *ngIf="!quantity.valid">Enter a number</mat-error>
         </mat-form-field>
 
