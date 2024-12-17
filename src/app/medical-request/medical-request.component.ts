@@ -16,24 +16,25 @@ export class MedicalRequestComponent {
     constructor(private http: HttpClient, public dialogRef: MatDialogRef<MedicalRequestComponent>) { }
 
     submitDialog(medicalForm: any) {
+        if (medicalForm.invalid) { return; }
+
         var dataToSend = { symptomDescription: this.medicalData.symptomDescription, frequency: this.medicalData.frequency, selectedDate: this.medicalData.selectedDate.toLocaleString(), requiresTransport: this.medicalData.requiresTransport }
 
         this.http.post('http://localhost:5000/api/medical', dataToSend).subscribe((res: any) => {
-
             console.log('everything went ok')
             console.log(res);
 
-
+            this.dialogRef.close();
         }, (err: any) => {
             //this section only happens if clientside -> serverside fails
             console.log('something horrible happened')
+
         })
 
-        if (medicalForm.invalid) { return; }
 
-        const dialogConfig = new MatDialogConfig();
-        dialogConfig.disableClose = true;
-        console.log(this.medicalData.selectedDate.toLocaleString())
+        //const dialogConfig = new MatDialogConfig();
+        //dialogConfig.disableClose = true;
+        //console.log(this.medicalData.selectedDate.toLocaleString())
         console.log(dataToSend)
     }
 

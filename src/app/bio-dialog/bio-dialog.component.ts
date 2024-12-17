@@ -29,23 +29,23 @@ export class BioDialogComponent {
         console.log(dataToSend)
     }
 
-    testBio() {
-        //POST client -> serverside
-        //GET  client <- serverside
-        //XML  xtended markup language  HTML  packet sniff
+    //testBio() {
+    //    ////POST client -> serverside
+    //    ////GET  client <- serverside
+    //    ////XML  xtended markup language  HTML  packet sniff
 
-        //this.http.post(this.global.webserviceBaseUrl + 'bio/pupost', {}).subscribe((res: any) => {
-        this.http.post('http://localhost:5000/api/bio/pupost', {}).subscribe((res: any) => {
-            console.log(res);
-            //if (res.text == 'error') {
-            //    //openm dialog "AN ERROR OCURRED"
-            //}
-            //if (res.text == 'ok') {
-            //    //open dialog Operation Successful
-            //}
-        });
+    //    ////this.http.post(this.global.webserviceBaseUrl + 'bio/pupost', {}).subscribe((res: any) => {
+    //    //this.http.post('http://localhost:5000/api/bio/pupost', {}).subscribe((res: any) => {
+    //    //    console.log(res);
+    //    //    //if (res.text == 'error') {
+    //    //    //    //openm dialog "AN ERROR OCURRED"
+    //    //    //}
+    //    //    //if (res.text == 'ok') {
+    //    //    //    //open dialog Operation Successful
+    //    //    //}
+    //    });
 
-    }
+    //}
 
     saveBio() {
         //var data = { date: this.bioData.SelectedDate, description: this.bioData.BehaveriolDescription }

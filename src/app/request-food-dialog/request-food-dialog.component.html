@@ -1,29 +1,35 @@
-<h1 mat-dialog-title>Request Pet Food</h1>
+<form name="requestInfo" #requestInfo="ngForm" (ngSubmit)="submitDialog(requestInfo)">
 
-<mat-dialog-content>
-    <p>How many bags do you need?</p>
-    <mat-form-field>
-        <mat-label>Enter number 1-99</mat-label>
-        <input type="number" min="1" max="99" [(ngModel)]="quantity_needed" matInput>
-    </mat-form-field>
+    <h1 mat-dialog-title>Request Pet Food</h1>
+    <div mat-dialog-content>
 
-    <p>Please specify the food brand</p>
-    <mat-form-field appearance="fill">
-        <mat-label>Brand</mat-label>
-        <input matInput type="text" [(ngModel)]="brand">
-    </mat-form-field>
+        <mat-form-field style="width: 100%">
+            <input matInput type="number" #bagQuantity="ngModel" name="bagQuantity" [(ngModel)]="requestData.bagQuantity" [disabled]="entireFormEnabled" required>
+            <mat-label>Enter food bag quantity</mat-label>
+            <mat-error *ngIf="!bagQuantity.valid">Enter a number</mat-error>
+        </mat-form-field>
 
-    <p>How many bags do you have left?</p>
-    <mat-form-field>
-        <mat-label>Enter number 0-9?</mat-label>
-        <input type="number" min="0" max="9" [(ngModel)]="quantity_owned" matInput>
-    </mat-form-field>
+        <mat-form-field style="width: 100%">
+            <mat-label>Please specify the food brand</mat-label>
+            <input matInput #foodBrand="ngModel" name="foodBrand" [(ngModel)]="requestData.foodBrand" placeholder="Ex. Pedigree" [disabled]="entireFormEnabled" required>
+            <mat-error *ngIf="!foodBrand.valid">Please enter a food brand</mat-error>
+        </mat-form-field>
 
-</mat-dialog-content>
-<mat-dialog-actions>
-    <button mat-button (click)="onClose()">Cancel</button>
-    <button mat-button [mat-dialog-close]="brand" cdkFocusInitial (click)="requestFunc()">Request</button>
-<mat-dialog-actions />
+        <mat-form-field style="width: 100%">
+            <input matInput type="number" #onHand="ngModel" name="onHand" [(ngModel)]="requestData.onHand" [disabled]="entireFormEnabled" required>
+            <mat-label>Enter food bag quantity on-hand</mat-label>
+            <mat-error *ngIf="!onHand.valid">Enter a number</mat-error>
+        </mat-form-field>
+
+    </div>
+
+    <div mat-dialog-actions>
+        <button mat-button type="submit" [disabled]="!requestInfo.valid">Submit</button>
+        <button mat-button type="button" (click)="closeDialog()" [disabled]="entireFormEnabled">Cancel</button>
+    </div>
+</form>
+
+
 
     <!--TO - DO
         add ngModel to all inputs,

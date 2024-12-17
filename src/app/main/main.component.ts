@@ -525,7 +525,7 @@ export class MainComponent implements AfterViewInit, OnInit {
 
         dialogConfig.disableClose = true;
         dialogConfig.autoFocus = true;
-        //dialogConfig.width = '600px';
+        dialogConfig.width = '450px';
 
         const dialogRef = this.dialog.open(RequestFoodDialogComponent, dialogConfig);
 
