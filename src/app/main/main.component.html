@@ -17,9 +17,6 @@
 
         <mat-divider></mat-divider>
         <button mat-menu-item (click)="logout()">Logout</button>
-        <button mat-menu-item (click)="testing123()">Test Bio Dialog</button>
-        <button mat-menu-item (click)="testing1234()">Test Req Supplies Dialog</button>
-        <button mat-menu-item (click)="testingDaniel()">Test Pet Food</button>
     </mat-menu>
     <span *ngIf="auth.user$ | async as user">Welcome, {{global.rescueName}}</span>
     <span class="example-spacer"></span>

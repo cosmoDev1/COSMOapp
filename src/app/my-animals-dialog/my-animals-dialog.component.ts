@@ -2,9 +2,12 @@ import { Component, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA, MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { MatTableDataSource } from '@angular/material/table';
 import { Animal, Globals } from '../globals';
-import { MedicalRequestComponent } from '../medical-request/medical-request.component';
-import { MoveRequestComponent } from '../move-request/move-request.component';
 
+import { MedicalRequestComponent } from '../medical-request/medical-request.component';
+import { SuppliesRequestComponent } from '../supplies-request/supplies-request.component';
+import { RequestFoodDialogComponent } from '../request-food-dialog/request-food-dialog.component';
+import { MoveRequestComponent } from '../move-request/move-request.component';
+import { BioDialogComponent } from '../bio-dialog/bio-dialog.component';
 
 @Component({
   selector: 'app-my-animals-dialog',
@@ -29,7 +32,29 @@ export class MyAnimalsDialogComponent {
 
         const dialogRef = this.dialog.open(MedicalRequestComponent, dialogConfig);
 
-   
+    }
+
+    requestSupplies() {
+        //here goes the code to open your dialog
+        //SuppliesRequestComponent
+
+        const dialogConfig = new MatDialogConfig();
+
+        dialogConfig.disableClose = true;
+        dialogConfig.autoFocus = true;
+        dialogConfig.width = '600px';
+        const dialogRef = this.dialog.open(SuppliesRequestComponent, dialogConfig);
+    }
+
+    petFood() {
+        const dialogConfig = new MatDialogConfig();
+
+        dialogConfig.disableClose = true;
+        dialogConfig.autoFocus = true;
+        dialogConfig.width = '450px';
+
+        const dialogRef = this.dialog.open(RequestFoodDialogComponent, dialogConfig);
+
     }
 
     moveRequest() {
@@ -44,5 +69,16 @@ export class MyAnimalsDialogComponent {
 
     }
 
+    bioInfo() {
+        //here goes the code to open your dialog
+        //BioDialogComponent
+
+        const dialogConfig = new MatDialogConfig();
+
+        dialogConfig.disableClose = true;
+        dialogConfig.autoFocus = true;
+        dialogConfig.width = '600px';
+        const dialogRef = this.dialog.open(BioDialogComponent, dialogConfig);
+    }
 
 }

@@ -41,13 +41,6 @@ export class BioDialogComponent {
             this.dialog.open(ConfirmationDialogComponent, dialogConfig);
         })
 
-        console.log(bioInfo)
-
-        
-
-        const dialogConfig = new MatDialogConfig(); 
-        dialogConfig.disableClose = true;
-        console.log(dataToSend)
     }
 
 

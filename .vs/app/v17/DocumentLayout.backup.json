@@ -3,24 +3,44 @@
   "WorkspaceRootPath": "C:\\projects\\COSMO\\app\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\projects\\COSMO\\app\\src\\app\\bio-dialog\\bio-dialog.component.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\app\\bio-dialog\\bio-dialog.component.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\projects\\COSMO\\app\\src\\app\\my-animals-dialog\\my-animals-dialog.component.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\app\\my-animals-dialog\\my-animals-dialog.component.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\projects\\COSMO\\app\\src\\app\\my-animals-dialog\\my-animals-dialog.component.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\app\\my-animals-dialog\\my-animals-dialog.component.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\projects\\COSMO\\app\\src\\app\\main\\main.component.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\app\\main\\main.component.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\projects\\COSMO\\app\\src\\app\\main\\main.component.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\app\\main\\main.component.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\projects\\COSMO\\app\\src\\app\\bio-dialog\\bio-dialog.component.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
       "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\app\\bio-dialog\\bio-dialog.component.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\projects\\COSMO\\app\\src\\app\\request-food-dialog\\request-food-dialog.component.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\app\\request-food-dialog\\request-food-dialog.component.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\projects\\COSMO\\app\\src\\app\\supplies-request\\supplies-request.component.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\app\\supplies-request\\supplies-request.component.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\projects\\COSMO\\app\\src\\app\\bio-dialog\\bio-dialog.component.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\app\\bio-dialog\\bio-dialog.component.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\projects\\COSMO\\app\\src\\app\\animal-detail-dialog\\animal-detail-dialog.component.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\app\\animal-detail-dialog\\animal-detail-dialog.component.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\projects\\COSMO\\app\\src\\app\\supplies-request\\supplies-request.component.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\app\\supplies-request\\supplies-request.component.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\projects\\COSMO\\app\\src\\app\\supplies-request\\supplies-request.component.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\app\\supplies-request\\supplies-request.component.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\projects\\COSMO\\app\\src\\app\\request-food-dialog\\request-food-dialog.component.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\app\\request-food-dialog\\request-food-dialog.component.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\projects\\COSMO\\app\\src\\app\\move-request\\move-request.component.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
@@ -33,10 +53,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\projects\\COSMO\\app\\src\\app\\confirmation-dialog\\confirmation-dialog.component.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
       "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\app\\confirmation-dialog\\confirmation-dialog.component.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\projects\\COSMO\\app\\src\\app\\main\\main.component.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\app\\main\\main.component.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\projects\\COSMO\\app\\src\\app\\app.module.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
@@ -55,20 +71,8 @@
       "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\app\\request-food-dialog\\request-food-dialog.component.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\projects\\COSMO\\app\\src\\app\\my-animals-dialog\\my-animals-dialog.component.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\app\\my-animals-dialog\\my-animals-dialog.component.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\projects\\COSMO\\app\\src\\app\\medical-request\\medical-request.component.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\app\\medical-request\\medical-request.component.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\projects\\COSMO\\app\\src\\app\\main\\main.component.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\app\\main\\main.component.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\projects\\COSMO\\app\\src\\app\\my-animals-dialog\\my-animals-dialog.component.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\app\\my-animals-dialog\\my-animals-dialog.component.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\projects\\COSMO\\app\\src\\app\\new-foster-dialog\\new-foster-dialog.component.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
@@ -81,10 +85,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\projects\\COSMO\\app\\src\\app\\request-food-dialog\\request-food-dialog.component.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
       "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\app\\request-food-dialog\\request-food-dialog.component.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\projects\\COSMO\\app\\src\\app\\animal-detail-dialog\\animal-detail-dialog.component.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\app\\animal-detail-dialog\\animal-detail-dialog.component.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\projects\\COSMO\\app\\src\\app\\new-foster-dialog\\new-foster-dialog.component.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
@@ -275,31 +275,110 @@
             {
               "$type": "Document",
               "DocumentIndex": 6,
-              "Title": "confirmation-dialog.component.html",
-              "DocumentMoniker": "C:\\projects\\COSMO\\app\\src\\app\\confirmation-dialog\\confirmation-dialog.component.html",
-              "RelativeDocumentMoniker": "src\\app\\confirmation-dialog\\confirmation-dialog.component.html",
-              "ToolTip": "C:\\projects\\COSMO\\app\\src\\app\\confirmation-dialog\\confirmation-dialog.component.html",
-              "RelativeToolTip": "src\\app\\confirmation-dialog\\confirmation-dialog.component.html",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAA4AAAAAAAAAA==",
+              "Title": "bio-dialog.component.html",
+              "DocumentMoniker": "C:\\projects\\COSMO\\app\\src\\app\\bio-dialog\\bio-dialog.component.html",
+              "RelativeDocumentMoniker": "src\\app\\bio-dialog\\bio-dialog.component.html",
+              "ToolTip": "C:\\projects\\COSMO\\app\\src\\app\\bio-dialog\\bio-dialog.component.html",
+              "RelativeToolTip": "src\\app\\bio-dialog\\bio-dialog.component.html",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAA2AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
-              "WhenOpened": "2024-12-17T02:17:27.344Z",
+              "WhenOpened": "2024-05-12T03:55:05.842Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "bio-dialog.component.ts",
+              "DocumentMoniker": "C:\\projects\\COSMO\\app\\src\\app\\bio-dialog\\bio-dialog.component.ts",
+              "RelativeDocumentMoniker": "src\\app\\bio-dialog\\bio-dialog.component.ts",
+              "ToolTip": "C:\\projects\\COSMO\\app\\src\\app\\bio-dialog\\bio-dialog.component.ts",
+              "RelativeToolTip": "src\\app\\bio-dialog\\bio-dialog.component.ts",
+              "ViewState": "AgIAABQAAAAAAAAAAAAgwCoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
+              "WhenOpened": "2024-05-14T01:37:29.54Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "main.component.html",
+              "DocumentMoniker": "C:\\projects\\COSMO\\app\\src\\app\\main\\main.component.html",
+              "RelativeDocumentMoniker": "src\\app\\main\\main.component.html",
+              "ToolTip": "C:\\projects\\COSMO\\app\\src\\app\\main\\main.component.html",
+              "RelativeToolTip": "src\\app\\main\\main.component.html",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAABIAAABAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
+              "WhenOpened": "2023-09-06T02:20:22.587Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "my-animals-dialog.component.html",
+              "DocumentMoniker": "C:\\projects\\COSMO\\app\\src\\app\\my-animals-dialog\\my-animals-dialog.component.html",
+              "RelativeDocumentMoniker": "src\\app\\my-animals-dialog\\my-animals-dialog.component.html",
+              "ToolTip": "C:\\projects\\COSMO\\app\\src\\app\\my-animals-dialog\\my-animals-dialog.component.html",
+              "RelativeToolTip": "src\\app\\my-animals-dialog\\my-animals-dialog.component.html",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAAkAAACvAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
+              "WhenOpened": "2023-09-14T04:22:32.354Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "my-animals-dialog.component.ts",
+              "DocumentMoniker": "C:\\projects\\COSMO\\app\\src\\app\\my-animals-dialog\\my-animals-dialog.component.ts",
+              "RelativeDocumentMoniker": "src\\app\\my-animals-dialog\\my-animals-dialog.component.ts",
+              "ToolTip": "C:\\projects\\COSMO\\app\\src\\app\\my-animals-dialog\\my-animals-dialog.component.ts",
+              "RelativeToolTip": "src\\app\\my-animals-dialog\\my-animals-dialog.component.ts",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAABiAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
+              "WhenOpened": "2023-09-19T22:53:02.668Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "main.component.ts",
+              "DocumentMoniker": "C:\\projects\\COSMO\\app\\src\\app\\main\\main.component.ts",
+              "RelativeDocumentMoniker": "src\\app\\main\\main.component.ts",
+              "ToolTip": "C:\\projects\\COSMO\\app\\src\\app\\main\\main.component.ts",
+              "RelativeToolTip": "src\\app\\main\\main.component.ts",
+              "ViewState": "AgIAAKUBAAAAAAAAAAAgwB4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
+              "WhenOpened": "2023-09-06T02:28:57.953Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "supplies-request.component.ts",
+              "DocumentMoniker": "C:\\projects\\COSMO\\app\\src\\app\\supplies-request\\supplies-request.component.ts",
+              "RelativeDocumentMoniker": "src\\app\\supplies-request\\supplies-request.component.ts",
+              "ToolTip": "C:\\projects\\COSMO\\app\\src\\app\\supplies-request\\supplies-request.component.ts",
+              "RelativeToolTip": "src\\app\\supplies-request\\supplies-request.component.ts",
+              "ViewState": "AgIAABMAAAAAAAAAAAAgwCoAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
+              "WhenOpened": "2024-09-27T01:00:50.724Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 7,
-              "Title": "confirmation-dialog.component.ts",
-              "DocumentMoniker": "C:\\projects\\COSMO\\app\\src\\app\\confirmation-dialog\\confirmation-dialog.component.ts",
-              "RelativeDocumentMoniker": "src\\app\\confirmation-dialog\\confirmation-dialog.component.ts",
-              "ToolTip": "C:\\projects\\COSMO\\app\\src\\app\\confirmation-dialog\\confirmation-dialog.component.ts",
-              "RelativeToolTip": "src\\app\\confirmation-dialog\\confirmation-dialog.component.ts",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAyAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
-              "WhenOpened": "2023-09-09T17:10:21.014Z"
+              "Title": "animal-detail-dialog.component.html",
+              "DocumentMoniker": "C:\\projects\\COSMO\\app\\src\\app\\animal-detail-dialog\\animal-detail-dialog.component.html",
+              "RelativeDocumentMoniker": "src\\app\\animal-detail-dialog\\animal-detail-dialog.component.html",
+              "ToolTip": "C:\\projects\\COSMO\\app\\src\\app\\animal-detail-dialog\\animal-detail-dialog.component.html",
+              "RelativeToolTip": "src\\app\\animal-detail-dialog\\animal-detail-dialog.component.html",
+              "ViewState": "AgIAAB4AAAAAAAAAAAAAADQAAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
+              "WhenOpened": "2023-09-09T15:29:22.834Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 8,
               "Title": "supplies-request.component.html",
               "DocumentMoniker": "C:\\projects\\COSMO\\app\\src\\app\\supplies-request\\supplies-request.component.html",
               "RelativeDocumentMoniker": "src\\app\\supplies-request\\supplies-request.component.html",
@@ -312,33 +391,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "bio-dialog.component.html",
-              "DocumentMoniker": "C:\\projects\\COSMO\\app\\src\\app\\bio-dialog\\bio-dialog.component.html",
-              "RelativeDocumentMoniker": "src\\app\\bio-dialog\\bio-dialog.component.html",
-              "ToolTip": "C:\\projects\\COSMO\\app\\src\\app\\bio-dialog\\bio-dialog.component.html",
-              "RelativeToolTip": "src\\app\\bio-dialog\\bio-dialog.component.html",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAADQAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
-              "WhenOpened": "2024-05-12T03:55:05.842Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "supplies-request.component.ts",
-              "DocumentMoniker": "C:\\projects\\COSMO\\app\\src\\app\\supplies-request\\supplies-request.component.ts",
-              "RelativeDocumentMoniker": "src\\app\\supplies-request\\supplies-request.component.ts",
-              "ToolTip": "C:\\projects\\COSMO\\app\\src\\app\\supplies-request\\supplies-request.component.ts",
-              "RelativeToolTip": "src\\app\\supplies-request\\supplies-request.component.ts",
-              "ViewState": "AgIAAAkAAAAAAAAAAAAAACoAAAAIAAAAAAAAAA==",
+              "DocumentIndex": 9,
+              "Title": "request-food-dialog.component.ts",
+              "DocumentMoniker": "C:\\projects\\COSMO\\app\\src\\app\\request-food-dialog\\request-food-dialog.component.ts",
+              "RelativeDocumentMoniker": "src\\app\\request-food-dialog\\request-food-dialog.component.ts",
+              "ToolTip": "C:\\projects\\COSMO\\app\\src\\app\\request-food-dialog\\request-food-dialog.component.ts",
+              "RelativeToolTip": "src\\app\\request-food-dialog\\request-food-dialog.component.ts",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAAoAAAACAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
-              "WhenOpened": "2024-09-27T01:00:50.724Z",
+              "WhenOpened": "2024-08-23T01:35:25.784Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 10,
               "Title": "move-request.component.html",
               "DocumentMoniker": "C:\\projects\\COSMO\\app\\src\\app\\move-request\\move-request.component.html",
               "RelativeDocumentMoniker": "src\\app\\move-request\\move-request.component.html",
@@ -351,32 +417,32 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "bio-dialog.component.ts",
-              "DocumentMoniker": "C:\\projects\\COSMO\\app\\src\\app\\bio-dialog\\bio-dialog.component.ts",
-              "RelativeDocumentMoniker": "src\\app\\bio-dialog\\bio-dialog.component.ts",
-              "ToolTip": "C:\\projects\\COSMO\\app\\src\\app\\bio-dialog\\bio-dialog.component.ts",
-              "RelativeToolTip": "src\\app\\bio-dialog\\bio-dialog.component.ts",
-              "ViewState": "AgIAABEAAAAAAAAAAAA1wBkAAAAdAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
-              "WhenOpened": "2024-05-14T01:37:29.54Z",
+              "DocumentIndex": 11,
+              "Title": "confirmation-dialog.component.html",
+              "DocumentMoniker": "C:\\projects\\COSMO\\app\\src\\app\\confirmation-dialog\\confirmation-dialog.component.html",
+              "RelativeDocumentMoniker": "src\\app\\confirmation-dialog\\confirmation-dialog.component.html",
+              "ToolTip": "C:\\projects\\COSMO\\app\\src\\app\\confirmation-dialog\\confirmation-dialog.component.html",
+              "RelativeToolTip": "src\\app\\confirmation-dialog\\confirmation-dialog.component.html",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAA4AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
+              "WhenOpened": "2024-12-17T02:17:27.344Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "main.component.ts",
-              "DocumentMoniker": "C:\\projects\\COSMO\\app\\src\\app\\main\\main.component.ts",
-              "RelativeDocumentMoniker": "src\\app\\main\\main.component.ts",
-              "ToolTip": "C:\\projects\\COSMO\\app\\src\\app\\main\\main.component.ts",
-              "RelativeToolTip": "src\\app\\main\\main.component.ts",
-              "ViewState": "AgIAACcAAAAAAAAAAAAAADkAAAAQAAAAAAAAAA==",
+              "DocumentIndex": 12,
+              "Title": "confirmation-dialog.component.ts",
+              "DocumentMoniker": "C:\\projects\\COSMO\\app\\src\\app\\confirmation-dialog\\confirmation-dialog.component.ts",
+              "RelativeDocumentMoniker": "src\\app\\confirmation-dialog\\confirmation-dialog.component.ts",
+              "ToolTip": "C:\\projects\\COSMO\\app\\src\\app\\confirmation-dialog\\confirmation-dialog.component.ts",
+              "RelativeToolTip": "src\\app\\confirmation-dialog\\confirmation-dialog.component.ts",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAyAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
-              "WhenOpened": "2023-09-06T02:28:57.953Z"
+              "WhenOpened": "2023-09-09T17:10:21.014Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 13,
               "Title": "app.module.ts",
               "DocumentMoniker": "C:\\projects\\COSMO\\app\\src\\app\\app.module.ts",
               "RelativeDocumentMoniker": "src\\app\\app.module.ts",
@@ -388,7 +454,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 14,
               "Title": "app.component.ts",
               "DocumentMoniker": "C:\\projects\\COSMO\\app\\src\\app\\app.component.ts",
               "RelativeDocumentMoniker": "src\\app\\app.component.ts",
@@ -400,7 +466,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 16,
               "Title": "request-food-dialog.component.html",
               "DocumentMoniker": "C:\\projects\\COSMO\\app\\src\\app\\request-food-dialog\\request-food-dialog.component.html",
               "RelativeDocumentMoniker": "src\\app\\request-food-dialog\\request-food-dialog.component.html",
@@ -412,7 +478,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 15,
               "Title": "medical-request.component.ts",
               "DocumentMoniker": "C:\\projects\\COSMO\\app\\src\\app\\medical-request\\medical-request.component.ts",
               "RelativeDocumentMoniker": "src\\app\\medical-request\\medical-request.component.ts",
@@ -424,19 +490,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
-              "Title": "my-animals-dialog.component.html",
-              "DocumentMoniker": "C:\\projects\\COSMO\\app\\src\\app\\my-animals-dialog\\my-animals-dialog.component.html",
-              "RelativeDocumentMoniker": "src\\app\\my-animals-dialog\\my-animals-dialog.component.html",
-              "ToolTip": "C:\\projects\\COSMO\\app\\src\\app\\my-animals-dialog\\my-animals-dialog.component.html",
-              "RelativeToolTip": "src\\app\\my-animals-dialog\\my-animals-dialog.component.html",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAC5AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
-              "WhenOpened": "2023-09-14T04:22:32.354Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 17,
               "Title": "medical-request.component.html",
               "DocumentMoniker": "C:\\projects\\COSMO\\app\\src\\app\\medical-request\\medical-request.component.html",
               "RelativeDocumentMoniker": "src\\app\\medical-request\\medical-request.component.html",
@@ -448,31 +502,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
-              "Title": "main.component.html",
-              "DocumentMoniker": "C:\\projects\\COSMO\\app\\src\\app\\main\\main.component.html",
-              "RelativeDocumentMoniker": "src\\app\\main\\main.component.html",
-              "ToolTip": "C:\\projects\\COSMO\\app\\src\\app\\main\\main.component.html",
-              "RelativeToolTip": "src\\app\\main\\main.component.html",
-              "ViewState": "AgIAAAkAAAAAAAAAAAAAABUAAABOAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
-              "WhenOpened": "2023-09-06T02:20:22.587Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 16,
-              "Title": "my-animals-dialog.component.ts",
-              "DocumentMoniker": "C:\\projects\\COSMO\\app\\src\\app\\my-animals-dialog\\my-animals-dialog.component.ts",
-              "RelativeDocumentMoniker": "src\\app\\my-animals-dialog\\my-animals-dialog.component.ts",
-              "ToolTip": "C:\\projects\\COSMO\\app\\src\\app\\my-animals-dialog\\my-animals-dialog.component.ts",
-              "RelativeToolTip": "src\\app\\my-animals-dialog\\my-animals-dialog.component.ts",
-              "ViewState": "AgIAAAgAAAAAAAAAAAAQwCwAAAAFAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
-              "WhenOpened": "2023-09-19T22:53:02.668Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 17,
+              "DocumentIndex": 18,
               "Title": "new-foster-dialog.component.ts",
               "DocumentMoniker": "C:\\projects\\COSMO\\app\\src\\app\\new-foster-dialog\\new-foster-dialog.component.ts",
               "RelativeDocumentMoniker": "src\\app\\new-foster-dialog\\new-foster-dialog.component.ts",
@@ -484,7 +514,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 18,
+              "DocumentIndex": 19,
               "Title": "new-foster-dialog.component.html",
               "DocumentMoniker": "C:\\projects\\COSMO\\app\\src\\app\\new-foster-dialog\\new-foster-dialog.component.html",
               "RelativeDocumentMoniker": "src\\app\\new-foster-dialog\\new-foster-dialog.component.html",
@@ -496,7 +526,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 19,
+              "DocumentIndex": 20,
               "Title": "request-food-dialog.component.css",
               "DocumentMoniker": "C:\\projects\\COSMO\\app\\src\\app\\request-food-dialog\\request-food-dialog.component.css",
               "RelativeDocumentMoniker": "src\\app\\request-food-dialog\\request-food-dialog.component.css",
@@ -505,18 +535,6 @@
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
               "WhenOpened": "2024-12-15T05:30:06.102Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 20,
-              "Title": "animal-detail-dialog.component.html",
-              "DocumentMoniker": "C:\\projects\\COSMO\\app\\src\\app\\animal-detail-dialog\\animal-detail-dialog.component.html",
-              "RelativeDocumentMoniker": "src\\app\\animal-detail-dialog\\animal-detail-dialog.component.html",
-              "ToolTip": "C:\\projects\\COSMO\\app\\src\\app\\animal-detail-dialog\\animal-detail-dialog.component.html",
-              "RelativeToolTip": "src\\app\\animal-detail-dialog\\animal-detail-dialog.component.html",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAADQAAAAdAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
-              "WhenOpened": "2023-09-09T15:29:22.834Z"
             },
             {
               "$type": "Document",
@@ -1021,40 +1039,6 @@
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
               "WhenOpened": "2023-09-06T03:05:58.409Z"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "Orientation": 0,
-      "VerticalTabListWidth": 256,
-      "FloatingWindowState": {
-        "Id": "85d71380-3c6c-4395-a27c-128eeeeb0a41",
-        "Display": 2,
-        "X": 163,
-        "Y": 117,
-        "Width": 1578,
-        "Height": 783,
-        "WindowState": 2
-      },
-      "DocumentGroups": [
-        {
-          "DockedWidth": 200,
-          "SelectedChildIndex": 0,
-          "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "request-food-dialog.component.ts",
-              "DocumentMoniker": "C:\\projects\\COSMO\\app\\src\\app\\request-food-dialog\\request-food-dialog.component.ts",
-              "RelativeDocumentMoniker": "src\\app\\request-food-dialog\\request-food-dialog.component.ts",
-              "ToolTip": "C:\\projects\\COSMO\\app\\src\\app\\request-food-dialog\\request-food-dialog.component.ts",
-              "RelativeToolTip": "src\\app\\request-food-dialog\\request-food-dialog.component.ts",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAACAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
-              "WhenOpened": "2024-08-23T01:35:25.784Z",
-              "EditorCaption": ""
             }
           ]
         }
