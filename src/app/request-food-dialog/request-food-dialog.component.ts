@@ -11,7 +11,7 @@ import { ConfirmationDialogComponent } from '../confirmation-dialog/confirmation
 })
 export class RequestFoodDialogComponent {
 
-    requestData = { bagQuantity: 0, foodBrand: "", onHand: 0, }
+    requestData = { bagQuantity: "", foodBrand: "", onHand: "", }
 
     entireFormEnabled: boolean = false;
 
