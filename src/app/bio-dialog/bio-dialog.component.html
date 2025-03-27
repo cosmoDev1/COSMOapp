@@ -12,6 +12,18 @@
         </mat-form-field>
         <br />
 
+        <mat-form-field>
+            <mat-label>Select animal</mat-label>
+            <mat-select>
+
+                <mat-option [value]="1">option 1</mat-option>
+                <mat-option [value]="2">option 2</mat-option>
+                <mat-option [value]="3">option 3</mat-option>
+
+            </mat-select>
+        </mat-form-field>
+        <br/>
+
         <mat-form-field class="example-full-width">
             <textarea matInput name="animalDescription" #animalDescription="ngModel" placeholder="Ex. Mogi is dog and cat friendly..." [disabled]="entireFormEnabled" [(ngModel)]="bioData.BehavioralDescription" required></textarea>
             <mat-label>
