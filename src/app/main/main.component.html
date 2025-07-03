@@ -61,7 +61,7 @@
             </mat-select>
         </mat-form-field>
 
-        <mat-form-field>
+        <mat-form-field style="margin-right: 10px">
             <mat-label>Shelter</mat-label>
             <mat-select [(ngModel)]='selectedShelter'>
                 <mat-option *ngFor="let shelter of shelters" [value]="shelter.value">
@@ -69,6 +69,36 @@
                 </mat-option>
             </mat-select>
         </mat-form-field>
+
+        <mat-form-field style="margin-right: 10px">
+            <mat-label>Species</mat-label>
+            <mat-select (selectionChange)="filterSpecies($event)">
+                <mat-option value="0">All</mat-option>
+                <mat-option value="1">Cat</mat-option>
+                <mat-option value="2">Dog</mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <mat-form-field style="margin-right: 10px">
+            <mat-label>Gender</mat-label>
+            <mat-select (selectionChange)="filterGender($event)">
+                <mat-option value="0">All</mat-option>
+                <mat-option value="1">Female</mat-option>
+                <mat-option value="2">Male</mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <mat-form-field style="margin-right: 10px">
+            <mat-label>Age</mat-label>
+            <mat-select (selectionChange)="filterAge($event)">
+                <mat-option value="0">All</mat-option>
+                <mat-option value="1">0-12 months </mat-option>
+                <mat-option value="2">1-5 years</mat-option>
+                <mat-option value="3">6-10 years</mat-option>
+                <mat-option value="4">10 + years</mat-option>
+            </mat-select>
+        </mat-form-field>
+
 
         <div style="width: 100%; text-align: center; margin-top: 30px" *ngIf="global.animalsLoading == true">
             <mat-progress-spinner class="example-margin" color="primary" mode="indeterminate" style="margin-left: auto; margin-right: auto"> </mat-progress-spinner>

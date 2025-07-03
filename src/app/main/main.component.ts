@@ -39,7 +39,10 @@ import { TransportDialogComponent } from '../transport-dialog/transport-dialog.c
     styleUrls: ['./main.component.css']
 })
 export class MainComponent implements AfterViewInit, OnInit {
-    public shelters: any = [{ name: 'BARC', value: '0' }, { name: 'HCAS', value: '1' }];
+    public shelters: any = [
+        { name: 'BARC', value: '0' },
+        { name: 'HCAS', value: '1' }
+    ];
     selectedCity = '1';
     selectedShelter = '0';
     selectedState = 'TX';
@@ -67,9 +70,7 @@ export class MainComponent implements AfterViewInit, OnInit {
         });
 
         this.auth.getAccessTokenSilently().subscribe((claims: any) => {
-            const headers = new HttpHeaders({
-                'Content-Type': 'application/json',
-           });
+            const headers = new HttpHeaders({ 'Content-Type': 'application/json', });
 
         });
 
@@ -508,5 +509,26 @@ export class MainComponent implements AfterViewInit, OnInit {
 
       }
 
+    filterSpecies(evt: any) {
+        console.log(evt)
+        if (evt.value == 1) { console.log('meaoww') }
+        if (evt.value == 2) { console.log('woofwoof') }
+    }
+
+    filterGender(evt: any) {
+        console.log(evt)
+        if (evt.value == 0) { console.log('All') }
+        if (evt.value == 1) { console.log('Female') }
+        if (evt.value == 2) { console.log('Male') }
+    }
+
+    filterAge(evt: any) {
+        console.log(evt)
+        if (evt.value == 0) { console.log('All') }
+        if (evt.value == 1) { console.log('0-12 months') }
+        if (evt.value == 2) { console.log('1-5 years') }
+        if (evt.value == 3) { console.log('6-10 years') }
+        if (evt.value == 4) { console.log('10+') }
+    }
 
 }
