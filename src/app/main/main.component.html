@@ -70,27 +70,27 @@
             </mat-select>
         </mat-form-field>
 
-        <mat-form-field style="margin-right: 10px">
+        <mat-form-field style="margin-right: 10px; width: 110px">
             <mat-label>Species</mat-label>
-            <mat-select (selectionChange)="filterSpecies($event)">
+            <mat-select value="0" (selectionChange)="filterSpecies($event)">
                 <mat-option value="0">All</mat-option>
                 <mat-option value="1">Cat</mat-option>
                 <mat-option value="2">Dog</mat-option>
             </mat-select>
         </mat-form-field>
 
-        <mat-form-field style="margin-right: 10px">
+        <mat-form-field style="margin-right: 10px; width: 110px">
             <mat-label>Gender</mat-label>
-            <mat-select (selectionChange)="filterGender($event)">
+            <mat-select value="0" (selectionChange)="filterGender($event)">
                 <mat-option value="0">All</mat-option>
                 <mat-option value="1">Female</mat-option>
                 <mat-option value="2">Male</mat-option>
             </mat-select>
         </mat-form-field>
 
-        <mat-form-field style="margin-right: 10px">
+        <mat-form-field style="margin-right: 10px; width: 130px">
             <mat-label>Age</mat-label>
-            <mat-select (selectionChange)="filterAge($event)">
+            <mat-select value="0" (selectionChange)="filterAge($event)">
                 <mat-option value="0">All</mat-option>
                 <mat-option value="1">0-12 months </mat-option>
                 <mat-option value="2">1-5 years</mat-option>
