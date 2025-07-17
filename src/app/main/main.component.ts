@@ -510,9 +510,13 @@ export class MainComponent implements AfterViewInit, OnInit {
       }
 
     filterSpecies(evt: any) {
-        console.log(evt)
-        if (evt.value == 1) { console.log('meaoww') }
-        if (evt.value == 2) { console.log('woofwoof') }
+        var newAnimals = this.global.animals.filter((animal, idx) => {
+            return ((evt.value == 1 && animal.species == 'Cat') || (evt.value == 2 && animal.species == 'Dog') || (evt.value==0) )
+        });
+
+        this.dataSource = new MatTableDataSource(newAnimals);
+        this.dataSource.sort = this.sort;
+        this.dataSource.paginator = this.paginator;
     }
 
     filterGender(evt: any) {
