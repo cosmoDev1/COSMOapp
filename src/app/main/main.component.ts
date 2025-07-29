@@ -4,7 +4,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { MatSort, Sort, MatSortModule } from '@angular/material/sort';
 import { MatPaginator } from '@angular/material/paginator';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { TitleCasePipe } from '@angular/common';
+import { TitleCasePipe, getLocaleMonthNames } from '@angular/common';
 import { Title } from '@angular/platform-browser';
 
 import { AuthService } from '@auth0/auth0-angular';
@@ -50,6 +50,10 @@ export class MainComponent implements AfterViewInit, OnInit {
     refreshTimer = timer(0, 300000);
     refreshInProgress: boolean = false;
     myFosters = new MatTableDataSource<any>();
+    filterAnimals: any[] = [];
+    selectedGender = "0";
+    selectedSpecies = "0";
+    selectedAge = "0";
 
     dataSource = new MatTableDataSource<Animal>(this.global.animals);
     displayedColumns: string[] = ['action', 'imageURL', 'status', 'shelterAnimalID', 'name', 'gender', 'breed', 'weight', 'age', 'reason', 'outcomeRequest', 'dueOutDate'];
@@ -509,30 +513,67 @@ export class MainComponent implements AfterViewInit, OnInit {
 
       }
 
-    filterSpecies(evt: any) {
-        var newAnimals = this.global.animals.filter((animal, idx) => {
-            return ((evt.value == 1 && animal.species == 'Cat') || (evt.value == 2 && animal.species == 'Dog') || (evt.value==0) )
+    filterSpecies(evt: any, init: boolean) {
+        if (init == true) { this.filterAnimals = this.global.animals; }
+
+        var newAnimals = this.filterAnimals.filter((animal, idx) => {
+            return ((evt.value == 1 && animal.species == 'Cat') || (evt.value == 2 && animal.species == 'Dog') || (evt.value == 0))
+            //       false                                         true                                           false
+            //        ( elem1 AND elem2) OR (elem1 AND elem2) OR (elem)
         });
+
+        this.dataSource = new MatTableDataSource(newAnimals);
+        this.dataSource.sort = this.sort;
+        this.dataSource.paginator = this.paginator;
+
+        if (this.selectedGender != "0") { this.filterGender({ value: parseInt(this.selectedGender) } ,false) }
+        if (this.selectedAge != "0") { this.filterAge({ value: parseInt(this.selectedAge) } ,false) }
+    }
+
+    filterGender(evt: any, init: boolean) {
+        if (init == true) { this.filterAnimals = this.global.animals; }
+
+        console.log(init)
+        console.log(evt)
+        console.log(this.filterAnimals)
+        if (evt.value == 0) { console.log('All') }
+        if (evt.value == 1) { console.log('Female') }
+        if (evt.value == 2) { console.log('Male') }
+
+        var newAnimals = this.filterAnimals.filter((animal, idx) => {
+            return ((evt.value == 1 && animal.gender == 'Female') || (evt.value == 2 && animal.gender == 'Male') || (evt.value == 0))
+        });
+        console.log(newAnimals)
 
         this.dataSource = new MatTableDataSource(newAnimals);
         this.dataSource.sort = this.sort;
         this.dataSource.paginator = this.paginator;
     }
 
-    filterGender(evt: any) {
-        console.log(evt)
-        if (evt.value == 0) { console.log('All') }
-        if (evt.value == 1) { console.log('Female') }
-        if (evt.value == 2) { console.log('Male') }
-    }
+    filterAge(evt: any, init: boolean) {
+        if (init == true) { this.filterAnimals = this.global.animals; }
 
-    filterAge(evt: any) {
-        console.log(evt)
-        if (evt.value == 0) { console.log('All') }
-        if (evt.value == 1) { console.log('0-12 months') }
-        if (evt.value == 2) { console.log('1-5 years') }
-        if (evt.value == 3) { console.log('6-10 years') }
-        if (evt.value == 4) { console.log('10+') }
+        var newAnimals = this.filterAnimals.filter((animal, idx) => {
+            var anAge = animal.age.replace(',', '');
+            console.log(anAge)
+
+            var anAgeElem: any[]= anAge.split(' ');
+            console.log(anAgeElem)
+            
+            return ((evt.value == 1 && anAgeElem[1] == 'week') ||
+                (evt.value == 1 && anAgeElem[1] == 'weeks') ||
+                (evt.value == 1 && anAgeElem[0] < 12 && anAgeElem[1] == 'month') ||
+                (evt.value == 1 && anAgeElem[0] < 12 && anAgeElem[1] == 'months') ||
+                (evt.value == 2 && anAgeElem[0] <= 5 && anAgeElem[1] == 'year') ||
+                (evt.value == 2 && anAgeElem[0] <= 5 && anAgeElem[1] == 'years') ||
+                (evt.value == 3 && anAgeElem[0] >= 6 && anAgeElem[0] <= 10 && anAgeElem[1] == 'years') ||
+                (evt.value == 4 && anAgeElem[0] > 10 && anAgeElem[1] == 'years') ||
+                (evt.value == 0))
+        });
+
+        this.dataSource = new MatTableDataSource(newAnimals);
+        this.dataSource.sort = this.sort;
+        this.dataSource.paginator = this.paginator;
     }
 
 }
