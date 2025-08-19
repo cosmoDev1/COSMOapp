@@ -511,56 +511,62 @@ export class MainComponent implements AfterViewInit, OnInit {
             appState: { target: '/' },
         });
 
-      }
+    }
 
-    filterSpecies(evt: any, init: boolean) {
+    //cold run
+    //filtergender (init true)
+    // filterAnimals = global.animals (81 records)
+    // filterAnimals.filter -> newAnimals (60 records)
+    // acualziar filterAnimals with new values filterAnimals=newAnimals (60 records)
+    // newAnimals -> datasource
+    //filterSpecies (init false)
+    // filterAnimals.filter -> newAnimals (30 recods)
+    //actualizar filterAnimals
+    //filterAge (init false)
+    // filterAnimals.filter -> newAnimals (10 records)
+    //actualizar
+
+    //this.global.animals
+    //this.filterAnimals
+
+    mainFilter(init: boolean) {
         if (init == true) { this.filterAnimals = this.global.animals; }
 
-        var newAnimals = this.filterAnimals.filter((animal, idx) => {
+        this.filterSpecies({ value: parseInt(this.selectedSpecies) });
+        this.filterGender({ value: parseInt(this.selectedGender) });
+        this.filterAge({ value: parseInt(this.selectedAge) });
+    }
+
+    filterSpecies(evt: any) {
+        this.filterAnimals = this.filterAnimals.filter((animal, idx) => {
             return ((evt.value == 1 && animal.species == 'Cat') || (evt.value == 2 && animal.species == 'Dog') || (evt.value == 0))
             //       false                                         true                                           false
             //        ( elem1 AND elem2) OR (elem1 AND elem2) OR (elem)
         });
 
-        this.dataSource = new MatTableDataSource(newAnimals);
+        //here filterAnimals is updated with new values contained inside newAnimals
+
+        this.dataSource = new MatTableDataSource(this.filterAnimals);
         this.dataSource.sort = this.sort;
         this.dataSource.paginator = this.paginator;
-
-        if (this.selectedGender != "0") { this.filterGender({ value: parseInt(this.selectedGender) } ,false) }
-        if (this.selectedAge != "0") { this.filterAge({ value: parseInt(this.selectedAge) } ,false) }
     }
 
-    filterGender(evt: any, init: boolean) {
-        if (init == true) { this.filterAnimals = this.global.animals; }
-
-        console.log(init)
-        console.log(evt)
-        console.log(this.filterAnimals)
-        if (evt.value == 0) { console.log('All') }
-        if (evt.value == 1) { console.log('Female') }
-        if (evt.value == 2) { console.log('Male') }
-
-        var newAnimals = this.filterAnimals.filter((animal, idx) => {
+    filterGender(evt: any) {
+        this.filterAnimals = this.filterAnimals.filter((animal, idx) => {
             return ((evt.value == 1 && animal.gender == 'Female') || (evt.value == 2 && animal.gender == 'Male') || (evt.value == 0))
         });
-        console.log(newAnimals)
-
-        this.dataSource = new MatTableDataSource(newAnimals);
+        
+        this.dataSource = new MatTableDataSource(this.filterAnimals);
         this.dataSource.sort = this.sort;
         this.dataSource.paginator = this.paginator;
     }
 
-    filterAge(evt: any, init: boolean) {
-        if (init == true) { this.filterAnimals = this.global.animals; }
+    filterAge(evt: any) {
+        this.filterAnimals = this.filterAnimals.filter((animal, idx) => {
+          var anAge = animal.age.replace(',', '');
+          var anAgeElem: any[]= anAge.split(' ');
 
-        var newAnimals = this.filterAnimals.filter((animal, idx) => {
-            var anAge = animal.age.replace(',', '');
-            console.log(anAge)
-
-            var anAgeElem: any[]= anAge.split(' ');
-            console.log(anAgeElem)
-            
-            return ((evt.value == 1 && anAgeElem[1] == 'week') ||
+          return ((evt.value == 1 && anAgeElem[1] == 'week') ||
                 (evt.value == 1 && anAgeElem[1] == 'weeks') ||
                 (evt.value == 1 && anAgeElem[0] < 12 && anAgeElem[1] == 'month') ||
                 (evt.value == 1 && anAgeElem[0] < 12 && anAgeElem[1] == 'months') ||
@@ -571,7 +577,7 @@ export class MainComponent implements AfterViewInit, OnInit {
                 (evt.value == 0))
         });
 
-        this.dataSource = new MatTableDataSource(newAnimals);
+        this.dataSource = new MatTableDataSource(this.filterAnimals);
         this.dataSource.sort = this.sort;
         this.dataSource.paginator = this.paginator;
     }

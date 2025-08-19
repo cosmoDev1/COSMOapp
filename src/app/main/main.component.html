@@ -72,7 +72,7 @@
 
         <mat-form-field style="margin-right: 10px; width: 110px">
             <mat-label>Species</mat-label>
-            <mat-select value="0" [(ngModel)]="selectedSpecies" (selectionChange)="filterSpecies($event, true)">
+            <mat-select value="0" [(ngModel)]="selectedSpecies" (selectionChange)="mainFilter(true)">
                 <mat-option value="0">All</mat-option>
                 <mat-option value="1">Cat</mat-option>
                 <mat-option value="2">Dog</mat-option>
@@ -81,7 +81,7 @@
 
         <mat-form-field style="margin-right: 10px; width: 110px">
             <mat-label>Gender</mat-label>
-            <mat-select value="0" [(ngModel)]="selectedGender" (selectionChange)="filterGender($event, true)">
+            <mat-select value="0" [(ngModel)]="selectedGender" (selectionChange)="mainFilter(true)">
                 <mat-option value="0">All</mat-option>
                 <mat-option value="1">Female</mat-option>
                 <mat-option value="2">Male</mat-option>
@@ -90,7 +90,7 @@
 
         <mat-form-field style="margin-right: 10px; width: 130px">
             <mat-label>Age</mat-label>
-            <mat-select value="0" [(ngModel)]="selectedAge" (selectionChange)="filterAge($event, true)">
+            <mat-select value="0" [(ngModel)]="selectedAge" (selectionChange)="mainFilter(true)">
                 <mat-option value="0">All</mat-option>
                 <mat-option value="1">0-11 months </mat-option>
                 <mat-option value="2">1-5 years</mat-option>

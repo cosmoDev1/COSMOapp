@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { MatDialogConfig, MatDialogRef } from '@angular/material/dialog';
+import { Component, Inject } from '@angular/core';
+import { MatDialogConfig, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Component({
@@ -13,12 +13,12 @@ export class MedicalRequestComponent {
 
     entireFormEnabled: boolean = false;
 
-    constructor(private http: HttpClient, public dialogRef: MatDialogRef<MedicalRequestComponent>) { }
+    constructor(@Inject(MAT_DIALOG_DATA) public data: any, private http: HttpClient, public dialogRef: MatDialogRef<MedicalRequestComponent>) { }
 
     submitDialog(medicalForm: any) {
         if (medicalForm.invalid) { return; }
 
-        var dataToSend = { symptomDescription: this.medicalData.symptomDescription, frequency: this.medicalData.frequency, selectedDate: this.medicalData.selectedDate.toLocaleString(), requiresTransport: this.medicalData.requiresTransport }
+        var dataToSend = { animalId: this.data.id, symptomDescription: this.medicalData.symptomDescription, frequency: this.medicalData.frequency, selectedDate: this.medicalData.selectedDate.toLocaleString(), requiresTransport: this.medicalData.requiresTransport }
 
         this.http.post('http://localhost:5000/api/medical', dataToSend).subscribe((res: any) => {
             console.log('everything went ok')

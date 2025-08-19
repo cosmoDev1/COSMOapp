@@ -23,12 +23,12 @@ export class MyAnimalsDialogComponent {
         this.myAnimals.data = this.global.myAnimals;
     }
 
-    requestMedical() {
+    requestMedical(animalId: string, animalName: string) {
         const dialogConfig = new MatDialogConfig();
 
         dialogConfig.disableClose = true;
         dialogConfig.autoFocus = true;
-        dialogConfig.data = { title: 'Notice', message: 'There are no animals tagged yet.', notification: true };
+        dialogConfig.data = { name: animalName, id: animalId };
 
         const dialogRef = this.dialog.open(MedicalRequestComponent, dialogConfig);
 
